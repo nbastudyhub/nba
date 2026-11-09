@@ -393,6 +393,29 @@ def build():
         "The internet connection through the modem or router. An internal device such as a switch, router or access point. "
         "One weak device in the middle can expose every device on the network.", b)
 
+    # ---------- Lesson 16: the two data laws ----------
+    b = T(24, 32, "UK GDPR + DPA 2018: HANDLING DATA", "h", "start")
+    for i, (h, a, c) in enumerate([("Collect", "lawful basis", "data minimisation"), ("Use", "fair and transparent", "purpose limitation"),
+                                   ("Store", "accuracy", "storage limitation"), ("Protect", "integrity and", "confidentiality")]):
+        x, y = 24 + (i % 2) * 176, 50 + (i // 2) * 92
+        b += R(x, y, 164, 80, "acc") + T(x + 82, y + 28, h, "tb") + T(x + 82, y + 50, a, "s") + T(x + 82, y + 67, c, "s")
+    b += T(194, 254, "Enforced by the ICO: fines up to", "s") + T(194, 272, "£17.5m or 4% of turnover", "s")
+    b += P("M390 20 V286", "ln dash")
+    b += T(412, 32, "COMPUTER MISUSE ACT 1990: BREAKING IN", "h", "start")
+    b += person(450, 96, "ic-bad") + T(450, 134, "Attacker", "s")
+    b += R(616, 56, 120, 86, "box") + server(656, 96) + padlock(704, 92, "ic-acc") + T(676, 134, "Organisation", "s")
+    b += A(476, 92, 610, 92, "bad", dash=True) + cross(543, 92)
+    b += T(543, 70, "no permission", "s")
+    b += R(412, 160, 324, 50, "bad") + T(574, 181, "Attacker: a criminal offence", "t") + T(574, 199, "access · further crime · impair · tools", "s")
+    b += R(412, 220, 324, 56, "good") + T(574, 242, "Organisation: must take due care", "t") + T(574, 262, "MFA, patching, disable leavers' accounts", "s")
+    svg("data-laws", 760, 296, "The two data laws: UK GDPR and the Computer Misuse Act",
+        "Left: UK GDPR with the Data Protection Act 2018 sets the rules for handling personal data. Collect it with a lawful basis and only what you need "
+        "(data minimisation). Use it fairly and openly, and only for the stated purpose (purpose limitation). Store it accurately and not for too long "
+        "(storage limitation). Protect it (integrity and confidentiality). It is enforced by the ICO, with fines up to 17.5 million pounds or 4% of turnover. "
+        "Right: the Computer Misuse Act 1990 makes breaking in a crime. An attacker getting into an organisation's system without permission commits a "
+        "criminal offence: unauthorised access, access to commit a further crime, impairing a computer or data, or making or supplying hacking tools. "
+        "The organisation must take due care to stop unauthorised access, for example MFA, patching and disabling leavers' accounts.", b)
+
 
 if __name__ == "__main__":
     build()

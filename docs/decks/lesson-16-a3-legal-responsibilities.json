@@ -1,0 +1,874 @@
+{
+ "id": "lesson-16-a3-legal-responsibilities",
+ "title": "Lesson 16 - A3 Legal Responsibilities",
+ "code": "IT · Unit 2 · A3",
+ "subject": "Information Technology",
+ "added": "2026-11-09",
+ "bigQuestion": "What must organisations do by law to protect personal data?",
+ "sections": [
+  {
+   "heading": "Flying start (warm-up)",
+   "text": "Recap from A1 and A2, then think ahead. Try each one before reading the answer.",
+   "points": [
+    "1. One internal and one external threat? E.g. internal: a disgruntled employee or accidental data loss. External: a hacker or a phishing attack",
+    "2. A company is fined after a data breach. Which type of loss? Financial loss (the fine is legal liability)",
+    "3. True or false: \"Risk acceptance means an organisation decides to live with a risk instead of reducing it.\" True",
+    "4. Which UK organisation publishes reports and advisories on current cyber threats? The NCSC (National Cyber Security Centre)",
+    "5. Think ahead: name three organisations that hold personal data about you (e.g. your school, your GP, your phone network). What should they NOT be allowed to do with it? E.g. sell it, share it without a reason, or keep it forever",
+    "Today's focus: what UK GDPR and the Computer Misuse Act 1990 require organisations to do with personal data. Next (A4): the security measures organisations use to meet these duties"
+   ]
+  },
+  {
+   "heading": "Personal data (PII)",
+   "text": "Personal data is any information that can identify a living person, on its own or combined with other data. PII means personally identifying information.",
+   "points": [
+    "Examples: name, home address, email, date of birth, bank details, photo, medical notes, IP address",
+    "Data laws apply to every organisation",
+    "They cover data in storage and when it is transferred",
+    "They cover the privacy of PII",
+    "They cover unauthorised access to computers and devices",
+    "They cover unauthorised access to data, and changes to data"
+   ]
+  },
+  {
+   "heading": "Two key laws you need to know",
+   "table": {
+    "head": [
+     "UK GDPR + DPA 2018",
+     "Computer Misuse Act 1990 (CMA)"
+    ],
+    "rows": [
+     [
+      "Controls how organisations collect, store, use and share personal data",
+      "Makes it a crime to access or change computer material without permission"
+     ],
+     [
+      "Gives people rights over their data",
+      "Protects data from unauthorised access and modification"
+     ],
+     [
+      "Enforced by the ICO: fines up to £17.5m or 4% of turnover",
+      "Organisations must take due care to stop unauthorised access"
+     ]
+    ]
+   },
+   "points": [
+    "Remember: GDPR = the rules for handling data. CMA = the crime of breaking in"
+   ],
+   "diagram": {
+    "src": "diagrams/data-laws.svg",
+    "alt": "Left: UK GDPR with the Data Protection Act 2018 sets the rules for handling personal data. Collect it with a lawful basis and only what you need (data minimisation). Use it fairly and openly, and only for the stated purpose (purpose limitation). Store it accurately and not for too long (storage limitation). Protect it (integrity and confidentiality). It is enforced by the ICO, with fines up to 17.5 million pounds or 4% of turnover. Right: the Computer Misuse Act 1990 makes breaking in a crime. An attacker getting into an organisation's system without permission commits a criminal offence: unauthorised access, access to commit a further crime, impairing a computer or data, or making or supplying hacking tools. The organisation must take due care to stop unauthorised access, for example MFA, patching and disabling leavers' accounts.",
+    "caption": "GDPR = the rules for handling data. CMA = the crime of breaking in."
+   }
+  },
+  {
+   "heading": "The 7 UK GDPR principles",
+   "text": "All seven are compulsory. Learn the name, what it means and a breach.",
+   "table": {
+    "head": [
+     "Principle",
+     "What it means",
+     "Example of a breach"
+    ],
+    "rows": [
+     [
+      "1. Lawfulness",
+      "Must have a valid legal reason (lawful basis) to use the data",
+      "A fitness app shares users' location history with advertisers with no lawful basis"
+     ],
+     [
+      "2. Fairness and transparency",
+      "Treat people fairly and be open about what is collected and why",
+      "A quiz app secretly copies users' phone contacts"
+     ],
+     [
+      "3. Purpose limitation (limited to stated purposes)",
+      "Only use data for the purpose you told people",
+      "A school uses parents' emergency contact numbers to send fundraising texts"
+     ],
+     [
+      "4. Accuracy",
+      "Keep data correct and up to date; fix mistakes quickly",
+      "A GP surgery records the wrong allergy and doesn't fix it when told"
+     ],
+     [
+      "5. Data minimisation (keep the minimum amount of data)",
+      "Only collect data you actually need",
+      "A cinema asks for your National Insurance number to book a ticket"
+     ],
+     [
+      "6. Storage limitation (store for the minimum time)",
+      "Don't keep data longer than needed",
+      "A recruitment agency keeps rejected applicants' CVs for 15 years"
+     ],
+     [
+      "7. Integrity and confidentiality",
+      "Keep data secure from unauthorised access, loss or damage",
+      "An unencrypted laptop of patient records is left on a train"
+     ]
+    ]
+   },
+   "points": [
+    "Common mix-up: purpose limitation = WHAT you do with data; data minimisation = HOW MUCH you collect"
+   ]
+  },
+  {
+   "heading": "Worked example: spotting a breach",
+   "text": "SnapPrint, an online photo printer, asks customers for their name, address, email and date of birth. It keeps all photos and details forever, even after orders are delivered.",
+   "points": [
+    "Step 1, underline the evidence: \"keeps … forever, even after orders are delivered\"",
+    "Step 2, match it to a principle: storage limitation",
+    "Step 3, explain using the scenario: it breaches storage limitation because it keeps details forever, even though it no longer needs them after delivery",
+    "A second breach: data minimisation, because a date of birth isn't needed to print photos",
+    "Quick check (a): a hospital keeps patient records on a database with no password → integrity and confidentiality",
+    "Quick check (b): a takeaway app asks for your mother's maiden name to order a pizza → data minimisation",
+    "Quick check (c): a bank keeps writing to your old address after you told them you moved → accuracy"
+   ]
+  },
+  {
+   "heading": "The 6 lawful bases for processing data",
+   "text": "A lawful basis is the legal reason for using personal data. Organisations must pick one before they start, and tell people.",
+   "table": {
+    "head": [
+     "Lawful basis",
+     "In plain English",
+     "Example"
+    ],
+    "rows": [
+     [
+      "Consent",
+      "The person has freely and clearly agreed",
+      "A photographer asks parents' permission before posting school play photos"
+     ],
+     [
+      "Contractual obligation",
+      "Needed to deliver a contract",
+      "A mobile network uses your bank details to take your monthly payment"
+     ],
+     [
+      "Legitimate interest",
+      "A genuine business reason that doesn't override people's rights",
+      "A college uses CCTV in its car park to keep people safe"
+     ],
+     [
+      "Vital interest",
+      "Needed to protect someone's life",
+      "A school shares a pupil's allergy details with A&E"
+     ],
+     [
+      "Legal requirement",
+      "The law requires it",
+      "An employer keeps staff right-to-work documents, as the law requires"
+     ],
+     [
+      "Public interest",
+      "Needed for an official or public task",
+      "The DVLA uses driver details to issue driving licences"
+     ]
+    ]
+   },
+   "points": [
+    "Myth: organisations always need your consent. Reality: consent is only 1 of 6 lawful bases",
+    "Myth: legitimate interest covers anything that makes money. Reality: it must not override people's rights",
+    "Myth: a pre-ticked box counts as consent. Reality: consent must be a clear, active choice",
+    "Quick check: a gym takes your bank details to collect your monthly membership fee → contractual obligation"
+   ]
+  },
+  {
+   "heading": "Your personal rights under UK GDPR",
+   "text": "People have six rights over their data. Organisations must usually respond within one month. Tip: look for the verb: see, be told, fix, stop, move, human check?",
+   "table": {
+    "head": [
+     "Right",
+     "What it lets you do"
+    ],
+    "rows": [
+     [
+      "Right of access",
+      "See a copy of your data (a Subject Access Request)"
+     ],
+     [
+      "Right to be informed",
+      "Be told how and why your data is used"
+     ],
+     [
+      "Right to have data corrected, removed or restricted",
+      "Fix it, delete it or pause its use"
+     ],
+     [
+      "Right to object",
+      "Say \"stop\", e.g. to direct marketing"
+     ],
+     [
+      "Right to data portability",
+      "Get your data in a machine-readable format"
+     ],
+     [
+      "Right not to be subject to automated decision-making",
+      "Ask for a human to review a decision"
+     ]
+    ]
+   },
+   "points": [
+    "Amira leaves a social network and asks it to delete all her posts → corrected, removed or restricted",
+    "An algorithm sets Leo's insurance quote and he asks for a person to check it → automated decision-making",
+    "Priya asks her old bank for her history in a file her new bank can import → data portability"
+   ]
+  },
+  {
+   "heading": "Computer Misuse Act 1990 (CMA)",
+   "text": "Why was it needed? In R v Gold and Schifreen (1988), two men got into BT's Prestel system with a password they had found. Their conviction was overturned because hacking was not a crime. The CMA closed the gap.",
+   "table": {
+    "head": [
+     "Section",
+     "Offence",
+     "Maximum sentence"
+    ],
+    "rows": [
+     [
+      "1",
+      "Unauthorised access to computer material",
+      "2 years"
+     ],
+     [
+      "2",
+      "Unauthorised access with intent to commit a further crime",
+      "5 years"
+     ],
+     [
+      "3",
+      "Unauthorised acts to impair a computer or data (e.g. malware, DoS)",
+      "10 years"
+     ],
+     [
+      "3A (added 2006)",
+      "Making or supplying hacking tools",
+      "2 years"
+     ],
+     [
+      "3ZA (added 2015)",
+      "Serious damage, e.g. to critical national infrastructure",
+      "14 years to life"
+     ]
+    ]
+   },
+   "points": [
+    "Section 1 example: guessing a colleague's password to read their emails"
+   ]
+  },
+  {
+   "heading": "Organisations' responsibility: due care",
+   "text": "The CMA makes the attacker a criminal. Organisations must exercise due care: reasonable steps to prevent unauthorised access, to meet their security duties under UK GDPR.",
+   "points": [
+    "Access controls",
+    "Strong passwords + MFA",
+    "Disable leavers' accounts",
+    "Patch and update",
+    "Monitor and log access",
+    "Train staff; have clear policies",
+    "Apply it: Sam uses a colleague's password from a sticky note to change his sales figures",
+    "Sam has committed a CMA offence: unauthorised access and modification of data",
+    "The organisation failed in its due care (poor password practice, no training), a risk to GDPR integrity and confidentiality",
+    "So a hacked organisation can still be fined: it failed to keep data secure (due care)"
+   ]
+  },
+  {
+   "heading": "Worked case study and exam technique",
+   "text": "ShopRight keeps full customer records long after orders are complete. It reuses delivery-update emails for marketing and ignores customers who ask it to stop. Old admin accounts are never disabled and systems are rarely patched. It is hacked. Use the method: Evidence → Responsibility → Control.",
+   "table": {
+    "head": [
+     "Evidence",
+     "Responsibility broken",
+     "Control to fix it"
+    ],
+    "rows": [
+     [
+      "\"records long after orders are complete\"",
+      "GDPR: storage limitation",
+      "Set a retention period; delete old records"
+     ],
+     [
+      "\"admin accounts never disabled … rarely patched\"",
+      "CMA: failed in due care",
+      "Disable leavers' accounts; patch regularly"
+     ],
+     [
+      "\"reuses delivery-update emails for marketing\"",
+      "GDPR: purpose limitation",
+      "Only market to people who opt in"
+     ],
+     [
+      "\"ignores customers who ask it to stop\"",
+      "Right to object",
+      "Unsubscribe link; stop when asked"
+     ]
+    ]
+   },
+   "points": [
+    "Identify / State: name it",
+    "Describe: say what it is or what happens",
+    "Explain: point + reason, linked to the scenario",
+    "Evaluate: both sides + a justified judgement",
+    "1 mark: \"Storage limitation.\" (no explanation)",
+    "2 marks: \"It breaches storage limitation (1) because it keeps customers' details forever, even after orders are delivered, so it holds data longer than needed (1).\""
+   ]
+  }
+ ],
+ "keyIdea": "UK GDPR (with the DPA 2018) sets the rules for handling personal data: 7 principles, 6 lawful bases and 6 personal rights, enforced by the ICO. The Computer Misuse Act 1990 makes breaking in a crime, and organisations must take due care to stop unauthorised access.",
+ "flashcards": [
+  [
+   "Personal data (PII)",
+   "Any information that can identify a living person, on its own or combined with other data. PII = personally identifying information"
+  ],
+  [
+   "UK GDPR + DPA 2018",
+   "The law that controls how organisations collect, store, use and share personal data, and gives people rights over their data"
+  ],
+  [
+   "ICO",
+   "The Information Commissioner's Office: enforces UK GDPR, with fines up to £17.5m or 4% of turnover"
+  ],
+  [
+   "Computer Misuse Act 1990 (CMA)",
+   "Makes it a crime to access or change computer material without permission"
+  ],
+  [
+   "Lawfulness",
+   "GDPR principle: have a valid legal reason (lawful basis) to use the data"
+  ],
+  [
+   "Fairness and transparency",
+   "GDPR principle: treat people fairly and be open about what is collected and why"
+  ],
+  [
+   "Purpose limitation",
+   "GDPR principle: only use data for the purpose you told people (WHAT you do with it)"
+  ],
+  [
+   "Accuracy",
+   "GDPR principle: keep data correct and up to date, and fix mistakes quickly"
+  ],
+  [
+   "Data minimisation",
+   "GDPR principle: only collect data you actually need (HOW MUCH you collect)"
+  ],
+  [
+   "Storage limitation",
+   "GDPR principle: don't keep data longer than needed"
+  ],
+  [
+   "Integrity and confidentiality",
+   "GDPR principle: keep data secure from unauthorised access, loss or damage"
+  ],
+  [
+   "Lawful basis",
+   "The legal reason for using personal data. Organisations must pick one of six before they start, and tell people"
+  ],
+  [
+   "Consent",
+   "Lawful basis: the person has freely and clearly agreed. Must be a clear, active choice, not a pre-ticked box"
+  ],
+  [
+   "Contractual obligation",
+   "Lawful basis: the data is needed to deliver a contract, e.g. bank details to take a monthly payment"
+  ],
+  [
+   "Legitimate interest",
+   "Lawful basis: a genuine business reason that doesn't override people's rights, e.g. CCTV in a car park"
+  ],
+  [
+   "Vital interest",
+   "Lawful basis: needed to protect someone's life, e.g. sharing allergy details with A&E"
+  ],
+  [
+   "Legal requirement",
+   "Lawful basis: the law requires it, e.g. keeping staff right-to-work documents"
+  ],
+  [
+   "Public interest",
+   "Lawful basis: needed for an official or public task, e.g. the DVLA issuing driving licences"
+  ],
+  [
+   "Right of access",
+   "The right to see a copy of your data"
+  ],
+  [
+   "Subject Access Request (SAR)",
+   "A request to an organisation to see a copy of the data it holds about you. It must usually respond within one month"
+  ],
+  [
+   "Right to be informed",
+   "The right to be told how and why your data is used"
+  ],
+  [
+   "Right to object",
+   "The right to say \"stop\", e.g. to direct marketing"
+  ],
+  [
+   "Right to data portability",
+   "The right to get your data in a machine-readable format, e.g. to move to a new bank"
+  ],
+  [
+   "Right not to be subject to automated decision-making",
+   "The right to ask for a human to review a decision made by a computer"
+  ],
+  [
+   "R v Gold and Schifreen (1988)",
+   "Two men got into BT's Prestel system with a found password; their conviction was overturned because hacking wasn't a crime. This led to the CMA"
+  ],
+  [
+   "CMA section 1",
+   "Unauthorised access to computer material. Up to 2 years"
+  ],
+  [
+   "CMA section 2",
+   "Unauthorised access with intent to commit a further crime. Up to 5 years"
+  ],
+  [
+   "CMA section 3",
+   "Unauthorised acts to impair a computer or data, e.g. malware or DoS. Up to 10 years"
+  ],
+  [
+   "CMA sections 3A and 3ZA",
+   "3A (2006): making or supplying hacking tools, up to 2 years. 3ZA (2015): serious damage, e.g. to critical national infrastructure, 14 years to life"
+  ],
+  [
+   "Due care",
+   "Reasonable steps an organisation takes to prevent unauthorised access, e.g. MFA, patching and disabling leavers' accounts"
+  ]
+ ],
+ "quiz": [
+  {
+   "q": "Which of these is personal data?",
+   "o": [
+    "The weather forecast",
+    "A company's opening hours",
+    "A customer's IP address",
+    "The price of a ticket"
+   ],
+   "a": 2,
+   "e": "An IP address can help identify a living person, so it is personal data (PII)."
+  },
+  {
+   "q": "Who enforces UK GDPR?",
+   "o": [
+    "The ICO",
+    "The NCSC",
+    "The police",
+    "The DVLA"
+   ],
+   "a": 0,
+   "e": "The ICO enforces UK GDPR, with fines up to £17.5m or 4% of turnover."
+  },
+  {
+   "q": "A cinema asks for your National Insurance number to book a ticket. Which principle is breached?",
+   "o": [
+    "Accuracy",
+    "Storage limitation",
+    "Purpose limitation",
+    "Data minimisation"
+   ],
+   "a": 3,
+   "e": "It is collecting data it doesn't need to sell a ticket: data minimisation."
+  },
+  {
+   "q": "A school uses parents' emergency contact numbers to send fundraising texts. Which principle is breached?",
+   "o": [
+    "Data minimisation",
+    "Purpose limitation",
+    "Accuracy",
+    "Lawfulness"
+   ],
+   "a": 1,
+   "e": "The numbers were given for emergencies, not fundraising, so they are used for a different purpose."
+  },
+  {
+   "q": "A bank keeps writing to your old address after you told them you moved. Which principle is breached?",
+   "o": [
+    "Accuracy",
+    "Integrity and confidentiality",
+    "Storage limitation",
+    "Fairness and transparency"
+   ],
+   "a": 0,
+   "e": "The data isn't kept correct and up to date: accuracy."
+  },
+  {
+   "q": "An unencrypted laptop of patient records is left on a train. Which principle is breached?",
+   "o": [
+    "Purpose limitation",
+    "Data minimisation",
+    "Integrity and confidentiality",
+    "Accuracy"
+   ],
+   "a": 2,
+   "e": "The data wasn't kept secure from unauthorised access or loss."
+  },
+  {
+   "q": "A shop keeps card details for years after orders are complete. Which principle is breached?",
+   "o": [
+    "Lawfulness",
+    "Accuracy",
+    "Purpose limitation",
+    "Storage limitation"
+   ],
+   "a": 3,
+   "e": "It keeps the data longer than needed."
+  },
+  {
+   "q": "What is the difference between purpose limitation and data minimisation?",
+   "o": [
+    "They mean the same thing",
+    "Purpose limitation is about what you do with data; data minimisation is about how much you collect",
+    "Purpose limitation is about how long you keep data; data minimisation is about security",
+    "Data minimisation is a CMA offence"
+   ],
+   "a": 1,
+   "e": "Purpose = WHAT you do with it. Minimisation = HOW MUCH you collect."
+  },
+  {
+   "q": "A gym takes your bank details to collect your monthly membership fee. Which lawful basis?",
+   "o": [
+    "Consent",
+    "Legitimate interest",
+    "Contractual obligation",
+    "Public interest"
+   ],
+   "a": 2,
+   "e": "The data is needed to deliver the membership contract."
+  },
+  {
+   "q": "A school shares a pupil's allergy details with A&E. Which lawful basis?",
+   "o": [
+    "Vital interest",
+    "Legal requirement",
+    "Consent",
+    "Contractual obligation"
+   ],
+   "a": 0,
+   "e": "It is needed to protect someone's life: vital interest."
+  },
+  {
+   "q": "Does a pre-ticked box count as consent?",
+   "o": [
+    "Yes, if the box is clearly visible",
+    "Yes, but only for marketing",
+    "Only for people over 18",
+    "No, consent must be a clear, active choice"
+   ],
+   "a": 3,
+   "e": "Consent must be freely and clearly given, so the person has to actively choose."
+  },
+  {
+   "q": "A customer asks a company for a copy of all the data it holds about them. Which right are they using?",
+   "o": [
+    "Right to object",
+    "Right of access (a Subject Access Request)",
+    "Right to data portability",
+    "Right to be informed"
+   ],
+   "a": 1,
+   "e": "Seeing a copy of your data is the right of access, through a Subject Access Request."
+  },
+  {
+   "q": "Priya asks her old bank for her history in a file her new bank can import. Which right?",
+   "o": [
+    "Right of access",
+    "Right to object",
+    "Right to data portability",
+    "Right to be informed"
+   ],
+   "a": 2,
+   "e": "Getting your data in a machine-readable format to move it is data portability."
+  },
+  {
+   "q": "How long do organisations usually have to respond to a rights request?",
+   "o": [
+    "One month",
+    "One week",
+    "One year",
+    "There is no time limit"
+   ],
+   "a": 0,
+   "e": "Organisations must usually respond within one month."
+  },
+  {
+   "q": "Why was the Computer Misuse Act 1990 needed?",
+   "o": [
+    "To set up the ICO",
+    "To give people rights over their data",
+    "To fine companies that lose data",
+    "In R v Gold and Schifreen, hacking wasn't a crime, so the convictions were overturned"
+   ],
+   "a": 3,
+   "e": "The CMA closed the gap by making unauthorised access a crime."
+  },
+  {
+   "q": "Spreading malware to impair a computer is an offence under which section of the CMA?",
+   "o": [
+    "Section 1",
+    "Section 3",
+    "Section 2",
+    "Section 3A"
+   ],
+   "a": 1,
+   "e": "Section 3 covers unauthorised acts to impair a computer or data, e.g. malware or DoS (up to 10 years)."
+  },
+  {
+   "q": "Why could an organisation that was hacked still be fined?",
+   "o": [
+    "It failed to keep data secure (due care)",
+    "Because the hacker can't be found",
+    "Organisations are always fined after a hack",
+    "Because it broke the CMA itself"
+   ],
+   "a": 0,
+   "e": "Organisations must take due care to stop unauthorised access. Failing to do so breaks GDPR integrity and confidentiality."
+  }
+ ],
+ "apply": {
+  "title": "Which principle, basis or right?",
+  "intro": "Read each scenario, underline the evidence in your head, then pick the best answer.",
+  "items": [
+   {
+    "task": "A quiz app secretly copies users' phone contacts.",
+    "o": [
+     "Accuracy",
+     "Fairness and transparency",
+     "Storage limitation",
+     "Data minimisation"
+    ],
+    "a": 1,
+    "e": "It isn't open about what it collects: fairness and transparency."
+   },
+   {
+    "task": "A recruitment agency keeps rejected applicants' CVs for 15 years.",
+    "o": [
+     "Storage limitation",
+     "Purpose limitation",
+     "Accuracy",
+     "Lawfulness"
+    ],
+    "a": 0,
+    "e": "It keeps data far longer than needed."
+   },
+   {
+    "task": "A fitness app shares users' location history with advertisers, with no lawful basis.",
+    "o": [
+     "Data minimisation",
+     "Accuracy",
+     "Lawfulness",
+     "Storage limitation"
+    ],
+    "a": 2,
+    "e": "There is no valid legal reason to use the data this way."
+   },
+   {
+    "task": "A college uses CCTV in its car park to keep people safe.",
+    "o": [
+     "Consent",
+     "Vital interest",
+     "Public interest",
+     "Legitimate interest"
+    ],
+    "a": 3,
+    "e": "A genuine reason that doesn't override people's rights: legitimate interest."
+   },
+   {
+    "task": "An employer keeps staff right-to-work documents.",
+    "o": [
+     "Legal requirement",
+     "Consent",
+     "Contractual obligation",
+     "Vital interest"
+    ],
+    "a": 0,
+    "e": "The law requires it."
+   },
+   {
+    "task": "The DVLA uses driver details to issue driving licences.",
+    "o": [
+     "Legitimate interest",
+     "Contractual obligation",
+     "Public interest",
+     "Consent"
+    ],
+    "a": 2,
+    "e": "It is an official, public task."
+   },
+   {
+    "task": "A photographer asks parents' permission before posting school play photos.",
+    "o": [
+     "Vital interest",
+     "Consent",
+     "Legal requirement",
+     "Public interest"
+    ],
+    "a": 1,
+    "e": "The parents freely and clearly agree."
+   },
+   {
+    "task": "A customer tells an online shop to stop sending them marketing emails.",
+    "o": [
+     "Right of access",
+     "Right to data portability",
+     "Right to be informed",
+     "Right to object"
+    ],
+    "a": 3,
+    "e": "Saying \"stop\" to direct marketing is the right to object."
+   },
+   {
+    "task": "An algorithm turns down Leo's loan application. He asks for a person to check it.",
+    "o": [
+     "Right not to be subject to automated decision-making",
+     "Right to object",
+     "Right of access",
+     "Right to be informed"
+    ],
+    "a": 0,
+    "e": "Asking for a human to review a computer's decision."
+   },
+   {
+    "task": "Amira leaves a social network and asks it to delete all her posts.",
+    "o": [
+     "Right to data portability",
+     "Right to have data corrected, removed or restricted",
+     "Right of access",
+     "Right to be informed"
+    ],
+    "a": 1,
+    "e": "Deleting data falls under corrected, removed or restricted."
+   },
+   {
+    "task": "An employee guesses a colleague's password to read their emails.",
+    "o": [
+     "UK GDPR purpose limitation",
+     "CMA section 3",
+     "CMA section 1",
+     "CMA section 3A"
+    ],
+    "a": 2,
+    "e": "Unauthorised access to computer material is a section 1 offence."
+   },
+   {
+    "task": "Sam uses a password from a sticky note to change his sales figures. What has the ORGANISATION failed to do?",
+    "o": [
+     "Get Sam's consent",
+     "Respond to a Subject Access Request",
+     "Delete Sam's data",
+     "Take due care, e.g. good password practice and staff training"
+    ],
+    "a": 3,
+    "e": "Sam committed a CMA offence; the organisation failed in its due care, a risk to GDPR integrity and confidentiality."
+   }
+  ]
+ },
+ "exam": [
+  {
+   "sc": "",
+   "q": "1. Define the term personal data.",
+   "m": 2,
+   "pts": [
+    "Any information that can identify a living person",
+    "on its own or combined with other data, e.g. a name, address or IP address"
+   ],
+   "tip": "Say it identifies a LIVING person, and mention that combined data counts too."
+  },
+  {
+   "sc": "SnapPrint, an online photo printer, asks customers for their name, address, email and date of birth. It keeps all photos and details forever, even after orders are delivered.",
+   "q": "2. Explain one way SnapPrint has breached UK GDPR.",
+   "m": 2,
+   "pts": [
+    "It breaches storage limitation / data minimisation",
+    "because it keeps details forever even after orders are delivered, so it holds data longer than needed / because a date of birth isn't needed to print photos"
+   ],
+   "tip": "Name the principle, then say \"because…\" with evidence from the scenario. A name on its own only gets 1 mark."
+  },
+  {
+   "sc": "A gym takes members' bank details so it can collect their monthly membership fee.",
+   "q": "3. Identify the lawful basis the gym is using and explain why it applies.",
+   "m": 2,
+   "pts": [
+    "Contractual obligation",
+    "because the bank details are needed to deliver the membership contract by taking the monthly payment"
+   ],
+   "tip": "Don't assume consent: it is only 1 of 6 bases."
+  },
+  {
+   "sc": "Brightway Tutoring is an online tutoring company. When parents sign up, it asks for their name, email, home address, date of birth and National Insurance number. It keeps every family's records for ten years after lessons stop. It has started sending parents adverts for a partner's summer camps, using the email addresses they gave for lesson reminders.",
+   "q": "4(a). Identify two GDPR principles Brightway has breached.",
+   "m": 2,
+   "pts": [
+    "One of: data minimisation (a National Insurance number / date of birth isn't needed) or storage limitation (records kept for ten years)",
+    "A second, e.g. purpose limitation (emails given for lesson reminders are used for adverts)"
+   ],
+   "tip": "\"Identify\" needs names only, but each must match evidence in the scenario."
+  },
+  {
+   "sc": "Brightway Tutoring is an online tutoring company. When parents sign up, it asks for their name, email, home address, date of birth and National Insurance number. It keeps every family's records for ten years after lessons stop. It has started sending parents adverts for a partner's summer camps, using the email addresses they gave for lesson reminders.",
+   "q": "4(b). Explain how reusing parents' emails breaches UK GDPR.",
+   "m": 4,
+   "pts": [
+    "It breaches purpose limitation",
+    "because the emails were given only for lesson reminders but are being used for adverts",
+    "It may also lack a lawful basis / consent for marketing",
+    "because parents did not clearly opt in to receive adverts from a partner company"
+   ],
+   "tip": "Two linked points: principle + because + scenario evidence, twice."
+  },
+  {
+   "sc": "Brightway Tutoring is an online tutoring company. When parents sign up, it asks for their name, email, home address, date of birth and National Insurance number. It keeps every family's records for ten years after lessons stop. It has started sending parents adverts for a partner's summer camps, using the email addresses they gave for lesson reminders.",
+   "q": "4(c). Suggest two practical controls Brightway should put in place.",
+   "m": 4,
+   "pts": [
+    "Set a retention period and delete old records",
+    "so data isn't kept longer than needed (storage limitation)",
+    "Only send marketing to parents who actively opt in, with an unsubscribe link",
+    "so emails are only used for the purpose agreed and people can object"
+   ],
+   "tip": "For each control, say what to do and which problem it fixes."
+  },
+  {
+   "sc": "A patient emails Dr Patel's small medical clinic asking for a copy of all the information it holds about them. The clinic ignores the email for three months. Staff share one login to the records system, and the password is written on a sticky note next to the reception computer.",
+   "q": "5(a). Identify the right the patient is using.",
+   "m": 1,
+   "pts": [
+    "Right of access (a Subject Access Request)"
+   ],
+   "tip": "The verb is \"see a copy\", so it is access."
+  },
+  {
+   "sc": "A patient emails Dr Patel's small medical clinic asking for a copy of all the information it holds about them. The clinic ignores the email for three months. Staff share one login to the records system, and the password is written on a sticky note next to the reception computer.",
+   "q": "5(b). Explain two ways the clinic has failed its legal responsibilities.",
+   "m": 4,
+   "pts": [
+    "It ignored the request for three months",
+    "when it must usually respond within one month, so it failed the patient's right of access",
+    "Staff share one login with the password on a sticky note",
+    "so it has failed in its due care to stop unauthorised access, putting the integrity and confidentiality of medical records at risk"
+   ],
+   "tip": "Use both pieces of evidence: one about rights, one about security."
+  },
+  {
+   "sc": "",
+   "q": "6. Explain why an organisation that is hacked could still be fined.",
+   "m": 2,
+   "pts": [
+    "It may have failed in its due care / not kept data secure",
+    "which breaks the GDPR principle of integrity and confidentiality, so the ICO can fine it"
+   ],
+   "tip": "The attacker breaks the CMA, but the organisation is judged on whether it took reasonable steps."
+  },
+  {
+   "sc": "Sam uses a colleague's password from a sticky note to log in and change his sales figures.",
+   "q": "7. Explain which law Sam has broken.",
+   "m": 2,
+   "pts": [
+    "The Computer Misuse Act 1990",
+    "because he accessed and changed data without permission (unauthorised access and modification)"
+   ],
+   "tip": "Name the law, then link it to what Sam actually did."
+  }
+ ]
+}

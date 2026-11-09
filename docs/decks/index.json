@@ -164,11 +164,23 @@
    "quiz": 15,
    "apply": 12,
    "marks": 24
+  },
+  {
+   "id": "lesson-16-a3-legal-responsibilities",
+   "title": "Lesson 16 - A3 Legal Responsibilities",
+   "code": "IT · Unit 2 · A3",
+   "subject": "Information Technology",
+   "added": "2026-11-09",
+   "cards": 30,
+   "quiz": 17,
+   "apply": 12,
+   "marks": 25
   }
  ],
  "diagrams": [
   "diagrams/attack-vectors.svg",
   "diagrams/cloud-transit.svg",
+  "diagrams/data-laws.svg",
   "diagrams/dns-spoofing.svg",
   "diagrams/dos-vs-ddos.svg",
   "diagrams/firewall-ports.svg",
