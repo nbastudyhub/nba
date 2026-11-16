@@ -607,28 +607,8 @@
    "tip": "Name each party and the law that applies to them."
   },
   {
-   "sc": "",
-   "q": "5. Explain why a person's name, date of birth and postcode are more dangerous together than alone.",
-   "m": 2,
-   "pts": [
-    "Together they can identify one specific person",
-    "so they can be used to steal that person's identity"
-   ],
-   "tip": "Link the combination to identity theft."
-  },
-  {
-   "sc": "",
-   "q": "6. State one duty UK GDPR places on organisations and one right it gives individuals.",
-   "m": 2,
-   "pts": [
-    "Duty, e.g. keep personal data secure / only collect what is needed / keep it no longer than needed / justify every use",
-    "Right, e.g. see the data held about them / have wrong data corrected / have it deleted"
-   ],
-   "tip": "A duty is what the organisation must do; a right is what the person can ask for."
-  },
-  {
    "sc": "A hacker breaks into a hospital's patient database from outside and copies thousands of confidential patient records. The database had never been encrypted.",
-   "q": "7. Explain which law applies to each party in this incident.",
+   "q": "5. Explain which law applies to each party in this incident.",
    "m": 4,
    "pts": [
     "The hacker has broken the Computer Misuse Act",
@@ -639,24 +619,59 @@
    "tip": "Two parties, two laws: give each one a point and a linked reason from the scenario."
   },
   {
-   "sc": "",
-   "q": "8. Explain why cyber security laws are needed.",
+   "sc": "Northgate College keeps personal records for about 4,000 students on its central network, including names, home addresses, dates of birth and learning support needs. Dele works in the college's IT support team. After missing out on a promotion, he logs in to the student records system over several evenings, even though his job doesn't require it. He looks through the records of students he knows and changes the grades of two friends. The investigation finds the records were stored without encryption, and nothing alerted managers to unusual access.",
+   "q": "6(a). Identify two offences under the Computer Misuse Act 1990 that Dele has committed.",
    "m": 2,
    "pts": [
-    "Computers and data run banking, healthcare, shopping and government / without rules little stops organisations misusing data",
-    "so laws set duties and rights that courts can enforce, and every organisation meets the same standard"
+    "Unauthorised access to computer material (looking at student records his job doesn't require)",
+    "Unauthorised modification of data (changing two students' grades)"
    ],
-   "tip": "Give the problem, then what the law does about it."
+   "tip": "Name the offences and tie each one to what Dele did."
   },
   {
-   "sc": "Jordan works in a company's sales team and has their own login. They use it to open the HR folder and read colleagues' salary details, which they are not allowed to see.",
-   "q": "9. Explain whether Jordan has committed an offence.",
-   "m": 2,
+   "sc": "Northgate College keeps personal records for about 4,000 students on its central network, including names, home addresses, dates of birth and learning support needs. Dele works in the college's IT support team. After missing out on a promotion, he logs in to the student records system over several evenings, even though his job doesn't require it. He looks through the records of students he knows and changes the grades of two friends. The investigation finds the records were stored without encryption, and nothing alerted managers to unusual access.",
+   "q": "6(b). Explain why Dele's actions are criminal offences under the Computer Misuse Act 1990, even though he is an employee with his own login.",
+   "m": 4,
    "pts": [
-    "Yes, unauthorised access under the Computer Misuse Act",
-    "because having their own login doesn't give permission to access the HR data, even if nothing is changed or taken"
+    "The CMA is about permission, not just having a login",
+    "Dele's permission only covers what his job role requires, so browsing students' files goes beyond it and is unauthorised access",
+    "Changing the grades is modifying data without permission",
+    "which is an offence even though nothing was stolen"
    ],
-   "tip": "Remember: a crime can happen even if nothing is stolen or damaged."
+   "tip": "Key idea: having your own login doesn't mean you can access everything. Link each point to the scenario."
+  },
+  {
+   "sc": "Northgate College keeps personal records for about 4,000 students on its central network, including names, home addresses, dates of birth and learning support needs. Dele works in the college's IT support team. After missing out on a promotion, he logs in to the student records system over several evenings, even though his job doesn't require it. He looks through the records of students he knows and changes the grades of two friends. The investigation finds the records were stored without encryption, and nothing alerted managers to unusual access.",
+   "q": "6(c). Explain two ways in which the college may have breached its duties under UK GDPR.",
+   "m": 4,
+   "pts": [
+    "The student records were stored without encryption",
+    "so the college failed its duty to keep personal data (including sensitive learning support details) secure",
+    "There was no system to alert managers to unusual access",
+    "so it lacked appropriate measures to protect the data, and Dele's misuse went unnoticed for several evenings"
+   ],
+   "tip": "These are the COLLEGE's failures (UK GDPR), not Dele's crimes (CMA). Use both clues from the last sentence."
+  },
+  {
+   "sc": "Velpar Travel is a small holiday company. It collects customers' names, home addresses, passport numbers and payment card details. It keeps all of this forever, even for customers who last booked years ago. Everyone in the office signs in to the booking system with the same shared staff login.",
+   "q": "7(a). State what is meant by the term personally identifying information (PII).",
+   "m": 1,
+   "pts": [
+    "Any information that can identify a living person, on its own or combined with other information"
+   ],
+   "tip": "One clear sentence. \"Living person\" is the key phrase."
+  },
+  {
+   "sc": "Velpar Travel is a small holiday company. It collects customers' names, home addresses, passport numbers and payment card details. It keeps all of this forever, even for customers who last booked years ago. Everyone in the office signs in to the booking system with the same shared staff login.",
+   "q": "7(b). Explain two ways in which Velpar Travel's current practices could put it at risk of breaching UK GDPR.",
+   "m": 4,
+   "pts": [
+    "It keeps customer data forever, even for customers who left years ago",
+    "which breaks the duty to keep data no longer than needed, and means far more passport and card details would be exposed in a breach",
+    "All staff share one login to the booking system",
+    "so it can't control or trace who accessed the data, meaning it isn't keeping personal data secure"
+   ],
+   "tip": "Pick two different practices from the scenario and link each to a GDPR duty."
   }
  ]
 }
