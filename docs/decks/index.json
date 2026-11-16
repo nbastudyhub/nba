@@ -186,6 +186,17 @@
    "quiz": 15,
    "apply": 10,
    "marks": 29
+  },
+  {
+   "id": "lesson-18-a4-1-1-physical-security-measures",
+   "title": "Lesson 18 - A4.1.1 Physical Security Measures",
+   "code": "IT · Unit 2 · A4.1.1",
+   "subject": "Information Technology",
+   "added": "2026-11-16",
+   "cards": 27,
+   "quiz": 16,
+   "apply": 12,
+   "marks": 30
   }
  ],
  "diagrams": [
@@ -202,6 +213,7 @@
   "diagrams/nist-csf.svg",
   "diagrams/port-states.svg",
   "diagrams/review-timescales.svg",
+  "diagrams/security-layers.svg",
   "diagrams/sql-injection.svg",
   "diagrams/virus-vs-worm.svg",
   "diagrams/vuln-chain.svg",

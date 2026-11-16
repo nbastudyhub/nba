@@ -437,6 +437,21 @@ def build():
         "encrypted, and copies records. The hacker has committed Computer Misuse Act offences. The hospital may be investigated by the ICO under UK GDPR "
         "for not protecting the data.", b)
 
+    # ---------- Lesson 18: physical security in layers ----------
+    b = T(24, 32, "PHYSICAL SECURITY WORKS IN LAYERS", "h", "start")
+    layers = [(20, 48, 720, 270, "dim", "Site", "CCTV · security staff · alarms · warning signs"),
+              (44, 86, 672, 222, "amb", "Building entrance", "card entry · staffed reception · no tailgating"),
+              (68, 124, 624, 174, "acc", "Server room", "electronic lock or biometrics · door alarm"),
+              (92, 162, 576, 126, "good", "Cabinet and cables", "locked cabinet · cables in trunking")]
+    for x, y, w, h, cls, name, m in layers:
+        b += R(x, y, w, h, cls, 14) + T(x + 14, y + 24, name, "t", "start") + T(x + w - 14, y + 24, m, "s", "end")
+    b += server(380, 238) + T(380, 278, "hardware and data", "s")
+    svg("security-layers", 760, 332, "Physical security works in layers",
+        "Four nested layers protect hardware and data in the middle. Outer layer, the site: CCTV, security staff, alarms and warning signs. "
+        "Next, the building entrance: card entry, a staffed reception and stopping tailgating. Next, the server room: an electronic lock or biometrics "
+        "and a door alarm. Innermost, the cabinet and cables: a locked network cabinet and cables run through trunking. If one layer fails, "
+        "the next should spot or stop the intruder.", b)
+
 
 if __name__ == "__main__":
     build()

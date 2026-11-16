@@ -1,0 +1,781 @@
+{
+ "id": "lesson-18-a4-1-1-physical-security-measures",
+ "title": "Lesson 18 - A4.1.1 Physical Security Measures",
+ "code": "IT · Unit 2 · A4.1.1",
+ "subject": "Information Technology",
+ "added": "2026-11-16",
+ "bigQuestion": "How can physical security protect IT systems and data?",
+ "sections": [
+  {
+   "heading": "Flying start: the Kingsway College break-in",
+   "text": "7:40am. A man in a hi-vis jacket, carrying a toolbox, walks up to the college. By 8:15am, two laptops and a network switch have gone.",
+   "points": [
+    "1. He slips through the side door right behind a member of staff. What is this called? Tailgating",
+    "2. At reception he stands close behind a teacher typing a door code. What is he doing? Shoulder surfing",
+    "3. In an empty IT room, laptops are left out on the desks. Why is this a risk? Unattended devices are easy to steal, along with any data on them",
+    "Detective challenge: every point where he could have been stopped, e.g. card entry and trained staff at the side door, shielding the code or a staffed reception, a locked IT room, laptops locked away, alarms and CCTV",
+    "Prior knowledge (A1.2.5): tailgating, forced entry, impersonation and coercion; unattended devices, shoulder surfing, theft and lost devices",
+    "Today: the physical security measures that protect IT systems, how well each works, and choosing the right ones. Next lesson: data storage, backup and recovery"
+   ]
+  },
+  {
+   "heading": "What is a physical security measure?",
+   "text": "A physical security measure is something that stops people getting into, damaging or stealing an organisation's buildings, hardware and storage media.",
+   "points": [
+    "Example: a hospital locks its server room with card entry and points CCTV at the door. Only IT staff can reach the servers that hold patient records",
+    "It protects hardware and data from theft, damage and tampering",
+    "A firewall cannot stop someone who walks off with the server"
+   ]
+  },
+  {
+   "heading": "The 8 physical security measures",
+   "table": {
+    "head": [
+     "Measure",
+     "What it does"
+    ],
+    "rows": [
+     [
+      "1. Site security locks",
+      "Mechanical, electronic or network connected"
+     ],
+     [
+      "2. Card entry",
+      "A card, fob or phone opens the door"
+     ],
+     [
+      "3. Biometrics",
+      "Your body or behaviour proves who you are"
+     ],
+     [
+      "4. CCTV",
+      "Cameras put intruders off and record evidence"
+     ],
+     [
+      "5. Security staff",
+      "Check ID, challenge visitors and respond"
+     ],
+     [
+      "6. Alarms",
+      "On buildings, restricted areas and devices"
+     ],
+     [
+      "7. Protected cabling and cabinets",
+      "Stop cables and network kit being tampered with"
+     ],
+     [
+      "8. Staff training",
+      "Everyone knows the rules and why"
+     ]
+    ]
+   },
+   "points": [
+    "Measures work in layers. If one fails, another should spot or stop the intruder",
+    "He walked in through the side door. Two measures that could have stopped him there: card entry on the door and trained staff who don't hold doors open"
+   ],
+   "diagram": {
+    "src": "diagrams/security-layers.svg",
+    "alt": "Four nested layers protect hardware and data in the middle. Outer layer, the site: CCTV, security staff, alarms and warning signs. Next, the building entrance: card entry, a staffed reception and stopping tailgating. Next, the server room: an electronic lock or biometrics and a door alarm. Innermost, the cabinet and cables: a locked network cabinet and cables run through trunking. If one layer fails, the next should spot or stop the intruder.",
+    "caption": "If one layer fails, the next should spot or stop the intruder."
+   }
+  },
+  {
+   "heading": "Site security locks",
+   "table": {
+    "head": [
+     "Type",
+     "How it works",
+     "Strength",
+     "Weakness"
+    ],
+    "rows": [
+     [
+      "Mechanical",
+      "A key opens it, e.g. a network cabinet lock",
+      "Cheap and needs no power",
+      "Keys can be lost, copied or stolen"
+     ],
+     [
+      "Electronic",
+      "A keypad code, card or fob, e.g. a server room door",
+      "Codes can be changed when staff leave",
+      "Codes can be shared or seen. Needs power"
+     ],
+     [
+      "Network connected",
+      "A smart lock linked to the network",
+      "Locks or unlocks remotely. Logs who went in",
+      "Could be attacked over the network"
+     ]
+    ]
+   },
+   "points": [
+    "Which lock for a school server room? E.g. electronic, because the code can be changed when staff leave and there's no key to lose"
+   ]
+  },
+  {
+   "heading": "Card entry systems",
+   "table": {
+    "head": [
+     "Technology",
+     "How it is read",
+     "Security"
+    ],
+    "rows": [
+     [
+      "NFC (near-field communication)",
+      "Held a few centimetres from the reader (card or phone)",
+      "Higher. Short range is hard to listen in on"
+     ],
+     [
+      "RFID (radio-frequency identification)",
+      "Read by radio from further away, hands-free",
+      "Lower. Can be read secretly and copied (cloned)"
+     ],
+     [
+      "Barcode or QR code",
+      "A printed or on-screen pattern is scanned",
+      "Low. Easy to photograph and copy"
+     ],
+     [
+      "Magnetic stripe",
+      "The card is swiped through a reader",
+      "Low. Old and easy to copy"
+     ],
+     [
+      "Embedded microprocessor (chip)",
+      "A chip swaps encrypted (scrambled) data with the reader",
+      "Highest. Very hard to copy"
+     ]
+    ]
+   },
+   "points": [
+    "True or false: a card proves who you are? False. It only proves you HAVE the card. Whoever holds it gets in",
+    "A bank's server room: an embedded chip card is the best choice, because it swaps encrypted data and is very hard to copy"
+   ]
+  },
+  {
+   "heading": "Biometric systems",
+   "text": "Biometrics check something you ARE (your body) or something you DO (your behaviour). You can't lose them or lend them.",
+   "points": [
+    "Fingerprint: unique ridge pattern. Fast, cheap and common on phones",
+    "Iris / retina / eye pattern: very accurate, but the equipment is expensive",
+    "Facial recognition: hands-free. Can be affected by lighting, angle or a photo",
+    "Voice recognition: works over the phone. Struggles with noise or illness",
+    "Handwriting / signature / pattern: checks shape, speed and pressure on a touchscreen or pad",
+    "Hardest to fool: iris or retina, because the eye pattern is very accurate and hard to fake"
+   ]
+  },
+  {
+   "heading": "Card entry vs biometrics",
+   "table": {
+    "head": [
+     "",
+     "Card entry",
+     "Biometrics"
+    ],
+    "rows": [
+     [
+      "What does it check?",
+      "Something you HAVE (card, fob, phone)",
+      "Something you ARE or DO"
+     ],
+     [
+      "Lost, lent or stolen?",
+      "Yes. Whoever holds it gets in",
+      "No. It is part of the person"
+     ],
+     [
+      "Can it be copied?",
+      "Some types are easy to copy",
+      "Harder, but can be faked"
+     ],
+     [
+      "Cost",
+      "Cheaper to set up",
+      "Scanners cost more"
+     ],
+     [
+      "Privacy",
+      "Low concern",
+      "Special category data (UK GDPR)"
+     ]
+    ]
+   },
+   "points": [
+    "High-security areas often use both, e.g. a card AND a fingerprint. Using two different checks is called two-factor authentication"
+   ]
+  },
+  {
+   "heading": "CCTV, security staff and alarms",
+   "text": "A measure can DETER (put intruders off, before), DETECT (spot them, during) or help staff RESPOND (act, after).",
+   "points": [
+    "CCTV: cameras watch and record activity in and around a building",
+    "CCTV deters (intruders are put off when they know they're watched) and gives evidence (recordings help identify who did what)",
+    "Cameras must cover entrances and sensitive areas, with no blind spots",
+    "CCTV footage of people is personal data: store it securely and only keep it as long as needed (UK GDPR)",
+    "Security staff: check ID, sign in visitors and challenge anyone without a pass. Most useful at reception, where public areas meet restricted areas. They use judgement and respond to alarms",
+    "Alarms on buildings and restricted areas: motion sensors, broken glass, doors opened out of hours",
+    "Alarms on devices: sound if equipment is moved, unplugged or tampered with",
+    "Misconception: \"An alarm stops intruders.\" It only alerts people. Someone still has to respond",
+    "CCTV on its own may not stop a break-in: it records, but nobody acts unless someone is watching or responding"
+   ]
+  },
+  {
+   "heading": "Cabling, cabinets and staff training",
+   "points": [
+    "Exposed cables can be tapped (data listened in on) or cut (network goes down)",
+    "Run cables through trunking and keep them out of public areas",
+    "Lock cabinets and server rooms. Only IT staff get access",
+    "Locks fail if staff don't use them. Training explains why the rules exist",
+    "Don't hold doors for people without a pass. Report strangers and lost cards",
+    "Train every new starter and repeat it regularly",
+    "Back to the break-in: trained staff could have stopped all three steps: not letting him tailgate, shielding the door code, and locking laptops away"
+   ]
+  },
+  {
+   "heading": "Case study and exam skills: Meridian Logistics",
+   "text": "A visitor followed an employee through the main door. Reception was empty. He found the server room door propped open and a network cabinet unlocked. He plugged a USB stick carrying malware into a network switch and left within ten minutes. No alarm went off and nobody challenged him.",
+   "points": [
+    "Recommend and justify with W-R-E: Weakness (find the problem, quote it), Recommend (name a specific measure), Explain (how it reduces the risk, linked to the scenario)",
+    "Model paragraph: Reception was left empty, so the visitor could tailgate in without being challenged. Meridian should have a member of security staff on reception at all times. The guard would check ID and stop anyone without a pass, so the intruder would not reach the server room",
+    "Avoid \"improve security\". Say what, where and why",
+    "Explain questions: make a point, add a link word (so, because, which means), and link it to the scenario",
+    "Model: \"Keys can be lost, copied or stolen (1), so anyone who finds a key could open the cupboard and take equipment (1).\" \"Keys can be lost\" on its own only gets 1 mark",
+    "Plenary, rewind the break-in: side door, he tailgated → card entry + trained staff (deter/detect). Reception, he watched a code → security staff or shielding the keypad (deter). IT room, he took laptops → locked room or cabinet, device alarms (deter/detect)",
+    "One measure on its own is not enough: if it fails or is bypassed, nothing else stops the intruder"
+   ]
+  }
+ ],
+ "keyIdea": "Physical security stops people getting into, damaging or stealing buildings, hardware and storage media. The 8 measures (locks, card entry, biometrics, CCTV, security staff, alarms, protected cabling and cabinets, staff training) work in layers to deter, detect and respond. When recommending one, use W-R-E: weakness, recommend a specific measure, explain how it reduces the risk.",
+ "flashcards": [
+  [
+   "Physical security measure",
+   "Something that stops people getting into, damaging or stealing an organisation's buildings, hardware and storage media"
+  ],
+  [
+   "Layered security",
+   "Using several measures, so if one fails, another should spot or stop the intruder"
+  ],
+  [
+   "Mechanical lock",
+   "Opened with a key. Cheap and needs no power, but keys can be lost, copied or stolen"
+  ],
+  [
+   "Electronic lock",
+   "Opened with a keypad code, card or fob. Codes can be changed when staff leave, but can be shared or seen, and it needs power"
+  ],
+  [
+   "Network connected lock",
+   "A smart lock linked to the network. Locks or unlocks remotely and logs who went in, but could be attacked over the network"
+  ],
+  [
+   "NFC",
+   "Near-field communication: card or phone held a few centimetres from the reader. Short range makes it hard to listen in on"
+  ],
+  [
+   "RFID",
+   "Radio-frequency identification: read by radio from further away, hands-free. Can be read secretly and cloned"
+  ],
+  [
+   "Barcode / QR code pass",
+   "A printed or on-screen pattern is scanned. Low security: easy to photograph and copy"
+  ],
+  [
+   "Magnetic stripe",
+   "Card swiped through a reader. Old and easy to copy"
+  ],
+  [
+   "Embedded chip (microprocessor)",
+   "Swaps encrypted data with the reader. The most secure card type: very hard to copy"
+  ],
+  [
+   "Cloning",
+   "Secretly copying a card's data to make a working copy"
+  ],
+  [
+   "Biometrics",
+   "Checking something you ARE (body) or DO (behaviour). Can't be lost or lent"
+  ],
+  [
+   "Fingerprint",
+   "Unique ridge pattern. Fast, cheap and common on phones"
+  ],
+  [
+   "Iris / retina scan",
+   "Checks the eye pattern. Very accurate, but the equipment is expensive"
+  ],
+  [
+   "Facial recognition",
+   "Hands-free, but can be affected by lighting, angle or a photo"
+  ],
+  [
+   "Voice recognition",
+   "Works over the phone, but struggles with noise or illness"
+  ],
+  [
+   "Signature / handwriting recognition",
+   "Checks shape, speed and pressure on a touchscreen or pad"
+  ],
+  [
+   "Special category data",
+   "Extra-sensitive personal data under UK GDPR, such as biometric data"
+  ],
+  [
+   "Two-factor authentication",
+   "Using two different checks, e.g. a card AND a fingerprint"
+  ],
+  [
+   "CCTV",
+   "Cameras that watch and record. Deters intruders and gives evidence. Footage is personal data under UK GDPR"
+  ],
+  [
+   "Security staff",
+   "Check ID, sign in visitors, challenge anyone without a pass and respond to alarms"
+  ],
+  [
+   "Alarms",
+   "Alert people to intruders or tampering. They don't stop intruders: someone still has to respond"
+  ],
+  [
+   "Deter / detect / respond",
+   "Deter = puts them off (before). Detect = spots them (during). Respond = acts (after)"
+  ],
+  [
+   "Protected cabling",
+   "Running cables through trunking and away from public areas so they can't be tapped or cut"
+  ],
+  [
+   "Tapping",
+   "Listening in on data travelling along a cable"
+  ],
+  [
+   "Staff training",
+   "Teaches everyone the rules and why: don't hold doors, report strangers and lost cards. Repeat it regularly"
+  ],
+  [
+   "W-R-E",
+   "Weakness (quote it), Recommend (a specific measure), Explain (how it reduces the risk, linked to the scenario)"
+  ]
+ ],
+ "quiz": [
+  {
+   "q": "A man slips through a door right behind a member of staff. What is this?",
+   "o": [
+    "Shoulder surfing",
+    "Tailgating",
+    "Phishing",
+    "Cloning"
+   ],
+   "a": 1,
+   "e": "Following someone through a secure door is tailgating."
+  },
+  {
+   "q": "Why can't a firewall replace physical security?",
+   "o": [
+    "Firewalls are too expensive",
+    "A firewall can't stop someone who walks off with the server",
+    "Firewalls only work at night",
+    "Firewalls are illegal"
+   ],
+   "a": 1,
+   "e": "Physical theft or damage bypasses network protection entirely."
+  },
+  {
+   "q": "What is the main weakness of a mechanical lock?",
+   "o": [
+    "Needs power",
+    "Can be attacked over the network",
+    "Keys can be lost, copied or stolen",
+    "Codes can be seen"
+   ],
+   "a": 2,
+   "e": "Anyone who gets the key can get in."
+  },
+  {
+   "q": "What is an advantage of an electronic keypad lock over a mechanical lock?",
+   "o": [
+    "The code can be changed when staff leave",
+    "It needs no power",
+    "It can't be shared",
+    "It is cheaper"
+   ],
+   "a": 0,
+   "e": "No keys to recover: just change the code."
+  },
+  {
+   "q": "Which lock lets managers unlock doors remotely and see a log of who went in?",
+   "o": [
+    "Mechanical",
+    "Electronic keypad",
+    "Padlock",
+    "Network connected"
+   ],
+   "a": 3,
+   "e": "A network connected smart lock, but it could be attacked over the network."
+  },
+  {
+   "q": "Which card technology is the most secure?",
+   "o": [
+    "Magnetic stripe",
+    "Barcode",
+    "Embedded chip",
+    "RFID"
+   ],
+   "a": 2,
+   "e": "A chip swaps encrypted data with the reader, so it's very hard to copy."
+  },
+  {
+   "q": "Why is RFID less secure than NFC?",
+   "o": [
+    "It works from further away, so it can be read secretly and cloned",
+    "It needs a swipe",
+    "It uses a printed pattern",
+    "It has no data"
+   ],
+   "a": 0,
+   "e": "Longer range makes secret reading and cloning easier."
+  },
+  {
+   "q": "True or false: a card entry pass proves who you are.",
+   "o": [
+    "True",
+    "False: it only proves you have the card"
+   ],
+   "a": 1,
+   "e": "Whoever holds the card gets in, which is why biometrics or two-factor are used for high security."
+  },
+  {
+   "q": "Which of these is something you DO, rather than something you ARE?",
+   "o": [
+    "Fingerprint",
+    "Iris pattern",
+    "Face shape",
+    "Signature"
+   ],
+   "a": 3,
+   "e": "A signature is a behaviour (shape, speed, pressure)."
+  },
+  {
+   "q": "Which biometric is very accurate but expensive?",
+   "o": [
+    "Iris / retina scan",
+    "Voice recognition",
+    "Fingerprint",
+    "Signature"
+   ],
+   "a": 0,
+   "e": "Eye scanners are very accurate, but the equipment costs a lot."
+  },
+  {
+   "q": "Why does biometric data raise privacy concerns?",
+   "o": [
+    "It is public information",
+    "It is special category data under UK GDPR",
+    "It is never stored",
+    "It can be changed easily"
+   ],
+   "a": 1,
+   "e": "Biometric data is extra-sensitive personal data."
+  },
+  {
+   "q": "A server room uses a card AND a fingerprint. What is this called?",
+   "o": [
+    "Tailgating",
+    "Cloning",
+    "Two-factor authentication",
+    "Layering only"
+   ],
+   "a": 2,
+   "e": "Two different checks = two-factor authentication."
+  },
+  {
+   "q": "\"An alarm stops intruders.\" Why is this wrong?",
+   "o": [
+    "Alarms only work in daytime",
+    "It only alerts people; someone still has to respond",
+    "Alarms lock the doors",
+    "Alarms are illegal"
+   ],
+   "a": 1,
+   "e": "An alarm detects. A person has to act on it."
+  },
+  {
+   "q": "What can happen if network cables run through a public area?",
+   "o": [
+    "They get faster",
+    "Nothing",
+    "They need more power",
+    "They can be tapped or cut"
+   ],
+   "a": 3,
+   "e": "Run them through trunking and keep them out of public areas."
+  },
+  {
+   "q": "CCTV footage of people is personal data. What must an organisation do with it?",
+   "o": [
+    "Store it securely and keep it only as long as needed",
+    "Post it online",
+    "Keep it forever",
+    "Share it with anyone who asks"
+   ],
+   "a": 0,
+   "e": "UK GDPR applies to CCTV footage."
+  },
+  {
+   "q": "In W-R-E, what does the E stand for?",
+   "o": [
+    "Evaluate",
+    "Evidence",
+    "Explain how it reduces the risk",
+    "Encrypt"
+   ],
+   "a": 2,
+   "e": "Weakness, Recommend, Explain (linked to the scenario)."
+  }
+ ],
+ "apply": {
+  "title": "Name the measure and its job",
+  "intro": "For each scenario, pick the lock type, biometric, or whether it deters, detects or responds. Think about the clue words.",
+  "items": [
+   {
+    "task": "A server room door opens with a keypad code. When someone leaves, IT just changes the code.",
+    "o": [
+     "Mechanical",
+     "Electronic",
+     "Network connected"
+    ],
+    "a": 1,
+    "e": "Clue: keypad code that can be changed. Electronic."
+   },
+   {
+    "task": "Every door in a head office has a smart lock. Managers can unlock any door remotely and see who entered and when.",
+    "o": [
+     "Mechanical",
+     "Electronic",
+     "Network connected"
+    ],
+    "a": 2,
+    "e": "Clue: remote, log. Network connected."
+   },
+   {
+    "task": "A filing cabinet of paper records has a small key lock in the top drawer.",
+    "o": [
+     "Mechanical",
+     "Electronic",
+     "Network connected"
+    ],
+    "a": 0,
+    "e": "Clue: key. Mechanical."
+   },
+   {
+    "task": "A chain of shops has door locks linked to the company network, so head office can lock every branch at closing time.",
+    "o": [
+     "Mechanical",
+     "Electronic",
+     "Network connected"
+    ],
+    "a": 2,
+    "e": "Clue: linked to the network, controlled remotely."
+   },
+   {
+    "task": "A lab door opens after a scanner reads the unique pattern inside an employee's eye.",
+    "o": [
+     "Fingerprint",
+     "Iris or retina",
+     "Facial recognition",
+     "Voice recognition",
+     "Signature"
+    ],
+    "a": 1,
+    "e": "Eye pattern = iris or retina."
+   },
+   {
+    "task": "A caller reaches telephone banking by speaking a set phrase that is matched to a stored sample.",
+    "o": [
+     "Fingerprint",
+     "Iris or retina",
+     "Facial recognition",
+     "Voice recognition",
+     "Signature"
+    ],
+    "a": 3,
+    "e": "Speaking over the phone = voice recognition."
+   },
+   {
+    "task": "A delivery is signed for on a touchpad that checks the speed and pressure, not just the shape.",
+    "o": [
+     "Fingerprint",
+     "Iris or retina",
+     "Facial recognition",
+     "Voice recognition",
+     "Signature"
+    ],
+    "a": 4,
+    "e": "Shape, speed and pressure = signature (something you DO)."
+   },
+   {
+    "task": "A motion sensor in an empty office at night sends an alert to a staffed monitoring centre.",
+    "o": [
+     "Deter",
+     "Detect",
+     "Respond"
+    ],
+    "a": 1,
+    "e": "It spots the intruder during the incident."
+   },
+   {
+    "task": "When the intruder alarm sounds, a security company is called automatically and sends a patrol.",
+    "o": [
+     "Deter",
+     "Detect",
+     "Respond"
+    ],
+    "a": 2,
+    "e": "Sending a patrol is acting after the event."
+   },
+   {
+    "task": "A high fence and a visible guard at the gate make the site look hard to get into.",
+    "o": [
+     "Deter",
+     "Detect",
+     "Respond"
+    ],
+    "a": 0,
+    "e": "It puts intruders off before they try."
+   },
+   {
+    "task": "An alarm sounds and flashes when a server cabinet is opened, alerting nearby staff.",
+    "o": [
+     "Deter",
+     "Detect",
+     "Respond"
+    ],
+    "a": 1,
+    "e": "It spots tampering as it happens."
+   },
+   {
+    "task": "Trained staff challenge a stranger without a pass straight away and alert security.",
+    "o": [
+     "Deter",
+     "Detect",
+     "Respond"
+    ],
+    "a": 2,
+    "e": "Staff are acting on what they've seen."
+   }
+  ]
+ },
+ "exam": [
+  {
+   "sc": "",
+   "q": "1. Explain one disadvantage of using mechanical locks on a school's IT equipment cupboards.",
+   "m": 2,
+   "pts": [
+    "Keys can be lost, copied or stolen",
+    "so anyone who finds a key could open the cupboard and take equipment, and the school would have to replace the lock"
+   ],
+   "tip": "\"Keys can be lost\" on its own only gets 1 mark. Add so/because and link to the school."
+  },
+  {
+   "sc": "",
+   "q": "2. Explain one disadvantage of a network connected lock for a school.",
+   "m": 2,
+   "pts": [
+    "It could be attacked over the network",
+    "so a hacker could unlock doors such as the server room remotely without being on site"
+   ],
+   "tip": "Point + link word + the school."
+  },
+  {
+   "sc": "A charity leaves its laptops on an open trolley in a corridor overnight.",
+   "q": "3. Recommend one physical security measure for the charity and justify it.",
+   "m": 3,
+   "pts": [
+    "Weakness: the laptops are left on an open trolley overnight, so anyone passing could take them",
+    "Recommend: lock them in a secure cabinet or locked room (or fit device alarms)",
+    "Explain: thieves couldn't reach them overnight (or the alarm would alert someone if a laptop was moved)"
+   ],
+   "tip": "Use W-R-E. Name a specific measure, not \"improve security\"."
+  },
+  {
+   "sc": "Northgate Components is a small manufacturer with about 60 staff, in a single-storey office joined to a warehouse. Reception is only staffed in the mornings; in the afternoon, visitors walk through to find who they came to see. The server room is locked, but its key hangs on a hook behind the empty reception desk. Staff get in with barcode passes printed on plain card, and there is no biometric check anywhere. Three CCTV cameras cover the car park, but none cover the loading bay. The intruder alarm isn't connected to a monitoring service, so at night it just sounds in an empty building. Network cables run along the floor of a public corridor. New staff get no security briefing, and screens are often left unlocked at lunchtime.",
+   "q": "4(a). Identify one physical security weakness for each of these four areas: locks and card entry; biometric systems; CCTV, security staff and alarms; protected cabling, cabinets and staff training.",
+   "m": 4,
+   "pts": [
+    "Locks and card entry: the server room key hangs behind the empty reception desk / barcode passes on plain card are easy to copy",
+    "Biometrics: there is no biometric check anywhere, even on the server room",
+    "CCTV, staff and alarms: reception is empty in the afternoons / no camera covers the loading bay / the alarm isn't monitored",
+    "Cabling, cabinets and training: cables run along a public corridor floor / new staff get no security briefing / screens left unlocked"
+   ],
+   "tip": "One weakness per area, quoted or paraphrased from the scenario."
+  },
+  {
+   "sc": "Northgate Components is a small manufacturer with about 60 staff, in a single-storey office joined to a warehouse. Reception is only staffed in the mornings; in the afternoon, visitors walk through to find who they came to see. The server room is locked, but its key hangs on a hook behind the empty reception desk. Staff get in with barcode passes printed on plain card, and there is no biometric check anywhere. Three CCTV cameras cover the car park, but none cover the loading bay. The intruder alarm isn't connected to a monitoring service, so at night it just sounds in an empty building. Network cables run along the floor of a public corridor. New staff get no security briefing, and screens are often left unlocked at lunchtime.",
+   "q": "4(b). Which control would you put in place first, and why? Weigh up cost, how quickly it can be done and how much risk it removes.",
+   "m": 4,
+   "pts": [
+    "Names a specific control linked to a weakness, e.g. move the server room key into a locked key safe (or fit a card/biometric lock on the server room)",
+    "Explains the risk it removes: afternoon visitors walk through unsupervised and could take the key and reach the servers",
+    "Cost and speed: it is cheap and can be done straight away",
+    "Comparison: e.g. a monitored alarm or cable trunking costs more or takes longer, and removes less immediate risk"
+   ],
+   "tip": "Justify with cost, speed AND risk removed, and compare with at least one other control."
+  },
+  {
+   "sc": "Pinewood Media Group is a film production company. Its head office server room holds unreleased films worth millions of pounds. Staff enter the building with magnetic stripe passes. The server room has a traditional key lock, and a spare key is kept in an unlocked drawer at the IT help desk. CCTV covers the main entrance but not the corridor to the server room. Last month a temporary contractor walked into the server room without being challenged and plugged a personal hard drive into a server.",
+   "q": "5(a). Identify two physical security measures Pinewood Media Group already has in place.",
+   "m": 2,
+   "pts": [
+    "Card entry (magnetic stripe passes)",
+    "A key lock on the server room / CCTV on the main entrance"
+   ],
+   "tip": "\"Identify\" = name them from the scenario."
+  },
+  {
+   "sc": "Pinewood Media Group is a film production company. Its head office server room holds unreleased films worth millions of pounds. Staff enter the building with magnetic stripe passes. The server room has a traditional key lock, and a spare key is kept in an unlocked drawer at the IT help desk. CCTV covers the main entrance but not the corridor to the server room. Last month a temporary contractor walked into the server room without being challenged and plugged a personal hard drive into a server.",
+   "q": "5(b). Explain two weaknesses in the company's physical security. Use evidence from the scenario.",
+   "m": 4,
+   "pts": [
+    "A spare server room key is kept in an unlocked drawer at the IT help desk",
+    "so anyone near the desk could take it and get into the server room holding films worth millions",
+    "CCTV doesn't cover the corridor to the server room / magnetic stripe passes are easy to copy",
+    "so the contractor wasn't seen or challenged / passes could be cloned to get into the building"
+   ],
+   "tip": "Each weakness: evidence from the scenario + what it allows an intruder to do."
+  },
+  {
+   "sc": "Pinewood Media Group is a film production company. Its head office server room holds unreleased films worth millions of pounds. Staff enter the building with magnetic stripe passes. The server room has a traditional key lock, and a spare key is kept in an unlocked drawer at the IT help desk. CCTV covers the main entrance but not the corridor to the server room. Last month a temporary contractor walked into the server room without being challenged and plugged a personal hard drive into a server.",
+   "q": "5(c). Recommend two improvements the company could make, and explain how each would reduce the risk.",
+   "m": 4,
+   "pts": [
+    "Replace the server room key lock with a card or biometric lock (and remove the spare key)",
+    "so only authorised IT staff can get in, it can't be lent, and entry is logged",
+    "Extend CCTV to the server room corridor / replace magnetic stripe passes with chip passes / train staff to challenge or escort contractors",
+    "so intruders are deterred and recorded / passes can't be cloned / visitors can't wander in unchallenged"
+   ],
+   "tip": "Use W-R-E for each. Say what, where and why."
+  },
+  {
+   "sc": "Harlow Medical Centre keeps confidential patient records on its computer system, in a room secured with a keypad lock. The practice manager is thinking about replacing the keypad with a fingerprint scanner. She has also noticed staff often leave their computers logged in when they go to lunch.",
+   "q": "6(a). Explain one advantage of using a fingerprint scanner instead of a keypad lock to secure the records room.",
+   "m": 2,
+   "pts": [
+    "A fingerprint can't be shared, forgotten or seen like a code",
+    "so someone who watched a code being typed (shoulder surfing) couldn't get in, and only authorised staff can open the room"
+   ],
+   "tip": "Compare directly with the keypad's weakness."
+  },
+  {
+   "sc": "Harlow Medical Centre keeps confidential patient records on its computer system, in a room secured with a keypad lock. The practice manager is thinking about replacing the keypad with a fingerprint scanner. She has also noticed staff often leave their computers logged in when they go to lunch.",
+   "q": "6(b). Other than installing new equipment, describe how staff training could improve physical security at the practice.",
+   "m": 3,
+   "pts": [
+    "Train staff to lock their computers when leaving their desks, so passers-by can't see patient records",
+    "Train staff not to share the door code and to shield the keypad, so others can't learn it",
+    "Train staff to challenge strangers and not hold doors, and repeat the training regularly for new starters"
+   ],
+   "tip": "Three clear, linked points. Use the lunchtime problem from the scenario."
+  }
+ ]
+}
