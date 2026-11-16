@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280" role="img" aria-labelledby="t d"><title id="t">Attack vectors into a network</title><desc id="d">A college network in the centre, with four routes in. Wireless: Wi-Fi, Bluetooth, NFC and RFID. A fake access point pretending to be trusted. The internet connection through the modem or router. An internal device such as a switch, router or access point. One weak device in the middle can expose every device on the network.</desc><style>
-.bg{fill:#0a2b4b}
-.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
-.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.bg{fill:#ffffff}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#4f6478}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#03203c}
 .h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
 .w{fill:#ffffff}
-.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
-.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
-.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
-.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
-.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
-.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
-.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
-.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
-.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
-.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
-.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.box{fill:#f5f8fb;stroke:#b9cad8;stroke-width:1.5}
+.acc{fill:#e7f0f7;stroke:#2b6a96;stroke-width:1.5}
+.bad{fill:#fdecec;stroke:#eb2f31;stroke-width:1.5}
+.good{fill:#e1f3e8;stroke:#1d7a45;stroke-width:1.5}
+.amb{fill:#fbf0dc;stroke:#a8650a;stroke-width:1.5}
+.dim{fill:#eef3f7;stroke:#cddbe7;stroke-width:1.5}
+.solid-acc{fill:#2b6a96}.solid-bad{fill:#eb2f31}.solid-good{fill:#1d7a45}.solid-amb{fill:#a8650a}.solid-ink{fill:#03203c}
+.ln{stroke:#4f6478;stroke-width:2;fill:none}
+.ln-acc{stroke:#2b6a96;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#eb2f31;stroke-width:2.2;fill:none}
+.ln-good{stroke:#1d7a45;stroke-width:2.2;fill:none}
 .dash{stroke-dasharray:6 5}
-.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
-.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+.tx-acc{fill:#2b6a96}.tx-bad{fill:#d4282a}.tx-good{fill:#1d7a45}.tx-amb{fill:#a8650a}
+.ic{fill:none;stroke:#03203c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#eb2f31;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#2b6a96;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#4f6478}.mk-acc{fill:#2b6a96}.mk-bad{fill:#eb2f31}.mk-good{fill:#1d7a45}
 </style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="280" rx="16"/><text x="24" y="32" class="h" text-anchor="start">ATTACK VECTORS: ROUTES INTO A NETWORK</text><rect x="280" y="110" width="200" height="100" rx="10" class="acc"/><text x="380" y="150" class="tb" text-anchor="middle">College network</text><text x="380" y="172" class="s" text-anchor="middle">routers · switches</text><text x="380" y="190" class="s" text-anchor="middle">access points</text><rect x="20" y="70" width="200" height="70" rx="10" class="amb"/><text x="120.0" y="102.0" class="t" text-anchor="middle">Wireless</text><text x="120.0" y="121.0" class="s" text-anchor="middle">Wi-Fi, Bluetooth, NFC, RFID</text><rect x="20" y="180" width="200" height="70" rx="10" class="bad"/><text x="120.0" y="212.0" class="t" text-anchor="middle">Fake access point</text><text x="120.0" y="231.0" class="s" text-anchor="middle">pretends to be trusted</text><rect x="540" y="70" width="200" height="70" rx="10" class="amb"/><text x="640.0" y="102.0" class="t" text-anchor="middle">Internet connection</text><text x="640.0" y="121.0" class="s" text-anchor="middle">modem / router</text><rect x="540" y="180" width="200" height="70" rx="10" class="amb"/><text x="640.0" y="212.0" class="t" text-anchor="middle">Internal device</text><text x="640.0" y="231.0" class="s" text-anchor="middle">switch, router, AP</text><path d="M222 105 L278 140" class="ln-bad" marker-end="url(#a-bad)"/><path d="M222 215 L278 180" class="ln-bad" marker-end="url(#a-bad)"/><path d="M538 105 L482 140" class="ln-bad" marker-end="url(#a-bad)"/><path d="M538 215 L482 180" class="ln-bad" marker-end="url(#a-bad)"/><text x="380" y="262" class="s" text-anchor="middle">One weak device in the middle can expose every device on the network</text></svg>

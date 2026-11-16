@@ -35,6 +35,45 @@
   color-scheme: dark;
 }
 
+/* The lesson page (hero, tabs and content) is white, with the same red highlights.
+   The top bar and lesson list above it stay Egyptian blue. */
+#deckview, body[data-view="lessons"] footer {
+  --bg: #f4f7fa;
+  --surface: #ffffff;
+  --surface-2: #f5f8fb;
+  --ink: #03203c;
+  --muted: #4f6478;
+  --line: #dbe4ec;
+  --accent: #2b6a96;          /* Stone blue, deepened so it is readable on white */
+  --accent-strong: #1f5277;
+  --accent-soft: #e7f0f7;
+  --loud-soft: #fdecec;
+  --amber: #a8650a;
+  --amber-soft: #fbf0dc;
+  --good: #1d7a45;
+  --good-soft: #e1f3e8;
+  --bad: #c42b2d;
+  --bad-soft: #fbe5e3;
+  --none: #c9d3da;
+  --shadow-sm: 0 1px 2px rgba(3, 32, 60, .06), 0 1px 3px rgba(3, 32, 60, .08);
+  --shadow-md: 0 6px 16px rgba(3, 32, 60, .09), 0 1px 3px rgba(3, 32, 60, .06);
+  color-scheme: light;
+  color: var(--ink);
+}
+body[data-view="lessons"] { background: #f4f7fa; }
+/* Paint the lesson list's band navy right across the screen, from the top bar down. */
+body[data-view="lessons"] .shelf-zone { background: var(--egyptian); box-shadow: 0 0 0 100vmax var(--egyptian); clip-path: inset(-100vmax -100vmax 0 -100vmax); padding-bottom: 6px; }
+#deckview .hero { margin-top: 26px; }
+#deckview .hero .ring-wrap { background: var(--accent-soft); color: var(--ink); border-left: 1px solid var(--line); }
+#deckview .hero .ring-wrap .ring-cap { color: var(--muted); }
+#deckview .hero .ring .ring-bg { stroke: #cddbe7; }
+#deckview .hero .ring .ring-fg { stroke: var(--loud); }
+#deckview nav.tabs button[aria-selected="true"] { background: var(--egyptian); color: #ffffff; }
+#deckview .flash.back { background: var(--egyptian); border-color: var(--egyptian); color: #ffffff; }
+#deckview .flash.back .hint { color: #a3bbd0; }
+#deckview .opt.right::before { color: #ffffff; }
+#deckview .btn:hover:not(:disabled) { color: #ffffff; }
+
 /* ---------- Base ---------- */
 * { box-sizing: border-box; }
 html, body { margin: 0; }
@@ -59,7 +98,7 @@ a { color: var(--accent); }
 :focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 
 /* ---------- Top bar ---------- */
-.topbar { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--surface) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
+.topbar { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--surface) 97%, transparent); backdrop-filter: saturate(1.4) blur(10px); -webkit-backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
 .topbar-in { max-width: 960px; margin: 0 auto; padding: 0 16px; min-height: var(--topbar-h); display: flex; align-items: center; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); flex: none; }
 .brand img { border-radius: 9px; box-shadow: var(--shadow-sm); }

@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 214" width="760" height="214" role="img" aria-labelledby="t d"><title id="t">Lifecycle of a mobile device</title><desc id="d">Four stages in order: Release, when the device is launched; Active updates, when the manufacturer sends regular OS and security updates; End-of-support, when updates stop but the phone still works; and Rising risk, when known flaws are never fixed. A bar underneath shows security risk staying low while patched, then rising sharply after end-of-support.</desc><style>
-.bg{fill:#0a2b4b}
-.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
-.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.bg{fill:#ffffff}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#4f6478}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#03203c}
 .h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
 .w{fill:#ffffff}
-.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
-.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
-.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
-.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
-.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
-.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
-.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
-.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
-.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
-.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
-.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.box{fill:#f5f8fb;stroke:#b9cad8;stroke-width:1.5}
+.acc{fill:#e7f0f7;stroke:#2b6a96;stroke-width:1.5}
+.bad{fill:#fdecec;stroke:#eb2f31;stroke-width:1.5}
+.good{fill:#e1f3e8;stroke:#1d7a45;stroke-width:1.5}
+.amb{fill:#fbf0dc;stroke:#a8650a;stroke-width:1.5}
+.dim{fill:#eef3f7;stroke:#cddbe7;stroke-width:1.5}
+.solid-acc{fill:#2b6a96}.solid-bad{fill:#eb2f31}.solid-good{fill:#1d7a45}.solid-amb{fill:#a8650a}.solid-ink{fill:#03203c}
+.ln{stroke:#4f6478;stroke-width:2;fill:none}
+.ln-acc{stroke:#2b6a96;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#eb2f31;stroke-width:2.2;fill:none}
+.ln-good{stroke:#1d7a45;stroke-width:2.2;fill:none}
 .dash{stroke-dasharray:6 5}
-.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
-.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+.tx-acc{fill:#2b6a96}.tx-bad{fill:#d4282a}.tx-good{fill:#1d7a45}.tx-amb{fill:#a8650a}
+.ic{fill:none;stroke:#03203c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#eb2f31;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#2b6a96;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#4f6478}.mk-acc{fill:#2b6a96}.mk-bad{fill:#eb2f31}.mk-good{fill:#1d7a45}
 </style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="214" rx="16"/><text x="24" y="32" class="h" text-anchor="start">LIFECYCLE OF A MOBILE DEVICE</text><rect x="20" y="50" width="170" height="74" rx="10" class="acc"/><text x="105" y="78" class="tb" text-anchor="middle">Release</text><text x="105" y="98" class="s" text-anchor="middle">Device launched</text><text x="105" y="114" class="s" text-anchor="middle">and on sale</text><path d="M192 87 L203 87" class="ln" marker-end="url(#a-ln)"/><rect x="205" y="50" width="170" height="74" rx="10" class="good"/><text x="290" y="78" class="tb" text-anchor="middle">Active updates</text><text x="290" y="98" class="s" text-anchor="middle">Regular OS and</text><text x="290" y="114" class="s" text-anchor="middle">security updates</text><path d="M377 87 L388 87" class="ln" marker-end="url(#a-ln)"/><rect x="390" y="50" width="170" height="74" rx="10" class="amb"/><text x="475" y="78" class="tb" text-anchor="middle">End-of-support</text><text x="475" y="98" class="s" text-anchor="middle">Updates stop;</text><text x="475" y="114" class="s" text-anchor="middle">phone still works</text><path d="M562 87 L573 87" class="ln" marker-end="url(#a-ln)"/><rect x="575" y="50" width="170" height="74" rx="10" class="bad"/><text x="660" y="78" class="tb" text-anchor="middle">Rising risk</text><text x="660" y="98" class="s" text-anchor="middle">Known flaws</text><text x="660" y="114" class="s" text-anchor="middle">never fixed</text><text x="24" y="156" class="h" text-anchor="start">SECURITY RISK</text><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#1d7a45"/><stop offset=".5" stop-color="#1d7a45"/><stop offset=".7" stop-color="#a8650a"/><stop offset="1" stop-color="#b3302b"/></linearGradient></defs><path d="M20 198 L20 184 L380 184 C470 184 520 168 560 160 S700 136 740 128 L740 198 Z" fill="url(#g)" opacity=".9"/><text x="200" y="196" class="s w" text-anchor="middle">Low while patched</text><text x="650" y="190" class="s w" text-anchor="middle">High: unpatched</text></svg>

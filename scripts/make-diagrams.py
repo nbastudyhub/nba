@@ -2,7 +2,7 @@
 """Draws the Learn-tab diagrams as SVG files in docs/diagrams/.
 
 Run:  python3 scripts/make-diagrams.py
-Each diagram uses the site's colours: Egyptian blue, Stone blue and Scarlet red. A lesson section shows one with:  "diagram": {"src": "diagrams/<name>.svg", "alt": "...", "caption": "..."}
+Each diagram sits on the white lesson page: Egyptian blue text, Stone blue and Scarlet red highlights. A lesson section shows one with:  "diagram": {"src": "diagrams/<name>.svg", "alt": "...", "caption": "..."}
 """
 from pathlib import Path
 from html import escape
@@ -10,30 +10,30 @@ from html import escape
 OUT = Path(__file__).resolve().parent.parent / "docs" / "diagrams"
 
 STYLE = """
-.bg{fill:#0a2b4b}
-.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
-.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.bg{fill:#ffffff}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#4f6478}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#03203c}
 .h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
 .w{fill:#ffffff}
-.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
-.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
-.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
-.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
-.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
-.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
-.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
-.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
-.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
-.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
-.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.box{fill:#f5f8fb;stroke:#b9cad8;stroke-width:1.5}
+.acc{fill:#e7f0f7;stroke:#2b6a96;stroke-width:1.5}
+.bad{fill:#fdecec;stroke:#eb2f31;stroke-width:1.5}
+.good{fill:#e1f3e8;stroke:#1d7a45;stroke-width:1.5}
+.amb{fill:#fbf0dc;stroke:#a8650a;stroke-width:1.5}
+.dim{fill:#eef3f7;stroke:#cddbe7;stroke-width:1.5}
+.solid-acc{fill:#2b6a96}.solid-bad{fill:#eb2f31}.solid-good{fill:#1d7a45}.solid-amb{fill:#a8650a}.solid-ink{fill:#03203c}
+.ln{stroke:#4f6478;stroke-width:2;fill:none}
+.ln-acc{stroke:#2b6a96;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#eb2f31;stroke-width:2.2;fill:none}
+.ln-good{stroke:#1d7a45;stroke-width:2.2;fill:none}
 .dash{stroke-dasharray:6 5}
-.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
-.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+.tx-acc{fill:#2b6a96}.tx-bad{fill:#d4282a}.tx-good{fill:#1d7a45}.tx-amb{fill:#a8650a}
+.ic{fill:none;stroke:#03203c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#eb2f31;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#2b6a96;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#4f6478}.mk-acc{fill:#2b6a96}.mk-bad{fill:#eb2f31}.mk-good{fill:#1d7a45}
 """
 
 MARKERS = "".join(

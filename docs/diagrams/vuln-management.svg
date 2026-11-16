@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 184" width="760" height="184" role="img" aria-labelledby="t d"><title id="t">Detection and management software</title><desc id="d">Four repeating steps used by vulnerability detection and management software. Scan devices against a database of known vulnerabilities. Score each one, for example with a CVSS score from 0 to 10. Prioritise the most dangerous first. Track each fix until it is done, then scan again.</desc><style>
-.bg{fill:#0a2b4b}
-.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
-.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.bg{fill:#ffffff}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#4f6478}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#03203c}
 .h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
 .w{fill:#ffffff}
-.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
-.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
-.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
-.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
-.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
-.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
-.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
-.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
-.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
-.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
-.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.box{fill:#f5f8fb;stroke:#b9cad8;stroke-width:1.5}
+.acc{fill:#e7f0f7;stroke:#2b6a96;stroke-width:1.5}
+.bad{fill:#fdecec;stroke:#eb2f31;stroke-width:1.5}
+.good{fill:#e1f3e8;stroke:#1d7a45;stroke-width:1.5}
+.amb{fill:#fbf0dc;stroke:#a8650a;stroke-width:1.5}
+.dim{fill:#eef3f7;stroke:#cddbe7;stroke-width:1.5}
+.solid-acc{fill:#2b6a96}.solid-bad{fill:#eb2f31}.solid-good{fill:#1d7a45}.solid-amb{fill:#a8650a}.solid-ink{fill:#03203c}
+.ln{stroke:#4f6478;stroke-width:2;fill:none}
+.ln-acc{stroke:#2b6a96;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#eb2f31;stroke-width:2.2;fill:none}
+.ln-good{stroke:#1d7a45;stroke-width:2.2;fill:none}
 .dash{stroke-dasharray:6 5}
-.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
-.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+.tx-acc{fill:#2b6a96}.tx-bad{fill:#d4282a}.tx-good{fill:#1d7a45}.tx-amb{fill:#a8650a}
+.ic{fill:none;stroke:#03203c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#eb2f31;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#2b6a96;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#4f6478}.mk-acc{fill:#2b6a96}.mk-bad{fill:#eb2f31}.mk-good{fill:#1d7a45}
 </style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="184" rx="16"/><text x="20" y="26" class="h" text-anchor="start">DETECTION AND MANAGEMENT SOFTWARE</text><polygon points="20.0,40 176.5,40 192.5,85 176.5,130 20.0,130" class="acc" stroke-linejoin="round"/><text x="98.25" y="70" class="tb" text-anchor="middle">1 Scan</text><text x="98.25" y="94" class="s" text-anchor="middle">Check devices against</text><text x="98.25" y="112" class="s" text-anchor="middle">known vulnerabilities</text><polygon points="202.5,40 359.0,40 375.0,85 359.0,130 202.5,130 218.5,85" class="amb" stroke-linejoin="round"/><text x="288.75" y="70" class="tb" text-anchor="middle">2 Score</text><text x="288.75" y="94" class="s" text-anchor="middle">Rate each one, e.g.</text><text x="288.75" y="112" class="s" text-anchor="middle">CVSS 0 to 10</text><polygon points="385.0,40 541.5,40 557.5,85 541.5,130 385.0,130 401.0,85" class="bad" stroke-linejoin="round"/><text x="471.25" y="70" class="tb" text-anchor="middle">3 Prioritise</text><text x="471.25" y="94" class="s" text-anchor="middle">Most dangerous and</text><text x="471.25" y="112" class="s" text-anchor="middle">easiest to exploit first</text><polygon points="567.5,40 724.0,40 740.0,85 724.0,130 567.5,130 583.5,85" class="good" stroke-linejoin="round"/><text x="653.75" y="70" class="tb" text-anchor="middle">4 Track</text><text x="653.75" y="94" class="s" text-anchor="middle">Follow each fix</text><text x="653.75" y="112" class="s" text-anchor="middle">until it&#x27;s done</text><path d="M720 136 q0 20 -20 20 H60 q-20 0 -20 -20" class="ln dash"/><path d="M34 142 l6 -8 l6 8" class="ln"/><text x="380.0" y="151" class="s" text-anchor="middle">Repeat regularly: new vulnerabilities appear all the time</text></svg>

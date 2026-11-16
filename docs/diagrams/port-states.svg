@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 318" width="760" height="318" role="img" aria-labelledby="t d"><title id="t">Port states: open, closed, filtered</title><desc id="d">Three rows showing what a port scanner sees. Open: the scanner sends a request and the port accepts the connection because a service is listening. Closed: the port replies to refuse the connection because nothing is listening right now, so keep scanning as it could open later. Filtered: a firewall silently blocks the request so there is no reply at all.</desc><style>
-.bg{fill:#0a2b4b}
-.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
-.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.bg{fill:#ffffff}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#4f6478}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#03203c}
 .h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
 .w{fill:#ffffff}
-.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
-.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
-.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
-.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
-.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
-.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
-.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
-.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
-.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
-.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
-.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.box{fill:#f5f8fb;stroke:#b9cad8;stroke-width:1.5}
+.acc{fill:#e7f0f7;stroke:#2b6a96;stroke-width:1.5}
+.bad{fill:#fdecec;stroke:#eb2f31;stroke-width:1.5}
+.good{fill:#e1f3e8;stroke:#1d7a45;stroke-width:1.5}
+.amb{fill:#fbf0dc;stroke:#a8650a;stroke-width:1.5}
+.dim{fill:#eef3f7;stroke:#cddbe7;stroke-width:1.5}
+.solid-acc{fill:#2b6a96}.solid-bad{fill:#eb2f31}.solid-good{fill:#1d7a45}.solid-amb{fill:#a8650a}.solid-ink{fill:#03203c}
+.ln{stroke:#4f6478;stroke-width:2;fill:none}
+.ln-acc{stroke:#2b6a96;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#eb2f31;stroke-width:2.2;fill:none}
+.ln-good{stroke:#1d7a45;stroke-width:2.2;fill:none}
 .dash{stroke-dasharray:6 5}
-.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
-.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+.tx-acc{fill:#2b6a96}.tx-bad{fill:#d4282a}.tx-good{fill:#1d7a45}.tx-amb{fill:#a8650a}
+.ic{fill:none;stroke:#03203c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#eb2f31;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#2b6a96;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#4f6478}.mk-acc{fill:#2b6a96}.mk-bad{fill:#eb2f31}.mk-good{fill:#1d7a45}
 </style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="318" rx="16"/><text x="24" y="32" class="h" text-anchor="start">WHAT A PORT SCANNER SEES</text><rect x="20" y="52" width="120" height="66" rx="10" class="box"/><rect x="39" y="72" width="30" height="20" rx="3" class="ic"/><path d="M47 98 h14 M54 92 v6" class="ic"/><text x="100" y="90" class="s" text-anchor="middle">Scanner</text><path d="M146 74 L300 74" class="ln" marker-end="url(#a-ln)"/><text x="222" y="66" class="s" text-anchor="middle">request</text><rect x="340" y="52" width="120" height="66" rx="10" class="good"/><text x="400" y="91" class="t" text-anchor="middle">Port</text><path d="M338 98 L148 98" class="ln-good" marker-end="url(#a-good)"/><text x="240" y="114" class="s" text-anchor="middle">accepted</text><rect x="480" y="52" width="260" height="66" rx="10" class="good"/><text x="498" y="76" class="tb" text-anchor="start">OPEN</text><text x="498" y="95" class="s" text-anchor="start">Port accepts the connection</text><text x="498" y="111" class="s" text-anchor="start">A service is listening</text><rect x="20" y="138" width="120" height="66" rx="10" class="box"/><rect x="39" y="158" width="30" height="20" rx="3" class="ic"/><path d="M47 184 h14 M54 178 v6" class="ic"/><text x="100" y="176" class="s" text-anchor="middle">Scanner</text><path d="M146 160 L300 160" class="ln" marker-end="url(#a-ln)"/><text x="222" y="152" class="s" text-anchor="middle">request</text><rect x="340" y="138" width="120" height="66" rx="10" class="amb"/><text x="400" y="177" class="t" text-anchor="middle">Port</text><path d="M338 184 L148 184" class="ln dash" marker-end="url(#a-ln)"/><text x="240" y="200" class="s" text-anchor="middle">refused</text><rect x="480" y="138" width="260" height="66" rx="10" class="amb"/><text x="498" y="162" class="tb" text-anchor="start">CLOSED</text><text x="498" y="181" class="s" text-anchor="start">Port replies: &#x27;nothing here&#x27;</text><text x="498" y="197" class="s" text-anchor="start">No service right now (keep scanning)</text><rect x="20" y="224" width="120" height="66" rx="10" class="box"/><rect x="39" y="244" width="30" height="20" rx="3" class="ic"/><path d="M47 270 h14 M54 264 v6" class="ic"/><text x="100" y="262" class="s" text-anchor="middle">Scanner</text><path d="M146 246 L300 246" class="ln" marker-end="url(#a-ln)"/><text x="222" y="238" class="s" text-anchor="middle">request</text><rect x="306" y="222" width="16" height="70" rx="3" class="solid-acc"/><text x="240" y="280" class="s" text-anchor="middle">no reply</text><rect x="340" y="224" width="120" height="66" rx="10" class="dim"/><text x="400" y="263" class="t" text-anchor="middle">Port</text><rect x="480" y="224" width="260" height="66" rx="10" class="acc"/><text x="498" y="248" class="tb" text-anchor="start">FILTERED</text><text x="498" y="267" class="s" text-anchor="start">No reply at all</text><text x="498" y="283" class="s" text-anchor="start">A firewall silently blocks it</text></svg>

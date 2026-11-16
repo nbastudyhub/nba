@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 296" width="760" height="296" role="img" aria-labelledby="t d"><title id="t">The four areas the laws apply to</title><desc id="d">Top: the four areas cyber security laws apply to. Mainly UK GDPR: 1, protecting data in storage and when transferred; 2, privacy and personally identifying information (PII). Mainly the Computer Misuse Act: 3, unauthorised access to computers and devices; 4, access to and modification of data without permission. Bottom: one incident, two laws. A hacker breaks into a hospital&#x27;s patient database, which was never encrypted, and copies records. The hacker has committed Computer Misuse Act offences. The hospital may be investigated by the ICO under UK GDPR for not protecting the data.</desc><style>
-.bg{fill:#0a2b4b}
-.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
-.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
-.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.bg{fill:#ffffff}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#4f6478}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#03203c}
 .h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
 .w{fill:#ffffff}
-.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
-.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
-.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
-.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
-.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
-.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
-.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
-.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
-.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
-.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
-.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.box{fill:#f5f8fb;stroke:#b9cad8;stroke-width:1.5}
+.acc{fill:#e7f0f7;stroke:#2b6a96;stroke-width:1.5}
+.bad{fill:#fdecec;stroke:#eb2f31;stroke-width:1.5}
+.good{fill:#e1f3e8;stroke:#1d7a45;stroke-width:1.5}
+.amb{fill:#fbf0dc;stroke:#a8650a;stroke-width:1.5}
+.dim{fill:#eef3f7;stroke:#cddbe7;stroke-width:1.5}
+.solid-acc{fill:#2b6a96}.solid-bad{fill:#eb2f31}.solid-good{fill:#1d7a45}.solid-amb{fill:#a8650a}.solid-ink{fill:#03203c}
+.ln{stroke:#4f6478;stroke-width:2;fill:none}
+.ln-acc{stroke:#2b6a96;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#eb2f31;stroke-width:2.2;fill:none}
+.ln-good{stroke:#1d7a45;stroke-width:2.2;fill:none}
 .dash{stroke-dasharray:6 5}
-.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
-.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+.tx-acc{fill:#2b6a96}.tx-bad{fill:#d4282a}.tx-good{fill:#1d7a45}.tx-amb{fill:#a8650a}
+.ic{fill:none;stroke:#03203c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#eb2f31;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#2b6a96;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#4f6478}.mk-acc{fill:#2b6a96}.mk-bad{fill:#eb2f31}.mk-good{fill:#1d7a45}
 </style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="296" rx="16"/><text x="24" y="32" class="h" text-anchor="start">THE FOUR AREAS THE LAWS APPLY TO</text><text x="196" y="60" class="t" text-anchor="middle">Mainly UK GDPR</text><text x="564" y="60" class="t" text-anchor="middle">Mainly the Computer Misuse Act</text><rect x="24" y="72" width="168" height="84" rx="10" class="acc"/><text x="108" y="98" class="t" text-anchor="middle">1 Protecting data</text><text x="108" y="120" class="s" text-anchor="middle">in storage and</text><text x="108" y="138" class="s" text-anchor="middle">when transferred</text><rect x="200" y="72" width="168" height="84" rx="10" class="acc"/><text x="284" y="98" class="t" text-anchor="middle">2 Privacy and PII</text><text x="284" y="120" class="s" text-anchor="middle">personally identifying</text><text x="284" y="138" class="s" text-anchor="middle">information</text><rect x="392" y="72" width="168" height="84" rx="10" class="amb"/><text x="476" y="98" class="t" text-anchor="middle">3 Access</text><text x="476" y="120" class="s" text-anchor="middle">unauthorised access to</text><text x="476" y="138" class="s" text-anchor="middle">computers and devices</text><rect x="568" y="72" width="168" height="84" rx="10" class="amb"/><text x="652" y="98" class="t" text-anchor="middle">4 Modification</text><text x="652" y="120" class="s" text-anchor="middle">accessing and changing</text><text x="652" y="138" class="s" text-anchor="middle">data without permission</text><path d="M380 46 V158" class="ln dash"/><text x="24" y="182" class="h" text-anchor="start">ONE INCIDENT, TWO LAWS: A HOSPITAL DATA BREACH</text><circle cx="70" cy="226" r="7" class="ic-bad"/><path d="M58 250 q0 -14 12 -14 q12 0 12 14" class="ic-bad"/><text x="70" y="274" class="s" text-anchor="middle">Hacker</text><path d="M100 232 L300 232" class="ln-bad" marker-end="url(#a-bad)"/><text x="200" y="222" class="s" text-anchor="middle">breaks in, copies records</text><rect x="306" y="196" width="148" height="84" rx="10" class="box"/><rect x="337" y="219" width="30" height="10" rx="2" class="ic"/><circle cx="343" cy="224" r="1.4" class="ic"/><rect x="337" y="231" width="30" height="10" rx="2" class="ic"/><circle cx="343" cy="236" r="1.4" class="ic"/><rect x="337" y="243" width="30" height="10" rx="2" class="ic"/><circle cx="343" cy="248" r="1.4" class="ic"/><text x="410" y="230" class="s" text-anchor="middle">patient</text><text x="410" y="248" class="s" text-anchor="middle">database</text><text x="380" y="272" class="s" text-anchor="middle">never encrypted</text><rect x="500" y="196" width="236" height="38" rx="10" class="bad"/><text x="618" y="220" class="t" text-anchor="middle">Hacker: CMA offences</text><rect x="500" y="242" width="236" height="38" rx="10" class="acc"/><text x="618" y="266" class="t" text-anchor="middle">Hospital: ICO / UK GDPR</text><path d="M456 215 L496 215" class="ln-bad" marker-end="url(#a-bad)"/><path d="M456 261 L496 261" class="ln-acc" marker-end="url(#a-acc)"/></svg>
