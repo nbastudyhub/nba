@@ -52,7 +52,7 @@
   const $ = id => document.getElementById(id);
   const fab = $('helper-fab'), panel = $('helper-panel'), log = $('helper-log'), input = $('helper-input');
   const chats = {}; // per lesson: [{ role, text }]
-  let busy = false;
+  let busy = false, shown = 0; // shown: messages already on screen, so only new ones animate in
 
   const deck = () => (window.studyHub && window.studyHub.deck) || null;
   const chat = () => { const d = deck(); return d ? (chats[d.id] = chats[d.id] || []) : []; };
@@ -64,8 +64,9 @@
     log.innerHTML = `<div class="helper-msg bot">${format(d
       ? `Hi! Ask me anything about **${d.title}**. I can explain things another way, give examples, quiz you, or help you plan an exam answer.`
       : 'Pick a lesson first, then ask me about it.')}</div>` +
-      msgs.map(m => `<div class="helper-msg ${m.role === 'user' ? 'me' : m.error ? 'bot err' : 'bot'}">${m.role === 'user' ? `<p>${esc(m.text)}</p>` : format(m.text)}</div>`).join('') +
+      msgs.map((m, i) => `<div class="helper-msg ${m.role === 'user' ? 'me' : m.error ? 'bot err' : 'bot'}${i >= shown ? ' new' : ''}">${m.role === 'user' ? `<p>${esc(m.text)}</p>` : format(m.text)}</div>`).join('') +
       (busy ? '<div class="helper-msg bot typing"><span></span><span></span><span></span></div>' : '');
+    shown = msgs.length;
     $('helper-chips').innerHTML = msgs.length || !d ? '' : SUGGESTIONS.map(s => `<button type="button" class="helper-chip">${esc(s)}</button>`).join('');
     $('helper-chips').querySelectorAll('.helper-chip').forEach(b => b.onclick = () => ask(b.textContent));
     $('helper-send').disabled = busy || !d;
@@ -99,14 +100,20 @@
     busy = false; render(); input.focus();
   }
 
+  // Opens out of the round button and shrinks back into it when closed (the close is a little quicker).
+  let closing = null;
   function open(on) {
-    panel.hidden = !on; fab.setAttribute('aria-expanded', String(on)); root.classList.toggle('open', on);
-    if (on) { render(); input.focus(); } else fab.focus();
+    clearTimeout(closing); panel.classList.remove('closing');
+    fab.setAttribute('aria-expanded', String(on));
+    if (on) { panel.hidden = false; root.classList.add('open'); shown = chat().length; render(); input.focus(); return; }
+    const done = () => { panel.hidden = true; panel.classList.remove('closing'); root.classList.remove('open'); fab.focus(); };
+    if (panel.hidden || matchMedia('(prefers-reduced-motion: reduce)').matches) return done();
+    panel.classList.add('closing'); closing = setTimeout(done, 190);
   }
   fab.onclick = () => open(panel.hidden);
   $('helper-close').onclick = () => open(false);
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !panel.hidden) open(false); });
   $('helper-form').onsubmit = e => { e.preventDefault(); ask(input.value); };
   input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
-  window.addEventListener('studyhub:deck', () => { if (!panel.hidden) render(); });
+  window.addEventListener('studyhub:deck', () => { if (!panel.hidden) { shown = chat().length; render(); } });
 })();

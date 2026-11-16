@@ -23,8 +23,23 @@ window.studyHub = {
 };
 const cache = {};
 
+// ---------- Motion ----------
+// Entrances rise in one after another (see "Motion" in style.css). Skipped when the device asks for reduced motion.
+const calm = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+function stagger(els, max = 12) {
+  [...els].forEach((el, i) => {
+    el.classList.remove('rise');
+    if (i >= max) return; // further down the page: just appear
+    el.style.setProperty('--i', i);
+    void el.offsetWidth; // restart the animation
+    el.classList.add('rise');
+  });
+}
+// A quick pulse to confirm something changed, e.g. a score going up.
+function bump(el) { if (!el) return; el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+
 // ---------- Shelf ----------
-function renderShelf() {
+function renderShelf(animate = false) {
   const q = $('search').value.trim().toLowerCase();
   const list = index.filter(d => !q || [d.title, d.code, d.subject].join(' ').toLowerCase().includes(q));
   $('shelf').innerHTML = list.length
@@ -40,9 +55,10 @@ function renderShelf() {
       }).join('')
     : '<p class="muted">No lessons match that search.</p>';
   $('shelf').querySelectorAll('.deck').forEach(b => b.onclick = () => { location.hash = b.dataset.id; });
+  if (animate) stagger($('shelf').children, 8);
 }
 
-$('search').oninput = renderShelf;
+$('search').oninput = () => renderShelf(true);
 
 // A small progress ring, e.g. ring(62) for 62%.
 function ring(n, size = '') {
@@ -76,6 +92,9 @@ async function openDeck(id) {
   $('d-title').textContent = current.title;
   $('d-q').textContent = current.bigQuestion || '';
   renderLearn(); fcStart(); qzStart(); apStart(); renderExam(); showTab(tab); updateRing();
+  // The progress ring fills up and the lesson heading eases in when a lesson opens.
+  const r = $('d-ring'); r.classList.add('draw'); setTimeout(() => r.classList.remove('draw'), 1000);
+  stagger(document.querySelectorAll('#deckview .hero'), 1);
   window.dispatchEvent(new CustomEvent('studyhub:deck', { detail: { id, title: current.title } }));
 }
 
@@ -85,6 +104,7 @@ function showTab(t) {
   tab = t;
   document.querySelectorAll('nav.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t ? 'true' : 'false'));
   document.querySelectorAll('.pane').forEach(p => p.classList.toggle('hidden', p.id !== t));
+  stagger($(t).children, 10);
 }
 
 // ---------- Learn ----------
@@ -107,25 +127,38 @@ function renderLearn() {
 let fcDeck = [], fcIdx = 0, fcFlipped = false, fcKnown = 0, fcTotal = 0;
 const fcCard = $('fc-card');
 function fcStart() { const c = current.flashcards || []; fcTotal = c.length; fcDeck = shuffle(c); fcIdx = 0; fcKnown = 0; fcFlipped = false; fcRender(); }
-function fcRender() {
+function fcRender(flipping = false) {
   $('fc-count').textContent = `Known: ${fcKnown} / ${fcTotal}`;
   $('fc-bar').style.width = (fcTotal ? fcKnown / fcTotal * 100 : 0) + '%';
   if (!fcDeck.length) {
     fcCard.className = 'flash back';
-    fcCard.innerHTML = `<div><div class="term">All ${fcTotal} cards done</div><span class="hint">Press "Start again" to go round once more, or try the Quiz.</span></div>`;
+    fcCard.innerHTML = `<div class="enter"><div class="term">All ${fcTotal} cards done</div><span class="hint">Press "Start again" to go round once more, or try the Quiz.</span></div>`;
     $('fc-actions').classList.add('hidden'); return;
   }
   $('fc-actions').classList.remove('hidden');
   const [t, d] = fcDeck[fcIdx];
   fcCard.className = 'flash' + (fcFlipped ? ' back' : '');
-  fcCard.innerHTML = fcFlipped ? `<div><div class="def">${esc(d)}</div><span class="hint">${esc(t)}</span></div>` : `<div><div class="term">${esc(t)}</div><span class="hint">Tap or press Space to flip</span></div>`;
+  const enter = flipping ? '' : ' class="enter"'; // a new card rises in; a flipped card turns over instead
+  fcCard.innerHTML = fcFlipped ? `<div${enter}><div class="def">${esc(d)}</div><span class="hint">${esc(t)}</span></div>` : `<div${enter}><div class="term">${esc(t)}</div><span class="hint">Tap or press Space to flip</span></div>`;
   $('fc-know').disabled = $('fc-again').disabled = !fcFlipped;
 }
-function fcFlip() { if (fcDeck.length) { fcFlipped = !fcFlipped; fcRender(); } }
+// Turn the card over in 3D: rotate to edge-on, swap the side, rotate back.
+let fcTurning = false;
+async function fcFlip() {
+  if (!fcDeck.length || fcTurning) return;
+  if (calm() || !fcCard.animate) { fcFlipped = !fcFlipped; fcRender(true); return; }
+  fcTurning = true;
+  try {
+    await fcCard.animate([{ transform: 'perspective(900px) rotateY(0)' }, { transform: 'perspective(900px) rotateY(90deg)' }], { duration: 130, easing: 'cubic-bezier(.55,0,1,.45)' }).finished;
+    fcFlipped = !fcFlipped; fcRender(true);
+    await fcCard.animate([{ transform: 'perspective(900px) rotateY(-90deg)' }, { transform: 'perspective(900px) rotateY(0)' }], { duration: 200, easing: 'cubic-bezier(.22,1,.36,1)' }).finished;
+  } catch (e) {}
+  fcTurning = false;
+}
 fcCard.onclick = fcFlip;
 fcCard.onkeydown = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); fcFlip(); } };
 $('fc-know').onclick = () => {
-  fcDeck.splice(fcIdx, 1); fcKnown++; if (fcIdx >= fcDeck.length) fcIdx = 0; fcFlipped = false; fcRender();
+  fcDeck.splice(fcIdx, 1); fcKnown++; if (fcIdx >= fcDeck.length) fcIdx = 0; fcFlipped = false; fcRender(); bump($('fc-count'));
   if (fcKnown > (progress.fcBest || 0)) { progress.fcBest = fcKnown; save(); }
 };
 $('fc-again').onclick = () => { fcDeck.push(fcDeck.splice(fcIdx, 1)[0]); if (fcIdx >= fcDeck.length) fcIdx = 0; fcFlipped = false; fcRender(); };
@@ -145,19 +178,20 @@ function makeRunner(pre, getItems, qText) {
       const pct = Math.round(score / order.length * 100);
       if (score > (progress[pre + 'Best'] || 0)) { progress[pre + 'Best'] = score; save(); }
       box.innerHTML = `<div class="big">${score} / ${order.length}</div><p>${pct >= 85 ? 'Excellent. You\'re ready for the next section.' : pct >= 60 ? 'Good work. Re-read the Learn tab for the ones you missed, then try again.' : 'Keep going. Go back through Learn and the Flashcards, then retry.'}</p><div class="row"><button class="btn" id="${pre}-again">Try again</button></div>`;
-      $(pre + '-again').onclick = start; return;
+      $(pre + '-again').onclick = start; stagger(box.children); return;
     }
     const it = order[i];
     $(pre + '-pos').textContent = `Question ${i + 1} of ${order.length}`;
     box.innerHTML = `<h3 style="white-space:pre-line">${esc(qText(it))}</h3><div class="options">${it.o.map((o, j) => `<button class="opt" data-i="${j}">${esc(o)}</button>`).join('')}</div><div id="${pre}-fb"></div>`;
     box.querySelectorAll('.opt').forEach(b => b.onclick = () => answer(+b.dataset.i));
+    stagger([box.querySelector('h3'), ...box.querySelectorAll('.opt')]);
   }
   function answer(j) {
     const it = order[i], btns = $(pre + '-box').querySelectorAll('.opt');
     if (btns[0].disabled) return;
     btns.forEach((b, k) => { b.disabled = true; if (k === it.a) b.classList.add('right'); else if (k === j) b.classList.add('wrong'); });
     const ok = j === it.a; if (ok) score++;
-    $(pre + '-score').textContent = `Score: ${score}`;
+    $(pre + '-score').textContent = `Score: ${score}`; if (ok) bump($(pre + '-score'));
     $(pre + '-fb').innerHTML = `<div class="feedback"><strong>${ok ? 'Correct.' : 'Not quite.'}</strong> ${esc(it.e)}</div><div class="row" style="margin-top:12px"><span class="spacer"></span><button class="btn" id="${pre}-next">Next →</button></div>`;
     const nx = $(pre + '-next'); nx.focus(); nx.onclick = () => { i++; render(); };
   }
@@ -235,7 +269,7 @@ function renderExam() {
     const ta = c.querySelector('textarea');
     ta.oninput = () => { entry().text = ta.value; save(); };
     const sch = c.querySelector('[data-role=scheme]'), sb = c.querySelector('[data-act=scheme]');
-    sb.onclick = () => { const h = sch.classList.toggle('hidden'); sb.textContent = h ? 'Show mark scheme' : 'Hide mark scheme'; };
+    sb.onclick = () => { const h = sch.classList.toggle('hidden'); sch.classList.toggle('open', !h); sb.textContent = h ? 'Show mark scheme' : 'Hide mark scheme'; };
     c.querySelectorAll('input[type=checkbox]').forEach(cb => cb.onchange = () => {
       const e = entry(), i = +cb.dataset.i; e.ticks = e.ticks.filter(x => x !== i); if (cb.checked) e.ticks.push(i);
       if (e.ai) e.ai.score = Math.min(item.m, e.ticks.length); // your own ticks win
@@ -254,7 +288,7 @@ function renderExam() {
           const e = entry(); e.ai = { score: r.score, max: r.max, awarded: r.awarded, feedback: r.feedback, improve: r.improve, text: ta.value };
           e.ticks = r.awarded.slice();
           c.querySelectorAll('input[type=checkbox]').forEach(cb => { cb.checked = e.ticks.includes(+cb.dataset.i); });
-          aiBox.innerHTML = aiResultHtml(item, e.ai); aiBox.classList.remove('hidden');
+          aiBox.innerHTML = aiResultHtml(item, e.ai); aiBox.classList.remove('hidden'); bump(aiBox.querySelector('.score'));
           note.textContent = ''; save(); exTotal();
         } else note.textContent = aiErrorText(res.status, r.error);
       } catch (e) { note.textContent = 'Couldn\'t connect. Check your internet and try again.'; }
@@ -267,6 +301,7 @@ function renderExam() {
 function exTotal() {
   let t = 0, m = 0;
   (current.exam || []).forEach((it, i) => { m += it.m; t += qScore(it, progress.answers['e' + i]); });
+  if ($('ex-total').textContent !== String(t) && progress.examScore !== undefined && t > progress.examScore) bump($('ex-total'));
   $('ex-total').textContent = t; $('ex-max').textContent = '/ ' + m;
   if (progress.examScore !== t) { // for the progress page; don't create a record just to store 0
     const had = progress.examScore !== undefined;
@@ -291,6 +326,7 @@ function showView(v) {
   if (v === 'account') document.title = 'Account · Study Hub';
   if (v === 'lessons' && current) document.title = current.title + ' · Study Hub';
   window.dispatchEvent(new CustomEvent('studyhub:view', { detail: { view: v } }));
+  if (v !== 'lessons') stagger($(v + 'view').children, 4);
   window.scrollTo(0, 0);
 }
 document.querySelector('.view-link[data-view=lessons]').onclick = e => {
@@ -332,6 +368,7 @@ function renderProgress() {
         <div class="pv-bar"><span>${name}</span><div class="progress"><div class="${level(n)}" style="width:${n}%"></div></div><span class="score">${got}/${of}</span></div>`; }).join('')}
       </div>
     </div>`).join('');
+  stagger($('pv-list').children, 10);
 }
 $('pv-reset').onclick = () => {
   const b = $('pv-reset');
@@ -361,6 +398,7 @@ async function renderGlossary() {
     const head = !q && L !== letter ? `<h2 class="gv-letter">${letter = L}</h2>` : '';
     return `${head}<div class="gv-item"><dt>${esc(g.term)}</dt><dd>${esc(g.def)} <a class="gv-from" href="#${esc(g.id)}">${esc(titles[g.id] || 'Open lesson')}</a></dd></div>`;
   }).join('') : '<p class="muted">No key terms match that. Try a shorter word, or ask the AI helper.</p>';
+  stagger($('gv-list').children, 14);
 }
 $('gv-search').oninput = () => renderGlossary();
 
@@ -391,7 +429,7 @@ window.addEventListener('hashchange', route);
     const r = await fetch('decks/index.json', { cache: 'no-cache' });
     index = (await r.json()).decks || [];
   } catch (e) { $('d-title').textContent = 'Couldn\'t load the topic list. Check your connection and refresh to try again.'; return; }
-  renderShelf();
+  renderShelf(true);
   const h = location.hash.slice(1), last = ls.get('sh-last', null);
   const id = [h, last].find(x => x && index.some(d => d.id === x)) || (index[0] && index[0].id);
   if (id) openDeck(id); else $('d-title').textContent = 'No topics yet.';
