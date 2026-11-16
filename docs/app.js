@@ -89,7 +89,9 @@ async function openDeck(id) {
   if (view === 'lessons') document.title = current.title + ' · Study Hub';
   renderShelf();
   $('d-code').textContent = current.code || current.subject || '';
-  $('d-title').textContent = current.title;
+  // The lesson number stands out in red, e.g. "LESSON 18 - Physical Security Measures"
+  const tm = current.title.match(/^(Lesson\s+\d+)(.*)$/i);
+  $('d-title').innerHTML = tm ? `<span class="num">${esc(tm[1])}</span>${esc(tm[2])}` : esc(current.title);
   $('d-q').textContent = current.bigQuestion || '';
   renderLearn(); fcStart(); qzStart(); apStart(); renderExam(); showTab(tab); updateRing();
   // The progress ring fills up and the lesson heading eases in when a lesson opens.
