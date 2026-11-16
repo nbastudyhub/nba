@@ -35,6 +35,17 @@
   color-scheme: dark;
 }
 
+/* Lesson page (hero, tabs and content): all text is white, with Scarlet red kept for the highlights. */
+#deckview { --ink: #ffffff; --muted: #ffffff; --accent: #ffffff; --accent-strong: #ffffff; color: var(--ink); }
+#deckview nav.tabs button[aria-selected="true"] { background: transparent; color: #ffffff; box-shadow: inset 0 -3px 0 var(--loud); }
+#deckview nav.tabs button:hover { color: #ffffff; }
+#deckview .flash.back { background: var(--accent-soft); border-color: var(--stone); color: #ffffff; }
+#deckview .flash.back .hint { color: #ffffff; }
+#deckview .hero .ring-wrap { background: #3f7aa3; }  /* a deeper Stone blue so white text stays readable */
+#deckview .hero .ring-wrap, #deckview .hero .ring-wrap .ring-cap { color: #ffffff; }
+#deckview .hero .ring .ring-bg { stroke: rgba(255, 255, 255, .25); }
+#deckview .hero .ring .ring-fg { stroke: #ffffff; }
+
 /* ---------- Base ---------- */
 * { box-sizing: border-box; }
 html, body { margin: 0; }
