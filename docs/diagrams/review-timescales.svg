@@ -1,26 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 216" width="760" height="216" role="img" aria-labelledby="t d"><title id="t">Security review timescales</title><desc id="d">A timeline of physical security reviews. Daily: check doors, alarms and restricted areas. Monthly: review access logs, security passes and CCTV. Every 6 months: check staff access and remove what isn&#x27;t needed. Annually: a full physical security audit. After an incident: review immediately and improve.</desc><style>
-.bg{fill:#ffffff}
-.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
-.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#03203c}
-.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#4f6478}
-.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#03203c}
+.bg{fill:#0a2b4b}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
 .h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
 .w{fill:#ffffff}
-.box{fill:#f5f8fb;stroke:#b9cad8;stroke-width:1.5}
-.acc{fill:#e7f0f7;stroke:#2b6a96;stroke-width:1.5}
-.bad{fill:#fdecec;stroke:#eb2f31;stroke-width:1.5}
-.good{fill:#e1f3e8;stroke:#1d7a45;stroke-width:1.5}
-.amb{fill:#fbf0dc;stroke:#a8650a;stroke-width:1.5}
-.dim{fill:#eef3f7;stroke:#cddbe7;stroke-width:1.5}
-.solid-acc{fill:#2b6a96}.solid-bad{fill:#eb2f31}.solid-good{fill:#1d7a45}.solid-amb{fill:#a8650a}.solid-ink{fill:#03203c}
-.ln{stroke:#4f6478;stroke-width:2;fill:none}
-.ln-acc{stroke:#2b6a96;stroke-width:2.2;fill:none}
-.ln-bad{stroke:#eb2f31;stroke-width:2.2;fill:none}
-.ln-good{stroke:#1d7a45;stroke-width:2.2;fill:none}
+.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
+.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
+.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
+.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
+.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
+.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
+.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
+.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
+.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
+.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
 .dash{stroke-dasharray:6 5}
-.tx-acc{fill:#2b6a96}.tx-bad{fill:#d4282a}.tx-good{fill:#1d7a45}.tx-amb{fill:#a8650a}
-.ic{fill:none;stroke:#03203c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-bad{fill:none;stroke:#eb2f31;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ic-acc{fill:none;stroke:#2b6a96;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk-ln{fill:#4f6478}.mk-acc{fill:#2b6a96}.mk-bad{fill:#eb2f31}.mk-good{fill:#1d7a45}
+.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
+.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
 </style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="216" rx="16"/><text x="24" y="32" class="h" text-anchor="start">SECURITY REVIEWS: SUGGESTED TIMESCALES</text><path d="M40 96 H720" class="ln-acc"/><circle cx="100" cy="96" r="10" class="solid-acc"/><text x="100" y="70" class="tb" text-anchor="middle">Daily</text><text x="100" y="128" class="s" text-anchor="middle">Doors, alarms and</text><text x="100" y="146" class="s" text-anchor="middle">restricted areas</text><circle cx="270" cy="96" r="10" class="solid-acc"/><text x="270" y="70" class="tb" text-anchor="middle">Monthly</text><text x="270" y="128" class="s" text-anchor="middle">Access logs,</text><text x="270" y="146" class="s" text-anchor="middle">passes and CCTV</text><circle cx="440" cy="96" r="10" class="solid-acc"/><text x="440" y="70" class="tb" text-anchor="middle">Every 6 months</text><text x="440" y="128" class="s" text-anchor="middle">Staff access: remove</text><text x="440" y="146" class="s" text-anchor="middle">what isn&#x27;t needed</text><circle cx="610" cy="96" r="10" class="solid-acc"/><text x="610" y="70" class="tb" text-anchor="middle">Annually</text><text x="610" y="128" class="s" text-anchor="middle">Full physical</text><text x="610" y="146" class="s" text-anchor="middle">security audit</text><rect x="196" y="164" width="368" height="40" rx="10" class="bad"/><text x="380" y="189" class="s" text-anchor="middle">After an incident: review immediately and improve</text></svg>

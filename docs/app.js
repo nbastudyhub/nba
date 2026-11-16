@@ -316,7 +316,6 @@ function exTotal() {
 let view = 'lessons';
 function showView(v) {
   view = v;
-  document.body.dataset.view = v; // the lesson page is white below the navy lesson list (style.css)
   $('deckview').classList.toggle('hidden', v !== 'lessons');
   $('shelf').classList.toggle('hidden', v !== 'lessons');
   $('shelf-head').classList.toggle('hidden', v !== 'lessons');
