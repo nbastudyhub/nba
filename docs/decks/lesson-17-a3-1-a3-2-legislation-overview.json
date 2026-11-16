@@ -1,0 +1,662 @@
+{
+ "id": "lesson-17-a3-1-a3-2-legislation-overview",
+ "title": "Lesson 17 - A3.1-A3.2 Legislation Overview",
+ "code": "IT · Unit 2 · A3.1–A3.2",
+ "subject": "Information Technology",
+ "added": "2026-11-16",
+ "bigQuestion": "How does the law protect our data and computer systems?",
+ "sections": [
+  {
+   "heading": "Flying start (warm-up)",
+   "text": "Retrieval from A2, then think ahead. Try each one before reading the answer.",
+   "points": [
+    "1. What is meant by due diligence? Taking reasonable care and checks before trusting something, e.g. checking a supplier's security or getting an independent review",
+    "2. Which certification is needed to handle payment card data? PCI DSS (Payment Card Industry Data Security Standard)",
+    "3. Name the three passive risk management measures. Risk acceptance, risk avoidance and risk transfer (check against your A2 notes)",
+    "4. Why must a penetration test always be authorised? Without permission, testing someone's system is unauthorised access, which is a crime",
+    "5. Two examples of personal data your school holds about you? E.g. your name, home address, date of birth, photo or medical notes",
+    "Think ahead: someone who breaks into a computer system that isn't theirs is committing a crime under the Computer Misuse Act 1990",
+    "Today's focus: why we need cyber security laws, UK GDPR (A3.1.1), the Computer Misuse Act 1990 (A3.1.2) and the four areas the laws apply to (A3.2.1–A3.2.4). Next: A3.3 legal responsibilities"
+   ]
+  },
+  {
+   "heading": "Personally identifying information (PII)",
+   "text": "PII is any information that can identify a living person, on its own or combined with other information. UK GDPR says organisations must protect PII and justify every use of it.",
+   "points": [
+    "Examples: name, home address, email, phone number, National Insurance number, bank details, photos, biometric data, IP address",
+    "Why is name + date of birth + postcode more dangerous together than alone? Together they can be used to steal someone's identity"
+   ]
+  },
+  {
+   "heading": "Why do we need cyber security laws?",
+   "points": [
+    "Computers and data run banking, healthcare, shopping and government",
+    "Without rules, little stops organisations misusing personal data",
+    "Laws set duties for organisations and rights for individuals",
+    "Courts can act, and every organisation meets the same standard",
+    "Think: should a global tech firm and a small local shop follow the same laws? The same standard protects everyone, but a small shop has far less money, staff and expertise to meet it"
+   ]
+  },
+  {
+   "heading": "UK GDPR (A3.1.1)",
+   "text": "UK GDPR is the UK's main law on how personal data is collected, stored, used and shared, whether on paper, on a server or in the cloud. It is enforced by the ICO, with fines up to £17.5m or 4% of global turnover. The Data Protection Act 2018 works alongside it.",
+   "table": {
+    "head": [
+     "Duties on organisations",
+     "Rights of individuals"
+    ],
+    "rows": [
+     [
+      "Keep personal data secure",
+      "See the data held about them"
+     ],
+     [
+      "Only collect what is needed",
+      "Have wrong data corrected"
+     ],
+     [
+      "Keep it no longer than needed",
+      "Have data deleted when it's no longer needed"
+     ],
+     [
+      "Justify every use of the data",
+      ""
+     ]
+    ]
+   },
+   "points": [
+    "Duty = what the ORGANISATION must do. Right = what the PERSON can ask for"
+   ]
+  },
+  {
+   "heading": "Computer Misuse Act 1990 (A3.1.2)",
+   "text": "The CMA is the main UK law on unauthorised access to computers and data. A crime can happen even if nothing is stolen or damaged. The four offences match sections 1, 2, 3 and 3A of the Act.",
+   "table": {
+    "head": [
+     "Offence",
+     "What it means"
+    ],
+    "rows": [
+     [
+      "1. Unauthorised access",
+      "Getting into a system or data without permission"
+     ],
+     [
+      "2. Access with intent",
+      "Getting in to commit a further crime, e.g. fraud"
+     ],
+     [
+      "3. Modification",
+      "Changing, deleting or corrupting data without permission"
+     ],
+     [
+      "4. Hacking tools",
+      "Making, supplying or obtaining hacking software"
+     ]
+    ]
+   }
+  },
+  {
+   "heading": "The four areas the laws apply to (A3.2)",
+   "points": [
+    "Mainly UK GDPR: Area 1, protecting data in storage and when transferred",
+    "Mainly UK GDPR: Area 2, privacy and PII (personally identifying information)",
+    "Mainly the CMA: Area 3, unauthorised access to computers and devices",
+    "Mainly the CMA: Area 4, access to and modification of data without permission",
+    "A serious incident often touches several areas at once"
+   ],
+   "diagram": {
+    "src": "diagrams/four-areas.svg",
+    "alt": "Top: the four areas cyber security laws apply to. Mainly UK GDPR: 1, protecting data in storage and when transferred; 2, privacy and personally identifying information (PII). Mainly the Computer Misuse Act: 3, unauthorised access to computers and devices; 4, access to and modification of data without permission. Bottom: one incident, two laws. A hacker breaks into a hospital's patient database, which was never encrypted, and copies records. The hacker has committed Computer Misuse Act offences. The hospital may be investigated by the ICO under UK GDPR for not protecting the data.",
+    "caption": "One incident can touch several areas, and both laws."
+   }
+  },
+  {
+   "heading": "Areas 1 and 2: protecting data and PII",
+   "text": "Area 1 (storage and transfer): UK GDPR requires appropriate technical and organisational measures.",
+   "points": [
+    "Storage: encrypt databases",
+    "Transfer: use HTTPS or a VPN",
+    "Area 2 (privacy and PII): organisations must justify every use of the PII they hold"
+   ]
+  },
+  {
+   "heading": "Areas 3 and 4: unauthorised access and change",
+   "points": [
+    "Area 3 (access to computers and devices): logging in to someone else's account or a server is a crime, even if no data is taken",
+    "Having your own login doesn't mean you can access everything",
+    "Area 4 (access to and modification of data): changing, deleting or planting data, e.g. altering exam results or installing ransomware",
+    "Area 4 may also breach UK GDPR if PII is involved"
+   ]
+  },
+  {
+   "heading": "Case study: how the two laws work together",
+   "text": "A hacker breaks into a hospital's patient database from outside. They copy thousands of confidential patient records. The database had never been encrypted. Two different parties could face consequences.",
+   "table": {
+    "head": [
+     "",
+     "UK GDPR",
+     "Computer Misuse Act 1990"
+    ],
+    "rows": [
+     [
+      "Who?",
+      "Organisations that hold personal data",
+      "Individuals who misuse systems"
+     ],
+     [
+      "Focus",
+      "How data is protected and used",
+      "Unauthorised access and modification"
+     ],
+     [
+      "Hospital case",
+      "The hospital may be investigated by the ICO for not encrypting",
+      "The hacker has committed CMA offences"
+     ]
+    ]
+   },
+   "points": [
+    "Ransomware: the attacker breaks the CMA; the organisation may breach UK GDPR if it didn't protect the data"
+   ]
+  },
+  {
+   "heading": "Plenary: UK GDPR, Computer Misuse Act, or both?",
+   "table": {
+    "head": [
+     "Scenario",
+     "Law",
+     "Why"
+    ],
+    "rows": [
+     [
+      "A hospital stores patient records in an unencrypted database",
+      "UK GDPR",
+      "Failing to protect data in storage"
+     ],
+     [
+      "An employee logs in to a colleague's account to read their emails",
+      "Computer Misuse Act",
+      "Unauthorised access"
+     ],
+     [
+      "A hacker breaks in and deletes thousands of customer records",
+      "Both",
+      "Hacker: CMA. Company: GDPR if data was poorly protected"
+     ],
+     [
+      "A website keeps customers' passport numbers for years with no reason",
+      "UK GDPR",
+      "Keeping data longer than needed"
+     ],
+     [
+      "A student downloads a password-cracking tool",
+      "Computer Misuse Act",
+      "Obtaining hacking tools"
+     ]
+    ]
+   },
+   "points": [
+    "Command words: Identify = pick from the information. Explain = point + linked reason. Describe = give an account"
+   ]
+  }
+ ],
+ "keyIdea": "UK GDPR controls how organisations protect and use personal data (duties for organisations, rights for individuals, enforced by the ICO). The Computer Misuse Act 1990 makes unauthorised access, access with intent, modification and hacking tools crimes for individuals. One incident can involve both: the attacker breaks the CMA, and the organisation may breach UK GDPR if it didn't protect the data.",
+ "flashcards": [
+  [
+   "PII (personally identifying information)",
+   "Any information that can identify a living person, on its own or combined with other information"
+  ],
+  [
+   "Examples of PII",
+   "Name, home address, email, phone number, National Insurance number, bank details, photos, biometric data, IP address"
+  ],
+  [
+   "Why combined PII is dangerous",
+   "Name + date of birth + postcode together can be used to steal someone's identity"
+  ],
+  [
+   "Why we need cyber security laws",
+   "They set duties for organisations and rights for individuals, let courts act, and make every organisation meet the same standard"
+  ],
+  [
+   "UK GDPR",
+   "The UK's main law on how personal data is collected, stored, used and shared, on paper, on a server or in the cloud"
+  ],
+  [
+   "Data Protection Act 2018",
+   "The UK law that works alongside UK GDPR"
+  ],
+  [
+   "ICO",
+   "The Information Commissioner's Office: enforces UK GDPR, with fines up to £17.5m or 4% of global turnover"
+  ],
+  [
+   "GDPR duties on organisations",
+   "Keep personal data secure, only collect what is needed, keep it no longer than needed, justify every use of it"
+  ],
+  [
+   "GDPR rights of individuals",
+   "See the data held about them, have wrong data corrected, have data deleted when it's no longer needed"
+  ],
+  [
+   "Computer Misuse Act 1990 (CMA)",
+   "The main UK law on unauthorised access to computers and data. A crime can happen even if nothing is stolen or damaged"
+  ],
+  [
+   "CMA: unauthorised access",
+   "Getting into a system or data without permission"
+  ],
+  [
+   "CMA: access with intent",
+   "Getting in to commit a further crime, e.g. fraud"
+  ],
+  [
+   "CMA: modification",
+   "Changing, deleting or corrupting data without permission"
+  ],
+  [
+   "CMA: hacking tools",
+   "Making, supplying or obtaining hacking software"
+  ],
+  [
+   "Area 1: protecting data",
+   "Data in storage and when transferred (mainly UK GDPR), e.g. encrypt databases, use HTTPS or a VPN"
+  ],
+  [
+   "Area 2: privacy and PII",
+   "Organisations must justify every use of the PII they hold (mainly UK GDPR)"
+  ],
+  [
+   "Area 3: unauthorised access",
+   "Accessing computers and devices without permission (mainly CMA). A crime even if no data is taken"
+  ],
+  [
+   "Area 4: access and modification",
+   "Changing, deleting or planting data without permission, e.g. altering exam results or installing ransomware (mainly CMA)"
+  ],
+  [
+   "Technical and organisational measures",
+   "What UK GDPR requires to protect data, e.g. encryption, secure connections and clear procedures"
+  ],
+  [
+   "Who each law targets",
+   "UK GDPR: organisations that hold personal data. CMA: individuals who misuse systems"
+  ],
+  [
+   "Ransomware and the law",
+   "The attacker breaks the CMA; the organisation may breach UK GDPR if it didn't protect the data"
+  ]
+ ],
+ "quiz": [
+  {
+   "q": "What is PII?",
+   "o": [
+    "Any data stored on a computer",
+    "Any information that can identify a living person, alone or combined with other information",
+    "Only someone's name and address",
+    "Information about a company's profits"
+   ],
+   "a": 1,
+   "e": "PII is personally identifying information about a living person, on its own or combined."
+  },
+  {
+   "q": "Why is name + date of birth + postcode more dangerous together than alone?",
+   "o": [
+    "Together they can be used to steal someone's identity",
+    "They take up more storage",
+    "They are easier to encrypt",
+    "They are not PII"
+   ],
+   "a": 0,
+   "e": "Combined, they're enough to impersonate someone."
+  },
+  {
+   "q": "Who enforces UK GDPR?",
+   "o": [
+    "The police",
+    "The NCSC",
+    "The ICO",
+    "The courts only"
+   ],
+   "a": 2,
+   "e": "The Information Commissioner's Office enforces UK GDPR."
+  },
+  {
+   "q": "What is the maximum UK GDPR fine?",
+   "o": [
+    "£1m",
+    "£17.5m or 4% of global turnover",
+    "£500,000",
+    "10% of profit"
+   ],
+   "a": 1,
+   "e": "Up to £17.5m or 4% of global turnover."
+  },
+  {
+   "q": "Which of these is a RIGHT of individuals under UK GDPR, not a duty on organisations?",
+   "o": [
+    "Keep personal data secure",
+    "Only collect what is needed",
+    "Justify every use of the data",
+    "Have wrong data corrected"
+   ],
+   "a": 3,
+   "e": "Having data corrected is something a person can ask for. The others are duties."
+  },
+  {
+   "q": "Which of these is a DUTY on organisations under UK GDPR?",
+   "o": [
+    "Keep data no longer than needed",
+    "See the data held about you",
+    "Have data deleted",
+    "Have wrong data corrected"
+   ],
+   "a": 0,
+   "e": "Not keeping data too long is a duty. The others are individuals' rights."
+  },
+  {
+   "q": "Under the CMA, can it be a crime to get into a system even if nothing is stolen or damaged?",
+   "o": [
+    "No, only if data is stolen",
+    "No, only if data is damaged",
+    "Yes, unauthorised access alone is a crime",
+    "Only if the system belongs to the government"
+   ],
+   "a": 2,
+   "e": "Getting in without permission is an offence on its own."
+  },
+  {
+   "q": "Someone gets into a bank's system to commit fraud. Which CMA offence?",
+   "o": [
+    "Hacking tools",
+    "Access with intent",
+    "Modification",
+    "None"
+   ],
+   "a": 1,
+   "e": "Getting in to commit a further crime, like fraud, is access with intent."
+  },
+  {
+   "q": "Someone changes a student's exam results without permission. Which CMA offence?",
+   "o": [
+    "Modification",
+    "Hacking tools",
+    "Access with intent",
+    "Unauthorised access only"
+   ],
+   "a": 0,
+   "e": "Changing data without permission is modification."
+  },
+  {
+   "q": "A student downloads a password-cracking tool. Which law is involved?",
+   "o": [
+    "UK GDPR",
+    "Neither",
+    "Data Protection Act only",
+    "Computer Misuse Act"
+   ],
+   "a": 3,
+   "e": "Obtaining hacking tools is a CMA offence."
+  },
+  {
+   "q": "Which two areas does UK GDPR mainly apply to?",
+   "o": [
+    "Unauthorised access and modification",
+    "Protecting data (storage and transfer) and privacy and PII",
+    "Hacking tools and fraud",
+    "Hardware and software"
+   ],
+   "a": 1,
+   "e": "Areas 1 and 2 are mainly UK GDPR; areas 3 and 4 are mainly the CMA."
+  },
+  {
+   "q": "How should data be protected while it is being transferred?",
+   "o": [
+    "Use HTTPS or a VPN",
+    "Print it out",
+    "Store it on a USB stick",
+    "Send it by plain email"
+   ],
+   "a": 0,
+   "e": "HTTPS or a VPN encrypts it, so it can't be read if intercepted."
+  },
+  {
+   "q": "An employee has their own login. Does that mean they can access everything?",
+   "o": [
+    "Yes, any login gives full access",
+    "Yes, if they work there",
+    "No, accessing areas they're not permitted to use is still unauthorised",
+    "Only during work hours"
+   ],
+   "a": 2,
+   "e": "Having your own login doesn't mean you can access everything."
+  },
+  {
+   "q": "In the hospital breach, which law applies to the HOSPITAL that never encrypted its database?",
+   "o": [
+    "Computer Misuse Act",
+    "UK GDPR (it may be investigated by the ICO)",
+    "Neither",
+    "Only the hacker faces consequences"
+   ],
+   "a": 1,
+   "e": "The hospital failed to protect data in storage, so it may be investigated under UK GDPR."
+  },
+  {
+   "q": "Who does the Computer Misuse Act mainly target?",
+   "o": [
+    "Individuals who misuse systems",
+    "Organisations that hold personal data",
+    "The ICO",
+    "Customers"
+   ],
+   "a": 0,
+   "e": "The CMA targets individuals who misuse systems; UK GDPR targets organisations holding personal data."
+  }
+ ],
+ "apply": {
+  "title": "UK GDPR, Computer Misuse Act, or both?",
+  "intro": "Decide which law applies to each scenario. Think about who did what: an organisation handling data (GDPR) or a person misusing a system (CMA).",
+  "items": [
+   {
+    "task": "A hospital stores patient records in an unencrypted database.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 0,
+    "e": "Failing to protect data in storage: UK GDPR."
+   },
+   {
+    "task": "An employee logs in to a colleague's account to read their emails.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 1,
+    "e": "Unauthorised access: CMA."
+   },
+   {
+    "task": "A hacker breaks in and deletes thousands of customer records that were poorly protected.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 2,
+    "e": "Hacker: CMA. Company: GDPR, because the data was poorly protected."
+   },
+   {
+    "task": "A website keeps customers' passport numbers for years with no reason.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 0,
+    "e": "Keeping data longer than needed: UK GDPR."
+   },
+   {
+    "task": "A student downloads a password-cracking tool.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 1,
+    "e": "Obtaining hacking tools: CMA."
+   },
+   {
+    "task": "A shop collects customers' National Insurance numbers just to send a receipt.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 0,
+    "e": "Collecting more than is needed: UK GDPR."
+   },
+   {
+    "task": "A student logs in to the school system with a teacher's password and changes their own grades.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 1,
+    "e": "Unauthorised access and modification: CMA."
+   },
+   {
+    "task": "Ransomware encrypts a company's customer database, which had no backups or security updates.",
+    "o": [
+     "UK GDPR",
+     "Computer Misuse Act",
+     "Both"
+    ],
+    "a": 2,
+    "e": "Attacker: CMA. Company: may breach UK GDPR for not protecting the data."
+   },
+   {
+    "task": "A company sends customer records to a partner over plain, unencrypted email. Which area is this?",
+    "o": [
+     "Area 1: protecting data in storage and transfer",
+     "Area 3: unauthorised access",
+     "Area 4: access and modification",
+     "None"
+    ],
+    "a": 0,
+    "e": "Data in transfer isn't protected. It should use HTTPS or a VPN."
+   },
+   {
+    "task": "Someone sells hacking software online. Which CMA offence?",
+    "o": [
+     "Access with intent",
+     "Modification",
+     "Hacking tools",
+     "Unauthorised access"
+    ],
+    "a": 2,
+    "e": "Making, supplying or obtaining hacking software."
+   }
+  ]
+ },
+ "exam": [
+  {
+   "sc": "Oakridge Dental stores patients' names, addresses, dates of birth and medical notes. It sends records to a hospital.",
+   "q": "1. Identify three items of PII that Oakridge holds.",
+   "m": 3,
+   "pts": [
+    "Names",
+    "Addresses",
+    "Dates of birth / medical notes (any three, 1 mark each)"
+   ],
+   "tip": "\"Identify\" = pick from the information given. Don't add items that aren't in the scenario."
+  },
+  {
+   "sc": "Oakridge Dental stores patients' names, addresses, dates of birth and medical notes. It sends records to a hospital.",
+   "q": "2. Explain one way Oakridge could protect patient data while it is sent to the hospital.",
+   "m": 2,
+   "pts": [
+    "A method, e.g. encrypt the data or use a secure connection (HTTPS/VPN)",
+    "Why: if it is intercepted it can't be read"
+   ],
+   "tip": "Method + linked reason. Make sure it's about data being SENT, not stored."
+  },
+  {
+   "sc": "",
+   "q": "3. Describe the purpose of the Computer Misuse Act 1990.",
+   "m": 3,
+   "pts": [
+    "Makes it a crime to access computers or data without permission",
+    "Makes it a crime to change or delete data without permission",
+    "Makes it a crime to make or supply hacking tools"
+   ],
+   "tip": "Give an account of three different things it makes illegal."
+  },
+  {
+   "sc": "",
+   "q": "4. Explain why one ransomware attack could involve both UK GDPR and the Computer Misuse Act.",
+   "m": 2,
+   "pts": [
+    "The attacker breaks the CMA by accessing and modifying data without permission",
+    "The organisation may breach UK GDPR if it didn't protect the data"
+   ],
+   "tip": "Name each party and the law that applies to them."
+  },
+  {
+   "sc": "",
+   "q": "5. Explain why a person's name, date of birth and postcode are more dangerous together than alone.",
+   "m": 2,
+   "pts": [
+    "Together they can identify one specific person",
+    "so they can be used to steal that person's identity"
+   ],
+   "tip": "Link the combination to identity theft."
+  },
+  {
+   "sc": "",
+   "q": "6. State one duty UK GDPR places on organisations and one right it gives individuals.",
+   "m": 2,
+   "pts": [
+    "Duty, e.g. keep personal data secure / only collect what is needed / keep it no longer than needed / justify every use",
+    "Right, e.g. see the data held about them / have wrong data corrected / have it deleted"
+   ],
+   "tip": "A duty is what the organisation must do; a right is what the person can ask for."
+  },
+  {
+   "sc": "A hacker breaks into a hospital's patient database from outside and copies thousands of confidential patient records. The database had never been encrypted.",
+   "q": "7. Explain which law applies to each party in this incident.",
+   "m": 4,
+   "pts": [
+    "The hacker has broken the Computer Misuse Act",
+    "because they accessed the database and copied records without permission",
+    "The hospital may be investigated by the ICO under UK GDPR",
+    "because it never encrypted the database, so it failed to keep personal data secure"
+   ],
+   "tip": "Two parties, two laws: give each one a point and a linked reason from the scenario."
+  },
+  {
+   "sc": "",
+   "q": "8. Explain why cyber security laws are needed.",
+   "m": 2,
+   "pts": [
+    "Computers and data run banking, healthcare, shopping and government / without rules little stops organisations misusing data",
+    "so laws set duties and rights that courts can enforce, and every organisation meets the same standard"
+   ],
+   "tip": "Give the problem, then what the law does about it."
+  },
+  {
+   "sc": "Jordan works in a company's sales team and has their own login. They use it to open the HR folder and read colleagues' salary details, which they are not allowed to see.",
+   "q": "9. Explain whether Jordan has committed an offence.",
+   "m": 2,
+   "pts": [
+    "Yes, unauthorised access under the Computer Misuse Act",
+    "because having their own login doesn't give permission to access the HR data, even if nothing is changed or taken"
+   ],
+   "tip": "Remember: a crime can happen even if nothing is stolen or damaged."
+  }
+ ]
+}

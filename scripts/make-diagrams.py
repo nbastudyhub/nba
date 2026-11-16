@@ -416,6 +416,27 @@ def build():
         "criminal offence: unauthorised access, access to commit a further crime, impairing a computer or data, or making or supplying hacking tools. "
         "The organisation must take due care to stop unauthorised access, for example MFA, patching and disabling leavers' accounts.", b)
 
+    # ---------- Lesson 17: the four areas + one incident, two laws ----------
+    b = T(24, 32, "THE FOUR AREAS THE LAWS APPLY TO", "h", "start")
+    b += T(196, 60, "Mainly UK GDPR", "t") + T(564, 60, "Mainly the Computer Misuse Act", "t")
+    for x, h, a, c, cls in [(24, "1 Protecting data", "in storage and", "when transferred", "acc"), (200, "2 Privacy and PII", "personally identifying", "information", "acc"),
+                            (392, "3 Access", "unauthorised access to", "computers and devices", "amb"), (568, "4 Modification", "accessing and changing", "data without permission", "amb")]:
+        b += R(x, 72, 168, 84, cls) + T(x + 84, 98, h, "t") + T(x + 84, 120, a, "s") + T(x + 84, 138, c, "s")
+    b += P("M380 46 V158", "ln dash")
+    b += T(24, 182, "ONE INCIDENT, TWO LAWS: A HOSPITAL DATA BREACH", "h", "start")
+    b += person(70, 236, "ic-bad") + T(70, 274, "Hacker", "s")
+    b += A(100, 232, 300, 232, "bad") + T(200, 222, "breaks in, copies records", "s")
+    b += R(306, 196, 148, 84, "box") + server(352, 236) + T(410, 230, "patient", "s") + T(410, 248, "database", "s") + T(380, 272, "never encrypted", "s")
+    b += R(500, 196, 236, 38, "bad") + T(618, 220, "Hacker: CMA offences", "t")
+    b += R(500, 242, 236, 38, "acc") + T(618, 266, "Hospital: ICO / UK GDPR", "t")
+    b += A(456, 215, 496, 215, "bad") + A(456, 261, 496, 261, "acc")
+    svg("four-areas", 760, 296, "The four areas the laws apply to",
+        "Top: the four areas cyber security laws apply to. Mainly UK GDPR: 1, protecting data in storage and when transferred; 2, privacy and "
+        "personally identifying information (PII). Mainly the Computer Misuse Act: 3, unauthorised access to computers and devices; 4, access to and "
+        "modification of data without permission. Bottom: one incident, two laws. A hacker breaks into a hospital's patient database, which was never "
+        "encrypted, and copies records. The hacker has committed Computer Misuse Act offences. The hospital may be investigated by the ICO under UK GDPR "
+        "for not protecting the data.", b)
+
 
 if __name__ == "__main__":
     build()

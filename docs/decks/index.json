@@ -175,6 +175,17 @@
    "quiz": 17,
    "apply": 12,
    "marks": 25
+  },
+  {
+   "id": "lesson-17-a3-1-a3-2-legislation-overview",
+   "title": "Lesson 17 - A3.1-A3.2 Legislation Overview",
+   "code": "IT · Unit 2 · A3.1–A3.2",
+   "subject": "Information Technology",
+   "added": "2026-11-16",
+   "cards": 21,
+   "quiz": 15,
+   "apply": 10,
+   "marks": 22
   }
  ],
  "diagrams": [
@@ -184,6 +195,7 @@
   "diagrams/dns-spoofing.svg",
   "diagrams/dos-vs-ddos.svg",
   "diagrams/firewall-ports.svg",
+  "diagrams/four-areas.svg",
   "diagrams/four-losses.svg",
   "diagrams/mantrap.svg",
   "diagrams/mobile-lifecycle.svg",
