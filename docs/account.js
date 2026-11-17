@@ -167,7 +167,10 @@
           ${mode === 'reset' ? `<label class="ac-label" for="ac-rec">Recovery code</label>
           <input class="ac-input" id="ac-rec" autocomplete="off" autocapitalize="characters" placeholder="XXXX-XXXX-XXXX-XXXX" required>` : ''}
           <label class="ac-label" for="ac-pw">${mode === 'reset' ? 'New password' : 'Password'}</label>
-          <input class="ac-input" id="ac-pw" type="password" autocomplete="${mode === 'login' ? 'current-password' : 'new-password'}" minlength="${mode === 'login' ? 1 : 8}" maxlength="128" required>
+          <div class="pw-wrap">
+            <input class="ac-input" id="ac-pw" type="password" autocomplete="${mode === 'login' ? 'current-password' : 'new-password'}" minlength="${mode === 'login' ? 1 : 8}" maxlength="128" required>
+            <button type="button" class="pw-toggle" id="ac-pw-show" aria-controls="ac-pw" aria-pressed="false" aria-label="Show password">Show</button>
+          </div>
           ${mode === 'login' ? '' : '<p class="muted small-note">Username: 3 to 20 letters, numbers or _. Password: at least 8 characters.</p>'}
           <div class="row"><button class="btn" type="submit" id="ac-submit">${{ login: 'Sign in', signup: 'Create account', reset: 'Set new password' }[mode]}</button></div>
         </form></div>${privacy}`;
@@ -183,6 +186,15 @@
     on('ac-saved', () => { recovery = null; render(); });
     on('ac-syncnow', () => fullSync());
     on('ac-logout', logout);
+    // Show / hide the password so people can check what they typed (especially when creating an account).
+    on('ac-pw-show', () => {
+      const pw = $('ac-pw'), btn = $('ac-pw-show'), show = pw.type === 'password';
+      pw.type = show ? 'text' : 'password';
+      btn.textContent = show ? 'Hide' : 'Show';
+      btn.setAttribute('aria-pressed', String(show));
+      btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      pw.focus();
+    });
     const form = $('ac-form');
     if (form) form.onsubmit = (e) => { e.preventDefault(); submit(); };
     const del = $('ac-del-form');
