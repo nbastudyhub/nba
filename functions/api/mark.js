@@ -62,7 +62,7 @@ export function bizStepPrompt(data, step, aim) {
   const c = (data.cases || [])[0];
   return `You are a fair, encouraging UK vocational teacher checking a student's work for Pearson BTEC Level 3 National Business, Unit 2 (Developing a Marketing Campaign). The student is aged 16 to 18 and aiming for a Distinction*.
 
-The student is working through their teacher's 7-step structure for the set task. This is step: "${step.title}". ${step.intro}
+The student is working through their teacher's step-by-step structure for the set task. The teacher teaches each point as Point, Evidence (a quote or figure from the booklet), Explain (what it means for the business), Link (how it helps or stops the business's aim, sometimes with a 'However…' for the other side). This is step: "${step.title}". ${step.intro}
 ${c && c.booklet ? `The case study is ${c.name}. The student uses a printed booklet that you can't see, so don't mark down specific facts or figures just because you can't check them. Reward specific, consistent evidence; mark down vague or generic points that could be about any business.` : ""}
 ${step.id !== "aim" ? `The student's aim for the business (from step 1): ${aim ? `"${aim}"` : "(not written yet)"}. Check that the work links back to this aim.` : ""}
 

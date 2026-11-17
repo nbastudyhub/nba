@@ -1,7 +1,7 @@
 {
  "title": "Business: exam writing",
  "course": "Pearson BTEC Level 3 National Business · Unit 2 set task (Technective)",
- "note": "These 7 steps follow your teacher's structure. The site doesn't copy the Technective booklet: use your own copy for the facts and figures.",
+ "note": "These steps follow your teacher's structure and examples (Point, Evidence, Explain, Link). The site doesn't copy the Technective booklet: use your own copy for the facts and figures.",
  "cases": [
   {
    "id": "technective",
@@ -234,7 +234,13 @@
     "The aim comes from the booklet, not made up",
     "Says where in the booklet the aim comes from"
    ],
-   "tip": "Keep the aim broad (what they want overall). The SMART objectives in step 2 are the specific targets."
+   "tip": "Keep the aim broad (what they want overall). The SMART objectives in step 2 are the specific targets.",
+   "example": {
+    "title": "Your teacher's example (Knights of Cocoa, a different case study)",
+    "text": [
+     "The aim of the business is to increase sales."
+    ]
+   }
   },
   {
    "id": "smart",
@@ -248,33 +254,51 @@
      "group": "Objective 1"
     },
     {
+     "k": "t1",
+     "label": "Which trend it links to",
+     "hint": "e.g. the trend for … (from step 3)",
+     "group": "Objective 1"
+    },
+    {
      "k": "l1",
-     "label": "How it links to the aim",
-     "hint": "This helps achieve the aim because…",
+     "label": "How it helps the aim",
+     "hint": "This would help achieve the aim of … because …",
      "group": "Objective 1"
     },
     {
      "k": "o2",
      "label": "The objective",
-     "hint": "A different target, e.g. sales, awareness or social media",
+     "hint": "e.g. To … by …% / to … within … months",
+     "group": "Objective 2"
+    },
+    {
+     "k": "t2",
+     "label": "Which trend it links to",
+     "hint": "e.g. the trend for … (from step 3)",
      "group": "Objective 2"
     },
     {
      "k": "l2",
-     "label": "How it links to the aim",
-     "hint": "This helps achieve the aim because…",
+     "label": "How it helps the aim",
+     "hint": "This would help achieve the aim of … because …",
      "group": "Objective 2"
     },
     {
      "k": "o3",
      "label": "The objective",
-     "hint": "A different target again",
+     "hint": "e.g. To … by …% / to … within … months",
+     "group": "Objective 3"
+    },
+    {
+     "k": "t3",
+     "label": "Which trend it links to",
+     "hint": "e.g. the trend for … (from step 3)",
      "group": "Objective 3"
     },
     {
      "k": "l3",
-     "label": "How it links to the aim",
-     "hint": "This helps achieve the aim because…",
+     "label": "How it helps the aim",
+     "hint": "This would help achieve the aim of … because …",
      "group": "Objective 3"
     }
    ],
@@ -284,111 +308,158 @@
     "Each is Measurable: includes a number or percentage",
     "Each is Achievable and Realistic for the budget and the market",
     "Each is Time-bound: has a deadline within the campaign",
-    "Each clearly links back to the aim"
+    "Each is linked to a trend in the market",
+    "Each explains how it helps achieve the aim"
    ],
-   "tip": "Check every objective against all five letters. A number and a deadline are the easiest marks to lose."
+   "tip": "Check every objective against all five letters. A number and a deadline are the easiest marks to lose.",
+   "example": {
+    "title": "Your teacher's example (Knights of Cocoa, a different case study)",
+    "text": [
+     "1 objective that Knights of Cocoa could use is to create a new sugar-free chocolate bar within the next 6 months. This would help them to achieve the aim of increasing sales, because currently sugar-free chocolate is trending within the market and competitors are offering the same products. If KOC releases a sugar-free chocolate bar it is likely that customers will purchase this, which will in turn increase their sales.",
+     "1 objective that they could use is to advertise their website on Instagram, resulting in 10% more sales in 2 weeks.",
+     "Both objectives are linked to trends within the market."
+    ],
+    "note": "To push for D*, make every objective fully SMART: the first example has a deadline but no number to measure it by."
+   }
   },
   {
    "id": "trends",
    "title": "Find 2 trends and link them to the aim",
-   "intro": "Find two trends in the smartwatch market from the booklet, give the evidence, and explain how each one affects Technective's aim.",
+   "intro": "Find two trends in the smartwatch market. For each one use Point, Evidence (quoted from the booklet), Explain, Link to the aim.",
    "fields": [
     {
-     "k": "t1",
-     "label": "The trend",
-     "hint": "What is changing in the market?",
+     "k": "p1",
+     "label": "Point: the trend",
+     "hint": "One trend in the smartwatch market",
      "group": "Trend 1"
     },
     {
      "k": "e1",
      "label": "Evidence",
-     "hint": "A figure or fact from the booklet",
+     "hint": "Quote it from the booklet, e.g. 'Research shows…'",
      "group": "Trend 1"
     },
     {
-     "k": "k1",
+     "k": "x1",
+     "label": "Explain",
+     "hint": "What this means for Technective",
+     "group": "Trend 1"
+    },
+    {
+     "k": "l1",
      "label": "Link to the aim",
-     "hint": "This affects the aim because…",
+     "hint": "This will help / could stop Technective achieving the aim of … because …",
      "group": "Trend 1"
     },
     {
-     "k": "t2",
-     "label": "The trend",
-     "hint": "A different trend",
+     "k": "p2",
+     "label": "Point: the trend",
+     "hint": "One trend in the smartwatch market",
      "group": "Trend 2"
     },
     {
      "k": "e2",
      "label": "Evidence",
-     "hint": "A figure or fact from the booklet",
+     "hint": "Quote it from the booklet, e.g. 'Research shows…'",
      "group": "Trend 2"
     },
     {
-     "k": "k2",
+     "k": "x2",
+     "label": "Explain",
+     "hint": "What this means for Technective",
+     "group": "Trend 2"
+    },
+    {
+     "k": "l2",
      "label": "Link to the aim",
-     "hint": "This affects the aim because…",
+     "hint": "This will help / could stop Technective achieving the aim of … because …",
      "group": "Trend 2"
     }
    ],
    "checks": [
     "Two different trends from the booklet",
-    "Each trend is backed by evidence (a figure or fact)",
-    "Each explains how the trend affects Technective",
-    "Each links back to the aim"
+    "Each has evidence quoted from the booklet (a figure or fact)",
+    "Each explains what the trend means for Technective",
+    "Each links to the aim: this will help / could stop the aim because…"
    ],
-   "tip": "A trend is a change over time (growing, falling, shifting). Say what the trend means for Technective, not just what it is."
+   "tip": "A trend is a change over time (growing, falling, shifting). Say what the trend means for Technective, not just what it is.",
+   "example": {
+    "title": "Your teacher's example (Knights of Cocoa, a different case study)",
+    "text": [
+     "Chocolate market is increasing each year – this will help KOC achieve the aim to increase their sales because there is a larger opportunity to influence new customers each year to purchase their product, increasing sales.",
+     "More people shopping online for chocolate – this will help them achieve the aim of increasing sales because KOC can use this to their advantage and invest more into their website and advertising their website to let people know that they sell online, which in turn should increase the traffic to their website, resulting in a higher amount of sales."
+    ]
+   }
   },
   {
    "id": "competitors",
    "title": "Find 2 competitors and link them to the aim",
-   "intro": "Pick two competitors from the booklet. Describe what they do, then say whether each is a threat or an opportunity for Technective's aim.",
+   "intro": "Pick two competitors from the booklet. For each one use Point, Evidence (quoted from the booklet), Explain (threat or opportunity), Link to the aim.",
    "fields": [
     {
-     "k": "c1",
-     "label": "Name",
-     "hint": "Name",
-     "group": "Competitor 1",
-     "short": true
-    },
-    {
-     "k": "w1",
-     "label": "What they do",
-     "hint": "Products, prices, market share or marketing, with evidence",
+     "k": "p1",
+     "label": "Point: who they are and what they do",
+     "hint": "Name the competitor and what makes them a competitor",
      "group": "Competitor 1"
     },
     {
-     "k": "k1",
-     "label": "Threat or opportunity, linked to the aim",
-     "hint": "This is a threat/opportunity to the aim because…",
+     "k": "e1",
+     "label": "Evidence",
+     "hint": "Quote it from the booklet, e.g. 'Research shows…'",
      "group": "Competitor 1"
     },
     {
-     "k": "c2",
-     "label": "Name",
-     "hint": "Name",
-     "group": "Competitor 2",
-     "short": true
+     "k": "x1",
+     "label": "Explain",
+     "hint": "Why they are a threat or an opportunity for Technective",
+     "group": "Competitor 1"
     },
     {
-     "k": "w2",
-     "label": "What they do",
-     "hint": "Products, prices, market share or marketing, with evidence",
+     "k": "l1",
+     "label": "Link to the aim",
+     "hint": "This will help / could stop Technective achieving the aim of … because …",
+     "group": "Competitor 1"
+    },
+    {
+     "k": "p2",
+     "label": "Point: who they are and what they do",
+     "hint": "Name the competitor and what makes them a competitor",
      "group": "Competitor 2"
     },
     {
-     "k": "k2",
-     "label": "Threat or opportunity, linked to the aim",
-     "hint": "This is a threat/opportunity to the aim because…",
+     "k": "e2",
+     "label": "Evidence",
+     "hint": "Quote it from the booklet, e.g. 'Research shows…'",
+     "group": "Competitor 2"
+    },
+    {
+     "k": "x2",
+     "label": "Explain",
+     "hint": "Why they are a threat or an opportunity for Technective",
+     "group": "Competitor 2"
+    },
+    {
+     "k": "l2",
+     "label": "Link to the aim",
+     "hint": "This will help / could stop Technective achieving the aim of … because …",
      "group": "Competitor 2"
     }
    ],
    "checks": [
     "Two named competitors from the booklet",
-    "Specific evidence about each (products, prices, market share or marketing)",
-    "Says whether each is a threat or an opportunity for Technective, and why",
-    "Each links back to the aim"
+    "Each has evidence quoted from the booklet (products, prices, market share or marketing)",
+    "Each explains whether it is a threat or an opportunity for Technective, and why",
+    "Each links to the aim"
    ],
-   "tip": "Use numbers: prices, sales or market share. Then say what Technective can learn from, or must beat, in each competitor."
+   "tip": "Use numbers: prices, sales or market share. Then say what Technective can learn from, or must beat, in each competitor.",
+   "example": {
+    "title": "Your teacher's example (Knights of Cocoa, a different case study)",
+    "text": [
+     "Hotel Chocolat is one of the largest competitors to KOC because they operate both online and have a high presence with retail locations. This could be an issue for KOC because they have been established since 2004, therefore they have a strong customer base and market presence, which could result in KOC not being able to increase their sales because it might be difficult to compete with such a large business.",
+     "Thorntons are currently closing all of their retail locations. This could positively impact KOC because it means Thorntons have reduced their presence on the high street. If KOC choose to open further retail stores or promote their current retail stores on social media, this could increase the number of customers within those stores, which could result in an increase in sales."
+    ],
+    "note": "Notice one competitor is a threat and the other is an opportunity, and both end by linking to the aim."
+   }
   },
   {
    "id": "research",
@@ -433,49 +504,49 @@
     {
      "k": "s1",
      "label": "Strength 1",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Strengths"
     },
     {
      "k": "s2",
      "label": "Strength 2",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Strengths"
     },
     {
      "k": "w1",
      "label": "Weakness 1",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Weaknesses"
     },
     {
      "k": "w2",
      "label": "Weakness 2",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Weaknesses"
     },
     {
      "k": "o1",
      "label": "Opportunity 1",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Opportunities"
     },
     {
      "k": "o2",
      "label": "Opportunity 2",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Opportunities"
     },
     {
      "k": "t1",
      "label": "Threat 1",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Threats"
     },
     {
      "k": "t2",
      "label": "Threat 2",
-     "hint": "Point + evidence + link to the aim",
+     "hint": "Point + evidence from the booklet + explain + link to the aim",
      "group": "Threats"
     }
    ],
@@ -536,6 +607,89 @@
     "Each P links back to the aim"
    ],
    "tip": "For each P: the decision, the evidence behind it, and how it helps the aim."
+  },
+  {
+   "id": "pestle",
+   "title": "Extra: PESTLE (external influences)",
+   "intro": "Pick external factors (Political, Economic, Social, Technological, Legal, Environmental) that could affect Technective. Use Point, Evidence (quoted from the booklet), Explain, Link to the aim. Do two here; aim to cover more in the real thing.",
+   "fields": [
+    {
+     "k": "f1",
+     "label": "Which factor",
+     "hint": "e.g. Technological",
+     "group": "Factor 1",
+     "short": true
+    },
+    {
+     "k": "p1",
+     "label": "Point",
+     "hint": "One … factor which could impact Technective is …",
+     "group": "Factor 1"
+    },
+    {
+     "k": "e1",
+     "label": "Evidence",
+     "hint": "This is because '…' (quote from the booklet)",
+     "group": "Factor 1"
+    },
+    {
+     "k": "x1",
+     "label": "Explain",
+     "hint": "This could impact Technective because …",
+     "group": "Factor 1"
+    },
+    {
+     "k": "l1",
+     "label": "Link to the aim",
+     "hint": "This could help / stop Technective achieving the aim of … because …",
+     "group": "Factor 1"
+    },
+    {
+     "k": "f2",
+     "label": "Which factor",
+     "hint": "e.g. Technological",
+     "group": "Factor 2",
+     "short": true
+    },
+    {
+     "k": "p2",
+     "label": "Point",
+     "hint": "One … factor which could impact Technective is …",
+     "group": "Factor 2"
+    },
+    {
+     "k": "e2",
+     "label": "Evidence",
+     "hint": "This is because '…' (quote from the booklet)",
+     "group": "Factor 2"
+    },
+    {
+     "k": "x2",
+     "label": "Explain",
+     "hint": "This could impact Technective because …",
+     "group": "Factor 2"
+    },
+    {
+     "k": "l2",
+     "label": "Link to the aim",
+     "hint": "This could help / stop Technective achieving the aim of … because …",
+     "group": "Factor 2"
+    }
+   ],
+   "checks": [
+    "Two different PESTLE factors, each correctly named (e.g. Technological)",
+    "Each has evidence quoted from the booklet",
+    "Each explains how the factor affects Technective (costs, sales, prices or customers)",
+    "Each links to the aim, and can show the other side (However…)"
+   ],
+   "tip": "The Link is where the marks are: say whether the factor helps or stops the aim, and why. A 'However…' showing the other side makes it stronger.",
+   "example": {
+    "title": "Your teacher's example (Knights of Cocoa, a different case study)",
+    "text": [
+     "Technological – Point: One technological factor which could impact KOC is the use of websites. Evidence: This is because 'Thorntons had a rapid increase in online sales'. Explain: If KOC sold on a website, similar to what Thorntons do, this would benefit them because they would be able to sell 24/7, which is likely to increase sales. With the increase in sales, they are likely to be more profitable because they won't have to pay a portion of the revenue to any supermarkets or third-party sellers. Link: However, if KOC only sell via website, this could also negatively affect their sales because a number of their competitors also sell products online, meaning that the online chocolate market is already heavily saturated, so their website could get lost and not receive any traffic.",
+     "Political – Point: One political factor that could impact KOC is the increased import and export fees. Evidence: This is because 'UK chocolate businesses now export to over 149 different countries'. Explain: This could impact KOC because it is now becoming more expensive to export products due to leaving the EU. With UK chocolate businesses heavily exporting to a number of different countries, this will cause their expenditure to increase. Link: This could stop KOC from achieving the aim of increasing sales because KOC will need to increase their prices to absorb the additional export costs. This leads to customers finding a cheaper alternative to purchase their chocolate from, which would decrease their sales."
+    ]
+   }
   }
  ]
 }

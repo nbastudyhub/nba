@@ -1,6 +1,7 @@
 // Study Hub: Business exam writing (#business), following the teacher's 7 steps for the Unit 2 set task:
 // 1 aim, 2 three SMART objectives, 3 two trends, 4 two competitors, 5 market research (reliability,
-// validity, bias), 6 SWOT (2 per letter), 7 product life cycle and the 7 Ps. Every step links to the aim.
+// validity, bias), 6 SWOT (2 per letter), 7 product life cycle and the 7 Ps, plus an extra PESTLE step.
+// Points use the teacher's Point, Evidence, Explain, Link style, and steps can show the teacher's example.
 // Each step has its own boxes, a checklist to tick, and AI feedback (functions/api/mark.js, kind "bizstep").
 // Steps and key terms live in business/questions.json. Work is saved as progress under the id "business".
 // Uses helpers from app.js: esc, stagger, bump, aiErrorText.
@@ -74,6 +75,9 @@
       <p>${esc(step.intro)}</p>
       ${step.id !== 'aim' ? '<p class="bz-aim" data-role="aim"></p>' : ''}
       <div class="bz-fields">${fieldsHtml}</div>
+      ${step.example ? `<details class="bz-example"><summary><strong>See a good example</strong> <span class="muted">(${esc(step.example.title)})</span></summary>
+        ${step.example.text.map((t) => `<p>${esc(t).replace(/(^| )(Point|Evidence|Explain|Link):/g, (m, sp, w) => `${sp ? '<br>' : ''}<strong>${w}:</strong>`)}</p>`).join('')}
+        ${step.example.note ? `<p class="bz-example-note"><strong>Tip:</strong> ${esc(step.example.note)}</p>` : ''}</details>` : ''}
       <div class="scheme open">
         <p style="margin:0 0 4px"><strong>Check your work</strong> (tick each one you've done):</p>
         ${step.checks.map((c, j) => `<label><input type="checkbox" data-i="${j}" ${(st.ticks || []).includes(j) ? 'checked' : ''}><span>${esc(c)}</span></label>`).join('')}
@@ -115,7 +119,7 @@
       catch (e) { body.innerHTML = '<p class="muted">Couldn\'t load this page. Check your connection and try again.</p>'; return; }
     }
     prog = ls.get(KEY, null) || {};
-    $('bz-lead').textContent = `${data.course}. Work through the 7 steps your teacher uses, linking everything back to the aim.`;
+    $('bz-lead').textContent = `${data.course}. Work through the steps your teacher uses: Point, Evidence, Explain, then Link everything back to the aim.`;
     const c = (data.cases || [])[0];
     body.innerHTML = `
       <nav class="bz-tabs" aria-label="Business practice">
