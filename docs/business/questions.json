@@ -220,5 +220,207 @@
    ],
    "tip": "Use PESTLE headings to organise, but only discuss influences the booklet gives evidence for."
   }
+ ],
+ "terms": [
+  {
+   "t": "SMART objectives",
+   "d": "Objectives that are Specific, Measurable, Achievable, Realistic and Time-bound",
+   "g": "obj"
+  },
+  {
+   "t": "Aim",
+   "d": "A broad, long-term goal that a business wants to achieve",
+   "g": "obj"
+  },
+  {
+   "t": "Objective",
+   "d": "A specific, measurable target that helps a business achieve its aim",
+   "g": "obj"
+  },
+  {
+   "t": "Marketing campaign",
+   "d": "A planned set of marketing activities, over a set time, to achieve specific objectives",
+   "g": "obj"
+  },
+  {
+   "t": "Target market",
+   "d": "The specific group of customers a business aims its product and marketing at",
+   "g": "seg"
+  },
+  {
+   "t": "Market segmentation",
+   "d": "Dividing a market into groups of customers with similar needs or characteristics",
+   "g": "seg"
+  },
+  {
+   "t": "Demographic segmentation",
+   "d": "Grouping customers by factors such as age, gender, income or occupation",
+   "g": "seg"
+  },
+  {
+   "t": "Psychographic segmentation",
+   "d": "Grouping customers by their lifestyle, values, interests and attitudes",
+   "g": "seg"
+  },
+  {
+   "t": "Geographic segmentation",
+   "d": "Grouping customers by where they live, e.g. region, country, town or city",
+   "g": "seg"
+  },
+  {
+   "t": "Market size",
+   "d": "The total number of customers, or the total value of sales, in a market",
+   "g": "mkt"
+  },
+  {
+   "t": "Market share",
+   "d": "The percentage of total sales in a market made by one business or brand",
+   "g": "mkt"
+  },
+  {
+   "t": "Market structure",
+   "d": "How a market is made up, e.g. how many businesses compete in it and how big they are",
+   "g": "mkt"
+  },
+  {
+   "t": "Market saturation",
+   "d": "When a market has so many similar products that there is little room left for growth",
+   "g": "mkt"
+  },
+  {
+   "t": "Market trend",
+   "d": "The general direction a market is moving in over time, e.g. growing demand for a feature",
+   "g": "mkt"
+  },
+  {
+   "t": "Primary research",
+   "d": "New information collected first-hand by a business for its own purpose, e.g. a questionnaire",
+   "g": "res"
+  },
+  {
+   "t": "Secondary research",
+   "d": "Information that already exists because someone else collected it, e.g. reports and statistics",
+   "g": "res"
+  },
+  {
+   "t": "Quantitative data",
+   "d": "Numerical information that can be counted and analysed, e.g. percentages",
+   "g": "res"
+  },
+  {
+   "t": "Qualitative data",
+   "d": "Information about opinions, feelings and reasons, usually given in words",
+   "g": "res"
+  },
+  {
+   "t": "Sample size",
+   "d": "The number of people who take part in a piece of research",
+   "g": "res"
+  },
+  {
+   "t": "Reliability",
+   "d": "How far research results can be trusted to be accurate and to give the same results again",
+   "g": "res"
+  },
+  {
+   "t": "Unique selling point (USP)",
+   "d": "A feature that makes a product different from, and better than, its competitors' products",
+   "g": "comp"
+  },
+  {
+   "t": "Competitive advantage",
+   "d": "Something that lets a business do better than its rivals, e.g. lower costs or a stronger brand",
+   "g": "comp"
+  },
+  {
+   "t": "Brand loyalty",
+   "d": "When customers keep buying from the same brand instead of switching to competitors",
+   "g": "comp"
+  },
+  {
+   "t": "Competitor",
+   "d": "Another business selling similar products to the same customers",
+   "g": "comp"
+  },
+  {
+   "t": "Marketing mix (4Ps)",
+   "d": "The combination of product, price, place and promotion used to market a product",
+   "g": "mix"
+  },
+  {
+   "t": "Premium pricing",
+   "d": "Setting a high price to reflect high quality, status or exclusivity",
+   "g": "price"
+  },
+  {
+   "t": "Penetration pricing",
+   "d": "Setting a low price at launch to attract customers and win market share quickly",
+   "g": "price"
+  },
+  {
+   "t": "Promotional pricing",
+   "d": "Cutting prices for a short time, e.g. discounts or offers, to boost sales",
+   "g": "price"
+  },
+  {
+   "t": "Price war",
+   "d": "When competitors keep cutting their prices to win customers from each other",
+   "g": "price"
+  },
+  {
+   "t": "Upselling",
+   "d": "Encouraging customers to buy a more expensive version or extra products",
+   "g": "price"
+  },
+  {
+   "t": "Product portfolio",
+   "d": "The full range of products that a business sells",
+   "g": "mix"
+  },
+  {
+   "t": "SWOT analysis",
+   "d": "A review of a business's internal strengths and weaknesses, and external opportunities and threats",
+   "g": "anal"
+  },
+  {
+   "t": "PESTLE analysis",
+   "d": "A review of the political, economic, social, technological, legal and environmental factors outside a business",
+   "g": "anal"
+  },
+  {
+   "t": "External influence",
+   "d": "A factor outside the business's control that affects it, e.g. the economy or new laws",
+   "g": "anal"
+  },
+  {
+   "t": "Sponsorship",
+   "d": "Paying to support an event, team or person in return for promoting the brand",
+   "g": "promo"
+  },
+  {
+   "t": "Influencer marketing",
+   "d": "Working with people who have large social media followings to promote a product",
+   "g": "promo"
+  },
+  {
+   "t": "Cost per click (CPC)",
+   "d": "Paying for an online advert each time someone clicks on it",
+   "g": "promo"
+  },
+  {
+   "t": "Footfall",
+   "d": "The number of people who pass or visit a particular place, e.g. a shop or billboard",
+   "g": "promo"
+  },
+  {
+   "t": "Media",
+   "d": "The channels used to send a marketing message, e.g. TV, social media, magazines or billboards",
+   "g": "promo"
+  },
+  {
+   "t": "Campaign budget",
+   "d": "The amount of money set aside to spend on a marketing campaign",
+   "g": "promo"
+  }
  ]
 }

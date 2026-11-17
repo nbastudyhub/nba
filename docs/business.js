@@ -10,7 +10,7 @@
     get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
-  let data = null, prog = null, filt = { c: 'all', t: 'all' }, timer = null, saveT = null;
+  let data = null, prog = null, filt = { c: 'all', t: 'all' }, timer = null, saveT = null, btab = 'write';
 
   const entry = (qid) => (prog.answers[qid] = prog.answers[qid] || { text: '', plan: [] });
   function save() {
@@ -163,6 +163,12 @@
     $('bz-lead').textContent = `${data.course}. Plan with the structure, write your answer, then mark it yourself or with the AI.`;
     const types = [...new Set(data.questions.map((q) => q.type))];
     body.innerHTML = `
+      <nav class="bz-tabs" aria-label="Business practice">
+        <button data-bt="write" aria-pressed="${btab === 'write'}">Exam writing</button>
+        <button data-bt="terms" aria-pressed="${btab === 'terms'}">Key terms${(data.terms || []).length ? ` (${data.terms.length})` : ''}</button>
+      </nav>
+      <div id="bz-terms" class="stack ${btab === 'terms' ? '' : 'hidden'}"></div>
+      <div id="bz-write" class="stack ${btab === 'write' ? '' : 'hidden'}">
       <div class="card row bz-sum" id="bz-sum"></div>
       ${data.cases.filter((c) => c.booklet).map((c) => `<div class="card bz-booklet"><strong>${esc(c.name)}</strong><p>${esc(c.text)}</p></div>`).join('')}
       ${structureGuide()}
@@ -171,11 +177,93 @@
         <div class="row">${chip('c', 'all', 'All case studies')}${data.cases.map((c) => chip('c', c.id, c.name)).join('')}</div>
         <div class="row">${chip('t', 'all', 'All question types')}${types.map((t) => chip('t', t, data.structures[t] ? data.structures[t].name : t)).join('')}</div>
       </div>
-      <div id="bz-list" class="stack"></div>`;
+      <div id="bz-list" class="stack"></div>
+      </div>`;
+    body.querySelectorAll('[data-bt]').forEach((b) => b.onclick = () => {
+      btab = b.dataset.bt;
+      body.querySelectorAll('[data-bt]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      $('bz-write').classList.toggle('hidden', btab !== 'write'); $('bz-terms').classList.toggle('hidden', btab !== 'terms');
+      if (btab === 'terms') termsHome(); else stagger($('bz-write').children, 5);
+    });
+    if (btab === 'terms') termsHome();
     body.querySelectorAll('.bz-chip').forEach((b) => b.onclick = () => { filt[b.dataset.g] = b.dataset.v; renderList(); });
     summary(); renderList(); planner();
-    stagger(body.children, 5);
+    stagger(btab === 'write' ? $('bz-write').children : body.children, 5);
   }
+  // ---------- Key terms: match the term to its definition ----------
+  // One term on the left, four definitions on the right (distractors come from the same topic
+  // where possible, so they're close). Missed terms are kept in prog.terms.missed to retry.
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  let kt = null; // the round in progress: { list, i, score, wrong: [], answered }
+  const tstate = () => (prog.terms = prog.terms || { best: 0, missed: [] });
+  function termsHome() {
+    const box = $('bz-terms'), st = tstate(), all = data.terms || [];
+    const missed = st.missed.filter((t) => all.some((x) => x.t === t));
+    box.innerHTML = `
+      <div class="card"><h2>Key terms</h2>
+        <p class="lead">A term appears on the left. Pick the definition that matches it on the right. Every answer shows the right definition, so you learn as you go.</p>
+        <div class="row">
+          <button class="btn" data-kt="10">Play a round (10 terms)</button>
+          <button class="btn ghost" data-kt="all">All ${all.length} terms</button>
+          ${missed.length ? `<button class="btn ghost" data-kt="missed">Retry terms I missed (${missed.length})</button>` : ''}
+        </div>
+        ${st.best ? `<p class="muted small-note">Best round: ${st.best.score} / ${st.best.of}</p>` : ''}
+      </div>
+      <details class="card"><summary><strong>See all the terms and definitions</strong> <span class="muted">(tap to open)</span></summary>
+        <dl class="kt-list">${all.map((x) => `<div class="gv-item"><dt>${esc(x.t)}</dt><dd>${esc(x.d)}</dd></div>`).join('')}</dl></details>`;
+    box.querySelectorAll('[data-kt]').forEach((b) => b.onclick = () => {
+      const m = b.dataset.kt, pool = m === 'missed' ? all.filter((x) => missed.includes(x.t)) : all;
+      startTerms(m === '10' ? shuffle(pool).slice(0, 10) : shuffle(pool));
+    });
+    stagger(box.children, 3);
+  }
+  function startTerms(list) { kt = { list, i: 0, score: 0, wrong: [], answered: 0 }; termQ(); }
+  function termQ() {
+    const box = $('bz-terms'), all = data.terms;
+    if (kt.i >= kt.list.length) return termsDone();
+    const it = kt.list[kt.i];
+    const same = shuffle(all.filter((x) => x.t !== it.t && x.g === it.g)), other = shuffle(all.filter((x) => x.t !== it.t && x.g !== it.g));
+    const opts = shuffle([it, ...[...same, ...other].slice(0, 3)]);
+    box.innerHTML = `
+      <div class="row"><span class="score">Term ${kt.i + 1} of ${kt.list.length}</span><span class="spacer"></span><span class="score" id="kt-score">Score: ${kt.score}</span></div>
+      <div class="progress"><div style="width:${kt.i / kt.list.length * 100}%"></div></div>
+      <div class="kt-match">
+        <div class="kt-term card"><span class="kt-label">Term</span><div class="kt-word">${esc(it.t)}</div><span class="muted small-note">Which definition matches?</span></div>
+        <div class="kt-defs options">${opts.map((o) => `<button class="opt" data-t="${esc(o.t)}">${esc(o.d)}</button>`).join('')}</div>
+      </div>
+      <div id="kt-fb"></div>
+      <div class="row"><button class="btn ghost small" id="kt-quit">End round</button></div>`;
+    box.querySelectorAll('.kt-defs .opt').forEach((b) => b.onclick = () => pick(b, it));
+    $('kt-quit').onclick = termsDone;
+    stagger([box.querySelector('.kt-term'), ...box.querySelectorAll('.kt-defs .opt')]);
+  }
+  function pick(btn, it) {
+    const btns = $('bz-terms').querySelectorAll('.kt-defs .opt');
+    if (btns[0].disabled) return;
+    const ok = btn.dataset.t === it.t, st = tstate();
+    kt.answered++;
+    btns.forEach((b) => { b.disabled = true; if (b.dataset.t === it.t) b.classList.add('right'); else if (b === btn) b.classList.add('wrong'); });
+    if (ok) { kt.score++; st.missed = st.missed.filter((t) => t !== it.t); bump($('kt-score')); }
+    else { kt.wrong.push(it); if (!st.missed.includes(it.t)) st.missed.push(it.t); }
+    save();
+    $('kt-score').textContent = `Score: ${kt.score}`;
+    const chosen = data.terms.find((x) => x.t === btn.dataset.t);
+    $('kt-fb').innerHTML = `<div class="feedback"><strong>${ok ? 'Correct.' : 'Not quite.'}</strong> <strong>${esc(it.t)}</strong>: ${esc(it.d)}${!ok && chosen ? `<br><span class="muted">The one you picked describes <strong>${esc(chosen.t)}</strong>.</span>` : ''}</div>
+      <div class="row" style="margin-top:12px"><span class="spacer"></span><button class="btn" id="kt-next">${kt.i + 1 < kt.list.length ? 'Next term →' : 'See my score'}</button></div>`;
+    const nx = $('kt-next'); nx.focus(); nx.onclick = () => { kt.i++; termQ(); };
+  }
+  function termsDone() {
+    const box = $('bz-terms'), st = tstate(), done = kt.answered, of = Math.max(done, 1);
+    if (done && (!st.best || kt.score / of > st.best.score / st.best.of)) { st.best = { score: kt.score, of: done }; save(); }
+    box.innerHTML = `<div class="card"><div class="big">${kt.score} / ${done}</div>
+      <p>${!done ? 'No terms answered.' : kt.score === done ? 'Perfect round!' : kt.score / done >= .7 ? 'Good work. Look over the ones you missed below.' : 'Keep going. Read the ones you missed, then retry them.'}</p>
+      ${kt.wrong.length ? `<p class="ai-h">To learn</p><dl>${kt.wrong.map((x) => `<div class="gv-item"><dt>${esc(x.t)}</dt><dd>${esc(x.d)}</dd></div>`).join('')}</dl>` : ''}
+      <div class="row" style="margin-top:12px"><button class="btn" id="kt-again">Back to key terms</button>${kt.wrong.length ? `<button class="btn ghost" id="kt-retry">Retry these (${kt.wrong.length})</button>` : ''}</div></div>`;
+    $('kt-again').onclick = termsHome;
+    if (kt.wrong.length) { const w = kt.wrong; $('kt-retry').onclick = () => startTerms(shuffle(w)); }
+    stagger(box.children, 2);
+  }
+
   // ---------- Media plan budget planner ----------
   // Type in the media options and costs from your booklet; it adds them up and checks the budget.
   // Saved with your answers (prog.planner).
