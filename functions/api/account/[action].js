@@ -2,7 +2,7 @@
 import { json, allowedOrigin, clientIp, rateLimited, readJson } from "../../../lib/shared.js";
 import {
   ensureSchema, hashSecret, sameText, randomToken, newRecoveryCode, normaliseCode,
-  validUsername, validPassword, createSession, currentUser, endSession, clearCookie,
+  validUsername, validPassword, createSession, currentUser, endSession, clearCookie, isAdmin,
 } from "../../../lib/auth.js";
 
 const AUTH_LIMIT = 15;           // sign-in attempts per IP per 10 minutes
@@ -43,7 +43,7 @@ export async function onRequestGet({ env, request, params }) {
   if (params.action !== "me") return json({ error: "not_found" }, 404);
   await ensureSchema(env.DB);
   const user = await currentUser(env.DB, request);
-  return user ? json({ username: user.username }) : json({ error: "signed_out" }, 401);
+  return user ? json({ username: user.username, admin: isAdmin(env, user.username) }) : json({ error: "signed_out" }, 401);
 }
 
 export async function onRequestPost({ env, request, params }) {

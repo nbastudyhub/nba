@@ -522,10 +522,12 @@ function showView(v) {
   $('progressview').classList.toggle('hidden', v !== 'progress');
   $('glossaryview').classList.toggle('hidden', v !== 'glossary');
   $('accountview').classList.toggle('hidden', v !== 'account');
+  $('adminview').classList.toggle('hidden', v !== 'admin');
   document.querySelectorAll('.view-link').forEach(a => a.setAttribute('aria-current', a.dataset.view === v ? 'page' : 'false'));
   if (v === 'progress') { renderProgress(); document.title = 'My progress · Study Hub'; }
   if (v === 'glossary') { renderGlossary(); document.title = 'Glossary · Study Hub'; }
   if (v === 'account') document.title = 'Account · Study Hub';
+  if (v === 'admin') document.title = 'Admin · Study Hub';
   if (v === 'lessons' && current) document.title = current.title + ' · Study Hub';
   window.dispatchEvent(new CustomEvent('studyhub:view', { detail: { view: v } }));
   if (v !== 'lessons') stagger($(v + 'view').children, 4);
@@ -624,7 +626,7 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
 // ---------- Start ----------
 function route() {
   const h = location.hash.slice(1);
-  if (h === 'progress' || h === 'glossary' || h === 'account') return showView(h);
+  if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin') return showView(h);
   if (h && index.some(d => d.id === h)) { showView('lessons'); return openDeck(h); }
   showView('lessons');
 }
@@ -638,5 +640,5 @@ window.addEventListener('hashchange', route);
   const h = location.hash.slice(1), last = ls.get('sh-last', null);
   const id = [h, last].find(x => x && index.some(d => d.id === x)) || (index[0] && index[0].id);
   if (id) openDeck(id); else $('d-title').textContent = 'No topics yet.';
-  if (h === 'progress' || h === 'glossary' || h === 'account') showView(h); else showView('lessons');
+  if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin') showView(h); else showView('lessons');
 })();

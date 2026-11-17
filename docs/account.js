@@ -12,6 +12,7 @@
   const PREFIX = 'sh-prog-';
 
   let me = null;           // signed-in username, or null
+  let admin = false;       // true for usernames in the ADMIN_USERS setting
   let available = true;    // false on the GitHub Pages backup, or before the database is set up
   let offReason = 'no_accounts_here';
   let syncState = '';      // '', 'syncing', 'synced', 'offline', 'error'
@@ -93,8 +94,50 @@
   // ---------- state ----------
   function setSync(s) { syncState = s; renderLink(); if (isOpen()) render(); }
   function signedIn(username) { me = username; ls.set('sh-user', username); renderLink(); }
-  function signedOut() { me = null; ls.del('sh-user'); syncState = ''; renderLink(); if (isOpen()) render(); }
+  function signedOut() { me = null; setAdmin(false); ls.del('sh-user'); syncState = ''; renderLink(); if (isOpen()) render(); }
   const isOpen = () => !$('accountview').classList.contains('hidden');
+
+  // ---------- Admin page (#admin), only for admins ----------
+  function setAdmin(on) {
+    admin = on;
+    $('admin-link').classList.toggle('hidden', !on);
+    if (!on && location.hash === '#admin') $('ad-body').innerHTML = '<div class="card">This page is only for the site owner.</div>';
+  }
+  const when = (t) => {
+    if (!t) return '–';
+    const d = new Date(t), days = Math.floor((Date.now() - t) / 86400000);
+    const date = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    return `${date}${days === 0 ? ' (today)' : days === 1 ? ' (yesterday)' : days < 31 ? ` (${days} days ago)` : ''}`;
+  };
+  async function renderAdmin() {
+    const body = $('ad-body');
+    if (!me) { body.innerHTML = '<div class="card">Sign in with your admin account to see this page. <a href="#account">Sign in</a></div>'; return; }
+    body.innerHTML = '<p class="muted">Loading…</p>';
+    const r = await api('GET', 'api/admin');
+    if (!r.ok) {
+      body.innerHTML = `<div class="card">${r.data.error === 'not_admin' ? 'This page is only for the site owner.' : r.data.error === 'signed_out' ? 'Your sign-in has expired. <a href="#account">Sign in again</a>.' : 'Couldn\'t load the admin data. Try again in a minute.'}</div>`;
+      return;
+    }
+    const { totals, users, lessons } = r.data;
+    const titles = Object.fromEntries(((window.studyHub && window.studyHub.index) || []).map((d) => [d.id, d.title]));
+    const tile = (n, label) => `<div class="card ad-tile"><div class="big">${n}</div><div class="muted">${label}</div></div>`;
+    body.innerHTML = `
+      <div class="ad-tiles">${tile(totals.users, 'accounts')}${tile(totals.newThisWeek, 'new this week')}${tile(totals.activeThisWeek, 'active this week')}${tile(totals.signedInNow, 'signed in now')}</div>
+      <div class="card tablebox"><h3>Accounts</h3>
+        ${users.length ? `<table><thead><tr><th>Username</th><th>Signed up</th><th>Last sign-in</th><th>Last studied</th><th>Lessons</th></tr></thead><tbody>
+        ${users.map((u) => `<tr><td><strong>${esc(u.username)}</strong>${u.signedIn ? ' <span class="ad-live">signed in</span>' : ''}</td><td>${when(u.signedUp)}</td><td>${when(u.lastSignIn)}</td><td>${when(u.lastStudied)}</td><td>${u.lessons}</td></tr>`).join('')}
+        </tbody></table>` : '<p class="muted">No accounts yet.</p>'}
+        <p class="muted small-note">"Last sign-in" only covers sign-ins that haven't been signed out or expired. Passwords are never shown: they are stored scrambled.</p>
+      </div>
+      <div class="card tablebox"><h3>Most studied lessons</h3>
+        ${lessons.length ? `<table><thead><tr><th>Lesson</th><th>Learners</th><th>Last studied</th></tr></thead><tbody>
+        ${lessons.map((l) => `<tr><td>${esc(titles[l.id] || l.id)}</td><td>${l.learners}</td><td>${when(l.last)}</td></tr>`).join('')}
+        </tbody></table>` : '<p class="muted">Nobody has saved progress to an account yet.</p>'}
+      </div>
+      <div class="row"><button class="btn ghost small" id="ad-refresh">Refresh</button></div>`;
+    $('ad-refresh').onclick = renderAdmin;
+  }
+  window.addEventListener('studyhub:view', (e) => { if (e.detail.view === 'admin') renderAdmin(); });
 
   function renderLink() {
     const a = $('account-link');
@@ -244,10 +287,11 @@
     const remembered = ls.get('sh-user', null);
     if (remembered) { me = remembered; renderLink(); } // show straight away; checked below
     const r = await api('GET', 'api/account/me');
-    if (r.ok) { signedIn(r.data.username); fullSync(); }
+    if (r.ok) { signedIn(r.data.username); setAdmin(!!r.data.admin); fullSync(); }
     else if (r.status === 401) signedOut(); // sign-in expired: keep this device's progress; it merges back when you sign in
     else if (r.data.error === 'no_accounts_here' || r.data.error === 'accounts_off') { available = false; offReason = r.data.error; if (me) signedOut(); }
     else if (me) setSync('offline'); // offline: keep working on this device, sync later
     if (isOpen()) render();
+    if (location.hash === '#admin') renderAdmin();
   })();
 })();

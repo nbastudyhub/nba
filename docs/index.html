@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Study Hub">
-<link rel="stylesheet" href="style.css?v=17">
+<link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
 <header class="topbar">
@@ -26,6 +26,7 @@
       <a href="#" data-view="lessons" class="view-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>Lessons</a>
       <a href="#progress" data-view="progress" class="view-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Progress</a>
       <a href="#glossary" data-view="glossary" class="view-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4zM8 9h8M8 13h6"/></svg>Glossary</a>
+      <a href="#admin" data-view="admin" class="view-link hidden" id="admin-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>Admin</a>
       <a href="#account" data-view="account" class="view-link" id="account-link">Sign in</a>
       <button class="btn small hidden" id="install-btn" type="button">Install app</button>
     </nav>
@@ -48,6 +49,11 @@
     <div class="card next" id="pv-next"></div>
     <div id="pv-list" class="stack"></div>
     <div class="row"><span class="spacer"></span><button class="btn ghost small" id="pv-reset" type="button">Reset all progress</button></div>
+  </section>
+
+  <section id="adminview" class="stack hidden" aria-labelledby="ad-title">
+    <div><h1 id="ad-title">Admin</h1><p class="lead">Who has signed up, when they last signed in and what they've studied. Only you can see this page.</p></div>
+    <div id="ad-body" class="stack"></div>
   </section>
 
   <section id="accountview" class="stack hidden" aria-labelledby="ac-title">
@@ -131,8 +137,8 @@
 
   <footer><img src="icons/icon.svg" alt="" width="22" height="22"><span>Answers and progress are saved on this device, and in your account if you sign in. Packs are made from lesson slides. If something here disagrees with your teacher, go with your teacher.</span></footer>
 </div>
-<script src="app.js?v=17"></script>
-<script src="assistant.js?v=17"></script>
-<script src="account.js?v=17"></script>
+<script src="app.js?v=18"></script>
+<script src="assistant.js?v=18"></script>
+<script src="account.js?v=18"></script>
 </body>
 </html>
