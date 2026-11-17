@@ -1,4 +1,4 @@
-// Checks every study pack in docs/decks/ and rebuilds docs/decks/index.json, topics.json and glossary.json.
+// Checks every study pack in docs/decks/ and rebuilds docs/decks/index.json, topics.json, glossary.json and search.json.
 // Run after adding or editing a deck:  node scripts/build-index.mjs
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -6,11 +6,12 @@ import { fileURLToPath } from 'node:url';
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'docs', 'decks');
 const errors = [];
-const GENERATED = ['index.json', 'topics.json', 'glossary.json'];
+const GENERATED = ['index.json', 'topics.json', 'glossary.json', 'search.json'];
 const diagrams = new Set(); // every diagram used, so the app can save them for offline use
 const decks = [];
 const glossary = []; // every key term, for the Glossary page
 const topics = []; // course index for the AI helper (functions/api/ask.js)
+const search = []; // the text of every Learn section, for searching inside lessons
 
 const isStr = x => typeof x === 'string' && x.trim().length > 0;
 const checkMc = (items, where) => items.forEach((it, i) => {
@@ -48,6 +49,10 @@ for (const file of readdirSync(dir).filter(f => f.endsWith('.json') && !GENERATE
   const counts = { cards: (d.flashcards || []).length, quiz: (d.quiz || []).length, apply: ((d.apply && d.apply.items) || []).length, marks: (d.exam || []).reduce((t, q) => t + (q.m || 0), 0) };
   decks.push({ id, title: d.title, code: d.code || '', subject: d.subject, added: d.added, ...counts });
   for (const [term, def] of d.flashcards || []) glossary.push({ term, def, id });
+  search.push({ id, title: d.title, s: [
+    ...(d.sections || []).map(x => [x.heading, [x.text, ...(x.points || []), ...((x.table && [x.table.head, ...x.table.rows].flat()) || []), x.diagram && x.diagram.caption].filter(Boolean).join(' · ')]),
+    ...(d.keyIdea ? [['Key idea', d.keyIdea]] : []),
+  ] });
   topics.push({ id, title: d.title, headings: (d.sections || []).map(x => x.heading), terms: (d.flashcards || []).map(c => c[0]) });
 }
 
@@ -63,4 +68,6 @@ topics.sort((a, b) => order.get(a.id) - order.get(b.id));
 writeFileSync(join(dir, 'topics.json'), JSON.stringify({ topics }) + '\n');
 glossary.sort((a, b) => a.term.localeCompare(b.term, 'en', { sensitivity: 'base', numeric: true }) || order.get(a.id) - order.get(b.id));
 writeFileSync(join(dir, 'glossary.json'), JSON.stringify({ terms: glossary }) + '\n');
-console.log(`OK: ${decks.length} deck(s) listed in docs/decks/index.json (plus topics.json for the AI helper and glossary.json with ${glossary.length} terms)`);
+search.sort((a, b) => order.get(a.id) - order.get(b.id));
+writeFileSync(join(dir, 'search.json'), JSON.stringify({ lessons: search }) + '\n');
+console.log(`OK: ${decks.length} deck(s) listed in docs/decks/index.json (plus topics.json for the AI helper, glossary.json with ${glossary.length} terms, and search.json)`);

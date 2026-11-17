@@ -41,7 +41,7 @@ function bump(el) { if (!el) return; el.classList.remove('bump'); void el.offset
 // ---------- Shelf ----------
 function renderShelf(animate = false) {
   const q = $('search').value.trim().toLowerCase();
-  const list = index.filter(d => !q || [d.title, d.code, d.subject].join(' ').toLowerCase().includes(q));
+  const list = index.filter(d => !q || [d.title, d.code, d.subject].join(' ').toLowerCase().includes(q) || contentHits.has(d.id));
   $('shelf').innerHTML = list.length
     ? list.map(d => {
         const m = d.title.match(/^Lesson\s+(\d+)\s*[-–:]\s*(.*)$/i);
@@ -58,7 +58,60 @@ function renderShelf(animate = false) {
   if (animate) stagger($('shelf').children, 8);
 }
 
-$('search').oninput = () => renderShelf(true);
+// ---------- Search inside lessons ----------
+// Typing 3+ letters also searches the notes in every lesson (decks/search.json) and lists the
+// sections that mention it. Tapping one opens that lesson's Learn tab at that section.
+let searchIdx = null, contentHits = new Set(), searchTimer = null;
+async function runSearch() {
+  const raw = $('search').value.trim(), q = raw.toLowerCase(), out = $('search-results');
+  contentHits = new Set();
+  if (q.length < 3) { out.classList.add('hidden'); out.innerHTML = ''; renderShelf(true); return; }
+  if (!searchIdx) {
+    try { searchIdx = (await (await fetch('decks/search.json', { cache: 'no-cache' })).json()).lessons || []; }
+    catch (e) { searchIdx = null; out.innerHTML = '<p class="muted">Couldn\'t search the notes. Check your connection.</p>'; out.classList.remove('hidden'); return; }
+    if ($('search').value.trim().toLowerCase() !== q) return; // typing moved on while loading
+  }
+  const hits = [];
+  for (const l of searchIdx) l.s.forEach(([h, t], i) => {
+    const inHead = h.toLowerCase().includes(q), at = t.toLowerCase().indexOf(q);
+    if (inHead || at >= 0) { hits.push({ l, i, h, t, at, inHead }); contentHits.add(l.id); }
+  });
+  hits.sort((a, b) => (b.inHead - a.inHead));
+  const snip = (t, at) => {
+    if (at < 0) return esc(t.slice(0, 120)) + (t.length > 120 ? '…' : '');
+    const a = Math.max(0, at - 50), z = Math.min(t.length, at + q.length + 70);
+    return (a ? '…' : '') + esc(t.slice(a, at)) + '<mark>' + esc(t.slice(at, at + q.length)) + '</mark>' + esc(t.slice(at + q.length, z)) + (z < t.length ? '…' : '');
+  };
+  const shown = hits.slice(0, 8);
+  out.innerHTML = hits.length
+    ? `<p class="sr-count">${hits.length} section${hits.length === 1 ? '' : 's'} in ${contentHits.size} lesson${contentHits.size === 1 ? '' : 's'} mention "${esc(raw)}"${hits.length > shown.length ? ` (showing the first ${shown.length})` : ''}</p>` +
+      shown.map(x => `<button class="sr-item" data-id="${esc(x.l.id)}" data-sec="${x.i}"><span class="sr-where">${esc(x.l.title)} › ${esc(x.h)}</span><span class="sr-snip">${snip(x.t, x.at)}</span></button>`).join('')
+    : `<p class="sr-count">No notes mention "${esc(raw)}". Try a shorter word, or ask the AI helper.</p>`;
+  out.classList.remove('hidden');
+  out.querySelectorAll('.sr-item').forEach(b => b.onclick = () => goToSection(b.dataset.id, +b.dataset.sec));
+  stagger(out.children, 9);
+  renderShelf(true);
+}
+function goToSection(id, sec) {
+  intent = { sec };
+  if (current && current.id === id && view === 'lessons') return applyIntent();
+  location.hash = id;
+}
+// Open the Learn tab at one section and outline it for a moment.
+function applyIntent() {
+  if (!intent || intent === 'mistakes') return;
+  const { sec } = intent; intent = null;
+  showTab('learn');
+  const el = $('learn').querySelectorAll('.sec, .callout')[sec];
+  if (!el) return;
+  requestAnimationFrame(() => {
+    el.scrollIntoView({ behavior: calm() ? 'auto' : 'smooth', block: 'start' });
+    el.classList.remove('found'); void el.offsetWidth; el.classList.add('found');
+    setTimeout(() => el.classList.remove('found'), 2500);
+  });
+}
+$('search').oninput = () => { clearTimeout(searchTimer); renderShelf(true); searchTimer = setTimeout(runSearch, 150); };
+$('search').onkeydown = e => { if (e.key === 'Escape') { $('search').value = ''; runSearch(); } };
 
 // A small progress ring, e.g. ring(62) for 62%.
 function ring(n, size = '') {
@@ -98,6 +151,7 @@ async function openDeck(id) {
   const r = $('d-ring'); r.classList.add('draw'); setTimeout(() => r.classList.remove('draw'), 1000);
   stagger(document.querySelectorAll('#deckview .hero'), 1);
   window.dispatchEvent(new CustomEvent('studyhub:deck', { detail: { id, title: current.title } }));
+  applyIntent(); // arrived from a search result: open at that section
   // Arrived from "mistakes to fix" on the Progress page: go straight to them.
   if (intent === 'mistakes') {
     intent = null;

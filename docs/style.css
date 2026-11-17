@@ -327,6 +327,17 @@ footer img { flex: none; border-radius: 6px; opacity: .85; }
 .fc-tag { display: inline-block; margin-bottom: 10px; font: 600 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
 .pv-miss { display: inline-block; margin-top: 8px; font-weight: 600; font-size: 14px; color: var(--accent); }
 
+/* ---------- Search inside lessons ---------- */
+.search-results { display: grid; gap: 8px; margin: 2px 0 14px; }
+.sr-count { margin: 0; font-size: 14px; color: var(--muted); }
+.sr-item { display: grid; gap: 3px; text-align: left; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; font: 14px/1.45 var(--font-body); transition: border-color .15s, transform .1s; }
+.sr-item:hover { border-color: var(--highlight); }
+.sr-item:active { transform: scale(.97); }
+.sr-where { font-weight: 700; }
+.sr-snip { color: var(--muted); }
+.sr-snip mark { background: var(--highlight); color: #ffffff; border-radius: 3px; padding: 0 2px; }
+.found { outline: 3px solid var(--highlight); outline-offset: 3px; animation: pulse .5s var(--ease-out); }
+
 /* ---------- Motion ----------
    Entrances ease out and rise a few pixels; lists and cards come in one after another (30ms apart).
    Buttons shrink slightly while pressed. Bars and rings fill smoothly. Exits are shorter than entrances.
