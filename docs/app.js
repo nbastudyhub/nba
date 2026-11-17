@@ -9,7 +9,7 @@ const ls = {
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 };
 
-let index = [], current = null, progress = { answers: {} }, tab = 'learn';
+let index = [], current = null, progress = { answers: {} }, tab = 'learn', intent = null;
 // Lets the AI helper (assistant.js) see which lesson is open.
 window.studyHub = {
   get deck() { return current; },
@@ -98,6 +98,12 @@ async function openDeck(id) {
   const r = $('d-ring'); r.classList.add('draw'); setTimeout(() => r.classList.remove('draw'), 1000);
   stagger(document.querySelectorAll('#deckview .hero'), 1);
   window.dispatchEvent(new CustomEvent('studyhub:deck', { detail: { id, title: current.title } }));
+  // Arrived from "mistakes to fix" on the Progress page: go straight to them.
+  if (intent === 'mistakes') {
+    intent = null;
+    const m = progress.miss || {};
+    if ((m.qz || []).length) { showTab('quiz'); qzStart(true); } else if ((m.ap || []).length) { showTab('apply'); apStart(true); }
+  }
 }
 
 // ---------- Tabs ----------
@@ -125,23 +131,52 @@ function renderLearn() {
   $('to-flash').onclick = () => { showTab('flash'); window.scrollTo(0, 0); };
 }
 
-// ---------- Flashcards ----------
-let fcDeck = [], fcIdx = 0, fcFlipped = false, fcKnown = 0, fcTotal = 0;
+// ---------- Flashcards (smart: spaced repetition) ----------
+// Each card sits in a box from 0 (learning) to 5. "I knew it" moves it up a box and it comes back
+// after a longer gap; "Still learning" sends it back to box 0 and it comes round again this session.
+// Saved per lesson as progress.fc = { term: { b: box, d: time it is next due } }.
+const FC_GAP_DAYS = [0, 1, 3, 7, 16, 35];
+const DAY = 86400000;
+let fcDeck = [], fcIdx = 0, fcFlipped = false, fcTotal = 0, fcAll = false;
 const fcCard = $('fc-card');
-function fcStart() { const c = current.flashcards || []; fcTotal = c.length; fcDeck = shuffle(c); fcIdx = 0; fcKnown = 0; fcFlipped = false; fcRender(); }
+const fcState = () => (progress.fc = progress.fc || {});
+function fcStats() {
+  const st = fcState(), now = Date.now(), cards = current.flashcards || [];
+  let due = 0, fresh = 0, known = 0, next = Infinity;
+  for (const [t] of cards) {
+    const c = st[t];
+    if (!c) { fresh++; continue; }
+    if (c.b >= 1) known++;
+    if (c.d <= now) due++; else next = Math.min(next, c.d);
+  }
+  return { due, fresh, known, next, total: cards.length };
+}
+// all = false: only cards that are due (and new ones). all = true: practise every card.
+function fcStart(all = false) {
+  const st = fcState(), now = Date.now(), cards = current.flashcards || [];
+  fcAll = all; fcTotal = cards.length;
+  const due = cards.filter(([t]) => st[t] && st[t].d <= now), fresh = cards.filter(([t]) => !st[t]);
+  fcDeck = all ? shuffle(cards) : [...shuffle(due), ...shuffle(fresh)];
+  fcIdx = 0; fcFlipped = false; fcRender();
+}
 function fcRender(flipping = false) {
-  $('fc-count').textContent = `Known: ${fcKnown} / ${fcTotal}`;
-  $('fc-bar').style.width = (fcTotal ? fcKnown / fcTotal * 100 : 0) + '%';
+  const s = fcStats();
+  $('fc-count').textContent = `Known: ${s.known} / ${s.total}`;
+  $('fc-sub').textContent = fcAll ? 'Practising every card' : `${fcDeck.length} to review now · ${s.fresh} new`;
+  $('fc-bar').style.width = (s.total ? s.known / s.total * 100 : 0) + '%';
   if (!fcDeck.length) {
     fcCard.className = 'flash back';
-    fcCard.innerHTML = `<div class="enter"><div class="term">All ${fcTotal} cards done</div><span class="hint">Press "Start again" to go round once more, or try the Quiz.</span></div>`;
+    const when = s.next === Infinity ? '' : new Date(s.next).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+    fcCard.innerHTML = `<div class="enter"><div class="term">${fcAll ? `All ${s.total} cards done` : 'All caught up'}</div><span class="hint">${when ? `Your next cards are due on ${esc(when)}. ` : ''}Press "Practise all" to go through every card anyway, or try the Quiz.</span></div>`;
     $('fc-actions').classList.add('hidden'); return;
   }
   $('fc-actions').classList.remove('hidden');
   const [t, d] = fcDeck[fcIdx];
+  const c = fcState()[t];
   fcCard.className = 'flash' + (fcFlipped ? ' back' : '');
   const enter = flipping ? '' : ' class="enter"'; // a new card rises in; a flipped card turns over instead
-  fcCard.innerHTML = fcFlipped ? `<div${enter}><div class="def">${esc(d)}</div><span class="hint">${esc(t)}</span></div>` : `<div${enter}><div class="term">${esc(t)}</div><span class="hint">Tap or press Space to flip</span></div>`;
+  const tag = !c ? 'New card' : c.b === 0 ? 'Still learning' : `Box ${c.b} of 5`;
+  fcCard.innerHTML = fcFlipped ? `<div${enter}><div class="def">${esc(d)}</div><span class="hint">${esc(t)}</span></div>` : `<div${enter}><span class="fc-tag">${tag}</span><div class="term">${esc(t)}</div><span class="hint">Tap or press Space to flip</span></div>`;
   $('fc-know').disabled = $('fc-again').disabled = !fcFlipped;
 }
 // Turn the card over in 3D: rotate to edge-on, swap the side, rotate back.
@@ -160,30 +195,58 @@ async function fcFlip() {
 fcCard.onclick = fcFlip;
 fcCard.onkeydown = e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); fcFlip(); } };
 $('fc-know').onclick = () => {
-  fcDeck.splice(fcIdx, 1); fcKnown++; if (fcIdx >= fcDeck.length) fcIdx = 0; fcFlipped = false; fcRender(); bump($('fc-count'));
-  if (fcKnown > (progress.fcBest || 0)) { progress.fcBest = fcKnown; save(); }
+  const [t] = fcDeck[fcIdx], st = fcState(), c = st[t] || { b: 0, d: 0 };
+  c.b = Math.min(5, c.b + 1); c.d = Date.now() + FC_GAP_DAYS[c.b] * DAY; st[t] = c;
+  fcDeck.splice(fcIdx, 1); if (fcIdx >= fcDeck.length) fcIdx = 0; fcFlipped = false;
+  const known = fcStats().known;
+  if (known > (progress.fcBest || 0)) progress.fcBest = known;
+  save(); fcRender(); bump($('fc-count'));
 };
-$('fc-again').onclick = () => { fcDeck.push(fcDeck.splice(fcIdx, 1)[0]); if (fcIdx >= fcDeck.length) fcIdx = 0; fcFlipped = false; fcRender(); };
-$('fc-reset').onclick = fcStart;
+$('fc-again').onclick = () => {
+  const [t] = fcDeck[fcIdx], st = fcState();
+  st[t] = { b: 0, d: Date.now() }; save();
+  fcDeck.push(fcDeck.splice(fcIdx, 1)[0]); if (fcIdx >= fcDeck.length) fcIdx = 0; fcFlipped = false; fcRender();
+};
+$('fc-reset').onclick = () => fcStart(true);
 
 // ---------- Multiple-choice runner (Quiz + Apply) ----------
+// Wrong answers are kept in progress.miss[pre] (by question text) until you get them right,
+// so "Retry my mistakes" can go back over just those.
 function makeRunner(pre, getItems, qText) {
-  let order = [], i = 0, score = 0;
-  function start() { order = shuffle(getItems()); i = 0; score = 0; render(); }
+  let order = [], i = 0, score = 0, mistakesOnly = false;
+  const misses = () => { const m = (progress.miss = progress.miss || {}); return (m[pre] = m[pre] || []); };
+  function missButton() {
+    const n = misses().filter(k => getItems().some(it => qText(it) === k)).length, b = $(pre + '-miss');
+    b.textContent = mistakesOnly ? 'Back to all questions' : `Retry my mistakes (${n})`;
+    b.classList.toggle('hidden', !mistakesOnly && !n);
+    b.onclick = () => start(!mistakesOnly);
+  }
+  function start(onlyMistakes = false) {
+    mistakesOnly = onlyMistakes;
+    const keys = new Set(misses());
+    order = shuffle(getItems().filter(it => !onlyMistakes || keys.has(qText(it))));
+    i = 0; score = 0; render();
+  }
   function render() {
     const box = $(pre + '-box');
+    missButton();
     $(pre + '-score').textContent = `Score: ${score}`;
     $(pre + '-bar').style.width = (order.length ? i / order.length * 100 : 0) + '%';
-    if (!order.length) { box.innerHTML = '<p class="muted">No questions in this topic yet.</p>'; $(pre + '-pos').textContent = ''; return; }
+    if (!order.length) { box.innerHTML = `<p class="muted">${mistakesOnly ? 'No mistakes left to fix. Nice work!' : 'No questions in this topic yet.'}</p>`; $(pre + '-pos').textContent = ''; return; }
     if (i >= order.length) {
       $(pre + '-pos').textContent = 'Finished';
-      const pct = Math.round(score / order.length * 100);
-      if (score > (progress[pre + 'Best'] || 0)) { progress[pre + 'Best'] = score; save(); }
-      box.innerHTML = `<div class="big">${score} / ${order.length}</div><p>${pct >= 85 ? 'Excellent. You\'re ready for the next section.' : pct >= 60 ? 'Good work. Re-read the Learn tab for the ones you missed, then try again.' : 'Keep going. Go back through Learn and the Flashcards, then retry.'}</p><div class="row"><button class="btn" id="${pre}-again">Try again</button></div>`;
-      $(pre + '-again').onclick = start; stagger(box.children); return;
+      const pct = Math.round(score / order.length * 100), left = misses().length;
+      if (!mistakesOnly && score > (progress[pre + 'Best'] || 0)) { progress[pre + 'Best'] = score; save(); }
+      const msg = mistakesOnly
+        ? (left ? `${left} still to fix. Read the explanations again, then have another go.` : 'Every mistake fixed. Great work!')
+        : pct >= 85 ? 'Excellent. You\'re ready for the next section.' : pct >= 60 ? 'Good work. Retry your mistakes, then re-read the Learn tab for anything still unclear.' : 'Keep going. Retry your mistakes, and go back through Learn and the Flashcards.';
+      box.innerHTML = `<div class="big">${score} / ${order.length}</div><p>${msg}</p><div class="row"><button class="btn ${left ? 'ghost' : ''}" id="${pre}-again">${mistakesOnly ? 'All questions' : 'Try again'}</button>${left ? `<button class="btn" id="${pre}-fix">Retry my mistakes (${left})</button>` : ''}</div>`;
+      $(pre + '-again').onclick = () => start(false);
+      if (left) $(pre + '-fix').onclick = () => start(true);
+      stagger(box.children); return;
     }
     const it = order[i];
-    $(pre + '-pos').textContent = `Question ${i + 1} of ${order.length}`;
+    $(pre + '-pos').textContent = `${mistakesOnly ? 'Mistake' : 'Question'} ${i + 1} of ${order.length}`;
     box.innerHTML = `<h3 style="white-space:pre-line">${esc(qText(it))}</h3><div class="options">${it.o.map((o, j) => `<button class="opt" data-i="${j}">${esc(o)}</button>`).join('')}</div><div id="${pre}-fb"></div>`;
     box.querySelectorAll('.opt').forEach(b => b.onclick = () => answer(+b.dataset.i));
     stagger([box.querySelector('h3'), ...box.querySelectorAll('.opt')]);
@@ -193,20 +256,25 @@ function makeRunner(pre, getItems, qText) {
     if (btns[0].disabled) return;
     btns.forEach((b, k) => { b.disabled = true; if (k === it.a) b.classList.add('right'); else if (k === j) b.classList.add('wrong'); });
     const ok = j === it.a; if (ok) score++;
+    const key = qText(it), m = misses(), had = m.includes(key);
+    if (!ok && !had) { m.push(key); save(); }
+    if (ok && had) { m.splice(m.indexOf(key), 1); save(); }
     $(pre + '-score').textContent = `Score: ${score}`; if (ok) bump($(pre + '-score'));
-    $(pre + '-fb').innerHTML = `<div class="feedback"><strong>${ok ? 'Correct.' : 'Not quite.'}</strong> ${esc(it.e)}</div><div class="row" style="margin-top:12px"><span class="spacer"></span><button class="btn" id="${pre}-next">Next →</button></div>`;
+    $(pre + '-fb').innerHTML = `<div class="feedback"><strong>${ok ? (had ? 'Correct. Mistake fixed!' : 'Correct.') : 'Not quite.'}</strong> ${esc(it.e)}${!ok ? ' <span class="muted">(Saved to your mistakes.)</span>' : ''}</div><div class="row" style="margin-top:12px"><span class="spacer"></span><button class="btn" id="${pre}-next">Next →</button></div>`;
     const nx = $(pre + '-next'); nx.focus(); nx.onclick = () => { i++; render(); };
   }
   return start;
 }
 const qzStart = makeRunner('qz', () => current.quiz || [], it => it.q);
 const apRun = makeRunner('ap', () => (current.apply && current.apply.items) || [], it => it.task);
-function apStart() {
+function apStart(onlyMistakes = false) {
   const a = current.apply || {};
   $('ap-title').textContent = a.title || 'Apply it';
   $('ap-intro').textContent = a.intro || 'Use what you\'ve learned on real situations.';
-  apRun();
+  apRun(onlyMistakes);
 }
+// How many mistakes a lesson has left to fix (for the Progress page).
+function mistakeCount(p) { const m = (p && p.miss) || {}; return (m.qz || []).length + (m.ap || []).length; }
 
 // ---------- Exam ----------
 let saveTimer = null, pendingSave = null;
@@ -354,7 +422,7 @@ function lessonStats(d) {
 }
 const level = n => n >= 80 ? 'good' : n >= 50 ? 'mid' : n > 0 ? 'low' : 'none';
 function renderProgress() {
-  const stats = index.map(d => ({ d, ...lessonStats(d) }));
+  const stats = index.map(d => ({ d, ...lessonStats(d), miss: mistakeCount(ls.get('sh-prog-' + d.id, {})) }));
   const started = stats.filter(x => x.started).length;
   const avg = stats.length ? Math.round(stats.reduce((a, x) => a + x.overall, 0) / stats.length) : 0;
   // Revise next: the weakest lesson you've started; if none started yet, the first lesson.
@@ -366,11 +434,13 @@ function renderProgress() {
   $('pv-list').innerHTML = stats.map(x => `
     <div class="card pv-card">
       <div class="row pv-head">${ring(x.overall, 'sm')}<a class="pv-title" href="#${esc(x.d.id)}">${esc(x.d.title)}</a></div>
+      ${x.miss ? `<a class="pv-miss" href="#${esc(x.d.id)}" data-miss="1">${x.miss} mistake${x.miss === 1 ? '' : 's'} to fix →</a>` : ''}
       <div class="pv-bars">${x.parts.map(([name, got, of]) => { const n = pct(got, of); return `
         <div class="pv-bar"><span>${name}</span><div class="progress"><div class="${level(n)}" style="width:${n}%"></div></div><span class="score">${got}/${of}</span></div>`; }).join('')}
       </div>
     </div>`).join('');
   stagger($('pv-list').children, 10);
+  $('pv-list').querySelectorAll('[data-miss]').forEach(a => a.addEventListener('click', () => { intent = 'mistakes'; }));
 }
 $('pv-reset').onclick = () => {
   const b = $('pv-reset');

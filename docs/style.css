@@ -322,6 +322,11 @@ footer img { flex: none; border-radius: 6px; opacity: .85; }
   .helper-panel { right: 0; bottom: 0; width: 100vw; height: 85vh; border-radius: 18px 18px 0 0; }
 }
 
+/* ---------- Smart flashcards and mistakes ---------- */
+.fc-sub { font-size: 14px; }
+.fc-tag { display: inline-block; margin-bottom: 10px; font: 600 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.pv-miss { display: inline-block; margin-top: 8px; font-weight: 600; font-size: 14px; color: var(--accent); }
+
 /* ---------- Motion ----------
    Entrances ease out and rise a few pixels; lists and cards come in one after another (30ms apart).
    Buttons shrink slightly while pressed. Bars and rings fill smoothly. Exits are shorter than entrances.
