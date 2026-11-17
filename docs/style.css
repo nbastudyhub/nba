@@ -344,9 +344,10 @@ body[data-view="business"] .helper { display: none; } /* the AI helper covers th
 input[type=number] { font: 15px var(--font-body); padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); }
 
 /* Business: the 7 steps */
-.bz-steps-nav { margin: 0; padding: 12px 16px 12px 34px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); columns: 2; column-gap: 24px; }
+.bz-steps-nav { list-style: none; margin: 0; padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); columns: 2; column-gap: 24px; }
 .bz-steps-nav li { margin: 3px 0; break-inside: avoid; }
-.bz-steps-nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+.bz-steps-nav a { display: flex; gap: 10px; align-items: baseline; color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+.bz-nav-n { flex: none; min-width: 1.2em; color: var(--highlight); font: 400 17px var(--font-display); }
 .bz-steps-nav a:hover { color: var(--accent); text-decoration: underline; }
 @media (max-width: 560px) { .bz-steps-nav { columns: 1; } }
 .bz-step-card { scroll-margin-top: calc(var(--topbar-h) + 16px); }

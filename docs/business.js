@@ -20,6 +20,7 @@
   addEventListener('pagehide', () => { if (saveT) flush(); });
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && saveT) flush(); });
 
+  const extra = (step) => /^Extra/i.test(step.title); // extra steps (e.g. PESTLE) aren't numbered
   const stepState = (id) => { const s = (prog.steps = prog.steps || {}); return (s[id] = s[id] || { f: {}, ticks: [] }); };
   const aimText = () => ((prog.steps && prog.steps.aim && prog.steps.aim.f.aim) || '').trim();
   const filled = (step) => { const st = stepState(step.id); return step.fields.filter((f) => (st.f[f.k] || '').trim()).length; };
@@ -71,7 +72,7 @@
         : `<textarea rows="3" data-k="${f.k}" placeholder="${esc(f.hint)}">${esc(st.f[f.k] || '')}</textarea>`}</label>`;
     }).join('');
     el.innerHTML = `
-      <div class="row bz-step-head"><span class="bz-step-num">${i + 1}</span><h2>${esc(step.title)}</h2><span class="spacer"></span><span class="muted small-note" data-role="count"></span></div>
+      <div class="row bz-step-head"><span class="bz-step-num">${extra(step) ? '+' : i + 1}</span><h2>${esc(step.title)}</h2><span class="spacer"></span><span class="muted small-note" data-role="count"></span></div>
       <p>${esc(step.intro)}</p>
       ${step.id !== 'aim' ? '<p class="bz-aim" data-role="aim"></p>' : ''}
       <div class="bz-fields">${fieldsHtml}</div>
@@ -130,7 +131,7 @@
       <div id="bz-write" class="stack ${btab === 'write' ? '' : 'hidden'}">
         <div class="card row bz-sum" id="bz-sum"></div>
         ${c ? `<div class="card bz-booklet"><strong>${esc(c.name)}</strong><p>${esc(c.text)}</p></div>` : ''}
-        <ol class="bz-steps-nav">${data.steps.map((s, i) => `<li><a href="#business" data-go="${s.id}">${i + 1}. ${esc(s.title)}</a></li>`).join('')}</ol>
+        <ul class="bz-steps-nav">${data.steps.map((s, i) => `<li><a href="#business" data-go="${s.id}"><span class="bz-nav-n">${extra(s) ? '+' : i + 1}</span>${esc(s.title)}</a></li>`).join('')}</ul>
         <div id="bz-steps" class="stack"></div>
       </div>`;
     const list = $('bz-steps');
