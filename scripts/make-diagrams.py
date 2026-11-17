@@ -2,7 +2,7 @@
 """Draws the Learn-tab diagrams as SVG files in docs/diagrams/.
 
 Run:  python3 scripts/make-diagrams.py
-Each diagram uses the site's colours: Egyptian blue, Stone blue and Scarlet red. A lesson section shows one with:  "diagram": {"src": "diagrams/<name>.svg", "alt": "...", "caption": "..."}
+Each diagram uses the site's colours: Egyptian blue and Stone blue; red only marks attackers and problems. A lesson section shows one with:  "diagram": {"src": "diagrams/<name>.svg", "alt": "...", "caption": "..."}
 """
 from pathlib import Path
 from html import escape
@@ -15,7 +15,7 @@ STYLE = """
 .tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
 .s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
 .m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
-.h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#eb2f31;letter-spacing:.08em}
+.h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#629cc3;letter-spacing:.08em}
 .w{fill:#ffffff}
 .box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
 .acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
@@ -23,7 +23,7 @@ STYLE = """
 .good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
 .amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
 .dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
-.solid-acc{fill:#629cc3}.solid-bad{fill:#eb2f31}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
+.solid-acc{fill:#629cc3}.solid-bad{fill:#3f7aa3}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
 .ln{stroke:#a3bbd0;stroke-width:2;fill:none}
 .ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
 .ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}

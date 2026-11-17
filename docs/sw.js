@@ -1,7 +1,7 @@
 // Study Hub offline support. Network first, so you always get the newest lessons when online;
 // the saved copy is used only when there's no connection. The AI (/api/) always needs internet.
-const CACHE = 'study-hub-v9';
-const CORE = ['./', 'index.html', 'style.css?v=12', 'app.js?v=12', 'assistant.js?v=12', 'account.js?v=12', 'manifest.webmanifest',
+const CACHE = 'study-hub-v10';
+const CORE = ['./', 'index.html', 'style.css?v=13', 'app.js?v=13', 'assistant.js?v=13', 'account.js?v=13', 'manifest.webmanifest',
   'icons/icon.svg', 'icons/icon-192.png', 'decks/index.json', 'decks/topics.json', 'decks/glossary.json'];
 
 self.addEventListener('install', (event) => {

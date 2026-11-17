@@ -1,10 +1,10 @@
 :root {
   /* Layout: sticky top bar → lesson cards → lesson hero with progress ring → sticky icon tabs → content cards
-     Colours: two quiet blues do most of the work, and one loud red picks out what matters.
-       Egyptian blue #03203C (background), Stone blue #629CC3 (quiet accent), Scarlet red #EB2F31 (the loud one). */
+     Colours: Egyptian blue #03203C (background), Stone blue #629CC3 (quiet accent) and a deeper
+       highlight blue #3F7AA3 that picks out what matters. Red is kept only for wrong answers and errors. */
   --egyptian: #03203c;
   --stone: #629cc3;
-  --scarlet: #eb2f31;
+  --highlight: #3f7aa3;
   --bg: var(--egyptian);
   --surface: #0a2b4b;
   --surface-2: #072640;
@@ -14,8 +14,8 @@
   --accent: var(--stone);
   --accent-strong: #8dbadb;
   --accent-soft: #10385c;
-  --loud: var(--scarlet);
-  --loud-soft: #3a1b30;
+  --loud: var(--highlight);
+  --loud-soft: #12385a;
   --amber: #f2b544;
   --amber-soft: #33301f;
   --good: #4cc38a;
@@ -35,7 +35,7 @@
   color-scheme: dark;
 }
 
-/* Lesson page (hero, tabs and content): all text is white, with Scarlet red kept for the highlights. */
+/* Lesson page (hero, tabs and content): all text is white, with the highlight blue kept for highlights. */
 #deckview { --ink: #ffffff; --muted: #ffffff; --accent: #ffffff; --accent-strong: #ffffff; color: var(--ink); }
 #deckview nav.tabs button[aria-selected="true"] { background: transparent; color: #ffffff; box-shadow: inset 0 -3px 0 var(--loud); }
 #deckview nav.tabs button:hover { color: #ffffff; }
@@ -282,14 +282,14 @@ footer { display: flex; gap: 10px; align-items: flex-start; margin-top: 48px; pa
 footer img { flex: none; border-radius: 6px; opacity: .85; }
 
 /* ---------- AI study helper (assistant.js) ---------- */
-.helper-fab { position: fixed; right: 20px; bottom: 20px; z-index: 9999; width: 64px; height: 64px; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 3px solid #ffffff; background: var(--scarlet); color: #ffffff; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,.28); transition: transform .15s; }
+.helper-fab { position: fixed; right: 20px; bottom: 20px; z-index: 9999; width: 64px; height: 64px; display: grid; place-items: center; padding: 0; border-radius: 50%; border: 3px solid #ffffff; background: var(--highlight); color: #ffffff; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,.28); transition: transform .15s; }
 .helper-fab:hover { transform: scale(1.06); }
-.helper-fab::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 3px solid var(--scarlet); animation: helper-ring 2s ease-out 3; pointer-events: none; }
+.helper-fab::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 3px solid var(--highlight); animation: helper-ring 2s ease-out 3; pointer-events: none; }
 @keyframes helper-ring { from { transform: scale(1); opacity: .7; } to { transform: scale(1.6); opacity: 0; } }
 .helper.open .helper-fab { display: none; }
 .helper-panel { position: fixed; right: 16px; bottom: 16px; z-index: 51; width: min(390px, calc(100vw - 32px)); height: min(580px, calc(100vh - 32px)); display: flex; flex-direction: column; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 18px 50px rgba(0,0,0,.28); overflow: hidden; transform-origin: 100% 100%; animation: pop-in .24s var(--ease-out); }
 .helper-panel[hidden] { display: none; }
-.helper-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 14px 16px; background: var(--egyptian); border-bottom: 3px solid var(--scarlet); color: #ffffff; }
+.helper-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; padding: 14px 16px; background: var(--egyptian); border-bottom: 3px solid var(--highlight); color: #ffffff; }
 .helper-head strong { font: 400 20px var(--font-display); text-transform: uppercase; letter-spacing: .04em; }
 .helper-lesson { font-size: 13px; opacity: .9; }
 .helper-close { background: transparent; border: 0; color: inherit; font-size: 26px; line-height: 1; cursor: pointer; padding: 0 4px; }
