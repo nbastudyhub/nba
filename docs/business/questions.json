@@ -1,224 +1,13 @@
 {
  "title": "Business: exam writing",
- "course": "Pearson BTEC Level 3 National Business · Unit 2 set task practice (Technective)",
- "note": "The questions, structures and mark schemes are written for this site. The writing structures are a standard approach until your teacher's structure is added. The site doesn't copy the Technective booklet: use your own copy for the facts and figures.",
- "structures": {
-  "explain": {
-   "name": "Explain",
-   "marks": "usually 2-4 marks",
-   "steps": [
-    {
-     "label": "Point",
-     "hint": "Name one clear idea, e.g. a characteristic, advantage or effect."
-    },
-    {
-     "label": "Explain",
-     "hint": "Say why or how, with a link word: because… so… which means…"
-    },
-    {
-     "label": "Use the case",
-     "hint": "Back it up with a fact or number from the case study."
-    }
-   ],
-   "tip": "One point, fully developed and applied, beats three listed points."
-  },
-  "calculate": {
-   "name": "Calculate and explain",
-   "marks": "usually 2-4 marks",
-   "steps": [
-    {
-     "label": "Formula",
-     "hint": "Write the formula you are using."
-    },
-    {
-     "label": "Working",
-     "hint": "Show each step with the numbers from the case, and the units (£, %)."
-    },
-    {
-     "label": "Meaning",
-     "hint": "Say what the answer shows about the business."
-    }
-   ],
-   "tip": "Always show working: you can get marks for method even if the final answer is wrong."
-  },
-  "analyse": {
-   "name": "Analyse",
-   "marks": "usually 6 marks",
-   "steps": [
-    {
-     "label": "Point",
-     "hint": "Make a clear point that answers the question."
-    },
-    {
-     "label": "Chain of reasoning",
-     "hint": "Build connected steps: this leads to… which means… as a result…"
-    },
-    {
-     "label": "Use the case",
-     "hint": "Use specific evidence from the case: names, numbers, facts."
-    },
-    {
-     "label": "Impact",
-     "hint": "Finish with the effect on the business, e.g. on sales, costs, profit or reputation."
-    }
-   ],
-   "tip": "Aim for two well-developed points, each with a chain of reasoning, rather than lots of short ones. No conclusion is needed."
-  },
-  "evaluate": {
-   "name": "Assess / Evaluate",
-   "marks": "usually 8-12 marks",
-   "steps": [
-    {
-     "label": "Argument for",
-     "hint": "Point, chain of reasoning and evidence from the case on one side."
-    },
-    {
-     "label": "Argument against",
-     "hint": "Point, chain of reasoning and evidence from the case on the other side."
-    },
-    {
-     "label": "Judgement",
-     "hint": "Answer the question directly: which matters most, or what should they do, and why?"
-    },
-    {
-     "label": "It depends on…",
-     "hint": "Name the key factor that could change your judgement."
-    }
-   ],
-   "tip": "Both sides need evidence from the case, and your judgement must follow from your arguments. A judgement with no reason gets few marks."
-  }
- },
+ "course": "Pearson BTEC Level 3 National Business · Unit 2 set task (Technective)",
+ "note": "These 7 steps follow your teacher's structure. The site doesn't copy the Technective booklet: use your own copy for the facts and figures.",
  "cases": [
   {
    "id": "technective",
    "name": "Technective",
    "booklet": true,
    "text": "Use your own Technective pre-release booklet for this case: the set task brief, the UK smartwatch market, the competitor profiles, the primary research report and the media options. This site doesn't copy the booklet, so have it open next to you and quote its facts and figures in your answers."
-  }
- ],
- "questions": [
-  {
-   "id": "tech-1",
-   "case": "technective",
-   "type": "explain",
-   "m": 3,
-   "q": "Explain one reason why the UK smartwatch market is an opportunity for Technective.",
-   "pts": [
-    "Identifies a reason, e.g. a large or growing number of users / demand from younger people / smaller brands gaining share / demand for affordable, differentiated watches",
-    "Explains why it is an opportunity, e.g. more potential customers, so Technective could gain sales and market share",
-    "Uses evidence from the booklet, e.g. a market-size, forecast or trend figure"
-   ],
-   "tip": "Quote one specific figure or fact from the market section to support your point."
-  },
-  {
-   "id": "tech-2",
-   "case": "technective",
-   "type": "calculate",
-   "m": 3,
-   "q": "Using the primary research, calculate the percentage of smartwatch owners who bought their watch to monitor health and fitness. Explain what your answer shows.",
-   "pts": [
-    "Correct method: number who chose health and fitness ÷ number of smartwatch owners (not the whole sample) × 100",
-    "Accurate working with the booklet's figures, giving the answer as a percentage (1 decimal place)",
-    "Meaning, e.g. it is the most common reason, so a health and fitness focus could appeal to the largest group of buyers"
-   ],
-   "tip": "Divide by the number of OWNERS, not the whole sample: only owners answered this question."
-  },
-  {
-   "id": "tech-3",
-   "case": "technective",
-   "type": "analyse",
-   "m": 6,
-   "q": "Analyse how reliable Technective's primary research is for planning the campaign.",
-   "pts": [
-    "Sample size is small compared with the number of UK smartwatch users, so it may not represent the whole market",
-    "Carried out in one location (a city shopping centre), so it may not reflect buyers elsewhere in the UK",
-    "The sample's age and gender profile doesn't match the market's main buyers, so results may be biased",
-    "Only over-16s were asked, which misses younger buyers, a growing group",
-    "It is recent, so it reflects current opinions in a fast-changing market",
-    "Impact: decisions on segment, price and features based on it carry some risk, so it should be checked against the secondary research"
-   ],
-   "tip": "For each reliability point, say what it could lead to: wrong decisions about the segment, price or media."
-  },
-  {
-   "id": "tech-4",
-   "case": "technective",
-   "type": "analyse",
-   "m": 6,
-   "q": "Analyse the threats that competitors pose to Technective's new smartwatch.",
-   "pts": [
-    "Large brands hold big market shares and strong brand loyalty, so it is hard to win their customers",
-    "Low-cost brands and price wars push prices down, reducing Technective's possible profit margins",
-    "Competitors are launching affordable models aimed at general consumers, competing for the same buyers",
-    "Competitors use strong digital marketing, partnerships and sponsorship, raising the cost of being noticed",
-    "Competitor weaknesses, e.g. complaints about faults or data accuracy, show what Technective must avoid or can exploit",
-    "Impact on Technective: it needs a clear USP, a competitive price and targeted media to stand out"
-   ],
-   "tip": "Name specific competitors from the booklet and link each threat to its effect on Technective."
-  },
-  {
-   "id": "tech-5",
-   "case": "technective",
-   "type": "explain",
-   "m": 3,
-   "q": "Explain one SMART objective Technective could set for the campaign.",
-   "pts": [
-    "States a specific, measurable objective, e.g. a sales, awareness or social-media target with a number",
-    "Time-bound within the campaign's timescale, and achievable within the budget",
-    "Explains why it suits the campaign, linked to the chosen segment or research evidence"
-   ],
-   "tip": "Check every letter of SMART is covered, and link the target to evidence from the booklet."
-  },
-  {
-   "id": "tech-6",
-   "case": "technective",
-   "type": "evaluate",
-   "m": 10,
-   "q": "Evaluate whether Technective should target health and fitness enthusiasts or technology enthusiasts.",
-   "pts": [
-    "Health and fitness: the most common reason for buying, and fitness monitoring is the most expected feature",
-    "Health and fitness: specialist media (fitness magazines, sponsorship, influencers) reach this segment directly",
-    "Health and fitness: crowded with established competitors focused on fitness, so it is hard to stand out",
-    "Technology: the brand already sells phones and computers, so it can link the watch with its own products",
-    "Technology: buyers expect connectivity features (calls, messaging, payments), which fit Technective's expertise",
-    "Technology: trends show some buyers are bored of seeing the same features, so innovation would be needed",
-    "Judgement: a clear choice, supported by the research figures",
-    "It depends on, e.g. the price the segment will pay, or how well the features can be adapted"
-   ],
-   "tip": "Use figures from the primary research for BOTH segments, then make a clear choice with an 'it depends on'."
-  },
-  {
-   "id": "tech-7",
-   "case": "technective",
-   "type": "evaluate",
-   "m": 10,
-   "q": "Justify a media plan for the campaign that stays within the budget and timescale in the brief.",
-   "pts": [
-    "Chooses media that reach the chosen segment, using audience data from the media options",
-    "Uses a mix of media, e.g. digital (social ads, influencers) and traditional (magazines, posters, sponsorship)",
-    "Shows costs and totals that stay within the budget, spread across the timescale",
-    "Compares cost with reach, e.g. cost per reader or per click, to justify value for money",
-    "Rejects or limits expensive options with reasons, e.g. TV costs a large share of the budget",
-    "Links media to the campaign objectives and to competitor activity",
-    "Judgement on why this mix is the best use of the budget",
-    "It depends on, e.g. how results are monitored and the budget moved to what works"
-   ],
-   "tip": "Use the budget planner below to check your totals, then justify each choice with audience data AND cost."
-  },
-  {
-   "id": "tech-8",
-   "case": "technective",
-   "type": "evaluate",
-   "m": 8,
-   "q": "Assess how external influences could affect Technective's campaign.",
-   "pts": [
-    "Economic: the cost-of-living crisis makes buyers more price-sensitive, affecting price and message",
-    "Legal: data-protection and privacy rules affect health-data features and how they are promoted",
-    "Technological: fast change and lack of new features affect what the watch must offer",
-    "Social: trends towards style, customisation and fashion affect the product and media choice",
-    "Competitive pressure and price wars affect positioning",
-    "Judgement on which influence matters most for the campaign, and why"
-   ],
-   "tip": "Use PESTLE headings to organise, but only discuss influences the booklet gives evidence for."
   }
  ],
  "terms": [
@@ -421,6 +210,332 @@
    "t": "Campaign budget",
    "d": "The amount of money set aside to spend on a marketing campaign",
    "g": "promo"
+  }
+ ],
+ "steps": [
+  {
+   "id": "aim",
+   "title": "Find the aim of the business",
+   "intro": "Find what Technective wants to achieve by launching the smartwatch. Every later step links back to this aim.",
+   "fields": [
+    {
+     "k": "aim",
+     "label": "The aim",
+     "hint": "In one sentence: what does Technective want to achieve? Look at the set task brief and the section on taking advantage of the smartwatch market."
+    },
+    {
+     "k": "where",
+     "label": "Where you found it",
+     "hint": "Quote or name the part of the booklet that shows this aim."
+    }
+   ],
+   "checks": [
+    "States one clear aim for Technective's smartwatch launch",
+    "The aim comes from the booklet, not made up",
+    "Says where in the booklet the aim comes from"
+   ],
+   "tip": "Keep the aim broad (what they want overall). The SMART objectives in step 2 are the specific targets."
+  },
+  {
+   "id": "smart",
+   "title": "Make 3 SMART objectives linking to the aim",
+   "intro": "Write three objectives that help achieve the aim. Each one must be Specific, Measurable, Achievable, Realistic and Time-bound.",
+   "fields": [
+    {
+     "k": "o1",
+     "label": "The objective",
+     "hint": "e.g. To … by …% / to … within … months",
+     "group": "Objective 1"
+    },
+    {
+     "k": "l1",
+     "label": "How it links to the aim",
+     "hint": "This helps achieve the aim because…",
+     "group": "Objective 1"
+    },
+    {
+     "k": "o2",
+     "label": "The objective",
+     "hint": "A different target, e.g. sales, awareness or social media",
+     "group": "Objective 2"
+    },
+    {
+     "k": "l2",
+     "label": "How it links to the aim",
+     "hint": "This helps achieve the aim because…",
+     "group": "Objective 2"
+    },
+    {
+     "k": "o3",
+     "label": "The objective",
+     "hint": "A different target again",
+     "group": "Objective 3"
+    },
+    {
+     "k": "l3",
+     "label": "How it links to the aim",
+     "hint": "This helps achieve the aim because…",
+     "group": "Objective 3"
+    }
+   ],
+   "checks": [
+    "Three different objectives",
+    "Each is Specific: says exactly what will be achieved",
+    "Each is Measurable: includes a number or percentage",
+    "Each is Achievable and Realistic for the budget and the market",
+    "Each is Time-bound: has a deadline within the campaign",
+    "Each clearly links back to the aim"
+   ],
+   "tip": "Check every objective against all five letters. A number and a deadline are the easiest marks to lose."
+  },
+  {
+   "id": "trends",
+   "title": "Find 2 trends and link them to the aim",
+   "intro": "Find two trends in the smartwatch market from the booklet, give the evidence, and explain how each one affects Technective's aim.",
+   "fields": [
+    {
+     "k": "t1",
+     "label": "The trend",
+     "hint": "What is changing in the market?",
+     "group": "Trend 1"
+    },
+    {
+     "k": "e1",
+     "label": "Evidence",
+     "hint": "A figure or fact from the booklet",
+     "group": "Trend 1"
+    },
+    {
+     "k": "k1",
+     "label": "Link to the aim",
+     "hint": "This affects the aim because…",
+     "group": "Trend 1"
+    },
+    {
+     "k": "t2",
+     "label": "The trend",
+     "hint": "A different trend",
+     "group": "Trend 2"
+    },
+    {
+     "k": "e2",
+     "label": "Evidence",
+     "hint": "A figure or fact from the booklet",
+     "group": "Trend 2"
+    },
+    {
+     "k": "k2",
+     "label": "Link to the aim",
+     "hint": "This affects the aim because…",
+     "group": "Trend 2"
+    }
+   ],
+   "checks": [
+    "Two different trends from the booklet",
+    "Each trend is backed by evidence (a figure or fact)",
+    "Each explains how the trend affects Technective",
+    "Each links back to the aim"
+   ],
+   "tip": "A trend is a change over time (growing, falling, shifting). Say what the trend means for Technective, not just what it is."
+  },
+  {
+   "id": "competitors",
+   "title": "Find 2 competitors and link them to the aim",
+   "intro": "Pick two competitors from the booklet. Describe what they do, then say whether each is a threat or an opportunity for Technective's aim.",
+   "fields": [
+    {
+     "k": "c1",
+     "label": "Name",
+     "hint": "Name",
+     "group": "Competitor 1",
+     "short": true
+    },
+    {
+     "k": "w1",
+     "label": "What they do",
+     "hint": "Products, prices, market share or marketing, with evidence",
+     "group": "Competitor 1"
+    },
+    {
+     "k": "k1",
+     "label": "Threat or opportunity, linked to the aim",
+     "hint": "This is a threat/opportunity to the aim because…",
+     "group": "Competitor 1"
+    },
+    {
+     "k": "c2",
+     "label": "Name",
+     "hint": "Name",
+     "group": "Competitor 2",
+     "short": true
+    },
+    {
+     "k": "w2",
+     "label": "What they do",
+     "hint": "Products, prices, market share or marketing, with evidence",
+     "group": "Competitor 2"
+    },
+    {
+     "k": "k2",
+     "label": "Threat or opportunity, linked to the aim",
+     "hint": "This is a threat/opportunity to the aim because…",
+     "group": "Competitor 2"
+    }
+   ],
+   "checks": [
+    "Two named competitors from the booklet",
+    "Specific evidence about each (products, prices, market share or marketing)",
+    "Says whether each is a threat or an opportunity for Technective, and why",
+    "Each links back to the aim"
+   ],
+   "tip": "Use numbers: prices, sales or market share. Then say what Technective can learn from, or must beat, in each competitor."
+  },
+  {
+   "id": "research",
+   "title": "Market research: reliability, validity and bias",
+   "intro": "Judge Technective's primary research. Use figures from the research report for each part.",
+   "fields": [
+    {
+     "k": "rel",
+     "label": "Reliability",
+     "hint": "Can the results be trusted and repeated? Think about sample size and how it was collected."
+    },
+    {
+     "k": "val",
+     "label": "Validity",
+     "hint": "Does it measure what Technective needs? Think about who was asked, when, and the questions."
+    },
+    {
+     "k": "bias",
+     "label": "Bias",
+     "hint": "Who is over- or under-represented? Compare the sample with the market."
+    },
+    {
+     "k": "so",
+     "label": "So what for Technective?",
+     "hint": "What does this mean for decisions about the aim?"
+    }
+   ],
+   "checks": [
+    "Reliability: judges whether the results can be trusted or repeated (e.g. sample size), with evidence",
+    "Validity: judges whether the research measures what Technective needs (e.g. who, when, which questions)",
+    "Bias: identifies who is over- or under-represented, with evidence",
+    "Uses figures from the research report",
+    "Says what this means for Technective's decisions"
+   ],
+   "tip": "Don't just say 'it's unreliable'. Say why, give the figure, and say what that could lead Technective to get wrong."
+  },
+  {
+   "id": "swot",
+   "title": "SWOT analysis (2 per letter, linking to the aim)",
+   "intro": "Two points for each letter. Strengths and weaknesses are inside Technective; opportunities and threats come from outside. Link every point to the aim.",
+   "fields": [
+    {
+     "k": "s1",
+     "label": "Strength 1",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Strengths"
+    },
+    {
+     "k": "s2",
+     "label": "Strength 2",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Strengths"
+    },
+    {
+     "k": "w1",
+     "label": "Weakness 1",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Weaknesses"
+    },
+    {
+     "k": "w2",
+     "label": "Weakness 2",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Weaknesses"
+    },
+    {
+     "k": "o1",
+     "label": "Opportunity 1",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Opportunities"
+    },
+    {
+     "k": "o2",
+     "label": "Opportunity 2",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Opportunities"
+    },
+    {
+     "k": "t1",
+     "label": "Threat 1",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Threats"
+    },
+    {
+     "k": "t2",
+     "label": "Threat 2",
+     "hint": "Point + evidence + link to the aim",
+     "group": "Threats"
+    }
+   ],
+   "checks": [
+    "Two strengths and two weaknesses that are internal to Technective",
+    "Two opportunities and two threats that are external (market, competitors, trends)",
+    "Each point uses evidence from the booklet",
+    "Each point links to the aim"
+   ],
+   "tip": "Check each point is in the right box: if Technective controls it, it's S or W; if it's in the market, it's O or T."
+  },
+  {
+   "id": "mix",
+   "title": "Product life cycle and the 7 Ps",
+   "intro": "Plan the marketing mix for the new smartwatch. Justify every P with research evidence and link it to the aim.",
+   "fields": [
+    {
+     "k": "product",
+     "label": "Product (and its product life cycle stage)",
+     "hint": "Features and design, which life cycle stage it's at (e.g. introduction) and what that means for the campaign"
+    },
+    {
+     "k": "price",
+     "label": "Price",
+     "hint": "What price or pricing strategy, and why? Use what people said they'd pay."
+    },
+    {
+     "k": "place",
+     "label": "Place",
+     "hint": "Where will it be sold, and why? Use where people buy smartwatches."
+    },
+    {
+     "k": "promotion",
+     "label": "Promotion",
+     "hint": "Which media and promotions suit the target market and the budget?"
+    },
+    {
+     "k": "people",
+     "label": "People",
+     "hint": "Staff, ambassadors or influencers, and the service they give"
+    },
+    {
+     "k": "process",
+     "label": "Process",
+     "hint": "How customers buy and receive it, e.g. ordering, delivery, after-sales"
+    },
+    {
+     "k": "physical",
+     "label": "Physical evidence",
+     "hint": "What customers see and touch, e.g. packaging, website, store displays, reviews"
+    }
+   ],
+   "checks": [
+    "All 7 Ps covered",
+    "Product includes the product life cycle stage and what it means for the campaign",
+    "Each decision is justified with research evidence",
+    "Promotion choices suit the target market and the budget",
+    "Each P links back to the aim"
+   ],
+   "tip": "For each P: the decision, the evidence behind it, and how it helps the aim."
   }
  ]
 }
