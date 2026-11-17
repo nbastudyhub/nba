@@ -777,5 +777,23 @@
    ],
    "tip": "Three clear, linked points. Use the lunchtime problem from the scenario."
   }
+ ],
+ "long": [
+  {
+   "sc": "Oakmere Data Centre stores servers for 50 businesses. Staff use magnetic stripe cards, the server hall has no CCTV inside, and visitors are escorted only when the guard is not busy.",
+   "q": "Evaluate the physical security measures Oakmere Data Centre should prioritise.",
+   "m": 8,
+   "pts": [
+    "Magnetic stripe cards are easy to copy, so chip cards or biometrics would be more secure",
+    "Biometrics can't be lost or lent; card + fingerprint gives two-factor authentication",
+    "CCTV inside the hall would deter intruders and record evidence",
+    "Always escorting visitors stops unauthorised people reaching servers",
+    "Alarms on cabinets would alert staff to tampering, but someone must respond",
+    "Locked cabinets and protected cabling stop tampering with network kit",
+    "Measures work in layers: deter, detect, respond",
+    "Justified conclusion weighing cost, speed and risk removed"
+   ],
+   "tip": "Use W-R-E for each measure, then justify your priority."
+  }
  ]
 }

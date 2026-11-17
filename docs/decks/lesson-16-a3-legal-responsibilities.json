@@ -870,5 +870,23 @@
    ],
    "tip": "Name the law, then link it to what Sam actually did."
   }
+ ],
+ "long": [
+  {
+   "sc": "FitLife App collects users' names, dates of birth, locations and health data. It shares location history with advertisers, keeps data after users delete their accounts, and ignores requests for copies of data. Its servers were hacked last month.",
+   "q": "Evaluate FitLife's legal responsibilities and which failure is most serious.",
+   "m": 8,
+   "pts": [
+    "Lawfulness: sharing location data with advertisers needs a lawful basis (e.g. clear consent)",
+    "Purpose limitation: data used for advertising beyond the stated purpose",
+    "Storage limitation: keeping data after accounts are deleted",
+    "Ignoring requests breaks the right of access (must respond within one month)",
+    "Integrity and confidentiality / due care: the hack may show it didn't keep data secure",
+    "The hacker committed Computer Misuse Act offences, but FitLife can still be fined by the ICO",
+    "Health data is especially sensitive, increasing harm and fines (up to £17.5m or 4% of turnover)",
+    "Justified conclusion on the most serious failure"
+   ],
+   "tip": "Name the exact principle or right for each failure, then weigh them up."
+  }
  ]
 }

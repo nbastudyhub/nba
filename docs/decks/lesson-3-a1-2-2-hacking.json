@@ -687,5 +687,23 @@
    ],
    "tip": "Top-grade \"assess\" = cover BOTH the business and customers, compare how serious each impact is, and finish with a clear judgement."
   }
+ ],
+ "long": [
+  {
+   "sc": "Peak Tickets sells concert tickets online. Most of its sales happen in the first hour after big events are announced. It stores customers' names, addresses and card details.",
+   "q": "Assess the impact that different hacking attacks could have on Peak Tickets and its customers.",
+   "m": 8,
+   "pts": [
+    "A DDoS attack could knock the website offline during the first hour, so sales are lost to rivals",
+    "DDoS is harder to stop than DoS because traffic comes from many devices (a botnet), not one",
+    "Data theft could expose customers' names, addresses and card details",
+    "Customers could suffer fraud or identity theft and lose trust in the company",
+    "Data tampering could change prices or bookings, causing confusion and refunds",
+    "Browser hijacking could redirect customers to fake pages to steal passwords",
+    "Consequences for the business: financial loss, legal action and damage to reputation",
+    "Supported judgement on which attack would have the greatest impact"
+   ],
+   "tip": "Link each attack to a specific consequence for the business AND for customers, then say which matters most."
+  }
  ]
 }

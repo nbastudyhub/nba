@@ -16,7 +16,7 @@ window.studyHub = {
   get index() { return index; },
   // Called by account.js after syncing, so the open lesson and pages show the merged progress.
   reloadProgress() {
-    if (current) { progress = ls.get('sh-prog-' + current.id, { answers: {} }); if (!progress.answers) progress.answers = {}; renderExam(); }
+    if (current) { progress = ls.get('sh-prog-' + current.id, { answers: {} }); if (!progress.answers) progress.answers = {}; renderExam(); renderLong(); }
     if (view === 'progress') renderProgress();
     updateRing(); renderShelf();
   }
@@ -146,7 +146,7 @@ async function openDeck(id) {
   const tm = current.title.match(/^(Lesson\s+\d+)(.*)$/i);
   $('d-title').innerHTML = tm ? `<span class="num">${esc(tm[1])}</span>${esc(tm[2])}` : esc(current.title);
   $('d-q').textContent = current.bigQuestion || '';
-  renderLearn(); fcStart(); qzStart(); apStart(); renderExam(); showTab(tab); updateRing();
+  renderLearn(); fcStart(); qzStart(); apStart(); renderExam(); renderLong(); showTab(tab); updateRing();
   // The progress ring fills up and the lesson heading eases in when a lesson opens.
   const r = $('d-ring'); r.classList.add('draw'); setTimeout(() => r.classList.remove('draw'), 1000);
   stagger(document.querySelectorAll('#deckview .hero'), 1);
@@ -422,6 +422,84 @@ function renderExam() {
   });
   exTotal();
 }
+// ---------- Long answers (level-marked) ----------
+// Same levels as functions/api/mark.js: e.g. 8 marks = Level 1 (1-2), Level 2 (3-5), Level 3 (6-8).
+const bands = m => { const a = Math.floor(m / 3), b = Math.floor(2 * m / 3); return [[1, a], [a + 1, b], [b + 1, m]]; };
+const LEVELS = [
+  'Basic knowledge with little reasoning. Points are general, not linked to the scenario. Any judgement is unsupported.',
+  'Accurate knowledge with some developed reasoning. Some points are applied to the scenario. A judgement is given but only partly supported.',
+  'Thorough, accurate knowledge with well-developed reasoning. Applied to the scenario throughout, looking at more than one side. A clear judgement fully supported by your reasoning.'
+];
+const longScore = (item, st) => !st ? 0 : Math.min(item.m, st.self !== undefined && st.self !== '' ? +st.self : st.ai ? st.ai.score : 0);
+function longAiHtml(item, r) {
+  return `<div class="row"><strong>AI mark: Level ${r.level}</strong><span class="spacer"></span><span class="big score" style="font-size:28px">${r.score} / ${r.max}</span></div>
+    ${r.feedback ? `<p class="ai-h">What went well</p><p>${esc(r.feedback)}</p>` : ''}
+    ${r.score < r.max && r.improve ? `<p class="ai-h">To reach the next level</p><p>${esc(r.improve)}</p>` : ''}
+    <p class="muted small-note">The points you covered are ticked in "What to include". AI marking can make mistakes; go with your teacher if they disagree.</p>`;
+}
+function renderLong() {
+  const items = current.long || [], list = $('long-list');
+  $('long-wrap').classList.toggle('hidden', !items.length);
+  list.innerHTML = '';
+  items.forEach((item, idx) => {
+    const qid = 'L' + idx, st = progress.answers[qid] || { text: '' };
+    const b = bands(item.m), covered = (st.ai && st.ai.covered) || [];
+    const c = document.createElement('div'); c.className = 'card long-card';
+    c.innerHTML = `
+      ${item.sc ? `<div class="scenario"><strong>Scenario:</strong> ${esc(item.sc)}</div>` : ''}
+      <div class="row" style="align-items:flex-start;margin-top:12px"><h3 style="flex:1">${esc(item.q)}</h3><span class="marks">(${item.m} marks)</span></div>
+      <textarea class="long-text" aria-label="Your long answer" placeholder="Plan first: 3 or 4 points, each explained and linked to the scenario, then a judgement…">${esc(st.text)}</textarea>
+      <div class="row small-note muted"><span data-role="words"></span></div>
+      <div class="row" style="margin-top:6px">
+        <button class="btn ghost small" data-act="guide">Show what to include</button>
+        <button class="btn small" data-act="ai">${st.ai ? 'Mark again' : 'Mark my answer with AI'}</button>
+        <span class="status" data-role="ainote"></span>
+      </div>
+      <div class="ai-result ${st.ai ? '' : 'hidden'}" data-role="ai">${st.ai ? longAiHtml(item, st.ai) : ''}</div>
+      <div class="scheme hidden" data-role="guide">
+        <p style="margin:0 0 4px"><strong>Indicative content</strong> (you don't need every point to reach Level 3):</p>
+        <ul class="tight long-pts">${item.pts.map((pt, i) => `<li class="${covered.includes(i) ? 'got' : ''}">${esc(pt)}</li>`).join('')}</ul>
+        <table class="levels"><tbody>${LEVELS.map((l, i) => `<tr><td><strong>Level ${i + 1}</strong><br><span class="muted">${b[i][0]}–${b[i][1]} marks</span></td><td>${esc(l)}</td></tr>`).join('')}</tbody></table>
+        ${item.tip ? `<div class="dstar"><strong>Top-grade tip:</strong> ${esc(item.tip)}</div>` : ''}
+        <label class="self-mark">Mark it yourself: <select data-role="self"><option value="">–</option>${Array.from({ length: item.m + 1 }, (_, n) => `<option value="${n}" ${st.self !== undefined && st.self !== '' && +st.self === n ? 'selected' : ''}>${n}</option>`).join('')}</select> / ${item.m}</label>
+      </div>`;
+    list.appendChild(c);
+    const entry = () => (progress.answers[qid] = progress.answers[qid] || { text: '' });
+    const ta = c.querySelector('textarea'), words = c.querySelector('[data-role=words]');
+    const count = () => { const n = (ta.value.trim().match(/\S+/g) || []).length; words.textContent = `${n} word${n === 1 ? '' : 's'}${n && n < 150 ? ' · top answers are usually 250+ words' : ''}`; };
+    count();
+    ta.oninput = () => { entry().text = ta.value; count(); save(); };
+    const guide = c.querySelector('[data-role=guide]'), gb = c.querySelector('[data-act=guide]');
+    gb.onclick = () => { const h = guide.classList.toggle('hidden'); guide.classList.toggle('open', !h); gb.textContent = h ? 'Show what to include' : 'Hide what to include'; };
+    c.querySelector('[data-role=self]').onchange = e => { entry().self = e.target.value; save(); longTotal(); };
+    const note = c.querySelector('[data-role=ainote]'), aiBox = c.querySelector('[data-role=ai]'), aiBtn = c.querySelector('[data-act=ai]');
+    aiBtn.onclick = async () => {
+      if (ta.value.trim().length < 40) { note.textContent = 'Write a fuller answer first.'; return; }
+      const deckId = current.id;
+      aiBtn.disabled = true; note.textContent = 'Marking…';
+      try {
+        const res = await fetch('api/mark', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ deckId, index: idx, kind: 'long', answer: ta.value }) });
+        let r = {}; try { r = await res.json(); } catch (e) {}
+        if (!current || current.id !== deckId) return;
+        if (res.ok && Number.isInteger(r.score)) {
+          const e = entry(); e.ai = { score: r.score, max: r.max, level: r.level, covered: r.covered || [], feedback: r.feedback, improve: r.improve, text: ta.value };
+          delete e.self; c.querySelector('[data-role=self]').value = '';
+          aiBox.innerHTML = longAiHtml(item, e.ai); aiBox.classList.remove('hidden'); bump(aiBox.querySelector('.score'));
+          c.querySelectorAll('.long-pts li').forEach((li, i) => li.classList.toggle('got', e.ai.covered.includes(i)));
+          note.textContent = ''; save(); longTotal();
+        } else note.textContent = r.error === 'bad_request' ? 'Your answer is too long to mark. Keep it under 6,000 characters.' : aiErrorText(res.status, r.error);
+      } catch (e) { note.textContent = 'Couldn\'t connect. Check your internet and try again.'; }
+      aiBtn.disabled = false; aiBtn.textContent = 'Mark again';
+    };
+  });
+  longTotal();
+}
+function longTotal() {
+  let t = 0;
+  (current.long || []).forEach((it, i) => { t += longScore(it, progress.answers['L' + i]); });
+  if ((progress.longScore || 0) !== t && (progress.longScore !== undefined || t > 0)) { progress.longScore = t; save(); }
+}
+
 function exTotal() {
   let t = 0, m = 0;
   (current.exam || []).forEach((it, i) => { m += it.m; t += qScore(it, progress.answers['e' + i]); });
@@ -467,7 +545,8 @@ function lessonStats(d) {
     ['Flashcards', p.fcBest || 0, d.cards],
     ['Quiz', p.qzBest || 0, d.quiz],
     ['Apply it', p.apBest || 0, d.apply],
-    ['Exam', p.examScore || 0, d.marks]
+    ['Exam', p.examScore || 0, d.marks],
+    ['Long answer', p.longScore || 0, d.long]
   ].filter(x => x[2]);
   const ps = parts.map(x => pct(x[1], x[2]));
   const overall = ps.length ? Math.round(ps.reduce((a, b) => a + b, 0) / ps.length) : 0;
@@ -501,7 +580,7 @@ $('pv-reset').onclick = () => {
   if (b.dataset.sure !== '1') { b.dataset.sure = '1'; b.textContent = 'Tap again to delete all progress and answers'; setTimeout(() => { b.dataset.sure = ''; b.textContent = 'Reset all progress'; }, 4000); return; }
   index.forEach(d => { try { localStorage.removeItem('sh-prog-' + d.id); } catch (e) {} });
   if (window.onProgressReset) window.onProgressReset(index.map(d => d.id)); // clears your account's copy too
-  if (current) { progress = { answers: {} }; renderExam(); }
+  if (current) { progress = { answers: {} }; renderExam(); renderLong(); }
   b.dataset.sure = ''; b.textContent = 'Reset all progress'; renderProgress();
 };
 

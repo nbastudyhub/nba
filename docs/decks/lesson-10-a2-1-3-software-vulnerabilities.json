@@ -646,5 +646,23 @@
    ],
    "tip": "Top-grade \"evaluate\" = several measures linked to Brightside's actual problems, their limits, and a clear priority."
   }
+ ],
+ "long": [
+  {
+   "sc": "Hilltop Vets has an online booking form linked to a customer database. Staff sometimes download free software from unofficial sites, and some PCs haven't been updated for months.",
+   "q": "Evaluate the measures Hilltop Vets could take to reduce its software vulnerabilities.",
+   "m": 8,
+   "pts": [
+    "SQL injection through the booking form could let attackers read or change the customer database",
+    "Protect input fields (validation / parameterised queries) to stop SQL injection",
+    "Unofficial downloads may contain malware; only download from trusted sources",
+    "Check hashes to confirm downloads haven't been tampered with",
+    "Outdated software has known flaws attackers exploit; patch quickly / automatic updates",
+    "Zero-day flaws have no patch yet, so layered defences are still needed",
+    "Weigh up cost and effort for a small business",
+    "Justified conclusion on the most important measure"
+   ],
+   "tip": "Link each measure to the vulnerability it fixes in the scenario, then judge which matters most."
+  }
  ]
 }

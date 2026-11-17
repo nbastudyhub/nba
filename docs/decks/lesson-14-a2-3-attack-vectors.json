@@ -744,5 +744,23 @@
    ],
    "tip": "Two separate points, each with a reason, both using scenario details."
   }
+ ],
+ "long": [
+  {
+   "sc": "Riverside Café offers free Wi-Fi to customers. The same router is used for the till and the manager's laptop, and the router still has its original settings.",
+   "q": "Evaluate the attack vectors that could be used against Riverside Café's network.",
+   "m": 8,
+   "pts": [
+    "Wireless: anyone nearby can try to connect to or attack the Wi-Fi",
+    "A fake access point could trick customers or staff into connecting",
+    "Deauthentication attacks can knock users off the Wi-Fi",
+    "The internet connection and router with original settings is a route in",
+    "Shared router means a compromised guest device could reach the till and laptop",
+    "One weak device in the middle can put every device at risk",
+    "Measures: separate guest network, change default settings, update the router",
+    "Justified conclusion on the most dangerous vector"
+   ],
+   "tip": "Name each vector, explain how it could be used here, then judge which is worst."
+  }
  ]
 }

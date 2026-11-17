@@ -686,5 +686,23 @@
    ],
    "tip": "Top-grade \"assess\" answers weigh up more than one threat, compare likelihood AND impact, use the scenario, and finish with a clear judgement."
   }
+ ],
+ "long": [
+  {
+   "sc": "Northfield Surgery is a GP practice with 25 staff. Staff often share logins, some install free apps on work PCs, and patient letters are sometimes emailed to the wrong person. There is no security training and no system for reporting mistakes.",
+   "q": "Evaluate the internal threats facing Northfield Surgery and how far training on its own would reduce them.",
+   "m": 8,
+   "pts": [
+    "Deliberate threats: a disgruntled or careless insider could steal, change or leak patient data (sabotage, theft)",
+    "Accidental threats: human error such as emailing letters to the wrong person causes accidental disclosure of sensitive data",
+    "Unauthorised software: free apps may contain malware or open vulnerabilities on the surgery's network",
+    "Shared logins mean actions can't be traced to one person, so misuse goes unnoticed",
+    "Training raises awareness, so staff check recipients, avoid unauthorised software and spot unsafe practice",
+    "Training alone has limits: deliberate insiders ignore it, so policies, monitoring and access/software controls are also needed",
+    "A reporting culture lets mistakes be fixed quickly before harm spreads",
+    "Justified conclusion, e.g. training is essential but must be combined with individual logins, monitoring and blocking unauthorised software"
+   ],
+   "tip": "Cover both deliberate and accidental threats, apply each to the surgery, then judge how far training helps and what else is needed."
+  }
  ]
 }

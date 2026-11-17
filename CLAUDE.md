@@ -55,7 +55,8 @@ Copy `docs/decks/lesson-1-a1-1-internal-threats.json` as the example. Title each
   "flashcards": [ ["term", "definition"] ],                       // 15-30
   "quiz": [ { "q": "", "o": ["", ""], "a": 0, "e": "why" } ],      // 12-18; a = index of right option, vary its position
   "apply": { "title": "e.g. Pick the tool", "intro": "", "items": [ { "task": "scenario", "o": [""], "a": 0, "e": "" } ] }, // 8-12
-  "exam": [ { "sc": "scenario or empty", "q": "1. Explain…", "m": 2, "pts": ["one marking point per mark"], "tip": "how to get full marks" } ] // 6-10, 20-35 marks total
+  "exam": [ { "sc": "scenario or empty", "q": "1. Explain…", "m": 2, "pts": ["one marking point per mark"], "tip": "how to get full marks" } ], // 6-10, 20-35 marks total
+  "long": [ { "sc": "scenario", "q": "Evaluate…", "m": 8, "pts": ["indicative content"], "tip": "" } ] // 1 level-marked long answer, from the lesson only
 }
 ```
 

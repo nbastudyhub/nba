@@ -712,5 +712,23 @@
  ],
  "id": "lesson-15-a2-4-tools-to-assess-vulnerabilities",
  "subject": "Information Technology",
- "added": "2026-11-05"
+ "added": "2026-11-05",
+ "long": [
+  {
+   "sc": "Summit Gym has a membership website, staff PCs, a Wi-Fi network and reception staff who handle member details. It has never assessed its vulnerabilities.",
+   "q": "Evaluate how Summit Gym could use vulnerability assessment tools to find its weaknesses.",
+   "m": 8,
+   "pts": [
+    "Port scanner shows open, closed and filtered ports on its systems",
+    "Network mapper finds every device connected, including unknown ones",
+    "Registry checker spots risky settings on Windows PCs",
+    "Website vulnerability scanner checks the membership site for flaws such as SQL injection",
+    "Detection and management software monitors and tracks issues once found",
+    "User assessments (e.g. phishing tests) check staff behaviour",
+    "No single tool is enough because each only checks one area; automated tools can miss things",
+    "Justified conclusion on the best combination or priority"
+   ],
+   "tip": "Match tools to parts of the gym's systems, and explain the limits of relying on tools alone."
+  }
+ ]
 }

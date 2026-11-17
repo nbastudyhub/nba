@@ -30,7 +30,7 @@
 
   // ---------- merging ----------
   const localIds = () => { const ids = []; try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k && k.startsWith(PREFIX)) ids.push(k.slice(PREFIX.length)); } } catch (e) {} return ids; };
-  const hasContent = (e) => e && ((e.text && e.text.trim()) || (e.ticks && e.ticks.length) || e.ai);
+  const hasContent = (e) => e && ((e.text && e.text.trim()) || (e.ticks && e.ticks.length) || e.ai || (e.self !== undefined && e.self !== ''));
   function merge(a, b) {
     if (!a) return b; if (!b) return a;
     const newer = (b._t || 0) > (a._t || 0) ? b : a, older = newer === a ? b : a;

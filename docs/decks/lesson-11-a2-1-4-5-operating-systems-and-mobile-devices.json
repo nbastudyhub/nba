@@ -607,5 +607,23 @@
    ],
    "tip": "This is the slides' own exam question. Top marks need risks AND impacts AND realistic solutions, all linked to the 50 phones."
   }
+ ],
+ "long": [
+  {
+   "sc": "Coastline Hotels gives managers company phones. Some phones are five years old and no longer receive updates, and the office PCs run an operating system that has reached end-of-life.",
+   "q": "Evaluate the security risks of Coastline Hotels using unsupported devices, and what it should do.",
+   "m": 8,
+   "pts": [
+    "End-of-life operating systems no longer get security updates, so known vulnerabilities stay open",
+    "Attackers target known flaws, e.g. WannaCry spread through unpatched Windows systems",
+    "Old phones no longer get OEM updates, so they can be compromised and leak guest or business data",
+    "One compromised device can spread malware across the network",
+    "Measures: replace unsupported devices, turn on automatic updates, limit what old devices can access",
+    "Cost of replacement vs cost of a breach",
+    "Device lifecycle: plan replacement before support ends",
+    "Justified conclusion"
+   ],
+   "tip": "Use a real example (WannaCry, Blaster or Conficker) to support your points."
+  }
  ]
 }

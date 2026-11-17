@@ -664,5 +664,23 @@
    ],
    "tip": "Based on the slides' model answer. For 6 marks, cover several different types of check and link them to Clearview's delivery drivers and unlocked server room."
   }
+ ],
+ "long": [
+  {
+   "sc": "Brookfield Office Park has a shared reception for six companies. Visitors sign a paper book, delivery drivers often walk straight in, and staff hold doors open for people carrying boxes. Laptops are left on desks at lunchtime.",
+   "q": "Assess the physical security risks at Brookfield Office Park and the measures that would reduce them.",
+   "m": 8,
+   "pts": [
+    "Tailgating: holding doors lets unauthorised people into secure areas",
+    "Impersonation: someone posing as a delivery driver could walk straight in",
+    "A paper visitor book doesn't verify identity",
+    "Unattended laptops can be stolen or accessed, exposing data",
+    "Measures: access control (passes/mantraps), visitor checks with ID and escorts",
+    "Staff trained to challenge unknown people and not hold doors",
+    "Lock screens and lock away devices when unattended",
+    "Supported judgement on the most important measure"
+   ],
+   "tip": "Pair each risk with a matching measure, applied to the office park, then prioritise."
+  }
  ]
 }

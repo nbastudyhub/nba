@@ -786,5 +786,23 @@
    ],
    "tip": "Top-grade \"evaluate\" = weigh up several policies against Hillside's actual weaknesses, then make a clear, justified choice."
   }
+ ],
+ "long": [
+  {
+   "sc": "Meadow Lane Primary has an old firewall that nobody has checked for years, several open ports, and staff who use USB sticks to move files. Everyone can open every file, and there is no incident response plan.",
+   "q": "Evaluate the vulnerabilities at Meadow Lane Primary and which should be fixed first.",
+   "m": 8,
+   "pts": [
+    "Misconfigured firewall and open ports let attackers reach services on the network",
+    "USB sticks can bring in malware or carry data out",
+    "Poor access control: everyone can open everything, so one account can expose all pupil data",
+    "No incident response plan means a slow, confused response that makes damage worse",
+    "Use the chain: cause → risk → impact → response for each vulnerability",
+    "Responses: review firewall rules, close unused ports, control USB use, least-privilege access, write a plan",
+    "Weigh up cost, speed and how much risk each fix removes",
+    "Justified conclusion on which vulnerability to fix first"
+   ],
+   "tip": "Use Cause → Risk → Impact → Response, then prioritise with reasons."
+  }
  ]
 }

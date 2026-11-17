@@ -670,5 +670,23 @@
    ],
    "tip": "Top-grade \"evaluate\" = strengths AND weaknesses, linked to Bloom, then a clear judgement."
   }
+ ],
+ "long": [
+  {
+   "sc": "Green Leaf Garden Centres is a small chain with an online shop. Its owner says: \"We set up our security five years ago, so we're fine.\"",
+   "q": "Evaluate how useful the NCSC, NIST and OWASP would be in helping Green Leaf keep up with the changing threat landscape.",
+   "m": 8,
+   "pts": [
+    "The threat landscape keeps changing as criminals adapt, technology changes and politics shifts",
+    "So security set up five years ago may no longer protect against new threats",
+    "NCSC gives up-to-date UK advice and alerts suited to small businesses",
+    "NIST's framework (Identify, Protect, Detect, Respond, Recover) gives a structure to plan security",
+    "OWASP's Top 10 shows the biggest risks to the online shop's website",
+    "Limits: guidance only helps if the business acts on it; a small business may lack time or skills",
+    "Each organisation suits a different need, so using them together is strongest",
+    "Justified conclusion on how useful they are for Green Leaf"
+   ],
+   "tip": "Explain what each organisation offers, apply it to the garden centre, and weigh up the limits."
+  }
  ]
 }

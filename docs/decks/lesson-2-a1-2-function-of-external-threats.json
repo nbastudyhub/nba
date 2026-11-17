@@ -759,5 +759,23 @@
    ],
    "tip": "Top-grade \"evaluate\" = both sides, linked to the scenario, then a clear judgement. Finish with \"Therefore, antivirus alone is not enough because…\"."
   }
+ ],
+ "long": [
+  {
+   "sc": "Harbourside College has 1,200 students and 300 PCs. Staff regularly open email attachments from parents and suppliers, and students bring USB sticks from home. Backups are stored on the same network as the main file server.",
+   "q": "Evaluate the threat that ransomware poses to Harbourside College compared with other types of malware.",
+   "m": 8,
+   "pts": [
+    "Ransomware encrypts files and demands payment, so coursework, records and systems become unavailable",
+    "Backups on the same network could also be encrypted, so the college may not be able to recover without paying",
+    "Paying gives no guarantee data is returned and funds criminals",
+    "Worms could spread themselves across 300 PCs without anyone opening a file, causing wide disruption",
+    "Viruses or Trojans arriving in email attachments or USB sticks could steal data or give attackers access",
+    "Spyware could capture staff passwords, leading to data theft",
+    "Prevention/detection: antivirus, patching, blocking macros/USB, offline backups and staff awareness",
+    "Justified conclusion on which threat is most serious for the college and why"
+   ],
+   "tip": "Compare ransomware with at least two other malware types using the scenario, then reach a supported judgement."
+  }
  ]
 }

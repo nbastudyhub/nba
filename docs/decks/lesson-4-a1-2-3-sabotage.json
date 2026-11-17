@@ -645,5 +645,23 @@
    ],
    "tip": "Top-grade \"assess\" = compare at least two forms of sabotage, weigh likelihood AND impact, use the scenario, and give a clear judgement."
   }
+ ],
+ "long": [
+  {
+   "sc": "Eastgate Energy supplies electricity to 200,000 homes. Its control systems are linked to the network, it uses an AI system to predict demand, and its directors often approve payments over video calls.",
+   "q": "Evaluate which form of sabotage poses the greatest risk to Eastgate Energy.",
+   "m": 8,
+   "pts": [
+    "Hijacking or damaging physical systems could cut power to 200,000 homes, harming many people",
+    "Critical infrastructure matters most because whole communities, hospitals and businesses depend on it",
+    "Data poisoning could feed false data to the AI so it predicts demand wrongly, causing shortages or waste",
+    "Data tampering could change records or settings without authorisation",
+    "A deepfake of a director on a video call could trick staff into approving fraudulent payments",
+    "Data destruction could delete records needed to run the network",
+    "Compare likelihood and impact of at least two forms",
+    "Justified conclusion, e.g. sabotage of physical systems is most serious because of the scale of harm"
+   ],
+   "tip": "Weigh up two or three forms of sabotage against each other using the scenario, then commit to one."
+  }
  ]
 }

@@ -673,5 +673,23 @@
    ],
    "tip": "Pick two different practices from the scenario and link each to a GDPR duty."
   }
+ ],
+ "long": [
+  {
+   "sc": "An employee at Marlow Bank uses a colleague's login to look at customers' accounts and changes one customer's address. The bank's customer database was not encrypted, and nothing alerted managers.",
+   "q": "Evaluate how UK GDPR and the Computer Misuse Act apply to this incident, and who faces consequences.",
+   "m": 8,
+   "pts": [
+    "The employee committed unauthorised access under the CMA by using another person's login",
+    "Changing the address is unauthorised modification of data, another CMA offence",
+    "Having a job at the bank doesn't give permission to access these accounts",
+    "The bank may have breached UK GDPR by not keeping personal data secure (no encryption)",
+    "No alerts for unusual access suggests a lack of appropriate measures",
+    "The ICO could investigate and fine the bank",
+    "Both laws apply to one incident: CMA for the individual, GDPR for the organisation",
+    "Justified conclusion on who is most responsible"
+   ],
+   "tip": "Deal with each party separately and use the right law for each."
+  }
  ]
 }

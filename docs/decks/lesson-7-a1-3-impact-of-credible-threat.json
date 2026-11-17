@@ -660,5 +660,23 @@
    ],
    "tip": "Top-grade \"assess\" = weigh up ALL four types using the scenario's facts, say which is short-term vs long-term, then make a clear, justified choice."
   }
+ ],
+ "long": [
+  {
+   "sc": "Swift Couriers delivers parcels for online shops. A cyber attack stops its tracking system for three days and exposes 50,000 customers' addresses and phone numbers.",
+   "q": "Assess which type of loss would be most serious for Swift Couriers after this attack.",
+   "m": 8,
+   "pts": [
+    "Operational loss: parcels can't be tracked or delivered properly for three days",
+    "Financial loss to the organisation: lost income and recovery costs",
+    "Compensation to customers and online shops whose deliveries failed",
+    "Legal liability, e.g. fines for failing to protect personal data",
+    "Reputational loss: shops may switch to rival couriers after losing trust",
+    "Intellectual property loss is less likely here, as mainly customer data was exposed",
+    "Several losses happen at once and affect each other",
+    "Justified conclusion on which loss is most serious and why"
+   ],
+   "tip": "Use all four types of loss, apply them to Swift Couriers, and decide which is worst."
+  }
  ]
 }

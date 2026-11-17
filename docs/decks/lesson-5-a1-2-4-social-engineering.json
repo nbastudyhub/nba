@@ -652,5 +652,23 @@
    ],
    "tip": "Top-grade \"evaluate\" = strengths AND weaknesses, linked to Oakwood, then a clear judgement with a reason."
   }
+ ],
+ "long": [
+  {
+   "sc": "Kingfisher Accountants has 40 staff who handle clients' financial details. Staff receive many emails and phone calls from clients every day, and the finance director often works from home.",
+   "q": "Evaluate whether staff training would be enough to protect Kingfisher Accountants from social engineering attacks.",
+   "m": 8,
+   "pts": [
+    "Phishing emails could trick staff into clicking links or giving login details",
+    "Vishing calls could impersonate clients to get financial information",
+    "Whaling could target the finance director, who may approve payments",
+    "Training helps staff spot the tells: urgency, odd sender addresses, spelling mistakes, unexpected requests",
+    "Verifying identity (calling back on a known number) stops pretexting and impersonation",
+    "Training alone is not enough: people still make mistakes under pressure",
+    "Technical controls also needed, e.g. email filtering, and checks against DNS spoofing/fake websites",
+    "Justified conclusion on how far training protects the firm"
+   ],
+   "tip": "Show both sides: what training achieves and what it can't, then give a clear judgement."
+  }
  ]
 }

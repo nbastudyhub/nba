@@ -45,8 +45,14 @@ for (const file of readdirSync(dir).filter(f => f.endsWith('.json') && !GENERATE
     if (!Number.isInteger(q.m) || q.m < 1) errors.push(`${where} exam[${i}]: "m" (marks) must be a whole number`);
     if (!Array.isArray(q.pts) || !q.pts.length) errors.push(`${where} exam[${i}]: needs marking points "pts"`);
   });
+  // Long answers: level-marked questions (6+ marks) with indicative content in "pts".
+  (d.long || []).forEach((q, i) => {
+    if (!isStr(q.q)) errors.push(`${where} long[${i}]: missing "q"`);
+    if (!Number.isInteger(q.m) || q.m < 6 || q.m > 12) errors.push(`${where} long[${i}]: "m" must be 6 to 12 marks`);
+    if (!Array.isArray(q.pts) || q.pts.length < 4) errors.push(`${where} long[${i}]: needs at least 4 indicative content points in "pts"`);
+  });
   // Totals for the progress tracker.
-  const counts = { cards: (d.flashcards || []).length, quiz: (d.quiz || []).length, apply: ((d.apply && d.apply.items) || []).length, marks: (d.exam || []).reduce((t, q) => t + (q.m || 0), 0) };
+  const counts = { cards: (d.flashcards || []).length, quiz: (d.quiz || []).length, apply: ((d.apply && d.apply.items) || []).length, marks: (d.exam || []).reduce((t, q) => t + (q.m || 0), 0), long: (d.long || []).reduce((t, q) => t + (q.m || 0), 0) };
   decks.push({ id, title: d.title, code: d.code || '', subject: d.subject, added: d.added, ...counts });
   for (const [term, def] of d.flashcards || []) glossary.push({ term, def, id });
   search.push({ id, title: d.title, s: [

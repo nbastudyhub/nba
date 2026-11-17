@@ -653,5 +653,23 @@
    ],
    "tip": "From your slides' exam practice. For 6 marks, cover BOTH the cloud and the cameras, and pair each risk with a control."
   }
+ ],
+ "long": [
+  {
+   "sc": "Smart Stay Apartments uses smart locks, cameras and voice assistants in every flat, all managed through a cloud app. Many devices still use their default passwords.",
+   "q": "Evaluate the security risks of Smart Stay's cloud and IoT setup and how they could be reduced.",
+   "m": 8,
+   "pts": [
+    "Default passwords let attackers take control of locks or cameras",
+    "Weak encryption and missing updates leave IoT devices open to known attacks",
+    "Always-on microphones and cameras could invade guests' privacy",
+    "Incorrect cloud security settings could expose data or controls",
+    "Data in transit to the cloud could be intercepted without encryption (HTTPS/VPN)",
+    "The cloud provider has access to data, so the business relies on a third party",
+    "Measures: change passwords, update devices, secure the app, separate IoT network",
+    "Justified conclusion on the biggest risk"
+   ],
+   "tip": "Cover both cloud and IoT risks, apply them to the apartments, and reach a judgement."
+  }
  ]
 }

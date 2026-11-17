@@ -646,5 +646,23 @@
    ],
    "tip": "This is the slides' scenario task. 1 mark per risk + 1 per matching measure. Each measure must fix ITS risk."
   }
+ ],
+ "long": [
+  {
+   "sc": "Redwood Recruitment keeps CVs on laptops and in an unlocked filing room. Staff take laptops home, and former staff still have door codes.",
+   "q": "Assess the physical threats to Redwood Recruitment's data and how it should manage them.",
+   "m": 8,
+   "pts": [
+    "Laptops taken home can be lost or stolen, exposing candidates' personal data",
+    "An unlocked filing room lets anyone access paper and storage media",
+    "Former staff with door codes can still get in",
+    "People create risks through careless habits, e.g. leaving devices unattended",
+    "Measures: locks, passes, CCTV and encryption on laptops",
+    "Least-privilege access and removing leavers' access promptly",
+    "Regular security reviews on a suitable schedule",
+    "Supported judgement on the priority"
+   ],
+   "tip": "Cover devices, physical areas and people, then prioritise."
+  }
  ]
 }
