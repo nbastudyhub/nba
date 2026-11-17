@@ -1,7 +1,7 @@
 {
  "title": "Business: exam writing",
- "course": "Pearson BTEC Level 3 National · Business / Enterprise and Entrepreneurship",
- "note": "Original practice questions written for this site, in the BTEC style. The writing structures are a standard approach until your teacher's structure is added.",
+ "course": "Pearson BTEC Level 3 National Business · Unit 2 set task practice (Technective)",
+ "note": "The questions, structures and mark schemes are written for this site. The writing structures are a standard approach until your teacher's structure is added. The site doesn't copy the Technective booklet: use your own copy for the facts and figures.",
  "structures": {
   "explain": {
    "name": "Explain",
@@ -90,188 +90,135 @@
  },
  "cases": [
   {
-   "id": "bloom",
-   "name": "Bloom & Brew",
-   "text": "Maya Patel opened Bloom & Brew, a café that also sells flowers, in a busy market town two years ago. She used £15,000 of her own savings and a £10,000 bank loan at 8% interest. The café has 6 part-time staff. Last year its revenue was £180,000 and its net profit was £14,000. Two large coffee chains have opened within 500 metres in the past year, and Bloom & Brew's weekday sales have fallen by 12%. Customer reviews praise the 'friendly service' and 'local, seasonal flowers'. Maya is considering two options: open a second café in a nearby university city (cost £60,000), or launch an online flower-and-cake delivery service (cost £12,000 for a website and a van lease)."
-  },
-  {
-   "id": "kitlab",
-   "name": "KitLab",
-   "text": "Jordan, aged 19, runs KitLab from home, designing custom sports kits for local clubs. He sells through Instagram and TikTok, where KitLab has 8,000 followers. The kits are made by a supplier in Portugal; delivery takes 3 weeks, and last season 15% of orders arrived late. Last year KitLab's revenue was £42,000, with a gross profit margin of 30%. A sports retailer has offered Jordan a contract to supply kits to 40 schools. It would double his sales, but the retailer needs delivery within 10 days. Jordan would need £20,000 to buy extra stock up front, and he is choosing between crowdfunding and a loan from a family member."
-  },
-  {
-   "id": "greencycle",
-   "name": "GreenCycle",
-   "text": "GreenCycle is a social enterprise that collects unwanted bikes, repairs them and sells them at low prices. Its profits fund free cycling lessons for children. It employs 4 staff and 12 volunteers, and receives a £25,000 grant each year from the local council, which may be cut by half next year. The two founders disagree about what to do. Sam wants to raise bike prices by 20% to cover the gap. Priya wants to start paid repair workshops for adults in the evenings."
+   "id": "technective",
+   "name": "Technective",
+   "booklet": true,
+   "text": "Use your own Technective pre-release booklet for this case: the set task brief, the UK smartwatch market, the competitor profiles, the primary research report and the media options. This site doesn't copy the booklet, so have it open next to you and quote its facts and figures in your answers."
   }
  ],
  "questions": [
   {
-   "id": "bloom-1",
-   "case": "bloom",
+   "id": "tech-1",
+   "case": "technective",
    "type": "explain",
    "m": 3,
-   "q": "Explain one characteristic of an entrepreneur that Maya has shown.",
+   "q": "Explain one reason why the UK smartwatch market is an opportunity for Technective.",
    "pts": [
-    "Identifies a characteristic, e.g. willingness to take risks / determination / creativity",
-    "Explains it, e.g. she put her own money at risk because she believed the business would succeed",
-    "Uses the case, e.g. she used £15,000 of her savings and took a £10,000 loan"
+    "Identifies a reason, e.g. a large or growing number of users / demand from younger people / smaller brands gaining share / demand for affordable, differentiated watches",
+    "Explains why it is an opportunity, e.g. more potential customers, so Technective could gain sales and market share",
+    "Uses evidence from the booklet, e.g. a market-size, forecast or trend figure"
    ],
-   "tip": "Name the characteristic, explain it, then prove it with a fact from the case."
+   "tip": "Quote one specific figure or fact from the market section to support your point."
   },
   {
-   "id": "bloom-2",
-   "case": "bloom",
-   "type": "explain",
-   "m": 3,
-   "q": "Explain one way the two new coffee chains could affect Bloom & Brew.",
-   "pts": [
-    "Identifies an effect, e.g. more competition / loss of customers / pressure to cut prices",
-    "Explains it, e.g. customers may choose the cheaper, well-known chains, so Bloom & Brew's revenue falls",
-    "Uses the case, e.g. weekday sales have already fallen by 12%"
-   ],
-   "tip": "Link the effect to the business's sales or profit, and use the 12% figure."
-  },
-  {
-   "id": "bloom-3",
-   "case": "bloom",
-   "type": "analyse",
-   "m": 6,
-   "q": "Analyse how Bloom & Brew could use its unique selling point (USP) to compete with the coffee chains.",
-   "pts": [
-    "Identifies the USP: friendly service and local, seasonal flowers alongside the café",
-    "Chains are less likely to offer flowers or personal service, so the USP differentiates the business",
-    "Promoting the USP could attract customers who value local, independent businesses",
-    "This could build customer loyalty, leading to repeat visits and recovering the 12% fall in weekday sales",
-    "A strong USP can let the business charge a premium price, protecting profit margins",
-    "Using customer reviews in marketing gives evidence of the USP and builds trust"
-   ],
-   "tip": "Build chains of reasoning: USP → why customers choose it → effect on sales or profit."
-  },
-  {
-   "id": "bloom-4",
-   "case": "bloom",
-   "type": "evaluate",
-   "m": 10,
-   "q": "Evaluate whether Maya should open a second café or launch the online delivery service.",
-   "pts": [
-    "Second café: a university city has many potential customers, which could increase revenue a lot",
-    "Second café: costs £60,000, over four times last year's £14,000 profit, so it would need large borrowing and adds risk",
-    "Second café: Maya would be split across two sites, which could weaken the friendly service customers value",
-    "Online delivery: much cheaper at £12,000, so lower risk and quicker to pay back",
-    "Online delivery: uses the existing USP (flowers and cakes) and reaches customers beyond the town",
-    "Online delivery: new skills needed (website, delivery) and competition from online florists",
-    "Judgement: e.g. online delivery is the better first step because of lower cost and risk, given falling sales",
-    "It depends on: e.g. how much Maya can borrow, or market research on demand in the university city"
-   ],
-   "tip": "Give both options evidence from the case, compare costs with profit, then make a clear recommendation with an 'it depends on'."
-  },
-  {
-   "id": "kitlab-1",
-   "case": "kitlab",
-   "type": "explain",
-   "m": 3,
-   "q": "Explain one advantage to Jordan of using social media to market KitLab.",
-   "pts": [
-    "Identifies an advantage, e.g. low cost / reaches a large audience / two-way communication",
-    "Explains it, e.g. he can promote kits without paying for adverts, keeping costs low for a small business",
-    "Uses the case, e.g. KitLab has 8,000 followers on Instagram and TikTok"
-   ],
-   "tip": "Explain WHY the advantage helps a small business like KitLab."
-  },
-  {
-   "id": "kitlab-2",
-   "case": "kitlab",
+   "id": "tech-2",
+   "case": "technective",
    "type": "calculate",
    "m": 3,
-   "q": "Calculate KitLab's gross profit last year. Explain what your answer shows.",
+   "q": "Using the primary research, calculate the percentage of smartwatch owners who bought their watch to monitor health and fitness. Explain what your answer shows.",
    "pts": [
-    "Formula / method: gross profit = revenue × gross profit margin (or revenue − cost of sales)",
-    "Correct answer: £42,000 × 30% = £12,600",
-    "Meaning, e.g. after paying the supplier for the kits, KitLab keeps £12,600 to cover its other costs before profit"
+    "Correct method: number who chose health and fitness ÷ number of smartwatch owners (not the whole sample) × 100",
+    "Accurate working with the booklet's figures, giving the answer as a percentage (1 decimal place)",
+    "Meaning, e.g. it is the most common reason, so a health and fitness focus could appeal to the largest group of buyers"
    ],
-   "tip": "Show the formula and working, include £, then say what it means for the business."
+   "tip": "Divide by the number of OWNERS, not the whole sample: only owners answered this question."
   },
   {
-   "id": "kitlab-3",
-   "case": "kitlab",
+   "id": "tech-3",
+   "case": "technective",
    "type": "analyse",
    "m": 6,
-   "q": "Analyse the risks to KitLab of accepting the contract to supply 40 schools.",
+   "q": "Analyse how reliable Technective's primary research is for planning the campaign.",
    "pts": [
-    "Delivery risk: the supplier takes 3 weeks but the retailer needs 10 days, so KitLab may break the contract",
-    "Late orders already happen (15% last season), so problems could get worse with double the orders",
-    "Missing deadlines could damage KitLab's reputation with the retailer and on social media",
-    "Finance risk: £20,000 is needed up front, almost half of last year's revenue, putting pressure on cash flow",
-    "Relying on one large customer is risky if the retailer cancels",
-    "Jordan works alone, so doubling sales could stretch his time and lower quality"
+    "Sample size is small compared with the number of UK smartwatch users, so it may not represent the whole market",
+    "Carried out in one location (a city shopping centre), so it may not reflect buyers elsewhere in the UK",
+    "The sample's age and gender profile doesn't match the market's main buyers, so results may be biased",
+    "Only over-16s were asked, which misses younger buyers, a growing group",
+    "It is recent, so it reflects current opinions in a fast-changing market",
+    "Impact: decisions on segment, price and features based on it carry some risk, so it should be checked against the secondary research"
    ],
-   "tip": "Two or three risks, each with a chain: risk → why → effect on KitLab."
+   "tip": "For each reliability point, say what it could lead to: wrong decisions about the segment, price or media."
   },
   {
-   "id": "kitlab-4",
-   "case": "kitlab",
-   "type": "evaluate",
-   "m": 8,
-   "q": "Assess whether crowdfunding or a family loan would be the better way for Jordan to raise the £20,000.",
+   "id": "tech-4",
+   "case": "technective",
+   "type": "analyse",
+   "m": 6,
+   "q": "Analyse the threats that competitors pose to Technective's new smartwatch.",
    "pts": [
-    "Crowdfunding: his 8,000 followers could back him, and it raises money without debt or interest",
-    "Crowdfunding: also acts as marketing and shows there is demand",
-    "Crowdfunding: not guaranteed to reach £20,000, and backers may expect rewards, adding cost and time",
-    "Family loan: likely quicker, flexible and low or no interest",
-    "Family loan: must be repaid, and could strain family relationships if the contract goes wrong",
-    "The deadline matters: the retailer needs fast delivery, so speed of getting the money is important",
-    "Judgement with a reason, e.g. a family loan is better because the money is certain and quick",
-    "It depends on, e.g. how much the family can lend, or how engaged his followers are"
+    "Large brands hold big market shares and strong brand loyalty, so it is hard to win their customers",
+    "Low-cost brands and price wars push prices down, reducing Technective's possible profit margins",
+    "Competitors are launching affordable models aimed at general consumers, competing for the same buyers",
+    "Competitors use strong digital marketing, partnerships and sponsorship, raising the cost of being noticed",
+    "Competitor weaknesses, e.g. complaints about faults or data accuracy, show what Technective must avoid or can exploit",
+    "Impact on Technective: it needs a clear USP, a competitive price and targeted media to stand out"
    ],
-   "tip": "Weigh both sources against what Jordan needs most here: certainty and speed."
+   "tip": "Name specific competitors from the booklet and link each threat to its effect on Technective."
   },
   {
-   "id": "greencycle-1",
-   "case": "greencycle",
+   "id": "tech-5",
+   "case": "technective",
    "type": "explain",
    "m": 3,
-   "q": "Explain one difference between a social enterprise and a business that aims to maximise profit.",
+   "q": "Explain one SMART objective Technective could set for the campaign.",
    "pts": [
-    "Identifies the difference: a social enterprise uses its profits for a social or environmental aim",
-    "Explains it, e.g. profit is reinvested in the cause rather than paid to owners",
-    "Uses the case, e.g. GreenCycle's profits fund free cycling lessons for children"
+    "States a specific, measurable objective, e.g. a sales, awareness or social-media target with a number",
+    "Time-bound within the campaign's timescale, and achievable within the budget",
+    "Explains why it suits the campaign, linked to the chosen segment or research evidence"
    ],
-   "tip": "State the difference clearly, then use GreenCycle as your example."
+   "tip": "Check every letter of SMART is covered, and link the target to evidence from the booklet."
   },
   {
-   "id": "greencycle-2",
-   "case": "greencycle",
-   "type": "analyse",
-   "m": 6,
-   "q": "Analyse how the cut in the council grant could affect GreenCycle's stakeholders.",
-   "pts": [
-    "Children/families: fewer free cycling lessons if £12,500 less funding is available",
-    "Staff: jobs or hours may be cut to save costs, lowering motivation",
-    "Volunteers: may have more work or less support, and could leave",
-    "Customers: may face higher prices if Sam's plan goes ahead",
-    "Founders: conflict and pressure to find new income",
-    "The council/community: fewer benefits, e.g. fewer bikes reused and less cycling"
-   ],
-   "tip": "Pick two or three stakeholders and build a chain for each, using the £25,000 cut by half."
-  },
-  {
-   "id": "greencycle-3",
-   "case": "greencycle",
+   "id": "tech-6",
+   "case": "technective",
    "type": "evaluate",
    "m": 10,
-   "q": "Evaluate Sam's and Priya's ideas and recommend which one GreenCycle should choose.",
+   "q": "Evaluate whether Technective should target health and fitness enthusiasts or technology enthusiasts.",
    "pts": [
-    "Sam: raising prices by 20% is quick and needs no new costs or skills",
-    "Sam: low-price bikes are part of GreenCycle's social aim, so customers may buy elsewhere and sales could fall",
-    "Sam: demand may be price-sensitive, so revenue might not cover the £12,500 gap",
-    "Priya: workshops add a new income stream, so GreenCycle relies less on the grant",
-    "Priya: uses staff and volunteers' existing repair skills, and fits the cycling mission",
-    "Priya: needs time, marketing and evening staffing, and demand is uncertain",
-    "Judgement with reasons, e.g. Priya's idea is better in the long term because it diversifies income without hurting the social aim",
-    "It depends on, e.g. whether there is demand for workshops, or how price-sensitive bike buyers are"
+    "Health and fitness: the most common reason for buying, and fitness monitoring is the most expected feature",
+    "Health and fitness: specialist media (fitness magazines, sponsorship, influencers) reach this segment directly",
+    "Health and fitness: crowded with established competitors focused on fitness, so it is hard to stand out",
+    "Technology: the brand already sells phones and computers, so it can link the watch with its own products",
+    "Technology: buyers expect connectivity features (calls, messaging, payments), which fit Technective's expertise",
+    "Technology: trends show some buyers are bored of seeing the same features, so innovation would be needed",
+    "Judgement: a clear choice, supported by the research figures",
+    "It depends on, e.g. the price the segment will pay, or how well the features can be adapted"
    ],
-   "tip": "Evaluate BOTH ideas with evidence, link them to the social aim, then recommend one with a reason and a condition."
+   "tip": "Use figures from the primary research for BOTH segments, then make a clear choice with an 'it depends on'."
+  },
+  {
+   "id": "tech-7",
+   "case": "technective",
+   "type": "evaluate",
+   "m": 10,
+   "q": "Justify a media plan for the campaign that stays within the budget and timescale in the brief.",
+   "pts": [
+    "Chooses media that reach the chosen segment, using audience data from the media options",
+    "Uses a mix of media, e.g. digital (social ads, influencers) and traditional (magazines, posters, sponsorship)",
+    "Shows costs and totals that stay within the budget, spread across the timescale",
+    "Compares cost with reach, e.g. cost per reader or per click, to justify value for money",
+    "Rejects or limits expensive options with reasons, e.g. TV costs a large share of the budget",
+    "Links media to the campaign objectives and to competitor activity",
+    "Judgement on why this mix is the best use of the budget",
+    "It depends on, e.g. how results are monitored and the budget moved to what works"
+   ],
+   "tip": "Use the budget planner below to check your totals, then justify each choice with audience data AND cost."
+  },
+  {
+   "id": "tech-8",
+   "case": "technective",
+   "type": "evaluate",
+   "m": 8,
+   "q": "Assess how external influences could affect Technective's campaign.",
+   "pts": [
+    "Economic: the cost-of-living crisis makes buyers more price-sensitive, affecting price and message",
+    "Legal: data-protection and privacy rules affect health-data features and how they are promoted",
+    "Technological: fast change and lack of new features affect what the watch must offer",
+    "Social: trends towards style, customisation and fashion affect the product and media choice",
+    "Competitive pressure and price wars affect positioning",
+    "Judgement on which influence matters most for the campaign, and why"
+   ],
+   "tip": "Use PESTLE headings to organise, but only discuss influences the booklet gives evidence for."
   }
  ]
 }

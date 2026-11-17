@@ -367,6 +367,18 @@ body[data-view="business"] .helper { display: none; } /* the AI helper covers th
 .bz-time { font-size: 15px; }
 .bz-time.late { color: var(--bad); }
 
+.bz-booklet { border-left: 4px solid var(--highlight); }
+.bz-booklet p { margin: 6px 0 0; }
+.bz-planner summary { cursor: pointer; }
+.bz-budget { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 10px 0; font-weight: 600; }
+.bz-budget input { width: 160px; }
+.bz-plan-table input { width: 100%; min-width: 70px; font: 14px var(--font-body); padding: 7px 9px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); }
+.bz-plan-table td { padding: 6px; vertical-align: middle; }
+.bz-plan-table td:first-child input { min-width: 170px; }
+.bz-total { font-size: 15px; }
+.bz-total.over { color: var(--bad); }
+input[type=number] { font: 15px var(--font-body); padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); }
+
 /* ---------- Admin ---------- */
 .ad-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
 .ad-tile { text-align: center; }

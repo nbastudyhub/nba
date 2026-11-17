@@ -16,8 +16,12 @@
   function save() {
     clearTimeout(saveT);
     prog._t = Date.now();
-    saveT = setTimeout(() => { ls.set(KEY, prog); if (window.onProgressSaved) window.onProgressSaved('business', prog); }, 500);
+    saveT = setTimeout(flush, 500);
   }
+  function flush() { clearTimeout(saveT); saveT = null; if (prog) { ls.set(KEY, prog); if (window.onProgressSaved) window.onProgressSaved('business', prog); } }
+  // Save straight away if the page is closed or hidden before the half-second wait.
+  addEventListener('pagehide', () => { if (saveT) flush(); });
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && saveT) flush(); });
   const scoreOf = (q, st) => {
     if (!st) return null;
     if (st.self !== undefined && st.self !== '') return Math.min(q.m, +st.self);
@@ -47,7 +51,9 @@
     const el = document.createElement('div'); el.className = 'card bz-q'; el.dataset.q = q.id;
     el.innerHTML = `
       <div class="row"><span class="bz-type">${esc(s ? s.name : q.type)}</span><span class="bz-case-name">${esc(c ? c.name : '')}</span><span class="spacer"></span><span class="marks">(${q.m} marks)</span></div>
-      ${c ? `<details class="scenario bz-case"><summary><strong>Case study: ${esc(c.name)}</strong></summary><p>${esc(c.text)}</p></details>` : ''}
+      ${c ? (c.booklet
+        ? `<div class="scenario bz-case"><strong>Case study: ${esc(c.name)}.</strong> Use your own booklet for the facts and figures.</div>`
+        : `<details class="scenario bz-case"><summary><strong>Case study: ${esc(c.name)}</strong></summary><p>${esc(c.text)}</p></details>`) : ''}
       <h3 class="bz-qtext">${esc(q.q)}</h3>
       <div class="bz-plan">
         <p class="bz-plan-h"><strong>Plan it</strong> <span class="muted">using the ${esc(s ? s.name.toLowerCase() : '')} structure</span></p>
@@ -158,16 +164,58 @@
     const types = [...new Set(data.questions.map((q) => q.type))];
     body.innerHTML = `
       <div class="card row bz-sum" id="bz-sum"></div>
+      ${data.cases.filter((c) => c.booklet).map((c) => `<div class="card bz-booklet"><strong>${esc(c.name)}</strong><p>${esc(c.text)}</p></div>`).join('')}
       ${structureGuide()}
+      <details class="card bz-planner" id="bz-planner"><summary><strong>Media plan budget planner</strong> <span class="muted">(tap to open)</span></summary><div id="bz-plan-body"></div></details>
       <div class="bz-filters">
         <div class="row">${chip('c', 'all', 'All case studies')}${data.cases.map((c) => chip('c', c.id, c.name)).join('')}</div>
         <div class="row">${chip('t', 'all', 'All question types')}${types.map((t) => chip('t', t, data.structures[t] ? data.structures[t].name : t)).join('')}</div>
       </div>
       <div id="bz-list" class="stack"></div>`;
     body.querySelectorAll('.bz-chip').forEach((b) => b.onclick = () => { filt[b.dataset.g] = b.dataset.v; renderList(); });
-    summary(); renderList();
-    stagger(body.children, 4);
+    summary(); renderList(); planner();
+    stagger(body.children, 5);
   }
+  // ---------- Media plan budget planner ----------
+  // Type in the media options and costs from your booklet; it adds them up and checks the budget.
+  // Saved with your answers (prog.planner).
+  const money = (n) => '£' + (Math.round(n * 100) / 100).toLocaleString('en-GB', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  function planner() {
+    const pl = (prog.planner = prog.planner || { budget: '', rows: [{ m: '', cost: '', unit: '', qty: '' }] });
+    const box = $('bz-plan-body');
+    box.innerHTML = `
+      <p class="muted small-note">Add each media choice from your booklet: the cost, what it is per (e.g. per month, per week, per 1,000) and how many you'll buy. It adds them up so you can check you're within the budget in the brief.</p>
+      <label class="bz-budget">Total budget (£) <input type="number" min="0" step="any" id="pl-budget" value="${esc(pl.budget)}" placeholder="from the brief"></label>
+      <div class="tablebox"><table class="bz-plan-table"><thead><tr><th>Media</th><th>Cost (£)</th><th>Per</th><th>How many</th><th>Total</th><th>% of budget</th><th></th></tr></thead><tbody>
+      ${pl.rows.map((r, i) => `<tr data-i="${i}">
+        <td><input type="text" data-k="m" value="${esc(r.m)}" placeholder="e.g. fitness magazine ad" aria-label="Media"></td>
+        <td><input type="number" min="0" step="any" data-k="cost" value="${esc(r.cost)}" aria-label="Cost"></td>
+        <td><input type="text" data-k="unit" value="${esc(r.unit)}" placeholder="month" aria-label="Per"></td>
+        <td><input type="number" min="0" step="any" data-k="qty" value="${esc(r.qty)}" aria-label="How many"></td>
+        <td class="score" data-role="line"></td><td class="score" data-role="pct"></td>
+        <td><button class="btn ghost small" data-act="del" aria-label="Remove this row">✕</button></td></tr>`).join('')}
+      </tbody></table></div>
+      <div class="row"><button class="btn ghost small" id="pl-add">Add a row</button><span class="spacer"></span><span id="pl-total" class="bz-total"></span></div>`;
+    const update = () => {
+      const budget = parseFloat(pl.budget) || 0;
+      let total = 0;
+      box.querySelectorAll('tbody tr').forEach((tr) => {
+        const r = pl.rows[+tr.dataset.i], line = (parseFloat(r.cost) || 0) * (parseFloat(r.qty) || 0);
+        total += line;
+        tr.querySelector('[data-role=line]').textContent = line ? money(line) : '–';
+        tr.querySelector('[data-role=pct]').textContent = line && budget ? Math.round(line / budget * 100) + '%' : '–';
+      });
+      const left = budget - total, el = $('pl-total');
+      el.className = 'bz-total' + (budget && left < 0 ? ' over' : '');
+      el.innerHTML = `Total <strong>${money(total)}</strong>${budget ? ` · ${left >= 0 ? `<strong>${money(left)}</strong> left (${Math.round(total / budget * 100)}% used)` : `<strong>${money(-left)} over budget</strong>`}` : ''}`;
+    };
+    $('pl-budget').oninput = (e) => { pl.budget = e.target.value; save(); update(); };
+    box.querySelectorAll('tbody input').forEach((inp) => inp.oninput = () => { pl.rows[+inp.closest('tr').dataset.i][inp.dataset.k] = inp.value; save(); update(); });
+    box.querySelectorAll('[data-act=del]').forEach((b) => b.onclick = () => { pl.rows.splice(+b.closest('tr').dataset.i, 1); if (!pl.rows.length) pl.rows.push({ m: '', cost: '', unit: '', qty: '' }); save(); planner(); $('bz-planner').open = true; });
+    $('pl-add').onclick = () => { pl.rows.push({ m: '', cost: '', unit: '', qty: '' }); save(); planner(); $('bz-planner').open = true; };
+    update();
+  }
+
   window.renderBusiness = render;
   window.addEventListener('studyhub:view', (e) => { if (e.detail.view === 'business') render(); });
 })();
