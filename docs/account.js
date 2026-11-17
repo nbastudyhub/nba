@@ -120,6 +120,7 @@
     }
     const { totals, users, lessons } = r.data;
     const titles = Object.fromEntries(((window.studyHub && window.studyHub.index) || []).map((d) => [d.id, d.title]));
+    titles.business = 'Business: exam writing';
     const tile = (n, label) => `<div class="card ad-tile"><div class="big">${n}</div><div class="muted">${label}</div></div>`;
     body.innerHTML = `
       <div class="ad-tiles">${tile(totals.users, 'accounts')}${tile(totals.newThisWeek, 'new this week')}${tile(totals.activeThisWeek, 'active this week')}${tile(totals.signedInNow, 'signed in now')}</div>

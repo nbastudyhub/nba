@@ -1,0 +1,277 @@
+{
+ "title": "Business: exam writing",
+ "course": "Pearson BTEC Level 3 National · Business / Enterprise and Entrepreneurship",
+ "note": "Original practice questions written for this site, in the BTEC style. The writing structures are a standard approach until your teacher's structure is added.",
+ "structures": {
+  "explain": {
+   "name": "Explain",
+   "marks": "usually 2-4 marks",
+   "steps": [
+    {
+     "label": "Point",
+     "hint": "Name one clear idea, e.g. a characteristic, advantage or effect."
+    },
+    {
+     "label": "Explain",
+     "hint": "Say why or how, with a link word: because… so… which means…"
+    },
+    {
+     "label": "Use the case",
+     "hint": "Back it up with a fact or number from the case study."
+    }
+   ],
+   "tip": "One point, fully developed and applied, beats three listed points."
+  },
+  "calculate": {
+   "name": "Calculate and explain",
+   "marks": "usually 2-4 marks",
+   "steps": [
+    {
+     "label": "Formula",
+     "hint": "Write the formula you are using."
+    },
+    {
+     "label": "Working",
+     "hint": "Show each step with the numbers from the case, and the units (£, %)."
+    },
+    {
+     "label": "Meaning",
+     "hint": "Say what the answer shows about the business."
+    }
+   ],
+   "tip": "Always show working: you can get marks for method even if the final answer is wrong."
+  },
+  "analyse": {
+   "name": "Analyse",
+   "marks": "usually 6 marks",
+   "steps": [
+    {
+     "label": "Point",
+     "hint": "Make a clear point that answers the question."
+    },
+    {
+     "label": "Chain of reasoning",
+     "hint": "Build connected steps: this leads to… which means… as a result…"
+    },
+    {
+     "label": "Use the case",
+     "hint": "Use specific evidence from the case: names, numbers, facts."
+    },
+    {
+     "label": "Impact",
+     "hint": "Finish with the effect on the business, e.g. on sales, costs, profit or reputation."
+    }
+   ],
+   "tip": "Aim for two well-developed points, each with a chain of reasoning, rather than lots of short ones. No conclusion is needed."
+  },
+  "evaluate": {
+   "name": "Assess / Evaluate",
+   "marks": "usually 8-12 marks",
+   "steps": [
+    {
+     "label": "Argument for",
+     "hint": "Point, chain of reasoning and evidence from the case on one side."
+    },
+    {
+     "label": "Argument against",
+     "hint": "Point, chain of reasoning and evidence from the case on the other side."
+    },
+    {
+     "label": "Judgement",
+     "hint": "Answer the question directly: which matters most, or what should they do, and why?"
+    },
+    {
+     "label": "It depends on…",
+     "hint": "Name the key factor that could change your judgement."
+    }
+   ],
+   "tip": "Both sides need evidence from the case, and your judgement must follow from your arguments. A judgement with no reason gets few marks."
+  }
+ },
+ "cases": [
+  {
+   "id": "bloom",
+   "name": "Bloom & Brew",
+   "text": "Maya Patel opened Bloom & Brew, a café that also sells flowers, in a busy market town two years ago. She used £15,000 of her own savings and a £10,000 bank loan at 8% interest. The café has 6 part-time staff. Last year its revenue was £180,000 and its net profit was £14,000. Two large coffee chains have opened within 500 metres in the past year, and Bloom & Brew's weekday sales have fallen by 12%. Customer reviews praise the 'friendly service' and 'local, seasonal flowers'. Maya is considering two options: open a second café in a nearby university city (cost £60,000), or launch an online flower-and-cake delivery service (cost £12,000 for a website and a van lease)."
+  },
+  {
+   "id": "kitlab",
+   "name": "KitLab",
+   "text": "Jordan, aged 19, runs KitLab from home, designing custom sports kits for local clubs. He sells through Instagram and TikTok, where KitLab has 8,000 followers. The kits are made by a supplier in Portugal; delivery takes 3 weeks, and last season 15% of orders arrived late. Last year KitLab's revenue was £42,000, with a gross profit margin of 30%. A sports retailer has offered Jordan a contract to supply kits to 40 schools. It would double his sales, but the retailer needs delivery within 10 days. Jordan would need £20,000 to buy extra stock up front, and he is choosing between crowdfunding and a loan from a family member."
+  },
+  {
+   "id": "greencycle",
+   "name": "GreenCycle",
+   "text": "GreenCycle is a social enterprise that collects unwanted bikes, repairs them and sells them at low prices. Its profits fund free cycling lessons for children. It employs 4 staff and 12 volunteers, and receives a £25,000 grant each year from the local council, which may be cut by half next year. The two founders disagree about what to do. Sam wants to raise bike prices by 20% to cover the gap. Priya wants to start paid repair workshops for adults in the evenings."
+  }
+ ],
+ "questions": [
+  {
+   "id": "bloom-1",
+   "case": "bloom",
+   "type": "explain",
+   "m": 3,
+   "q": "Explain one characteristic of an entrepreneur that Maya has shown.",
+   "pts": [
+    "Identifies a characteristic, e.g. willingness to take risks / determination / creativity",
+    "Explains it, e.g. she put her own money at risk because she believed the business would succeed",
+    "Uses the case, e.g. she used £15,000 of her savings and took a £10,000 loan"
+   ],
+   "tip": "Name the characteristic, explain it, then prove it with a fact from the case."
+  },
+  {
+   "id": "bloom-2",
+   "case": "bloom",
+   "type": "explain",
+   "m": 3,
+   "q": "Explain one way the two new coffee chains could affect Bloom & Brew.",
+   "pts": [
+    "Identifies an effect, e.g. more competition / loss of customers / pressure to cut prices",
+    "Explains it, e.g. customers may choose the cheaper, well-known chains, so Bloom & Brew's revenue falls",
+    "Uses the case, e.g. weekday sales have already fallen by 12%"
+   ],
+   "tip": "Link the effect to the business's sales or profit, and use the 12% figure."
+  },
+  {
+   "id": "bloom-3",
+   "case": "bloom",
+   "type": "analyse",
+   "m": 6,
+   "q": "Analyse how Bloom & Brew could use its unique selling point (USP) to compete with the coffee chains.",
+   "pts": [
+    "Identifies the USP: friendly service and local, seasonal flowers alongside the café",
+    "Chains are less likely to offer flowers or personal service, so the USP differentiates the business",
+    "Promoting the USP could attract customers who value local, independent businesses",
+    "This could build customer loyalty, leading to repeat visits and recovering the 12% fall in weekday sales",
+    "A strong USP can let the business charge a premium price, protecting profit margins",
+    "Using customer reviews in marketing gives evidence of the USP and builds trust"
+   ],
+   "tip": "Build chains of reasoning: USP → why customers choose it → effect on sales or profit."
+  },
+  {
+   "id": "bloom-4",
+   "case": "bloom",
+   "type": "evaluate",
+   "m": 10,
+   "q": "Evaluate whether Maya should open a second café or launch the online delivery service.",
+   "pts": [
+    "Second café: a university city has many potential customers, which could increase revenue a lot",
+    "Second café: costs £60,000, over four times last year's £14,000 profit, so it would need large borrowing and adds risk",
+    "Second café: Maya would be split across two sites, which could weaken the friendly service customers value",
+    "Online delivery: much cheaper at £12,000, so lower risk and quicker to pay back",
+    "Online delivery: uses the existing USP (flowers and cakes) and reaches customers beyond the town",
+    "Online delivery: new skills needed (website, delivery) and competition from online florists",
+    "Judgement: e.g. online delivery is the better first step because of lower cost and risk, given falling sales",
+    "It depends on: e.g. how much Maya can borrow, or market research on demand in the university city"
+   ],
+   "tip": "Give both options evidence from the case, compare costs with profit, then make a clear recommendation with an 'it depends on'."
+  },
+  {
+   "id": "kitlab-1",
+   "case": "kitlab",
+   "type": "explain",
+   "m": 3,
+   "q": "Explain one advantage to Jordan of using social media to market KitLab.",
+   "pts": [
+    "Identifies an advantage, e.g. low cost / reaches a large audience / two-way communication",
+    "Explains it, e.g. he can promote kits without paying for adverts, keeping costs low for a small business",
+    "Uses the case, e.g. KitLab has 8,000 followers on Instagram and TikTok"
+   ],
+   "tip": "Explain WHY the advantage helps a small business like KitLab."
+  },
+  {
+   "id": "kitlab-2",
+   "case": "kitlab",
+   "type": "calculate",
+   "m": 3,
+   "q": "Calculate KitLab's gross profit last year. Explain what your answer shows.",
+   "pts": [
+    "Formula / method: gross profit = revenue × gross profit margin (or revenue − cost of sales)",
+    "Correct answer: £42,000 × 30% = £12,600",
+    "Meaning, e.g. after paying the supplier for the kits, KitLab keeps £12,600 to cover its other costs before profit"
+   ],
+   "tip": "Show the formula and working, include £, then say what it means for the business."
+  },
+  {
+   "id": "kitlab-3",
+   "case": "kitlab",
+   "type": "analyse",
+   "m": 6,
+   "q": "Analyse the risks to KitLab of accepting the contract to supply 40 schools.",
+   "pts": [
+    "Delivery risk: the supplier takes 3 weeks but the retailer needs 10 days, so KitLab may break the contract",
+    "Late orders already happen (15% last season), so problems could get worse with double the orders",
+    "Missing deadlines could damage KitLab's reputation with the retailer and on social media",
+    "Finance risk: £20,000 is needed up front, almost half of last year's revenue, putting pressure on cash flow",
+    "Relying on one large customer is risky if the retailer cancels",
+    "Jordan works alone, so doubling sales could stretch his time and lower quality"
+   ],
+   "tip": "Two or three risks, each with a chain: risk → why → effect on KitLab."
+  },
+  {
+   "id": "kitlab-4",
+   "case": "kitlab",
+   "type": "evaluate",
+   "m": 8,
+   "q": "Assess whether crowdfunding or a family loan would be the better way for Jordan to raise the £20,000.",
+   "pts": [
+    "Crowdfunding: his 8,000 followers could back him, and it raises money without debt or interest",
+    "Crowdfunding: also acts as marketing and shows there is demand",
+    "Crowdfunding: not guaranteed to reach £20,000, and backers may expect rewards, adding cost and time",
+    "Family loan: likely quicker, flexible and low or no interest",
+    "Family loan: must be repaid, and could strain family relationships if the contract goes wrong",
+    "The deadline matters: the retailer needs fast delivery, so speed of getting the money is important",
+    "Judgement with a reason, e.g. a family loan is better because the money is certain and quick",
+    "It depends on, e.g. how much the family can lend, or how engaged his followers are"
+   ],
+   "tip": "Weigh both sources against what Jordan needs most here: certainty and speed."
+  },
+  {
+   "id": "greencycle-1",
+   "case": "greencycle",
+   "type": "explain",
+   "m": 3,
+   "q": "Explain one difference between a social enterprise and a business that aims to maximise profit.",
+   "pts": [
+    "Identifies the difference: a social enterprise uses its profits for a social or environmental aim",
+    "Explains it, e.g. profit is reinvested in the cause rather than paid to owners",
+    "Uses the case, e.g. GreenCycle's profits fund free cycling lessons for children"
+   ],
+   "tip": "State the difference clearly, then use GreenCycle as your example."
+  },
+  {
+   "id": "greencycle-2",
+   "case": "greencycle",
+   "type": "analyse",
+   "m": 6,
+   "q": "Analyse how the cut in the council grant could affect GreenCycle's stakeholders.",
+   "pts": [
+    "Children/families: fewer free cycling lessons if £12,500 less funding is available",
+    "Staff: jobs or hours may be cut to save costs, lowering motivation",
+    "Volunteers: may have more work or less support, and could leave",
+    "Customers: may face higher prices if Sam's plan goes ahead",
+    "Founders: conflict and pressure to find new income",
+    "The council/community: fewer benefits, e.g. fewer bikes reused and less cycling"
+   ],
+   "tip": "Pick two or three stakeholders and build a chain for each, using the £25,000 cut by half."
+  },
+  {
+   "id": "greencycle-3",
+   "case": "greencycle",
+   "type": "evaluate",
+   "m": 10,
+   "q": "Evaluate Sam's and Priya's ideas and recommend which one GreenCycle should choose.",
+   "pts": [
+    "Sam: raising prices by 20% is quick and needs no new costs or skills",
+    "Sam: low-price bikes are part of GreenCycle's social aim, so customers may buy elsewhere and sales could fall",
+    "Sam: demand may be price-sensitive, so revenue might not cover the £12,500 gap",
+    "Priya: workshops add a new income stream, so GreenCycle relies less on the grant",
+    "Priya: uses staff and volunteers' existing repair skills, and fits the cycling mission",
+    "Priya: needs time, marketing and evening staffing, and demand is uncertain",
+    "Judgement with reasons, e.g. Priya's idea is better in the long term because it diversifies income without hurting the social aim",
+    "It depends on, e.g. whether there is demand for workshops, or how price-sensitive bike buyers are"
+   ],
+   "tip": "Evaluate BOTH ideas with evidence, link them to the social aim, then recommend one with a reason and a condition."
+  }
+ ]
+}

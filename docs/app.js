@@ -18,6 +18,7 @@ window.studyHub = {
   reloadProgress() {
     if (current) { progress = ls.get('sh-prog-' + current.id, { answers: {} }); if (!progress.answers) progress.answers = {}; renderExam(); renderLong(); }
     if (view === 'progress') renderProgress();
+    if (window.renderBusiness && view === 'business') window.renderBusiness();
     updateRing(); renderShelf();
   }
 };
@@ -516,6 +517,9 @@ function exTotal() {
 let view = 'lessons';
 function showView(v) {
   view = v;
+  document.body.dataset.view = v;
+  $('subj-it').setAttribute('aria-current', v === 'lessons' ? 'page' : 'false');
+  $('subj-biz').setAttribute('aria-current', v === 'business' ? 'page' : 'false');
   $('deckview').classList.toggle('hidden', v !== 'lessons');
   $('shelf').classList.toggle('hidden', v !== 'lessons');
   $('shelf-head').classList.toggle('hidden', v !== 'lessons');
@@ -523,16 +527,20 @@ function showView(v) {
   $('glossaryview').classList.toggle('hidden', v !== 'glossary');
   $('accountview').classList.toggle('hidden', v !== 'account');
   $('adminview').classList.toggle('hidden', v !== 'admin');
+  $('businessview').classList.toggle('hidden', v !== 'business');
+  document.querySelector('.subject-switch').classList.toggle('hidden', v !== 'lessons' && v !== 'business');
   document.querySelectorAll('.view-link').forEach(a => a.setAttribute('aria-current', a.dataset.view === v ? 'page' : 'false'));
   if (v === 'progress') { renderProgress(); document.title = 'My progress · Study Hub'; }
   if (v === 'glossary') { renderGlossary(); document.title = 'Glossary · Study Hub'; }
   if (v === 'account') document.title = 'Account · Study Hub';
   if (v === 'admin') document.title = 'Admin · Study Hub';
+  if (v === 'business') document.title = 'Business exam writing · Study Hub';
   if (v === 'lessons' && current) document.title = current.title + ' · Study Hub';
   window.dispatchEvent(new CustomEvent('studyhub:view', { detail: { view: v } }));
-  if (v !== 'lessons') stagger($(v + 'view').children, 4);
+  if (v !== 'lessons' && v !== 'business') stagger($(v + 'view').children, 4);
   window.scrollTo(0, 0);
 }
+$('subj-it').onclick = e => { e.preventDefault(); document.querySelector('.view-link[data-view=lessons]').click(); };
 document.querySelector('.view-link[data-view=lessons]').onclick = e => {
   e.preventDefault();
   const id = (current && current.id) || ls.get('sh-last', null) || (index[0] && index[0].id);
@@ -626,7 +634,7 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
 // ---------- Start ----------
 function route() {
   const h = location.hash.slice(1);
-  if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin') return showView(h);
+  if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin' || h === 'business') return showView(h);
   if (h && index.some(d => d.id === h)) { showView('lessons'); return openDeck(h); }
   showView('lessons');
 }
@@ -640,5 +648,5 @@ window.addEventListener('hashchange', route);
   const h = location.hash.slice(1), last = ls.get('sh-last', null);
   const id = [h, last].find(x => x && index.some(d => d.id === x)) || (index[0] && index[0].id);
   if (id) openDeck(id); else $('d-title').textContent = 'No topics yet.';
-  if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin') showView(h); else showView('lessons');
+  if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin' || h === 'business') showView(h); else showView('lessons');
 })();

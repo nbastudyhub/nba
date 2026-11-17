@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Study Hub">
-<link rel="stylesheet" href="style.css?v=18">
+<link rel="stylesheet" href="style.css?v=20">
 </head>
 <body>
 <header class="topbar">
@@ -34,6 +34,10 @@
 </header>
 <div class="wrap">
   <p class="install-tip hidden" id="install-tip">On iPhone or iPad: tap the <strong>Share</strong> button in Safari, then <strong>Add to Home Screen</strong>.</p>
+  <nav class="subject-switch" aria-label="Subject">
+    <a href="#" data-subj="it" id="subj-it">IT · Cyber security</a>
+    <a href="#business" data-subj="business" id="subj-biz">Business · Exam writing</a>
+  </nav>
   <div class="shelf-head" id="shelf-head">
     <h2>Your lessons</h2>
     <input type="search" id="search" placeholder="Search lessons, e.g. MFA, tailgating…" aria-label="Search lesson titles and notes">
@@ -49,6 +53,11 @@
     <div class="card next" id="pv-next"></div>
     <div id="pv-list" class="stack"></div>
     <div class="row"><span class="spacer"></span><button class="btn ghost small" id="pv-reset" type="button">Reset all progress</button></div>
+  </section>
+
+  <section id="businessview" class="stack hidden" aria-labelledby="bz-title">
+    <div><h1 id="bz-title">Business: exam writing</h1><p class="lead" id="bz-lead"></p></div>
+    <div id="bz-body" class="stack"></div>
   </section>
 
   <section id="adminview" class="stack hidden" aria-labelledby="ad-title">
@@ -137,8 +146,9 @@
 
   <footer><img src="icons/icon.svg" alt="" width="22" height="22"><span>Answers and progress are saved on this device, and in your account if you sign in. Packs are made from lesson slides. If something here disagrees with your teacher, go with your teacher.</span></footer>
 </div>
-<script src="app.js?v=18"></script>
-<script src="assistant.js?v=18"></script>
-<script src="account.js?v=18"></script>
+<script src="app.js?v=20"></script>
+<script src="assistant.js?v=20"></script>
+<script src="account.js?v=20"></script>
+<script src="business.js?v=20"></script>
 </body>
 </html>
