@@ -633,6 +633,7 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
 
 // ---------- Start ----------
 function route() {
+  if (document.documentElement.classList.contains('gated')) return showView('account'); // sign in first (account.js)
   const h = location.hash.slice(1);
   if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin' || h === 'business') return showView(h);
   if (h && index.some(d => d.id === h)) { showView('lessons'); return openDeck(h); }
@@ -648,5 +649,6 @@ window.addEventListener('hashchange', route);
   const h = location.hash.slice(1), last = ls.get('sh-last', null);
   const id = [h, last].find(x => x && index.some(d => d.id === x)) || (index[0] && index[0].id);
   if (id) openDeck(id); else $('d-title').textContent = 'No topics yet.';
-  if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin' || h === 'business') showView(h); else showView('lessons');
+  if (document.documentElement.classList.contains('gated')) showView('account');
+  else if (h === 'progress' || h === 'glossary' || h === 'account' || h === 'admin' || h === 'business') showView(h); else showView('lessons');
 })();

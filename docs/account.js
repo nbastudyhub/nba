@@ -94,7 +94,33 @@
   // ---------- state ----------
   function setSync(s) { syncState = s; renderLink(); if (isOpen()) render(); }
   function signedIn(username) { me = username; ls.set('sh-user', username); renderLink(); }
-  function signedOut() { me = null; setAdmin(false); ls.del('sh-user'); syncState = ''; renderLink(); if (isOpen()) render(); }
+  function signedOut() { me = null; setAdmin(false); ls.del('sh-user'); syncState = ''; renderLink(); gate(true); if (isOpen()) render(); }
+
+  // ---------- Sign-in screen ----------
+  // Everyone signs in (or creates an account) before using the site. index.html hides the site at once
+  // unless this device remembers a signed-in user; this confirms it with the server. If accounts
+  // aren't available (backup site) or the device is offline, people are let in.
+  let goAfter = null; // where to go once signed in, e.g. a lesson link they opened
+  const gated = () => document.documentElement.classList.contains('gated');
+  function gate(on) {
+    if (on && !available) on = false;
+    if (on === gated()) { if (on && location.hash !== '#account') location.hash = '#account'; return; }
+    if (on) {
+      if (location.hash && location.hash !== '#account') goAfter = location.hash;
+      document.documentElement.classList.add('gated');
+      if (location.hash !== '#account') location.hash = '#account';
+      else window.dispatchEvent(new HashChangeEvent('hashchange'));
+    } else {
+      document.documentElement.classList.remove('gated');
+      if (!recovery) leaveGate();
+    }
+  }
+  function leaveGate() {
+    const to = goAfter && goAfter !== '#account' ? goAfter : '#';
+    goAfter = null;
+    if (location.hash === to || (to === '#' && !location.hash)) window.dispatchEvent(new HashChangeEvent('hashchange'));
+    else location.hash = to;
+  }
   const isOpen = () => !$('accountview').classList.contains('hidden');
 
   // ---------- Admin page (#admin), only for admins ----------
@@ -227,7 +253,7 @@
     const on = (id, fn) => { const el = $(id); if (el) el.onclick = fn; };
     document.querySelectorAll('.ac-tabs [data-mode]').forEach((b) => b.onclick = () => { mode = b.dataset.mode; notice = null; render(); });
     on('ac-copy', async () => { try { await navigator.clipboard.writeText(recovery); $('ac-copy').textContent = 'Copied ✓'; } catch (e) { $('ac-copy').textContent = 'Select and copy it yourself'; } });
-    on('ac-saved', () => { recovery = null; render(); });
+    on('ac-saved', () => { recovery = null; if (goAfter !== null) leaveGate(); else render(); });
     on('ac-syncnow', () => fullSync());
     on('ac-logout', logout);
     // Show / hide the password so people can check what they typed (especially when creating an account).
@@ -263,6 +289,7 @@
     }
     signedIn(r.data.username);
     if (r.data.recoveryCode) recovery = r.data.recoveryCode;
+    if (gated()) { if (goAfter === null) goAfter = '#'; gate(false); }
     say('ok', mode === 'signup' ? `Welcome, ${r.data.username}! Your account is ready.` : mode === 'reset' ? 'Your password has been changed, and you\'ve been signed out on other devices. Here is your NEW recovery code.' : `Signed in as ${r.data.username}.`);
     render();
     await fullSync();
@@ -285,13 +312,14 @@
 
   // ---------- start ----------
   (async function init() {
+    if (gated() && location.hash && location.hash !== '#account') goAfter = location.hash;
     const remembered = ls.get('sh-user', null);
     if (remembered) { me = remembered; renderLink(); } // show straight away; checked below
     const r = await api('GET', 'api/account/me');
-    if (r.ok) { signedIn(r.data.username); setAdmin(!!r.data.admin); fullSync(); }
-    else if (r.status === 401) signedOut(); // sign-in expired: keep this device's progress; it merges back when you sign in
-    else if (r.data.error === 'no_accounts_here' || r.data.error === 'accounts_off') { available = false; offReason = r.data.error; if (me) signedOut(); }
-    else if (me) setSync('offline'); // offline: keep working on this device, sync later
+    if (r.ok) { signedIn(r.data.username); setAdmin(!!r.data.admin); gate(false); fullSync(); }
+    else if (r.status === 401) signedOut(); // sign-in expired: keep this device's progress; it merges back when you sign in. Shows the sign-in screen.
+    else if (r.data.error === 'no_accounts_here' || r.data.error === 'accounts_off') { available = false; offReason = r.data.error; if (me) signedOut(); gate(false); }
+    else { if (me) setSync('offline'); gate(false); } // offline: let them in and keep working on this device; sync later
     if (isOpen()) render();
     if (location.hash === '#admin') renderAdmin();
   })();

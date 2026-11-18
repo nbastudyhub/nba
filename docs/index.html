@@ -13,7 +13,12 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Study Hub">
-<link rel="stylesheet" href="style.css?v=27">
+<link rel="stylesheet" href="style.css?v=28">
+<script>
+  // Sign-in screen first: hide the site straight away unless this device remembers a signed-in user.
+  // account.js checks with the server and lets people in (or not). The GitHub Pages backup has no accounts.
+  try { if (!localStorage.getItem('sh-user') && !/github\.io$/.test(location.hostname)) document.documentElement.classList.add('gated'); } catch (e) {}
+</script>
 </head>
 <body>
 <header class="topbar">
@@ -66,6 +71,11 @@
   </section>
 
   <section id="accountview" class="stack hidden" aria-labelledby="ac-title">
+    <div class="gate-intro">
+      <img src="icons/icon.svg" alt="" width="64" height="64">
+      <h1>Welcome to Study Hub</h1>
+      <p class="lead">Sign in, or create a free account, to start revising. Your account saves your progress and syncs it between your phone and computer. No email needed.</p>
+    </div>
     <h1 id="ac-title">Account</h1>
     <div id="ac-body" class="stack"></div>
   </section>
@@ -146,9 +156,9 @@
 
   <footer><img src="icons/icon.svg" alt="" width="22" height="22"><span>Answers and progress are saved on this device, and in your account if you sign in. Packs are made from lesson slides. If something here disagrees with your teacher, go with your teacher.</span></footer>
 </div>
-<script src="app.js?v=27"></script>
-<script src="assistant.js?v=27"></script>
-<script src="account.js?v=27"></script>
-<script src="business.js?v=27"></script>
+<script src="app.js?v=28"></script>
+<script src="assistant.js?v=28"></script>
+<script src="account.js?v=28"></script>
+<script src="business.js?v=28"></script>
 </body>
 </html>

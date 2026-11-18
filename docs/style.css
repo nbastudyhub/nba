@@ -455,3 +455,13 @@ table.levels td:first-child { width: 110px; white-space: nowrap; }
 @media (max-width: 480px) { .sec .diagram { margin-left: 0; } }
 .zoom-hint { display: none; }
 @media (max-width: 640px) { .zoom-hint { display: inline; font-weight: 600; color: var(--accent); } }
+
+/* ---------- Sign-in screen (html.gated, see index.html and account.js) ---------- */
+.gate-intro { display: none; }
+html.gated .gate-intro { display: grid; justify-items: center; gap: 8px; text-align: center; margin: 24px auto 4px; max-width: 560px; }
+html.gated .gate-intro img { border-radius: 16px; box-shadow: var(--shadow-md); }
+html.gated .gate-intro .lead { margin: 0 auto; }
+html.gated #ac-title, html.gated .topbar .views, html.gated .subject-switch, html.gated .shelf-head, html.gated .shelf,
+html.gated .search-results, html.gated #deckview, html.gated #progressview, html.gated #glossaryview, html.gated #adminview,
+html.gated #businessview, html.gated .helper, html.gated .install-tip, html.gated footer { display: none !important; }
+html.gated #accountview { display: grid !important; max-width: 560px; margin: 0 auto; }
