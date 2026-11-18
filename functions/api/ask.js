@@ -1,8 +1,9 @@
-// Study Hub AI helper: POST /api/ask
+// Study Hub AI helper: POST /api/ask (an IT lesson, or deckId "business" for the Business exam-writing section)
 // Runs as a Cloudflare Pages Function; shared checks and the API client are in lib/shared.js.
 import { MODEL, json, guard, readJson, loadDeck, loadTopics, newClient, apiError, textOf } from "../../lib/shared.js";
 
 const MAX_QUESTION = 600;        // characters per question
+const MAX_BIZ_QUESTION = 1500;   // Business: students may paste a paragraph to get feedback on
 const MAX_HISTORY = 8;           // earlier messages sent back for context
 const MAX_HISTORY_TEXT = 2000;   // characters per earlier message
 
@@ -70,18 +71,55 @@ function cleanHistory(history) {
   return msgs.filter((m, i) => i === 0 || m.role !== msgs[i - 1].role);
 }
 
+// ---------- Business exam writing (docs/business/questions.json) ----------
+export function businessNotes(data) {
+  const out = [`Course: ${data.course}`];
+  (data.steps || []).forEach((s, i) => {
+    out.push(`\n## ${/^Extra/i.test(s.title) ? "Extra step" : `Step ${i + 1}`}: ${s.title}`, s.intro);
+    out.push("Boxes: " + s.fields.map((f) => (f.group ? `${f.group} – ` : "") + f.label).join("; "));
+    out.push("Checklist: " + s.checks.join("; "));
+    if (s.tip) out.push(`Tip: ${s.tip}`);
+    if (s.example) out.push(`Teacher's example (${s.example.title}):\n` + s.example.text.map((t) => `- ${t}`).join("\n"));
+  });
+  if ((data.terms || []).length) out.push("\n## Key terms\n" + data.terms.map((t) => `- ${t.t}: ${t.d}`).join("\n"));
+  return out.join("\n");
+}
+export function businessPrompt() {
+  return `You are the Study Hub revision helper for Business. The students using you are mostly aged 16 to 18, in the UK, studying Pearson BTEC Level 3 National Business and aiming for a Distinction*. Right now they are working on Unit 2 (Developing a Marketing Campaign), a set task about a business called Technective launching a new smartwatch. Their teacher teaches a step-by-step structure (below) and writes every point as Point, Evidence (quoted from the case booklet), Explain, Link (to the business's aim).
+
+How to help:
+- Explain clearly in plain UK English with short sentences. Keep answers short: usually 2 to 6 sentences, or a few bullet points starting with "- ". Don't use headings or tables.
+- Teach the ideas (aims, SMART objectives, trends, competitors, reliability, validity, bias, SWOT, PESTLE, the 7 Ps, the product life cycle) and how to use the teacher's structure.
+- This is assessed coursework, so coach rather than write it. Never write the student's answers about Technective for them, even if asked. Instead: ask guiding questions, point to which part of Point, Evidence, Explain, Link is missing, and give feedback on drafts they share. You may show short examples about a different, made-up business.
+- You can't see the Technective booklet. If you need its facts or figures, ask the student to paste them. Don't invent facts about Technective or its market.
+- Remind students, when relevant, that their teacher's rules come first (e.g. whether AI help is allowed during the set task).
+- Stay focused on studying. If asked about something unrelated, kindly steer back.
+- Never ask for personal details. If a student seems upset or unsafe, or mentions harm, respond kindly, encourage them to talk to a trusted adult or teacher, and mention Childline (0800 1111, childline.org.uk).
+- If you're not sure about something, say so rather than guessing.`;
+}
+
 export async function onRequestPost({ request, env }) {
   const blocked = guard(request, env);
   if (blocked) return blocked;
 
   const body = await readJson(request);
   const question = body && typeof body.question === "string" ? body.question.trim() : "";
-  if (!body || typeof body.deckId !== "string" || !/^[a-z0-9-]{1,120}$/.test(body.deckId) || !question || question.length > MAX_QUESTION) {
+  const biz = body && body.deckId === "business";
+  if (!body || typeof body.deckId !== "string" || !/^[a-z0-9-]{1,120}$/.test(body.deckId) || !question || question.length > (biz ? MAX_BIZ_QUESTION : MAX_QUESTION)) {
     return json({ error: "bad_request" }, 400);
   }
-  const deck = await loadDeck(env, request.url, body.deckId);
-  if (!deck) return json({ error: "unknown_lesson" }, 404);
-  const topics = await loadTopics(env, request.url);
+  let system;
+  if (biz) {
+    let data = null;
+    try { const res = await env.ASSETS.fetch(new URL("/business/questions.json", request.url)); if (res.ok) data = await res.json(); } catch { data = null; }
+    if (!data) return json({ error: "unknown_lesson" }, 404);
+    system = [{ type: "text", text: businessPrompt() }, { type: "text", text: `BUSINESS SECTION NOTES (what the student is working on)\n${businessNotes(data)}` }];
+  } else {
+    const deck = await loadDeck(env, request.url, body.deckId);
+    if (!deck) return json({ error: "unknown_lesson" }, 404);
+    const topics = await loadTopics(env, request.url);
+    system = [{ type: "text", text: systemPrompt(deck, topics) }, { type: "text", text: lessonPrompt(deck) }];
+  }
 
   const messages = cleanHistory(body.history);
   if (messages.length && messages[messages.length - 1].role === "user") messages.pop();
@@ -92,11 +130,8 @@ export async function onRequestPost({ request, env }) {
       model: MODEL,
       max_tokens: 4000,
       output_config: { effort: "low" },
-      cache_control: { type: "ephemeral" }, // reuse the instructions, index and lesson notes across a student's questions
-      system: [
-        { type: "text", text: systemPrompt(deck, topics) },
-        { type: "text", text: lessonPrompt(deck) },
-      ],
+      cache_control: { type: "ephemeral" }, // reuse the instructions and notes across a student's questions
+      system,
       messages,
     });
     if (response.stop_reason === "refusal") {

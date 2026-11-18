@@ -4,7 +4,7 @@
 // Points use the teacher's Point, Evidence, Explain, Link style, and steps can show the teacher's example.
 // Each step has its own boxes, a checklist to tick, and AI feedback (functions/api/mark.js, kind "bizstep").
 // Steps and key terms live in business/questions.json. Work is saved as progress under the id "business".
-// Uses helpers from app.js: esc, stagger, bump, aiErrorText.
+// Uses helpers from app.js: esc, stagger, bump, aiErrorText. The AI helper (assistant.js) switches to Business here.
 (function () {
   const $ = (id) => document.getElementById(id);
   const KEY = 'sh-prog-business';

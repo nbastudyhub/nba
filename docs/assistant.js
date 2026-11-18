@@ -2,13 +2,20 @@
 // Questions go to /api/ask (functions/api/ask.js on Cloudflare), which adds the open lesson's notes.
 (function () {
   const MAIN_SITE = 'https://nbastudyhub.pages.dev/';
-  const MAX_LEN = 600;
+  const MAX_LEN = 600, MAX_BIZ = 1500; // Business allows pasting a paragraph for feedback
   const SUGGESTIONS = [
     'Explain the key idea more simply',
     'Give me a real-life example',
     'Quiz me with one question',
     'How do I get full marks on a 6-mark question?'
   ];
+  const BIZ_SUGGESTIONS = [
+    'What makes an objective SMART?',
+    'How do I link a point back to the aim?',
+    'What\'s the difference between reliability and validity?',
+    'Can you check my paragraph? (paste it)'
+  ];
+  const BUSINESS = { id: 'business', title: 'Business: Unit 2 exam writing', business: true };
 
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   // Plain text in, safe HTML out: paragraphs, "- " bullets and **bold**.
@@ -54,20 +61,24 @@
   const chats = {}; // per lesson: [{ role, text }]
   let busy = false, shown = 0; // shown: messages already on screen, so only new ones animate in
 
-  const deck = () => (window.studyHub && window.studyHub.deck) || null;
+  let view = 'lessons';
+  // On the Business page the helper talks about Business; everywhere else, the open IT lesson.
+  const deck = () => view === 'business' ? BUSINESS : (window.studyHub && window.studyHub.deck) || null;
   const chat = () => { const d = deck(); return d ? (chats[d.id] = chats[d.id] || []) : []; };
 
   function render() {
     const d = deck();
     $('helper-lesson').textContent = d ? d.title : 'Open a lesson to ask about it';
     const msgs = chat();
-    log.innerHTML = `<div class="helper-msg bot">${format(d
-      ? `Hi! Ask me anything about **${d.title}**. I can explain things another way, give examples, quiz you, or help you plan an exam answer.`
-      : 'Pick a lesson first, then ask me about it.')}</div>` +
+    log.innerHTML = `<div class="helper-msg bot">${format(!d ? 'Pick a lesson first, then ask me about it.'
+      : d.business ? 'Hi! I can help with your **Business Unit 2** work: the aim, SMART objectives, trends, competitors, research, SWOT, PESTLE and the 7 Ps. I can explain ideas, quiz you, or give feedback on a paragraph you paste. I can\'t see your Technective booklet, so paste any facts you want me to use. I won\'t write your set-task answers for you, but I\'ll help you improve your own.'
+      : `Hi! Ask me anything about **${d.title}**. I can explain things another way, give examples, quiz you, or help you plan an exam answer.`)}</div>` +
       msgs.map((m, i) => `<div class="helper-msg ${m.role === 'user' ? 'me' : m.error ? 'bot err' : 'bot'}${i >= shown ? ' new' : ''}">${m.role === 'user' ? `<p>${esc(m.text)}</p>` : format(m.text)}</div>`).join('') +
       (busy ? '<div class="helper-msg bot typing"><span></span><span></span><span></span></div>' : '');
     shown = msgs.length;
-    $('helper-chips').innerHTML = msgs.length || !d ? '' : SUGGESTIONS.map(s => `<button type="button" class="helper-chip">${esc(s)}</button>`).join('');
+    input.maxLength = d && d.business ? MAX_BIZ : MAX_LEN;
+    input.placeholder = d && d.business ? 'Ask about your Business work, or paste a paragraph…' : 'Ask about this lesson…';
+    $('helper-chips').innerHTML = msgs.length || !d ? '' : (d.business ? BIZ_SUGGESTIONS : SUGGESTIONS).map(s => `<button type="button" class="helper-chip">${esc(s)}</button>`).join('');
     $('helper-chips').querySelectorAll('.helper-chip').forEach(b => b.onclick = () => ask(b.textContent));
     $('helper-send').disabled = busy || !d;
     log.scrollTop = log.scrollHeight;
@@ -83,7 +94,7 @@
   }
 
   async function ask(text) {
-    const d = deck(); const q = String(text || '').trim().slice(0, MAX_LEN);
+    const d = deck(); const q = String(text || '').trim().slice(0, d && d.business ? MAX_BIZ : MAX_LEN);
     if (!d || !q || busy) return;
     const msgs = chat();
     const history = msgs.filter(m => !m.error).slice(-8).map(m => ({ role: m.role, text: m.text }));
@@ -116,4 +127,5 @@
   $('helper-form').onsubmit = e => { e.preventDefault(); ask(input.value); };
   input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(input.value); } });
   window.addEventListener('studyhub:deck', () => { if (!panel.hidden) { shown = chat().length; render(); } });
+  window.addEventListener('studyhub:view', (e) => { view = e.detail.view; if (!panel.hidden) { shown = chat().length; render(); } });
 })();
