@@ -61,6 +61,7 @@ export async function onRequestPost({ env, request, params }) {
   if (rateLimited("auth:" + clientIp(request), AUTH_LIMIT)) return json({ error: "rate_limited" }, 429);
   const body = (await readJson(request)) || {};
   const username = String(body.username || "").trim().toLowerCase();
+  const remember = body.remember !== false; // "Remember me" (ticked unless the student unticks it)
 
   if (action === "signup") {
     if (!validUsername(username)) return json({ error: "bad_username" }, 400);
@@ -75,7 +76,7 @@ export async function onRequestPost({ env, request, params }) {
     } catch (e) {
       return json({ error: "taken" }, 409); // someone took it at the same moment
     }
-    return withCookie({ username, recoveryCode: s.recoveryCode }, await createSession(db, row.id));
+    return withCookie({ username, recoveryCode: s.recoveryCode }, await createSession(db, row.id, remember));
   }
 
   if (action === "login") {
@@ -87,7 +88,7 @@ export async function onRequestPost({ env, request, params }) {
       return json({ error: "wrong_login" }, 401);
     }
     fails.delete(username);
-    return withCookie({ username }, await createSession(db, user.id));
+    return withCookie({ username }, await createSession(db, user.id, remember));
   }
 
   if (action === "reset") {
@@ -106,7 +107,7 @@ export async function onRequestPost({ env, request, params }) {
         .bind(s.pwHash, s.pwSalt, s.recHash, s.recSalt, user.id),
       db.prepare("DELETE FROM sessions WHERE user_id = ?").bind(user.id), // sign out everywhere else
     ]);
-    return withCookie({ username, recoveryCode: s.recoveryCode }, await createSession(db, user.id));
+    return withCookie({ username, recoveryCode: s.recoveryCode }, await createSession(db, user.id, remember));
   }
 
   if (action === "delete") {

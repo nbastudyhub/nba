@@ -270,6 +270,8 @@ label.field { display: grid; gap: 4px; font-weight: 600; font-size: 14px; }
 .ac-label { font-weight: 600; font-size: 14px; margin-bottom: -8px; }
 .ac-input { width: 100%; max-width: 420px; font: 16px var(--font-body); padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); }
 .ac-input:focus { border-color: var(--accent); background: var(--surface); }
+.ac-remember { display: flex; gap: 10px; align-items: flex-start; max-width: 420px; cursor: pointer; }
+.ac-remember input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--highlight); flex: none; }
 .pw-wrap { position: relative; max-width: 420px; }
 .pw-wrap .ac-input { padding-right: 76px; }
 .pw-toggle { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font: 400 14px var(--font-display); text-transform: uppercase; letter-spacing: .05em; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }

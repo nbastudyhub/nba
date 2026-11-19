@@ -93,8 +93,16 @@
 
   // ---------- state ----------
   function setSync(s) { syncState = s; renderLink(); if (isOpen()) render(); }
-  function signedIn(username) { me = username; ls.set('sh-user', username); renderLink(); }
-  function signedOut() { me = null; setAdmin(false); ls.del('sh-user'); syncState = ''; renderLink(); gate(true); if (isOpen()) render(); }
+  // remember = false: keep the username only for this browser session (sessionStorage), and mark the device
+  // so its progress is cleared next time the site opens without a signed-in user (shared/school computers).
+  const ss = { get(k) { try { return JSON.parse(sessionStorage.getItem(k)); } catch (e) { return null; } }, set(k, v) { try { sessionStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }, del(k) { try { sessionStorage.removeItem(k); } catch (e) {} } };
+  function signedIn(username, remember = !ss.get('sh-user')) {
+    me = username;
+    if (remember) { ls.set('sh-user', username); ss.del('sh-user'); ls.del('sh-temp'); }
+    else { ss.set('sh-user', username); ls.del('sh-user'); ls.set('sh-temp', true); }
+    renderLink();
+  }
+  function signedOut() { me = null; setAdmin(false); ls.del('sh-user'); ss.del('sh-user'); syncState = ''; renderLink(); gate(true); if (isOpen()) render(); }
 
   // ---------- Sign-in screen ----------
   // Everyone signs in (or creates an account) before using the site. index.html hides the site at once
@@ -264,6 +272,7 @@
             <button type="button" class="pw-toggle" id="ac-pw-show" aria-controls="ac-pw" aria-pressed="false" aria-label="Show password">Show</button>
           </div>
           ${mode === 'login' ? '' : '<p class="muted small-note">Username: 3 to 20 letters, numbers or _. Password: at least 8 characters.</p>'}
+          <label class="ac-remember"><input type="checkbox" id="ac-remember" checked> <span><strong>Remember me on this device</strong><br><span class="muted small-note">Untick on a school or shared computer: you'll be signed out when the browser closes, and your progress won't stay on it.</span></span></label>
           <div class="row"><button class="btn" type="submit" id="ac-submit">${{ login: 'Sign in', signup: 'Create account', reset: 'Set new password' }[mode]}</button></div>
         </form></div>${privacy}`;
     }
@@ -300,16 +309,16 @@
 
   async function submit() {
     const btn = $('ac-submit'); btn.disabled = true;
-    const username = $('ac-user').value.trim().toLowerCase(), password = $('ac-pw').value;
+    const username = $('ac-user').value.trim().toLowerCase(), password = $('ac-pw').value, remember = $('ac-remember').checked;
     const r = mode === 'reset'
-      ? await api('POST', 'api/account/reset', { username, recoveryCode: $('ac-rec').value, newPassword: password })
-      : await api('POST', 'api/account/' + mode, { username, password });
+      ? await api('POST', 'api/account/reset', { username, recoveryCode: $('ac-rec').value, newPassword: password, remember })
+      : await api('POST', 'api/account/' + mode, { username, password, remember });
     if (!r.ok) {
       if (r.data.error === 'no_accounts_here' || r.data.error === 'accounts_off') { available = false; offReason = r.data.error; notice = null; render(); return; }
       say('bad', errorText[r.data.error] || 'Something went wrong. Please try again.');
       render(); return;
     }
-    signedIn(r.data.username);
+    signedIn(r.data.username, remember);
     if (r.data.recoveryCode) recovery = r.data.recoveryCode;
     if (gated()) { if (goAfter === null) goAfter = '#'; gate(false); }
     say('ok', mode === 'signup' ? `Welcome, ${r.data.username}! Your account is ready.` : mode === 'reset' ? 'Your password has been changed, and you\'ve been signed out on other devices. Here is your NEW recovery code.' : `Signed in as ${r.data.username}.`);
@@ -335,7 +344,9 @@
   // ---------- start ----------
   (async function init() {
     if (gated() && location.hash && location.hash !== '#account') goAfter = location.hash;
-    const remembered = ls.get('sh-user', null);
+    const remembered = ls.get('sh-user', null) || ss.get('sh-user');
+    // Last person here didn't tick "Remember me" and their browser session has ended: clear their progress.
+    if (!remembered && ls.get('sh-temp', false)) { clearDevice(); ls.del('sh-temp'); }
     if (remembered) { me = remembered; renderLink(); } // show straight away; checked below
     const r = await api('GET', 'api/account/me');
     if (r.ok) { signedIn(r.data.username); setAdmin(!!r.data.admin); gate(false); fullSync(); }

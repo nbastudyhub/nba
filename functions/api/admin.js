@@ -21,8 +21,8 @@ export async function onRequestGet({ env, request }) {
        FROM users u LEFT JOIN progress p ON p.user_id = u.id
        GROUP BY u.id ORDER BY u.created_at DESC LIMIT 1000`
     ),
-    // Each sign-in lasts SESSION_DAYS, so a session's start = its expiry minus that.
-    db.prepare("SELECT user_id, MAX(expires_at) AS last_expiry, SUM(expires_at > ?) AS live FROM sessions GROUP BY user_id").bind(now),
+    // When each sign-in started (older sessions without created_at: expiry minus SESSION_DAYS).
+    db.prepare("SELECT user_id, MAX(COALESCE(created_at, expires_at - ?)) AS last_start, SUM(expires_at > ?) AS live FROM sessions GROUP BY user_id").bind(SESSION_DAYS * DAY, now),
     db.prepare("SELECT deck_id, COUNT(*) AS learners, MAX(updated_at) AS last FROM progress GROUP BY deck_id ORDER BY learners DESC"),
   ]);
   const byUser = new Map((sessions.results || []).map((r) => [r.user_id, r]));
@@ -32,7 +32,7 @@ export async function onRequestGet({ env, request }) {
       username: u.username,
       admin: isAdmin(env, u.username),
       signedUp: u.created_at,
-      lastSignIn: s ? s.last_expiry - SESSION_DAYS * DAY : null,
+      lastSignIn: s ? s.last_start : null,
       signedIn: !!(s && s.live > 0),
       lastStudied: u.last_studied || null,
       lessons: u.lessons || 0,
