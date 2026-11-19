@@ -384,6 +384,8 @@ input[type=number] { font: 15px var(--font-body); padding: 9px 12px; border-radi
 /* ---------- Admin ---------- */
 .ad-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
 .ad-tile { text-align: center; }
+.ad-remove { border-color: var(--bad); margin-top: 12px; }
+.ad-admin { color: var(--accent); border-color: var(--accent); }
 .ad-live { font: 600 11px var(--font-mono); text-transform: uppercase; color: var(--good); border: 1px solid var(--good); border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
 
 /* ---------- Long answers ---------- */

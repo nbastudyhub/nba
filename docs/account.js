@@ -151,9 +151,11 @@
     body.innerHTML = `
       <div class="ad-tiles">${tile(totals.users, 'accounts')}${tile(totals.newThisWeek, 'new this week')}${tile(totals.activeThisWeek, 'active this week')}${tile(totals.signedInNow, 'signed in now')}</div>
       <div class="card tablebox"><h3>Accounts</h3>
-        ${users.length ? `<table><thead><tr><th>Username</th><th>Signed up</th><th>Last sign-in</th><th>Last studied</th><th>Lessons</th></tr></thead><tbody>
-        ${users.map((u) => `<tr><td><strong>${esc(u.username)}</strong>${u.signedIn ? ' <span class="ad-live">signed in</span>' : ''}</td><td>${when(u.signedUp)}</td><td>${when(u.lastSignIn)}</td><td>${when(u.lastStudied)}</td><td>${u.lessons}</td></tr>`).join('')}
+        ${users.length ? `<table><thead><tr><th>Username</th><th>Signed up</th><th>Last sign-in</th><th>Last studied</th><th>Lessons</th><th></th></tr></thead><tbody>
+        ${users.map((u) => `<tr data-user="${esc(u.username)}"><td><strong>${esc(u.username)}</strong>${u.admin ? ' <span class="ad-live ad-admin">admin</span>' : ''}${u.signedIn ? ' <span class="ad-live">signed in</span>' : ''}</td><td>${when(u.signedUp)}</td><td>${when(u.lastSignIn)}</td><td>${when(u.lastStudied)}</td><td>${u.lessons}</td>
+          <td>${u.admin ? '' : `<button class="btn danger small" data-remove="${esc(u.username)}">Remove</button>`}</td></tr>`).join('')}
         </tbody></table>` : '<p class="muted">No accounts yet.</p>'}
+        <div id="ad-confirm"></div>
         <p class="muted small-note">"Last sign-in" only covers sign-ins that haven't been signed out or expired. Passwords are never shown: they are stored scrambled.</p>
       </div>
       <div class="card tablebox"><h3>Most studied lessons</h3>
@@ -163,6 +165,26 @@
       </div>
       <div class="row"><button class="btn ghost small" id="ad-refresh">Refresh</button></div>`;
     $('ad-refresh').onclick = renderAdmin;
+    body.querySelectorAll('[data-remove]').forEach((btn) => btn.onclick = () => confirmRemove(btn.dataset.remove));
+  }
+  // Removing an account can't be undone, so the admin types the username to confirm.
+  function confirmRemove(username) {
+    const box = $('ad-confirm');
+    box.innerHTML = `<div class="ad-remove card">
+      <p><strong>Remove ${esc(username)}?</strong> This deletes the account, all of its saved progress and signs it out everywhere. It can't be undone.</p>
+      <label class="ac-label" for="ad-confirm-name">Type <strong>${esc(username)}</strong> to confirm</label>
+      <input class="ac-input" id="ad-confirm-name" autocomplete="off" autocapitalize="none" spellcheck="false">
+      <div class="row" style="margin-top:10px"><button class="btn danger" id="ad-confirm-go" disabled>Remove account</button><button class="btn ghost" id="ad-confirm-cancel">Cancel</button><span class="status" id="ad-confirm-note"></span></div></div>`;
+    const inp = $('ad-confirm-name'), go = $('ad-confirm-go');
+    inp.oninput = () => { go.disabled = inp.value.trim().toLowerCase() !== username; };
+    $('ad-confirm-cancel').onclick = () => { box.innerHTML = ''; };
+    go.onclick = async () => {
+      go.disabled = true; $('ad-confirm-note').textContent = 'Removing…';
+      const r = await api('POST', 'api/admin', { action: 'delete', username });
+      if (r.ok) { await renderAdmin(); const n = $('ad-confirm'); if (n) n.innerHTML = `<div class="ac-notice ok">${esc(username)} has been removed.</div>`; }
+      else { $('ad-confirm-note').textContent = { cant_remove_admin: 'Admin accounts can\'t be removed here.', not_found: 'That account no longer exists.', not_admin: 'Only admins can remove accounts.', rate_limited: 'Too many removals in a short time. Try again shortly.' }[r.data.error] || 'Couldn\'t remove that account. Try again.'; go.disabled = false; }
+    };
+    inp.focus(); box.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
   window.addEventListener('studyhub:view', (e) => { if (e.detail.view === 'admin') renderAdmin(); });
 
