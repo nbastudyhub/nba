@@ -1,4 +1,4 @@
-// Study Hub accounts: /api/account/me (GET) and /api/account/signup | login | logout | reset | delete (POST).
+// Study Hub accounts: /api/account/me (GET) and /api/account/signup | login | logout | reset | password | delete (POST).
 import { json, allowedOrigin, clientIp, rateLimited, readJson } from "../../../lib/shared.js";
 import {
   ensureSchema, hashSecret, sameText, randomToken, newRecoveryCode, normaliseCode,
@@ -108,6 +108,23 @@ export async function onRequestPost({ env, request, params }) {
       db.prepare("DELETE FROM sessions WHERE user_id = ?").bind(user.id), // sign out everywhere else
     ]);
     return withCookie({ username, recoveryCode: s.recoveryCode }, await createSession(db, user.id, remember));
+  }
+
+  if (action === "password") {
+    // Change your own password (e.g. after an admin gave you a temporary one). Signs out other devices.
+    const me = await currentUser(db, request);
+    if (!me) return json({ error: "signed_out" }, 401);
+    const user = await findUser(db, me.username);
+    if (typeof body.password !== "string" || !sameText(await hashSecret(body.password.slice(0, 128), user.pw_salt), user.pw_hash)) {
+      return json({ error: "wrong_login" }, 401);
+    }
+    if (!validPassword(body.newPassword)) return json({ error: "bad_password" }, 400);
+    const salt = randomToken(16);
+    await db.batch([
+      db.prepare("UPDATE users SET pw_hash = ?, pw_salt = ? WHERE id = ?").bind(await hashSecret(body.newPassword, salt), salt, user.id),
+      db.prepare("DELETE FROM sessions WHERE user_id = ?").bind(user.id),
+    ]);
+    return withCookie({ ok: true, username: me.username }, await createSession(db, user.id, remember));
   }
 
   if (action === "delete") {

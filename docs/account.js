@@ -104,6 +104,28 @@
   }
   function signedOut() { me = null; setAdmin(false); ls.del('sh-user'); ss.del('sh-user'); syncState = ''; renderLink(); gate(true); if (isOpen()) render(); }
 
+  // ---------- Leaderboard (on the Progress page) ----------
+  // Students ranked by lessons completed at 100%, then overall progress (functions/api/leaderboard.js).
+  async function renderLeaderboard() {
+    const box = $('pv-lb');
+    if (!available || !me) { box.classList.add('hidden'); return; }
+    box.classList.remove('hidden');
+    if (!box.innerHTML) box.innerHTML = '<p class="muted">Loading the leaderboard…</p>';
+    await flush(); // send your latest progress first, so your own row is up to date
+    const r = await api('GET', 'api/leaderboard');
+    if (!r.ok) { if (r.status === 404 || r.data.error === 'no_accounts_here') box.classList.add('hidden'); else box.innerHTML = '<p class="muted">Couldn\'t load the leaderboard. Try again later.</p>'; return; }
+    const { top, me: mine, lessons } = r.data, medal = (n) => ['🥇', '🥈', '🥉'][n - 1] || n;
+    box.innerHTML = `<div class="row"><h2 style="margin:0">🏆 Leaderboard</h2><span class="spacer"></span><span class="muted small-note">Lessons completed at 100%</span></div>
+      <p class="muted small-note">A lesson counts when every flashcard is known and you have full marks in its Quiz, Apply it, Exam practice and Long answer (the Progress bars all full).</p>
+      ${top.length ? `<div class="tablebox"><table class="lb-table"><thead><tr><th>#</th><th>Student</th><th>Lessons at 100%</th><th>Overall</th></tr></thead><tbody>
+        ${top.map((u) => `<tr class="${u.username === mine.username ? 'lb-me' : ''}"><td class="lb-rank">${medal(u.rank)}</td><td><strong>${esc(u.username)}</strong>${u.username === mine.username ? ' (you)' : ''}</td><td class="score">${u.completed} / ${lessons}</td><td class="score">${u.overall}%</td></tr>`).join('')}
+        </tbody></table></div>` : '<p>Nobody has completed a lesson at 100% yet. Be the first!</p>'}
+      <p class="lb-mine">${mine.rank ? `You're <strong>#${mine.rank}</strong> with ${mine.completed} lesson${mine.completed === 1 ? '' : 's'} at 100%${mine.hidden ? ' (hidden from others)' : ''}.` : 'Complete a lesson at 100% to join the leaderboard.'}
+        <button class="btn ghost small" id="lb-hide">${mine.hidden ? 'Show me on the leaderboard' : 'Hide me from the leaderboard'}</button></p>`;
+    $('lb-hide').onclick = async () => { const res = await api('POST', 'api/leaderboard', { hide: !mine.hidden }); if (res.ok) renderLeaderboard(); };
+  }
+  window.renderLeaderboard = renderLeaderboard;
+
   // ---------- Sign-in screen ----------
   // Everyone signs in (or creates an account) before using the site. index.html hides the site at once
   // unless this device remembers a signed-in user; this confirms it with the server. If accounts
@@ -161,7 +183,7 @@
       <div class="card tablebox"><h3>Accounts</h3>
         ${users.length ? `<table><thead><tr><th>Username</th><th>Signed up</th><th>Last sign-in</th><th>Last studied</th><th>Lessons</th><th></th></tr></thead><tbody>
         ${users.map((u) => `<tr data-user="${esc(u.username)}"><td><strong>${esc(u.username)}</strong>${u.admin ? ' <span class="ad-live ad-admin">admin</span>' : ''}${u.signedIn ? ' <span class="ad-live">signed in</span>' : ''}</td><td>${when(u.signedUp)}</td><td>${when(u.lastSignIn)}</td><td>${when(u.lastStudied)}</td><td>${u.lessons}</td>
-          <td>${u.admin ? '' : `<button class="btn danger small" data-remove="${esc(u.username)}">Remove</button>`}</td></tr>`).join('')}
+          <td class="ad-actions">${u.admin ? '' : `<button class="btn ghost small" data-resetpw="${esc(u.username)}">Reset password</button> <button class="btn danger small" data-remove="${esc(u.username)}">Remove</button>`}</td></tr>`).join('')}
         </tbody></table>` : '<p class="muted">No accounts yet.</p>'}
         <div id="ad-confirm"></div>
         <p class="muted small-note">"Last sign-in" only covers sign-ins that haven't been signed out or expired. Passwords are never shown: they are stored scrambled.</p>
@@ -174,6 +196,27 @@
       <div class="row"><button class="btn ghost small" id="ad-refresh">Refresh</button></div>`;
     $('ad-refresh').onclick = renderAdmin;
     body.querySelectorAll('[data-remove]').forEach((btn) => btn.onclick = () => confirmRemove(btn.dataset.remove));
+    body.querySelectorAll('[data-resetpw]').forEach((btn) => btn.onclick = () => confirmResetPw(btn.dataset.resetpw));
+  }
+  // Give a locked-out student a temporary password. Their real password is never shown (it's only stored scrambled).
+  function confirmResetPw(username) {
+    const box = $('ad-confirm');
+    box.innerHTML = `<div class="ad-remove ad-reset card">
+      <p><strong>Reset ${esc(username)}'s password?</strong> They'll get a new temporary password and be signed out on every device. Their progress is kept.</p>
+      <div class="row"><button class="btn" id="ad-rp-go">Make a temporary password</button><button class="btn ghost" id="ad-rp-cancel">Cancel</button><span class="status" id="ad-rp-note"></span></div></div>`;
+    $('ad-rp-cancel').onclick = () => { box.innerHTML = ''; };
+    $('ad-rp-go').onclick = async () => {
+      $('ad-rp-go').disabled = true; $('ad-rp-note').textContent = 'Resetting…';
+      const r = await api('POST', 'api/admin', { action: 'resetpw', username });
+      if (!r.ok) { $('ad-rp-note').textContent = { cant_remove_admin: 'Admin passwords can\'t be reset here.', not_found: 'That account no longer exists.', not_admin: 'Only admins can do this.', rate_limited: 'Too many changes in a short time. Try again shortly.' }[r.data.error] || 'Couldn\'t reset it. Try again.'; $('ad-rp-go').disabled = false; return; }
+      box.innerHTML = `<div class="ad-reset card"><p><strong>Temporary password for ${esc(username)}</strong> (shown once, so give it to them now):</p>
+        <p class="code-big" id="ad-rp-code">${esc(r.data.tempPassword)}</p>
+        <p class="muted small-note">Tell them to sign in with it, then go to Account → Change my password to pick their own. Share it with them privately.</p>
+        <div class="row"><button class="btn ghost small" id="ad-rp-copy">Copy</button><span class="spacer"></span><button class="btn small" id="ad-rp-done">Done</button></div></div>`;
+      $('ad-rp-copy').onclick = async () => { try { await navigator.clipboard.writeText(r.data.tempPassword); $('ad-rp-copy').textContent = 'Copied ✓'; } catch (e) { $('ad-rp-copy').textContent = 'Select and copy it'; } };
+      $('ad-rp-done').onclick = () => { box.innerHTML = ''; };
+    };
+    box.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
   // Removing an account can't be undone, so the admin types the username to confirm.
   function confirmRemove(username) {
@@ -243,6 +286,16 @@
           <div class="row"><button class="btn" id="ac-syncnow" type="button">Sync now</button><button class="btn ghost" id="ac-logout" type="button">Sign out</button></div>
           <p class="muted small-note">Signing out removes your progress from this device (it stays safe in your account). Good for shared computers.</p>
         </div>
+        <details class="card"><summary><strong>Change my password</strong></summary>
+          <form class="stack" id="ac-pw-form" style="margin-top:10px">
+            <p>If an admin gave you a temporary password, change it here to one only you know. This signs you out on your other devices.</p>
+            <label class="ac-label" for="ac-pw-old">Current password</label>
+            <input class="ac-input" type="password" id="ac-pw-old" autocomplete="current-password" required>
+            <label class="ac-label" for="ac-pw-new">New password (at least 8 characters)</label>
+            <input class="ac-input" type="password" id="ac-pw-new" autocomplete="new-password" minlength="8" maxlength="128" required>
+            <div class="row"><button class="btn" type="submit" id="ac-pw-go">Change password</button><span class="status" id="ac-pw-note"></span></div>
+          </form>
+        </details>
         <details class="card"><summary><strong>Delete my account</strong></summary>
           <form class="stack" id="ac-del-form" style="margin-top:10px">
             <p>This permanently deletes your account and all its saved progress. Type your password to confirm.</p>
@@ -298,6 +351,15 @@
     });
     const form = $('ac-form');
     if (form) form.onsubmit = (e) => { e.preventDefault(); submit(); };
+    const pwf = $('ac-pw-form');
+    if (pwf) pwf.onsubmit = async (e) => {
+      e.preventDefault();
+      const note = $('ac-pw-note'), go = $('ac-pw-go'); go.disabled = true; note.textContent = 'Changing…';
+      const r = await api('POST', 'api/account/password', { password: $('ac-pw-old').value, newPassword: $('ac-pw-new').value, remember: !ss.get('sh-user') });
+      go.disabled = false;
+      if (r.ok) { say('ok', 'Your password has been changed. You\'ve been signed out on your other devices.'); render(); }
+      else note.textContent = r.data.error === 'wrong_login' ? 'Your current password isn\'t right.' : errorText[r.data.error] || 'Couldn\'t change your password. Try again.';
+    };
     const del = $('ac-del-form');
     if (del) del.onsubmit = async (e) => {
       e.preventDefault();

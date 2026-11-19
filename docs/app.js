@@ -583,6 +583,7 @@ function renderProgress() {
       </div>
     </div>`).join('');
   stagger($('pv-list').children, 10);
+  if (window.renderLeaderboard) window.renderLeaderboard(); // account.js
   $('pv-list').querySelectorAll('[data-miss]').forEach(a => a.addEventListener('click', () => { intent = 'mistakes'; }));
 }
 $('pv-reset').onclick = () => {
