@@ -402,6 +402,13 @@ input[type=number] { font: 15px var(--font-body); padding: 9px 12px; border-radi
 .ad-tile { text-align: center; }
 .ad-remove { border-color: var(--bad); margin-top: 12px; }
 .ad-reset { border-color: var(--highlight); margin-top: 12px; }
+.ad-ai-user { max-width: 200px; }
+.ad-ai-q { flex: 1; min-width: 180px; max-width: none; }
+.ad-ai-item { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; background: var(--surface-2); }
+.ad-ai-item summary { cursor: pointer; display: grid; gap: 4px; }
+.ad-ai-meta { font-size: 14px; }
+.ad-ai-q-text { color: var(--ink); }
+.ad-ai-pre { white-space: pre-wrap; overflow-wrap: anywhere; margin: 2px 0 8px; }
 .ad-actions { white-space: nowrap; }
 .lb-table td, .lb-table th { vertical-align: middle; }
 .lb-rank { font: 400 20px var(--font-display); width: 48px; }

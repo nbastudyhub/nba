@@ -4,6 +4,7 @@
 // Marks a student's written answer to one exam question against that question's own mark
 // scheme, which the server reads from the lesson pack (the browser only says which question).
 import { MODEL, json, guard, readJson, loadDeck, newClient, apiError, textOf } from "../../lib/shared.js";
+import { logAi, later } from "../../lib/ailog.js";
 
 const MAX_ANSWER = 3000; // characters
 const MAX_LONG = 6000;   // characters, for long answers
@@ -171,7 +172,25 @@ Marking points:
 ${item.pts.map((p, i) => `${i + 1}. ${p}`).join("\n")}${item.tip ? `\nExaminer tip: ${item.tip}` : ""}`;
 }
 
-export async function onRequestPost({ request, env }) {
+// Every successful mark is also logged for admins (lib/ailog.js): the student's work and the AI's mark and feedback.
+export async function onRequestPost(ctx) {
+  const copy = ctx.request.clone();
+  const res = await markRequest(ctx);
+  const resCopy = res.ok ? res.clone() : null; // copy now: the original is sent to the student
+  if (resCopy) later(ctx, (async () => {
+    try {
+      const body = await copy.json(), r = await resCopy.json();
+      const kind = body.kind === "bizstep" ? "bizstep" : body.kind === "long" ? "long" : "mark";
+      const place = body.kind === "bizstep" ? `business: ${body.step}` : `${body.deckId} ${kind === "long" ? "long" : "exam"} Q${(body.index ?? 0) + 1}`;
+      const question = body.kind === "bizstep" ? Object.entries(body.fields || {}).map(([k, v]) => `${k}: ${v}`).join("\n") : body.answer;
+      const answer = `${r.score}/${r.max}${r.level !== undefined ? ` (Level ${r.level})` : ""}. ${r.feedback || ""} ${r.improve ? "To improve: " + r.improve : ""}`;
+      await logAi(ctx.env, ctx.request, { kind, place, question, answer });
+    } catch { /* ignore */ }
+  })());
+  return res;
+}
+
+async function markRequest({ request, env }) {
   const blocked = guard(request, env);
   if (blocked) return blocked;
 

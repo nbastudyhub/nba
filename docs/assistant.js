@@ -52,7 +52,7 @@
         <textarea id="helper-input" rows="2" maxlength="${MAX_LEN}" placeholder="Ask about this lesson…"></textarea>
         <button class="btn" id="helper-send" type="submit">Send</button>
       </form>
-      <p class="helper-note">AI can make mistakes. If it disagrees with your teacher, go with your teacher. Don't share personal details.</p>
+      <p class="helper-note">AI can make mistakes. If it disagrees with your teacher, go with your teacher. Your questions are saved for 30 days and can be seen by the site owner, so don't share personal details.</p>
     </section>`;
   document.body.appendChild(root);
 

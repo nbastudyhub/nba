@@ -193,8 +193,17 @@
         ${lessons.map((l) => `<tr><td>${esc(titles[l.id] || l.id)}</td><td>${l.learners}</td><td>${when(l.last)}</td></tr>`).join('')}
         </tbody></table>` : '<p class="muted">Nobody has saved progress to an account yet.</p>'}
       </div>
+      <div class="card stack" id="ad-ai"><div class="row"><h3 style="margin:0">AI questions</h3><span class="spacer"></span><span class="muted small-note">Kept for 30 days</span></div>
+        <p class="muted small-note">What students asked the AI helper and sent for AI marking, newest first. Students are told their questions are saved.</p>
+        <div class="row"><select class="ac-input ad-ai-user" id="ad-ai-user" aria-label="Student"><option value="">All students</option>${users.map((u) => `<option value="${esc(u.username)}">${esc(u.username)}</option>`).join('')}</select>
+          <input class="ac-input ad-ai-q" id="ad-ai-q" type="search" placeholder="Search questions, answers or lessons…" aria-label="Search AI questions">
+          <button class="btn small" id="ad-ai-go">Show</button></div>
+        <div id="ad-ai-list" class="stack"></div></div>
       <div class="row"><button class="btn ghost small" id="ad-refresh">Refresh</button></div>`;
     $('ad-refresh').onclick = renderAdmin;
+    $('ad-ai-go').onclick = loadAi; $('ad-ai-user').onchange = loadAi;
+    $('ad-ai-q').onkeydown = (e) => { if (e.key === 'Enter') loadAi(); };
+    loadAi();
     body.querySelectorAll('[data-remove]').forEach((btn) => btn.onclick = () => confirmRemove(btn.dataset.remove));
     body.querySelectorAll('[data-resetpw]').forEach((btn) => btn.onclick = () => confirmResetPw(btn.dataset.resetpw));
   }
@@ -218,6 +227,24 @@
     };
     box.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
+  // ---------- AI questions (admin) ----------
+  const kindLabel = { helper: 'AI helper', mark: 'AI marking', long: 'Long answer marking', bizstep: 'Business AI check' };
+  async function loadAi() {
+    const list = $('ad-ai-list'); if (!list) return;
+    list.innerHTML = '<p class="muted">Loading…</p>';
+    const qs = new URLSearchParams({ view: 'ai', user: $('ad-ai-user').value, q: $('ad-ai-q').value.trim() });
+    const r = await api('GET', 'api/admin?' + qs);
+    if (!r.ok) { list.innerHTML = '<p class="muted">Couldn\'t load the AI questions. Try again.</p>'; return; }
+    const titles = Object.fromEntries(((window.studyHub && window.studyHub.index) || []).map((d) => [d.id, d.title]));
+    const place = (p) => { const id = String(p || '').split(' ')[0]; return titles[id] ? titles[id] + String(p).slice(id.length) : p === 'business' ? 'Business' : p; };
+    list.innerHTML = r.data.entries.length ? r.data.entries.map((e) => `<details class="ad-ai-item">
+        <summary><span class="ad-ai-meta"><strong>${esc(e.username || 'unknown')}</strong> · ${esc(kindLabel[e.kind] || e.kind)} · ${esc(place(e.place) || '')} · <span class="muted">${new Date(e.at).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</span></span>
+          <span class="ad-ai-q-text">${esc(String(e.question).slice(0, 180))}${String(e.question).length > 180 ? '…' : ''}</span></summary>
+        <p class="ai-h">${e.kind === 'helper' ? 'Question' : 'What they sent'}</p><p class="ad-ai-pre">${esc(e.question)}</p>
+        <p class="ai-h">${e.kind === 'helper' ? 'AI answer' : 'AI mark'}</p><p class="ad-ai-pre">${esc(e.answer || '')}</p></details>`).join('')
+      : '<p class="muted">Nothing found.</p>';
+  }
+
   // Removing an account can't be undone, so the admin types the username to confirm.
   function confirmRemove(username) {
     const box = $('ad-confirm');
@@ -267,7 +294,7 @@
     offline: 'You\'re offline. Connect to the internet and try again.'
   };
   const say = (kind, text) => { notice = { kind, html: esc(text) }; };
-  const privacy = `<p class="muted small-note">Your account stores only your username, a scrambled (hashed) password and your study progress. No email or real name needed, so please don't use your full name as your username.</p>`;
+  const privacy = `<p class="muted small-note">Your account stores only your username, a scrambled (hashed) password and your study progress. Questions you ask the AI helper and work you send for AI marking are saved for 30 days and can be seen by the site owner. No email or real name needed, so please don't use your full name as your username.</p>`;
 
   function render() {
     const body = $('ac-body');

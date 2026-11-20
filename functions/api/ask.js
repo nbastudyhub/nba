@@ -1,6 +1,7 @@
 // Study Hub AI helper: POST /api/ask (an IT lesson, or deckId "business" for the Business exam-writing section)
 // Runs as a Cloudflare Pages Function; shared checks and the API client are in lib/shared.js.
 import { MODEL, json, guard, readJson, loadDeck, loadTopics, newClient, apiError, textOf } from "../../lib/shared.js";
+import { logAi, later } from "../../lib/ailog.js";
 
 const MAX_QUESTION = 600;        // characters per question
 const MAX_BIZ_QUESTION = 1500;   // Business: students may paste a paragraph to get feedback on
@@ -98,7 +99,8 @@ How to help:
 - If you're not sure about something, say so rather than guessing.`;
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost(ctx) {
+  const { request, env } = ctx;
   const blocked = guard(request, env);
   if (blocked) return blocked;
 
@@ -134,11 +136,10 @@ export async function onRequestPost({ request, env }) {
       system,
       messages,
     });
-    if (response.stop_reason === "refusal") {
-      return json({ answer: "Sorry, I can't help with that one. Try asking me something about this lesson." });
-    }
-    const answer = textOf(response);
+    const refused = response.stop_reason === "refusal";
+    const answer = refused ? "Sorry, I can't help with that one. Try asking me something about this lesson." : textOf(response);
     if (!answer) return json({ error: "empty" }, 502);
+    later(ctx, logAi(env, request, { kind: "helper", place: body.deckId, question, answer: refused ? "(refused) " + answer : answer }));
     return json({ answer });
   } catch (error) {
     return apiError(error);

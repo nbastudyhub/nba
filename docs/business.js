@@ -120,7 +120,7 @@
       catch (e) { body.innerHTML = '<p class="muted">Couldn\'t load this page. Check your connection and try again.</p>'; return; }
     }
     prog = ls.get(KEY, null) || {};
-    $('bz-lead').textContent = `${data.course}. Work through the steps your teacher uses: Point, Evidence, Explain, then Link everything back to the aim.`;
+    $('bz-lead').textContent = `${data.course}. Work through the steps your teacher uses: Point, Evidence, Explain, then Link everything back to the aim. Work you send for an AI check is saved for 30 days and can be seen by the site owner.`;
     const c = (data.cases || [])[0];
     body.innerHTML = `
       <nav class="bz-tabs" aria-label="Business practice">

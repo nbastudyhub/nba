@@ -3,6 +3,7 @@
 // Only for usernames listed in the Cloudflare variable ADMIN_USERS. Shows sign-ups, sign-ins and
 // study activity. Never returns password hashes, recovery codes or anyone's answers.
 import { json, rateLimited, allowedOrigin, readJson } from "../../lib/shared.js";
+import { AI_LOG_DAYS } from "../../lib/ailog.js";
 import { ensureSchema, currentUser, isAdmin, validUsername, hashSecret, randomToken, tempPassword, SESSION_DAYS } from "../../lib/auth.js";
 
 const DAY = 86400000;
@@ -16,6 +17,18 @@ export async function onRequestGet({ env, request }) {
   if (rateLimited("admin:" + me.id, 60)) return json({ error: "rate_limited" }, 429);
 
   const now = Date.now(), db = env.DB;
+  const url = new URL(request.url);
+  if (url.searchParams.get("view") === "ai") {
+    // What students asked the AI (newest first), optionally for one user or containing some text.
+    const who = (url.searchParams.get("user") || "").trim().toLowerCase(), q = (url.searchParams.get("q") || "").trim().slice(0, 100);
+    let sql = "SELECT username, kind, place, question, answer, created_at FROM ai_log WHERE created_at >= ?";
+    const args = [now - AI_LOG_DAYS * 86400000];
+    if (who) { sql += " AND username = ?"; args.push(who); }
+    if (q) { sql += " AND (question LIKE ? OR answer LIKE ? OR place LIKE ?)"; const like = `%${q.replace(/[%_]/g, "")}%`; args.push(like, like, like); }
+    sql += " ORDER BY created_at DESC LIMIT 300";
+    const { results } = await db.prepare(sql).bind(...args).all();
+    return json({ days: AI_LOG_DAYS, entries: (results || []).map((r) => ({ username: r.username, kind: r.kind, place: r.place, question: r.question, answer: r.answer, at: r.created_at })) });
+  }
   const [users, sessions, lessons] = await db.batch([
     db.prepare(
       `SELECT u.id, u.username, u.created_at, MAX(p.updated_at) AS last_studied, COUNT(p.deck_id) AS lessons
