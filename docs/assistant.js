@@ -15,7 +15,7 @@
     'What\'s the difference between reliability and validity?',
     'Can you check my paragraph? (paste it)'
   ];
-  const BUSINESS = { id: 'business', title: 'Business: Unit 2 exam writing', business: true };
+  const BUSINESS = { id: 'business', title: 'Business: Unit 2', business: true };
 
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   // Plain text in, safe HTML out: paragraphs, "- " bullets and **bold**.

@@ -29,7 +29,7 @@ export async function onRequestGet({ env, request }) {
     const { results } = await db.prepare(sql).bind(...args).all();
     return json({ days: AI_LOG_DAYS, entries: (results || []).map((r) => ({ username: r.username, kind: r.kind, place: r.place, question: r.question, answer: r.answer, at: r.created_at })) });
   }
-  const [users, sessions, lessons] = await db.batch([
+  const [users, sessions] = await db.batch([
     db.prepare(
       `SELECT u.id, u.username, u.created_at, MAX(p.updated_at) AS last_studied, COUNT(p.deck_id) AS lessons
        FROM users u LEFT JOIN progress p ON p.user_id = u.id
@@ -37,7 +37,6 @@ export async function onRequestGet({ env, request }) {
     ),
     // When each sign-in started (older sessions without created_at: expiry minus SESSION_DAYS).
     db.prepare("SELECT user_id, MAX(COALESCE(created_at, expires_at - ?)) AS last_start, SUM(expires_at > ?) AS live FROM sessions GROUP BY user_id").bind(SESSION_DAYS * DAY, now),
-    db.prepare("SELECT deck_id, COUNT(*) AS learners, MAX(updated_at) AS last FROM progress GROUP BY deck_id ORDER BY learners DESC"),
   ]);
   const byUser = new Map((sessions.results || []).map((r) => [r.user_id, r]));
   const list = (users.results || []).map((u) => {
@@ -61,7 +60,6 @@ export async function onRequestGet({ env, request }) {
       signedInNow: list.filter((u) => u.signedIn).length,
     },
     users: list,
-    lessons: (lessons.results || []).map((r) => ({ id: r.deck_id, learners: r.learners, last: r.last })),
   });
 }
 

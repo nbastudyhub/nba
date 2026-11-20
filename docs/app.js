@@ -534,7 +534,7 @@ function showView(v) {
   if (v === 'glossary') { renderGlossary(); document.title = 'Glossary · Study Hub'; }
   if (v === 'account') document.title = 'Account · Study Hub';
   if (v === 'admin') document.title = 'Admin · Study Hub';
-  if (v === 'business') document.title = 'Business exam writing · Study Hub';
+  if (v === 'business') document.title = 'Business · Study Hub';
   if (v === 'lessons' && current) document.title = current.title + ' · Study Hub';
   window.dispatchEvent(new CustomEvent('studyhub:view', { detail: { view: v } }));
   if (v !== 'lessons' && v !== 'business') stagger($(v + 'view').children, 4);

@@ -174,9 +174,7 @@
       body.innerHTML = `<div class="card">${r.data.error === 'not_admin' ? 'This page is only for the site owner.' : r.data.error === 'signed_out' ? 'Your sign-in has expired. <a href="#account">Sign in again</a>.' : 'Couldn\'t load the admin data. Try again in a minute.'}</div>`;
       return;
     }
-    const { totals, users, lessons } = r.data;
-    const titles = Object.fromEntries(((window.studyHub && window.studyHub.index) || []).map((d) => [d.id, d.title]));
-    titles.business = 'Business: exam writing';
+    const { totals, users } = r.data;
     const tile = (n, label) => `<div class="card ad-tile"><div class="big">${n}</div><div class="muted">${label}</div></div>`;
     body.innerHTML = `
       <div class="ad-tiles">${tile(totals.users, 'accounts')}${tile(totals.newThisWeek, 'new this week')}${tile(totals.activeThisWeek, 'active this week')}${tile(totals.signedInNow, 'signed in now')}</div>
@@ -187,11 +185,6 @@
         </tbody></table>` : '<p class="muted">No accounts yet.</p>'}
         <div id="ad-confirm"></div>
         <p class="muted small-note">"Last sign-in" only covers sign-ins that haven't been signed out or expired. Passwords are never shown: they are stored scrambled.</p>
-      </div>
-      <div class="card tablebox"><h3>Most studied lessons</h3>
-        ${lessons.length ? `<table><thead><tr><th>Lesson</th><th>Learners</th><th>Last studied</th></tr></thead><tbody>
-        ${lessons.map((l) => `<tr><td>${esc(titles[l.id] || l.id)}</td><td>${l.learners}</td><td>${when(l.last)}</td></tr>`).join('')}
-        </tbody></table>` : '<p class="muted">Nobody has saved progress to an account yet.</p>'}
       </div>
       <div class="card stack" id="ad-ai"><div class="row"><h3 style="margin:0">AI questions</h3><span class="spacer"></span><span class="muted small-note">Kept for 30 days</span></div>
         <p class="muted small-note">What students asked the AI helper and sent for AI marking, newest first. Students are told their questions are saved.</p>

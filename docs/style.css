@@ -181,7 +181,7 @@ nav.tabs button[aria-selected="true"] { background: var(--stone); color: var(--e
 .pane > div:first-child h2 { margin-bottom: 4px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow-sm); }
 .card p { margin: 4px 0; }
-#learn { counter-reset: sec; }
+#learn, #bz-learn { counter-reset: sec; }
 .sec { position: relative; padding-left: 64px; }
 .sec::before { counter-increment: sec; content: counter(sec, decimal-leading-zero); position: absolute; left: 18px; top: 16px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; background: transparent; color: var(--loud); font: 400 22px var(--font-display); }
 .sec h3 { font: 400 22px/1.15 var(--font-display); text-transform: uppercase; letter-spacing: .02em; margin-top: 4px; }

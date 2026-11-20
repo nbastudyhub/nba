@@ -440,6 +440,12 @@ def build():
         "and a door alarm. Innermost, the cabinet and cables: a locked network cabinet and cables run through trunking. If one layer fails, "
         "the next should spot or stop the intruder.", b)
 
+    # ---------- Business: the 4 purposes of marketing ----------
+    chain("marketing-purposes", "The 4 key purposes of marketing",
+          "Anticipate demand, recognise demand, stimulate demand, satisfy demand.",
+          [("Anticipate", "work out what", "customers will want", "acc"), ("Recognise", "spot what they", "want right now", "acc"),
+           ("Stimulate", "make them want it", "with promotion", "amb"), ("Satisfy", "give them what they", "want, so they return", "good")])
+
 
 if __name__ == "__main__":
     build()

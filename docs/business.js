@@ -1,4 +1,5 @@
-// Study Hub: Business exam writing (#business), following the teacher's 7 steps for the Unit 2 set task:
+// Study Hub: Business (#business). Tabs: Learn (notes + quiz from the teacher's Unit 2 PowerPoint, data.learn),
+// Exam writing (the teacher's 7 steps for the Unit 2 set task) and Key terms. The steps are:
 // 1 aim, 2 three SMART objectives, 3 two trends, 4 two competitors, 5 market research (reliability,
 // validity, bias), 6 SWOT (2 per letter), 7 product life cycle and the 7 Ps, plus an extra PESTLE step.
 // Points use the teacher's Point, Evidence, Explain, Link style, and steps can show the teacher's example.
@@ -12,7 +13,7 @@
     get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
-  let data = null, prog = null, saveT = null, btab = 'write';
+  let data = null, prog = null, saveT = null, btab = 'learn';
 
   function save() { clearTimeout(saveT); prog._t = Date.now(); saveT = setTimeout(flush, 500); }
   function flush() { clearTimeout(saveT); saveT = null; if (prog) { ls.set(KEY, prog); if (window.onProgressSaved) window.onProgressSaved('business', prog); } }
@@ -120,13 +121,15 @@
       catch (e) { body.innerHTML = '<p class="muted">Couldn\'t load this page. Check your connection and try again.</p>'; return; }
     }
     prog = ls.get(KEY, null) || {};
-    $('bz-lead').textContent = `${data.course}. Work through the steps your teacher uses: Point, Evidence, Explain, then Link everything back to the aim. Work you send for an AI check is saved for 30 days and can be seen by the site owner.`;
+    $('bz-lead').textContent = `${data.course}. Learn the topics, practise the exam writing steps your teacher uses, and test your key terms. Work you send for an AI check is saved for 30 days and can be seen by the site owner.`;
     const c = (data.cases || [])[0];
     body.innerHTML = `
       <nav class="bz-tabs" aria-label="Business practice">
+        ${data.learn ? `<button data-bt="learn" aria-pressed="${btab === 'learn'}">Learn</button>` : ''}
         <button data-bt="write" aria-pressed="${btab === 'write'}">Exam writing</button>
         <button data-bt="terms" aria-pressed="${btab === 'terms'}">Key terms${(data.terms || []).length ? ` (${data.terms.length})` : ''}</button>
       </nav>
+      <div id="bz-learn" class="stack ${btab === 'learn' ? '' : 'hidden'}"></div>
       <div id="bz-terms" class="stack ${btab === 'terms' ? '' : 'hidden'}"></div>
       <div id="bz-write" class="stack ${btab === 'write' ? '' : 'hidden'}">
         <div class="card row bz-sum" id="bz-sum"></div>
@@ -140,12 +143,54 @@
     body.querySelectorAll('[data-bt]').forEach((b) => b.onclick = () => {
       btab = b.dataset.bt;
       body.querySelectorAll('[data-bt]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      $('bz-write').classList.toggle('hidden', btab !== 'write'); $('bz-terms').classList.toggle('hidden', btab !== 'terms');
-      if (btab === 'terms') termsHome(); else stagger($('bz-write').children, 5);
+      $('bz-write').classList.toggle('hidden', btab !== 'write'); $('bz-terms').classList.toggle('hidden', btab !== 'terms'); $('bz-learn').classList.toggle('hidden', btab !== 'learn');
+      if (btab === 'terms') termsHome(); else if (btab === 'learn') learnHome(); else stagger($('bz-write').children, 5);
+      window.scrollTo(0, 0);
     });
     summary();
-    if (btab === 'terms') termsHome();
+    if (!data.learn && btab === 'learn') btab = 'write';
+    if (btab === 'terms') termsHome(); else if (btab === 'learn') learnHome();
     stagger(btab === 'write' ? $('bz-write').children : body.children, 5);
+  }
+
+  // ---------- Learn: the teacher's Unit 2 PowerPoint (Learning Aims A and B) as notes + a quick quiz ----------
+  function learnHome() {
+    const L = data.learn, box = $('bz-learn');
+    box.innerHTML = `<div><h2 style="margin-bottom:4px">${esc(L.title)}</h2><p class="lead">Notes from your teacher's Unit 2 PowerPoint. Read them, then check yourself with the quick quiz at the end.</p></div>
+      ${L.sections.map((s2) => `<div class="card sec ${s2.table ? 'tablebox' : ''}">
+        <h3>${esc(s2.heading)}</h3>
+        ${s2.text ? `<p>${esc(s2.text)}</p>` : ''}
+        ${s2.table ? `<table><thead><tr>${s2.table.head.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${s2.table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}
+        ${s2.points && s2.points.length ? `<ul class="tight">${s2.points.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+        ${s2.diagram ? `<figure class="diagram"><a href="${esc(s2.diagram.src)}" target="_blank" rel="noopener"><img src="${esc(s2.diagram.src)}" alt="${esc(s2.diagram.alt)}" loading="lazy" decoding="async"></a><figcaption>${esc(s2.diagram.caption || '')}</figcaption></figure>` : ''}
+      </div>`).join('')}
+      ${L.quiz && L.quiz.length ? '<div class="card" id="bz-lq"></div>' : ''}
+      <div class="row"><span class="spacer"></span><button class="btn" id="bz-to-write">Next: Exam writing →</button></div>`;
+    $('bz-to-write').onclick = () => { const b = document.querySelector('[data-bt=write]'); if (b) b.click(); };
+    if (L.quiz && L.quiz.length) learnQuiz();
+    stagger(box.children, 8);
+  }
+  function learnQuiz() {
+    const box = $('bz-lq'), qs = shuffle(data.learn.quiz);
+    let i = 0, score = 0;
+    const show = () => {
+      if (i >= qs.length) {
+        const best = (prog.learnBest = Math.max(prog.learnBest || 0, score)); save();
+        box.innerHTML = `<h3>Quick quiz</h3><div class="big">${score} / ${qs.length}</div><p>${score === qs.length ? 'Perfect!' : 'Re-read the sections you weren\'t sure about, then try again.'} <span class="muted">Best: ${best} / ${qs.length}</span></p><button class="btn" id="bz-lq-again">Try again</button>`;
+        $('bz-lq-again').onclick = learnQuiz; return;
+      }
+      const q = qs[i];
+      box.innerHTML = `<div class="row"><h3 style="margin:0">Quick quiz</h3><span class="spacer"></span><span class="score">${i + 1} / ${qs.length} · Score ${score}</span></div>
+        <p style="margin-top:10px"><strong>${esc(q.q)}</strong></p><div class="options">${q.o.map((o, j) => `<button class="opt" data-j="${j}">${esc(o)}</button>`).join('')}</div><div id="bz-lq-fb"></div>`;
+      box.querySelectorAll('.opt').forEach((b) => b.onclick = () => {
+        const btns = box.querySelectorAll('.opt'); if (btns[0].disabled) return;
+        const j = +b.dataset.j, ok = j === q.a; if (ok) score++;
+        btns.forEach((x, k) => { x.disabled = true; if (k === q.a) x.classList.add('right'); else if (k === j) x.classList.add('wrong'); });
+        $('bz-lq-fb').innerHTML = `<div class="feedback"><strong>${ok ? 'Correct.' : 'Not quite.'}</strong> ${esc(q.e)}</div><div class="row" style="margin-top:10px"><span class="spacer"></span><button class="btn" id="bz-lq-next">Next →</button></div>`;
+        const nx = $('bz-lq-next'); nx.focus(); nx.onclick = () => { i++; show(); };
+      });
+    };
+    show();
   }
 
   // ---------- Key terms: match the term to its definition ----------

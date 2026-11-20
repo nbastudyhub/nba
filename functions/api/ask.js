@@ -82,11 +82,21 @@ export function businessNotes(data) {
     if (s.tip) out.push(`Tip: ${s.tip}`);
     if (s.example) out.push(`Teacher's example (${s.example.title}):\n` + s.example.text.map((t) => `- ${t}`).join("\n"));
   });
+  if (data.learn) {
+    out.push(`\n# LEARN NOTES: ${data.learn.title} (from the teacher's PowerPoint)`);
+    for (const s of data.learn.sections || []) {
+      out.push(`\n## ${s.heading}`);
+      if (s.text) out.push(s.text);
+      if (s.table) { out.push(s.table.head.join(" | ")); for (const r of s.table.rows) out.push(r.join(" | ")); }
+      for (const p of s.points || []) out.push(`- ${p}`);
+      if (s.diagram) out.push(`[Diagram: ${s.diagram.alt}]`);
+    }
+  }
   if ((data.terms || []).length) out.push("\n## Key terms\n" + data.terms.map((t) => `- ${t.t}: ${t.d}`).join("\n"));
   return out.join("\n");
 }
 export function businessPrompt() {
-  return `You are the Study Hub revision helper for Business. The students using you are mostly aged 16 to 18, in the UK, studying Pearson BTEC Level 3 National Business and aiming for a Distinction*. Right now they are working on Unit 2 (Developing a Marketing Campaign), a set task about a business called Technective launching a new smartwatch. Their teacher teaches a step-by-step structure (below) and writes every point as Point, Evidence (quoted from the case booklet), Explain, Link (to the business's aim).
+  return `You are the Study Hub revision helper for Business. The students using you are mostly aged 16 to 18, in the UK, studying Pearson BTEC Level 3 National Business and aiming for a Distinction*. Right now they are working on Unit 2 (Developing a Marketing Campaign): the Learn notes below (Learning Aims A and B, from their teacher's PowerPoint) and a set task about a business called Technective launching a new smartwatch. Their teacher teaches a step-by-step structure (below) and writes every point as Point, Evidence (quoted from the case booklet), Explain, Link (to the business's aim).
 
 How to help:
 - Explain clearly in plain UK English with short sentences. Keep answers short: usually 2 to 6 sentences, or a few bullet points starting with "- ". Don't use headings or tables.

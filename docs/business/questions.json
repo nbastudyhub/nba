@@ -1,5 +1,5 @@
 {
- "title": "Business: exam writing",
+ "title": "Business",
  "course": "Pearson BTEC Level 3 National Business · Unit 2 set task (Technective)",
  "note": "These steps follow your teacher's structure and examples (Point, Evidence, Explain, Link). The site doesn't copy the Technective booklet: use your own copy for the facts and figures.",
  "cases": [
@@ -210,6 +210,71 @@
    "t": "Campaign budget",
    "d": "The amount of money set aside to spend on a marketing campaign",
    "g": "promo"
+  },
+  {
+   "t": "Marketing",
+   "d": "Identifying, anticipating and satisfying customer needs profitably",
+   "g": "obj"
+  },
+  {
+   "t": "Purposes of marketing",
+   "d": "Anticipate, recognise, stimulate and satisfy demand",
+   "g": "obj"
+  },
+  {
+   "t": "Niche market",
+   "d": "A small, specific segment of a larger market, e.g. left-handed scissors",
+   "g": "seg"
+  },
+  {
+   "t": "Mass market",
+   "d": "Aiming a product at all or most of the market, e.g. shampoo, promoted through mass media",
+   "g": "seg"
+  },
+  {
+   "t": "Behavioural segmentation",
+   "d": "Grouping customers by how they behave towards products, e.g. usage rate or brand loyalty",
+   "g": "seg"
+  },
+  {
+   "t": "Brand image",
+   "d": "The image a brand gives off to customers, which has a lasting impact on the business",
+   "g": "comp"
+  },
+  {
+   "t": "Branding",
+   "d": "Using a unique name, logo, colours or slogan to identify a product and set it apart from competitors",
+   "g": "comp"
+  },
+  {
+   "t": "Internal influence",
+   "d": "A factor inside the business that affects a campaign, e.g. cost, finance or staff expertise",
+   "g": "anal"
+  },
+  {
+   "t": "Validity",
+   "d": "Whether research is relevant to the business and measures what it should",
+   "g": "res"
+  },
+  {
+   "t": "Bias",
+   "d": "When research isn't conducted fairly, e.g. the sample doesn't represent the market",
+   "g": "res"
+  },
+  {
+   "t": "Internal secondary research",
+   "d": "Existing data from inside the business, e.g. sales records or loyalty card data",
+   "g": "res"
+  },
+  {
+   "t": "Government statistics",
+   "d": "Free official data about the population, e.g. age, unemployment and households",
+   "g": "res"
+  },
+  {
+   "t": "Trade journal",
+   "d": "A magazine for one industry with news, statistics and trends",
+   "g": "res"
   }
  ],
  "steps": [
@@ -691,5 +756,484 @@
     ]
    }
   }
- ]
+ ],
+ "learn": {
+  "title": "Unit 2: Developing a Marketing Campaign (Learning Aims A and B)",
+  "sections": [
+   {
+    "heading": "How you're assessed",
+    "text": "Unit 2 is a set task. You get 2 hours of preparation time the day before the exam to analyse the case study data and make 2 pages of notes to take in. The notes can't contain analysis, or they'll be taken away. Then you have a 3-hour exam, typed on a computer, where you create a marketing campaign for the business in the case study.",
+    "table": {
+     "head": [
+      "Activity 1 (34 marks)",
+      "Marks",
+      "Activity 2 (36 marks)",
+      "Marks"
+     ],
+     "rows": [
+      [
+       "Rationale",
+       "4",
+       "Marketing mix",
+       "20"
+      ],
+      [
+       "Marketing aims and objectives",
+       "8",
+       "Budget",
+       "8"
+      ],
+      [
+       "Analysis of market research information",
+       "12",
+       "Timescale",
+       "4"
+      ],
+      [
+       "Justification",
+       "10",
+       "Presentation",
+       "4"
+      ]
+     ]
+    },
+    "points": [
+     "The exam is worth 70 marks",
+     "Grade boundaries: Distinction 54, Merit 39, Pass 25, Near Pass 12",
+     "Topics covered: the role of marketing, aims and objectives, types of market, segmentation, branding, internal and external influences, how market research is used, types of research, validity and reliability, analysis tools, the marketing mix and marketing campaigns"
+    ]
+   },
+   {
+    "heading": "What is marketing?",
+    "text": "Marketing is the process of identifying, anticipating and satisfying customer needs profitably.",
+    "points": [
+     "Example: a t-shirt brand uses Instagram ads and influencer partnerships to promote a new eco-friendly clothing line",
+     "Marketing helps a business attract customers, build brand awareness and increase sales by promoting the right product to the right people at the right time",
+     "The 4 key purposes of marketing: anticipate demand → recognise demand → stimulate demand → satisfy demand"
+    ],
+    "diagram": {
+     "src": "diagrams/marketing-purposes.svg",
+     "alt": "The four key purposes of marketing as a chain of four steps: anticipate demand (work out what customers will want), recognise demand (spot what they want now), stimulate demand (make them want it through promotion), satisfy demand (give them what they want so they come back).",
+     "caption": "Anticipate, recognise, stimulate, satisfy."
+    }
+   },
+   {
+    "heading": "Aims and objectives",
+    "text": "An aim is a purpose or intention: the desired outcome. For a business it is the bigger picture, the main thing it wants to achieve. It is long term, achieved over a long period of time.",
+    "points": [
+     "Example aim: \"We want to be the market leader for skateboard sales in the UK\"",
+     "Objectives break the aim down into smaller tasks. They are short term and easier to achieve",
+     "Objectives can be changed once they have been achieved, but they always support the aim",
+     "Example: aim = market leader for skateboards; objectives = increase sales, attract new customers, build brand awareness",
+     "Aims and objectives can differ for niche and mass markets, e.g. a 30% rise in brand awareness may suit a small niche, but a mass market might target 10% because the market is so much bigger"
+    ]
+   },
+   {
+    "heading": "SMART objectives",
+    "text": "To get the marks in your exam, your objectives need to be SMART.",
+    "table": {
+     "head": [
+      "Letter",
+      "Means",
+      "Example (Jordan 1s)"
+     ],
+     "rows": [
+      [
+       "S – Specific",
+       "Who, what, where, when. Define the goal as much as possible",
+       "Increase sales of Jordan 1s (not just 'increase sales')"
+      ],
+      [
+       "M – Measurable",
+       "How will you track progress and know the goal is accomplished?",
+       "…by 30%"
+      ],
+      [
+       "A – Achievable",
+       "Is the goal reasonable enough to be accomplished, not out of reach?",
+       "30% is achievable for Nike; 1000% every 2 months isn't"
+      ],
+      [
+       "R – Realistic / Relevant",
+       "Can the team achieve it with the resources they have? Is it relevant to the business, the case study and the main aim?",
+       "Important in your exam: link it to the case study"
+      ],
+      [
+       "T – Time",
+       "Give it a deadline, which helps make it measurable and achievable",
+       "…over 6 months"
+      ]
+     ]
+    },
+    "points": [
+     "Worked example (Decreal Gear): aim = increase revenue. Objective: gain 10,000 followers on Instagram within one month. If they achieve this, 10,000 more people are aware of Decreal Gear, and some of these followers could become customers, increasing revenue",
+     "Not SMART: \"To get more customers\" (no number or deadline). \"Improve customer satisfaction by 100% in 1 week\" isn't achievable or realistic",
+     "SMART: \"Increase sales revenue by 10% each month, for 12 months\""
+    ]
+   },
+   {
+    "heading": "Niche and mass markets",
+    "text": "A market is a place where buyers and sellers meet. It can be physical or non-physical. A business decides whether to aim its product at a particular segment (a niche market) or appeal to the whole market (the mass market).",
+    "table": {
+     "head": [
+      "Niche market: advantages",
+      "Niche market: disadvantages"
+     ],
+     "rows": [
+      [
+       "A firm can adapt its products to meet the specific needs of the niche market",
+       "Can limit high profit because there are fewer customers"
+      ],
+      [
+       "Easier to target customers and use specific promotion aimed at smaller groups",
+       "Growth of the market can bring larger competitors into it"
+      ],
+      [
+       "Customer loyalty is higher",
+       "Can be a limited size market"
+      ]
+     ]
+    },
+    "points": [
+     "Niche marketing targets a product at a small segment of a larger market, e.g. Rolex watches, left-handed scissors. Niches appear when a business spots needs not met by other firms",
+     "Mass marketing aims a product at all (or most) of the market, e.g. shampoo, ketchup. It's an unsegmented market, sold through mass retailers and promoted through mass media such as TV and the internet",
+     "Summary: niche marketing is generally used by smaller businesses with a smaller customer base; mass marketing by larger businesses with the resources to market to everyone"
+    ]
+   },
+   {
+    "heading": "Market segmentation",
+    "text": "Market segmentation is dividing a large group of potential customers into smaller groups (segments) based on shared characteristics, so a business can target its products and campaigns more effectively.",
+    "table": {
+     "head": [
+      "Type",
+      "Groups customers by",
+      "Examples"
+     ],
+     "rows": [
+      [
+       "Geographic",
+       "Where they are",
+       "Region, country, climate, population"
+      ],
+      [
+       "Demographic",
+       "Personal attributes",
+       "Age, family size, occupation, social class, income, religion, gender, education, nationality, ethnicity"
+      ],
+      [
+       "Behavioural",
+       "How they actually behave towards products",
+       "User status, occasions, usage rates, brand loyalty, benefits sought, readiness to buy"
+      ],
+      [
+       "Psychographic",
+       "Lifestyle",
+       "Lifestyle, values, personality, interests, attitudes, opinions"
+      ]
+     ]
+    },
+    "points": [
+     "Why businesses segment: spot gaps, target particular groups, sell more products, waste fewer resources, offer a wider range of differentiated products, create customer loyalty, benefit from economies of scale",
+     "In a campaign it helps choose the right audience (e.g. 16–18-year-olds who love fashion), design messages that appeal to them, and pick the best places to advertise (e.g. TikTok, Instagram)",
+     "Example: Fresh & Kind (recipe boxes) could segment by dietary requirements, e.g. vegan, so it can specialise the meals it offers that segment"
+    ]
+   },
+   {
+    "heading": "Branding, brand image and USPs",
+    "text": "Branding is how a business creates a unique image and identity, using a name, logo, colours, slogan and overall feel to identify a product and differentiate it from competitors (e.g. Nike's swoosh and \"Just Do It\").",
+    "points": [
+     "Benefits of a strong brand: recognition, customer loyalty, word-of-mouth recommendations, higher demand, preferred over own-brand labels, higher prices can be charged, global recognition, new products can use the brand's strength, brand stretching to diversify",
+     "Brand image is the image the brand gives off to customers. It has a lasting impact, so a business must keep a positive brand image to keep returning and new customers",
+     "A USP (unique selling point) is a feature or benefit that separates a product from its competitors and helps gain market share, e.g. Amazon Prime's next-day delivery",
+     "USP advantages: customer satisfaction, repeat purchases and recommendations, lower marketing cost, higher loyalty, can charge higher prices, differentiation, competitive advantage, economies of scale",
+     "USP risks: wasted materials, financial costs (legal costs, compensation), loss of customers, bad reputation, reworking products, imitation/copying, substitutes"
+    ]
+   },
+   {
+    "heading": "Influences on a marketing campaign",
+    "text": "Internal influences come from inside the business; external influences come from outside it.",
+    "table": {
+     "head": [
+      "",
+      "Small business",
+      "Large business"
+     ],
+     "rows": [
+      [
+       "Cost",
+       "Less money to spend; less able to borrow; less likely to benefit from economies of scale",
+       "More able to raise finance; benefits from economies of scale; more disposable money"
+      ],
+      [
+       "Resources",
+       "Less access to resources; may need more niche resources",
+       "More access to resources; more options to finance them"
+      ]
+     ]
+    },
+    "points": [
+     "Internal influences: cost of the campaign, availability of finance, expertise of staff, size and culture of the business",
+     "External influences: social, technological, economic, environmental, political, legal, ethical"
+    ]
+   },
+   {
+    "heading": "Why businesses do market research",
+    "text": "Market research is collecting information about customers, competitors and the market to make better decisions. It helps a business identify gaps in the market and business opportunities.",
+    "points": [
+     "1) Identify the target market. Research must be based on the target market: asking the wrong people wastes time and money, gives feedback that doesn't reflect the target audience, and can lead to unsuitable products",
+     "2) Identify the size, structure and trends of the market. Size helps plan the budget (and whether to aim at a mass or niche market); structure links to demographics and the research methods to use; trends show what customers want, where and when they'll buy",
+     "3) Identify the competition: what competitors sell, their promotions, and the threats they pose, so marketing can influence buying behaviour more effectively",
+     "Research helps choose product features (flavour, size, price), the right audience and the best advertising methods, e.g. a milkshake brand asking teenagers which flavours they like"
+    ]
+   },
+   {
+    "heading": "Primary research",
+    "text": "Primary research is first-hand information collected by the business for a specific purpose.",
+    "table": {
+     "head": [
+      "Method",
+      "Quantitative or qualitative"
+     ],
+     "rows": [
+      [
+       "Survey",
+       "Both"
+      ],
+      [
+       "Interview",
+       "Qualitative"
+      ],
+      [
+       "Observation",
+       "Quantitative"
+      ],
+      [
+       "Trials",
+       "Both"
+      ],
+      [
+       "Focus groups",
+       "Qualitative"
+      ]
+     ]
+    },
+    "points": [
+     "Why do it: it's personalised (questions tailored to the topic and target audience) and gives more in-depth, accurate information for decisions such as what to produce, where to sell and what to charge",
+     "Why not: it typically costs more and takes longer than secondary research",
+     "Quantitative data: numbers and statistics, e.g. '80% of participants agree'; used to predict trends",
+     "Qualitative data: written answers and opinions from fewer people, giving in-depth explanations"
+    ]
+   },
+   {
+    "heading": "Secondary research",
+    "text": "Secondary (desk) research uses data that already exists, collected by someone else for a different purpose, e.g. government reports, industry publications, websites and previous surveys.",
+    "table": {
+     "head": [
+      "Source",
+      "What it is"
+     ],
+     "rows": [
+      [
+       "Internal: business data",
+       "Sales records from the business's own database, broken down by dates, times and products, used to spot patterns and trends"
+      ],
+      [
+       "Internal: loyalty cards",
+       "Detailed data on each customer (e.g. Tesco Clubcard) for personalised offers"
+      ],
+      [
+       "External: commercially published reports",
+       "Reports on markets and the economy, e.g. Mintel; often paid for"
+      ],
+      [
+       "External: government statistics",
+       "Free data on the population, e.g. age and gender split, unemployment, households"
+      ],
+      [
+       "External: trade journals",
+       "Magazines for a specific industry with news, statistics and trends"
+      ],
+      [
+       "External: media sources",
+       "TV, newspapers, radio, magazines, the internet and social media"
+      ]
+     ]
+    },
+    "points": [
+     "Why use it: cheaper (no need to pay for research) and saves time",
+     "Why not: it may not be fully relevant (it was done for another business) and may be outdated, leading to wrong decisions",
+     "Businesses use it to make future decisions, spot trends and see what competitors are doing"
+    ]
+   },
+   {
+    "heading": "Validity, reliability and bias",
+    "text": "Validity: is the information relevant to the business (does it measure what it should)? Reliability: can it be trusted (is it in date, is the sample size good, is the gender split equal, is it their target market)? Bias: was it conducted fairly?",
+    "points": [
+     "Worked example (Decreal Gear survey: Saturday 25th September 2021, 100 people, city centre, people aged 17–35 who exercise twice a week or more)",
+     "Saturday: good, people have more free time to answer. Date: not outdated (6 months before)",
+     "Sample of 100: not very reliable, too small to represent the whole market",
+     "City centre: busy on a Saturday, but for exercise a gym may be more appropriate",
+     "Valid: they asked their target market. But 52 male, 45 female, 3 other is imbalanced",
+     "Secondary research must be in date, appropriate to the business and from a reliable source (not Wikipedia)",
+     "Example: 2020 sportswear data was heavily affected by COVID lockdowns, so it may not reflect a lockdown-free world. Using unreliable data leads to poor decisions"
+    ]
+   }
+  ],
+  "quiz": [
+   {
+    "q": "Which is one of the 4 key purposes of marketing?",
+    "o": [
+     "Reduce costs",
+     "Stimulate demand",
+     "Hire staff",
+     "Set prices"
+    ],
+    "a": 1,
+    "e": "Anticipate, recognise, stimulate and satisfy demand."
+   },
+   {
+    "q": "What is an aim?",
+    "o": [
+     "A short-term target that is easy to change",
+     "The bigger picture: the main long-term thing a business wants to achieve",
+     "A type of market research",
+     "A promotion method"
+    ],
+    "a": 1,
+    "e": "Objectives are the smaller, short-term steps that support it."
+   },
+   {
+    "q": "Which objective is SMART?",
+    "o": [
+     "To get more customers",
+     "Improve customer satisfaction by 100% in 1 week",
+     "Increase sales revenue by 10% each month, for 12 months",
+     "Launch something new soon"
+    ],
+    "a": 2,
+    "e": "It's specific, measurable, achievable, relevant and has a deadline."
+   },
+   {
+    "q": "What does the T in SMART stand for?",
+    "o": [
+     "Target",
+     "Trend",
+     "Time",
+     "Trial"
+    ],
+    "a": 2,
+    "e": "Objectives need a deadline, e.g. over 6 months."
+   },
+   {
+    "q": "What is a key characteristic of a niche market?",
+    "o": [
+     "Targets a broad audience",
+     "Focuses on a specific group",
+     "Has the most competition",
+     "Uses only TV advertising"
+    ],
+    "a": 1,
+    "e": "Niche marketing targets a small segment of a larger market, e.g. left-handed scissors."
+   },
+   {
+    "q": "Which best describes a mass market?",
+    "o": [
+     "A market for luxury goods",
+     "A limited customer base",
+     "A wide range of customers",
+     "Only local customers"
+    ],
+    "a": 2,
+    "e": "Mass marketing aims a product at all or most of the market, e.g. shampoo."
+   },
+   {
+    "q": "Grouping customers by lifestyle, values and interests is:",
+    "o": [
+     "Geographic segmentation",
+     "Psychographic segmentation",
+     "Demographic segmentation",
+     "Behavioural segmentation"
+    ],
+    "a": 1,
+    "e": "Demographic is age, gender, income; behavioural is how they use products."
+   },
+   {
+    "q": "Which is a method of market segmentation?",
+    "o": [
+     "Product pricing",
+     "Sales forecasting",
+     "Geographic location",
+     "Budgeting"
+    ],
+    "a": 2,
+    "e": "Geographic segmentation groups customers by where they are."
+   },
+   {
+    "q": "Amazon Prime's next-day delivery is an example of:",
+    "o": [
+     "A USP",
+     "A niche market",
+     "Secondary research",
+     "An external influence"
+    ],
+    "a": 0,
+    "e": "A USP separates a product from its competitors."
+   },
+   {
+    "q": "Which is an internal influence on a marketing campaign?",
+    "o": [
+     "Economic conditions",
+     "New laws",
+     "Expertise of staff",
+     "Social trends"
+    ],
+    "a": 2,
+    "e": "Internal: cost, finance, staff expertise, size and culture. The others are external."
+   },
+   {
+    "q": "Interviews and focus groups mainly produce:",
+    "o": [
+     "Quantitative data",
+     "Qualitative data",
+     "Secondary data",
+     "Government statistics"
+    ],
+    "a": 1,
+    "e": "They give in-depth opinions in words."
+   },
+   {
+    "q": "Which is secondary research?",
+    "o": [
+     "A survey you write yourself",
+     "A focus group",
+     "A Mintel report",
+     "A product trial"
+    ],
+    "a": 2,
+    "e": "Secondary research has already been collected by someone else."
+   },
+   {
+    "q": "A survey of only 100 people mainly affects the research's:",
+    "o": [
+     "Reliability",
+     "Branding",
+     "USP",
+     "Budget"
+    ],
+    "a": 0,
+    "e": "A small sample may not represent the whole market."
+   },
+   {
+    "q": "Why might 2020 sportswear data be unreliable?",
+    "o": [
+     "It's too recent",
+     "COVID lockdowns changed how people shopped",
+     "It was free",
+     "It came from a trade journal"
+    ],
+    "a": 1,
+    "e": "It may not reflect a lockdown-free world."
+   }
+  ]
+ }
 }

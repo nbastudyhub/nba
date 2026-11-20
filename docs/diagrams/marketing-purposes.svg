@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 170" width="760" height="170" role="img" aria-labelledby="t d"><title id="t">The 4 key purposes of marketing</title><desc id="d">Anticipate demand, recognise demand, stimulate demand, satisfy demand.</desc><style>
+.bg{fill:#0a2b4b}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#629cc3;letter-spacing:.08em}
+.w{fill:#ffffff}
+.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
+.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
+.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
+.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
+.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
+.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
+.solid-acc{fill:#629cc3}.solid-bad{fill:#3f7aa3}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
+.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
+.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
+.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.dash{stroke-dasharray:6 5}
+.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
+.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+</style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="170" rx="16"/><text x="20" y="26" class="h" text-anchor="start">THE 4 KEY PURPOSES OF MARKETING</text><polygon points="20.0,40 176.5,40 192.5,85 176.5,130 20.0,130" class="acc" stroke-linejoin="round"/><text x="98.25" y="70" class="tb" text-anchor="middle">Anticipate</text><text x="98.25" y="94" class="s" text-anchor="middle">work out what</text><text x="98.25" y="112" class="s" text-anchor="middle">customers will want</text><polygon points="202.5,40 359.0,40 375.0,85 359.0,130 202.5,130 218.5,85" class="acc" stroke-linejoin="round"/><text x="288.75" y="70" class="tb" text-anchor="middle">Recognise</text><text x="288.75" y="94" class="s" text-anchor="middle">spot what they</text><text x="288.75" y="112" class="s" text-anchor="middle">want right now</text><polygon points="385.0,40 541.5,40 557.5,85 541.5,130 385.0,130 401.0,85" class="amb" stroke-linejoin="round"/><text x="471.25" y="70" class="tb" text-anchor="middle">Stimulate</text><text x="471.25" y="94" class="s" text-anchor="middle">make them want it</text><text x="471.25" y="112" class="s" text-anchor="middle">with promotion</text><polygon points="567.5,40 724.0,40 740.0,85 724.0,130 567.5,130 583.5,85" class="good" stroke-linejoin="round"/><text x="653.75" y="70" class="tb" text-anchor="middle">Satisfy</text><text x="653.75" y="94" class="s" text-anchor="middle">give them what they</text><text x="653.75" y="112" class="s" text-anchor="middle">want, so they return</text></svg>
