@@ -85,16 +85,29 @@ a { color: var(--accent); }
 .view-link[aria-current="page"] { background: transparent; color: var(--ink); box-shadow: inset 0 -3px 0 var(--loud); border-radius: 10px 10px 2px 2px; }
 #account-link { border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
 #account-link[aria-current="page"] { border-color: var(--loud); color: var(--ink); box-shadow: none; border-radius: 10px; }
+.menu-btn { display: inline-flex; align-items: center; gap: 7px; flex: none; font: 400 15px var(--font-display); text-transform: uppercase; letter-spacing: .05em; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; transition: background .15s, transform .1s; }
+.menu-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.menu-btn:hover, .menu-btn[aria-expanded="true"] { background: var(--accent-soft); }
+.menu-btn:active { transform: scale(.97); }
+.main-menu { position: absolute; top: calc(100% - 4px); right: 16px; z-index: 40; display: grid; gap: 2px; min-width: 220px; padding: 6px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow-md); transform-origin: 100% 0; animation: pop-in .18s var(--ease-out); }
+.main-menu[hidden] { display: none; }
+.main-menu .view-link { justify-content: flex-start; padding: 11px 14px; font-size: 16px; }
+.main-menu .view-link[aria-current="page"] { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--highlight); border-radius: 10px; color: var(--ink); }
+.main-menu .view-link.hidden { display: none; }
+.topbar-in { position: relative; }
 .install-tip { margin: 0 0 14px; padding: 10px 14px; border-radius: 10px; background: var(--accent-soft); font-size: 14px; }
 @media (max-width: 640px) {
   :root { --topbar-h: 56px; }
   .topbar-in { flex-wrap: wrap; gap: 0; padding: 8px 12px 0; }
   .brand img { width: 30px; height: 30px; }
   .brand-text strong { font-size: 18px; }
-  .views { width: 100%; margin: 6px 0 0; padding-bottom: 6px; gap: 2px; justify-content: space-between; }
+  .topbar-in { flex-wrap: nowrap; padding: 8px 12px; }
+  .views { width: auto; margin: 0 0 0 auto; padding: 0; gap: 6px; overflow: visible; }
+  .menu-btn { padding: 7px 10px; font-size: 14px; }
+  .main-menu { right: 12px; }
   .view-link { padding: 7px 8px; font-size: 14px; gap: 5px; }
   .view-link svg { width: 16px; height: 16px; }
-  html { scroll-padding-top: 170px; }
+  html { scroll-padding-top: calc(var(--topbar-h) + 80px); }
 }
 
 /* ---------- Lesson shelf ---------- */
@@ -157,7 +170,7 @@ nav.tabs button:hover { color: var(--accent); background: var(--accent-soft); }
 nav.tabs button[aria-selected="true"] { background: var(--stone); color: var(--egyptian); box-shadow: var(--shadow-sm); }
 @media (max-width: 640px) {
   /* App-style tab bar on phones: icon above a short label, all five fit */
-  nav.tabs { top: 98px; gap: 2px; padding: 5px; overflow: visible; }
+  nav.tabs { top: var(--topbar-h); gap: 2px; padding: 5px; overflow: visible; }
   nav.tabs button { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 3px; padding: 7px 2px 6px; font-size: 11px; line-height: 1.1; }
   nav.tabs button svg { width: 20px; height: 20px; }
   nav.tabs button span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
@@ -452,7 +465,7 @@ table.levels td:first-child { width: 110px; white-space: nowrap; }
 }
 .tab-short { display: none; }
 @media (max-width: 640px) { .tab-long { display: none; } .tab-short { display: inline; } }
-@media (max-width: 380px) { .views .view-link svg { display: none; } .view-link { padding: 7px 7px; } }
+@media (max-width: 380px) { #account-link { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .menu-btn span { display: none; } }
 
 /* ---------- Diagrams (docs/diagrams/, drawn by scripts/make-diagrams.py) ---------- */
 .diagram { margin: 14px 0 2px; }

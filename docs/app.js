@@ -540,6 +540,17 @@ function showView(v) {
   if (v !== 'lessons' && v !== 'business') stagger($(v + 'view').children, 4);
   window.scrollTo(0, 0);
 }
+// ---------- Menu (☰) ----------
+// Lessons, Progress, Glossary and Admin live in a drop-down menu in the top bar.
+const menuBtn = $('menu-btn'), menu = $('main-menu');
+function setMenu(open) {
+  menu.hidden = !open; menuBtn.setAttribute('aria-expanded', String(open));
+  if (open) { const first = menu.querySelector('.view-link:not(.hidden)'); if (first) first.focus(); stagger(menu.querySelectorAll('.view-link:not(.hidden)'), 6); }
+}
+menuBtn.onclick = e => { e.stopPropagation(); setMenu(menu.hidden); };
+menu.addEventListener('click', e => { if (e.target.closest('.view-link')) setMenu(false); });
+document.addEventListener('click', e => { if (!menu.hidden && !menu.contains(e.target) && e.target !== menuBtn) setMenu(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
 $('subj-it').onclick = e => { e.preventDefault(); document.querySelector('.view-link[data-view=lessons]').click(); };
 document.querySelector('.view-link[data-view=lessons]').onclick = e => {
   e.preventDefault();

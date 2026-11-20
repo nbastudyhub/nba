@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Study Hub">
-<link rel="stylesheet" href="style.css?v=32">
+<link rel="stylesheet" href="style.css?v=33">
 <script>
   // Sign-in screen first: hide the site straight away unless this device remembers a signed-in user.
   // account.js checks with the server and lets people in (or not). The GitHub Pages backup has no accounts.
@@ -28,12 +28,15 @@
       <span class="brand-text"><strong>Study Hub</strong><span class="credit">Made by Anointed <span role="img" aria-label="goat">🐐</span></span></span>
     </a>
     <nav class="views" aria-label="Pages">
+      <a href="#account" data-view="account" class="view-link" id="account-link">Sign in</a>
+      <button class="btn small hidden" id="install-btn" type="button">Install app</button>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menu</span></button>
+      <div class="main-menu" id="main-menu" hidden>
       <a href="#" data-view="lessons" class="view-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>Lessons</a>
       <a href="#progress" data-view="progress" class="view-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Progress</a>
       <a href="#glossary" data-view="glossary" class="view-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4zM8 9h8M8 13h6"/></svg>Glossary</a>
       <a href="#admin" data-view="admin" class="view-link hidden" id="admin-link"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/></svg>Admin</a>
-      <a href="#account" data-view="account" class="view-link" id="account-link">Sign in</a>
-      <button class="btn small hidden" id="install-btn" type="button">Install app</button>
+      </div>
     </nav>
   </div>
 </header>
@@ -157,9 +160,9 @@
 
   <footer><img src="icons/icon.svg" alt="" width="22" height="22"><span>Answers and progress are saved on this device, and in your account if you sign in. Packs are made from lesson slides. If something here disagrees with your teacher, go with your teacher.</span></footer>
 </div>
-<script src="app.js?v=32"></script>
-<script src="assistant.js?v=32"></script>
-<script src="account.js?v=32"></script>
-<script src="business.js?v=32"></script>
+<script src="app.js?v=33"></script>
+<script src="assistant.js?v=33"></script>
+<script src="account.js?v=33"></script>
+<script src="business.js?v=33"></script>
 </body>
 </html>
