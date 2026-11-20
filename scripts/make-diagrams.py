@@ -446,6 +446,16 @@ def build():
           [("Anticipate", "work out what", "customers will want", "acc"), ("Recognise", "spot what they", "want right now", "acc"),
            ("Stimulate", "make them want it", "with promotion", "amb"), ("Satisfy", "give them what they", "want, so they return", "good")])
 
+    # ---------- Business: product life cycle ----------
+    b = T(24, 32, "THE PRODUCT LIFE CYCLE", "h", "start")
+    b += A(70, 250, 70, 50) + A(70, 250, 730, 250) + T(40, 150, "Sales", "s") + T(400, 276, "Time", "s")
+    b += P("M75 245 C150 240 180 220 230 170 S330 70 420 70 C500 70 560 110 680 220", "ln-acc")
+    b += P("M470 78 C520 70 560 62 610 66", "ln-good dash") + T(610, 56, "extension strategy", "s")
+    for x, label in [(80, "Introduction"), (230, "Growth"), (390, "Maturity"), (560, "Decline")]:
+        b += P(f"M{x} 245 V60", "ln dash") + T(x + 70, 235, label, "t")
+    svg("product-life-cycle", 760, 290, "The product life cycle",
+        "Sales against time: low at introduction, rising in growth, levelling at maturity, falling in decline. An extension strategy pushes sales back up.", b)
+
 
 if __name__ == "__main__":
     build()

@@ -275,6 +275,86 @@
    "t": "Trade journal",
    "d": "A magazine for one industry with news, statistics and trends",
    "g": "res"
+  },
+  {
+   "t": "Analysis",
+   "d": "Examining information in detail to understand patterns, relationships, causes or implications",
+   "g": "anal"
+  },
+  {
+   "t": "Product life cycle",
+   "d": "The stages a product goes through: introduction, growth, maturity, decline",
+   "g": "mix"
+  },
+  {
+   "t": "Extension strategy",
+   "d": "Changing a product or its marketing to give it fresh appeal and delay decline",
+   "g": "mix"
+  },
+  {
+   "t": "Skimming",
+   "d": "Setting a high launch price, then lowering it as competitors arrive",
+   "g": "price"
+  },
+  {
+   "t": "Cost plus pricing",
+   "d": "Adding a profit margin to the cost of making the product",
+   "g": "price"
+  },
+  {
+   "t": "Competitor-based pricing",
+   "d": "Setting prices in line with competitors",
+   "g": "price"
+  },
+  {
+   "t": "Product differentiation",
+   "d": "Making a product different from rivals' products, e.g. by quality, design or packaging",
+   "g": "comp"
+  },
+  {
+   "t": "Form and function",
+   "d": "Form is how a product looks; function is what it does",
+   "g": "mix"
+  },
+  {
+   "t": "Public relations (PR)",
+   "d": "Managing a business's reputation and goodwill by giving information",
+   "g": "promo"
+  },
+  {
+   "t": "Guerrilla marketing",
+   "d": "Low-cost, unconventional advertising in an unexpected place",
+   "g": "promo"
+  },
+  {
+   "t": "Product placement",
+   "d": "Paying for a product to appear in TV programmes or films",
+   "g": "promo"
+  },
+  {
+   "t": "Personal selling",
+   "d": "Face-to-face or telephone selling by trained staff",
+   "g": "promo"
+  },
+  {
+   "t": "Direct distribution",
+   "d": "Selling straight from the manufacturer to the customer",
+   "g": "mix"
+  },
+  {
+   "t": "Indirect distribution",
+   "d": "Selling through a third party such as a retailer, wholesaler or e-tailer",
+   "g": "mix"
+  },
+  {
+   "t": "Wholesaler",
+   "d": "A business that buys in bulk from manufacturers and sells to retailers",
+   "g": "mix"
+  },
+  {
+   "t": "Physical environment",
+   "d": "Where customers buy or experience a product, which affects purchases and repeat purchases",
+   "g": "mix"
   }
  ],
  "steps": [
@@ -758,7 +838,7 @@
   }
  ],
  "learn": {
-  "title": "Unit 2: Developing a Marketing Campaign (Learning Aims A and B)",
+  "title": "Unit 2: Developing a Marketing Campaign (Learning Aims A, B and C)",
   "sections": [
    {
     "heading": "How you're assessed",
@@ -801,7 +881,8 @@
      "The exam is worth 70 marks",
      "Grade boundaries: Distinction 54, Merit 39, Pass 25, Near Pass 12",
      "Topics covered: the role of marketing, aims and objectives, types of market, segmentation, branding, internal and external influences, how market research is used, types of research, validity and reliability, analysis tools, the marketing mix and marketing campaigns"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "What is marketing?",
@@ -815,7 +896,8 @@
      "src": "diagrams/marketing-purposes.svg",
      "alt": "The four key purposes of marketing as a chain of four steps: anticipate demand (work out what customers will want), recognise demand (spot what they want now), stimulate demand (make them want it through promotion), satisfy demand (give them what they want so they come back).",
      "caption": "Anticipate, recognise, stimulate, satisfy."
-    }
+    },
+    "aim": "A & B"
    },
    {
     "heading": "Aims and objectives",
@@ -826,7 +908,8 @@
      "Objectives can be changed once they have been achieved, but they always support the aim",
      "Example: aim = market leader for skateboards; objectives = increase sales, attract new customers, build brand awareness",
      "Aims and objectives can differ for niche and mass markets, e.g. a 30% rise in brand awareness may suit a small niche, but a mass market might target 10% because the market is so much bigger"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "SMART objectives",
@@ -869,7 +952,8 @@
      "Worked example (Decreal Gear): aim = increase revenue. Objective: gain 10,000 followers on Instagram within one month. If they achieve this, 10,000 more people are aware of Decreal Gear, and some of these followers could become customers, increasing revenue",
      "Not SMART: \"To get more customers\" (no number or deadline). \"Improve customer satisfaction by 100% in 1 week\" isn't achievable or realistic",
      "SMART: \"Increase sales revenue by 10% each month, for 12 months\""
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Niche and mass markets",
@@ -898,7 +982,8 @@
      "Niche marketing targets a product at a small segment of a larger market, e.g. Rolex watches, left-handed scissors. Niches appear when a business spots needs not met by other firms",
      "Mass marketing aims a product at all (or most) of the market, e.g. shampoo, ketchup. It's an unsegmented market, sold through mass retailers and promoted through mass media such as TV and the internet",
      "Summary: niche marketing is generally used by smaller businesses with a smaller customer base; mass marketing by larger businesses with the resources to market to everyone"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Market segmentation",
@@ -936,7 +1021,8 @@
      "Why businesses segment: spot gaps, target particular groups, sell more products, waste fewer resources, offer a wider range of differentiated products, create customer loyalty, benefit from economies of scale",
      "In a campaign it helps choose the right audience (e.g. 16–18-year-olds who love fashion), design messages that appeal to them, and pick the best places to advertise (e.g. TikTok, Instagram)",
      "Example: Fresh & Kind (recipe boxes) could segment by dietary requirements, e.g. vegan, so it can specialise the meals it offers that segment"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Branding, brand image and USPs",
@@ -947,7 +1033,8 @@
      "A USP (unique selling point) is a feature or benefit that separates a product from its competitors and helps gain market share, e.g. Amazon Prime's next-day delivery",
      "USP advantages: customer satisfaction, repeat purchases and recommendations, lower marketing cost, higher loyalty, can charge higher prices, differentiation, competitive advantage, economies of scale",
      "USP risks: wasted materials, financial costs (legal costs, compensation), loss of customers, bad reputation, reworking products, imitation/copying, substitutes"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Influences on a marketing campaign",
@@ -974,7 +1061,8 @@
     "points": [
      "Internal influences: cost of the campaign, availability of finance, expertise of staff, size and culture of the business",
      "External influences: social, technological, economic, environmental, political, legal, ethical"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Why businesses do market research",
@@ -984,7 +1072,8 @@
      "2) Identify the size, structure and trends of the market. Size helps plan the budget (and whether to aim at a mass or niche market); structure links to demographics and the research methods to use; trends show what customers want, where and when they'll buy",
      "3) Identify the competition: what competitors sell, their promotions, and the threats they pose, so marketing can influence buying behaviour more effectively",
      "Research helps choose product features (flavour, size, price), the right audience and the best advertising methods, e.g. a milkshake brand asking teenagers which flavours they like"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Primary research",
@@ -1022,7 +1111,8 @@
      "Why not: it typically costs more and takes longer than secondary research",
      "Quantitative data: numbers and statistics, e.g. '80% of participants agree'; used to predict trends",
      "Qualitative data: written answers and opinions from fewer people, giving in-depth explanations"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Secondary research",
@@ -1063,7 +1153,8 @@
      "Why use it: cheaper (no need to pay for research) and saves time",
      "Why not: it may not be fully relevant (it was done for another business) and may be outdated, leading to wrong decisions",
      "Businesses use it to make future decisions, spot trends and see what competitors are doing"
-    ]
+    ],
+    "aim": "A & B"
    },
    {
     "heading": "Validity, reliability and bias",
@@ -1076,6 +1167,292 @@
      "Valid: they asked their target market. But 52 male, 45 female, 3 other is imbalanced",
      "Secondary research must be in date, appropriate to the business and from a reliable source (not Wikipedia)",
      "Example: 2020 sportswear data was heavily affected by COVID lockdowns, so it may not reflect a lockdown-free world. Using unreliable data leads to poor decisions"
+    ],
+    "aim": "A & B"
+   },
+   {
+    "aim": "C",
+    "heading": "Analysis tools: SWOT",
+    "text": "Analysis is examining information or data in detail to understand patterns, relationships, causes or implications. An analytical tool helps a business look at the market and the business as a whole, so it can decide which products to bring out or which area of the market to target. A SWOT analysis looks at the business itself (internal) and the external environment it could take advantage of.",
+    "table": {
+     "head": [
+      "",
+      "What to look for",
+      "Examples"
+     ],
+     "rows": [
+      [
+       "Strengths (internal)",
+       "Internal advantages, with evidence from the business model or market position",
+       "Brand image, product quality, unique design"
+      ],
+      [
+       "Weaknesses (internal)",
+       "Internal limitations; be honest but constructive, as areas to improve",
+       "Limited budget, small team, low brand awareness"
+      ],
+      [
+       "Opportunities (external)",
+       "External possibilities for growth, linked to the target audience or trends",
+       "Streetwear trends, social media marketing, influencer partnerships"
+      ],
+      [
+       "Threats (external)",
+       "External risks; show awareness of the wider market",
+       "Strong competition, changing consumer preferences, economic downturn"
+      ]
+     ]
+    },
+    "points": [
+     "Exemplar SWOT for Decreal Gear: Strength: excellent reputation for quality (easier to get repeat custom). Weakness: sales revenue hasn't grown. Opportunity: sustainable materials could give a USP. Threat: lots of competitors could take market share",
+     "Make links to the scenario and write full sentences with clear explanations",
+     "Sentence starters: 'One of the key strengths is…', 'A current weakness that may affect the business is…', 'A growing trend the business could benefit from is…', 'Competitors pose a risk because…'",
+     "Use strengths and opportunities positively in the campaign, and plan how to reduce weaknesses and threats"
+    ]
+   },
+   {
+    "aim": "C",
+    "heading": "Analysis tools: PESTLE",
+    "text": "PESTLE is another analytical tool. It assesses factors in the external environment that could affect the business, so it can make decisions and plan its campaign.",
+    "table": {
+     "head": [
+      "Factor",
+      "Examples from the slides",
+      "Impact on a business"
+     ],
+     "rows": [
+      [
+       "Political: government policies, regulations, stability",
+       "Tariffs, Brexit, war",
+       "Tariffs add cost to imports/exports; after Brexit trade with the EU costs more and EU staff need visas; war can disrupt suppliers and flight paths"
+      ],
+      [
+       "Economic: inflation, interest rates, employment",
+       "Exchange rates, interest rates, unemployment, cost of living",
+       "Exchange rates change import prices; higher interest makes a campaign loan cost more; high unemployment can mean a recession and low sales; high cost of living means less spending on luxuries"
+      ],
+      [
+       "Social: trends, demographics, lifestyle",
+       "Impact of COVID, lifestyle (e.g. vegan), age distribution (ageing population), health consciousness",
+       "Adapt to new rules and changes; don't exclude a segment; meet the needs of different age groups"
+      ],
+      [
+       "Technological: innovation, automation, digital",
+       "Automation, social media advertising, selling on a website",
+       "Faster production; reach a younger audience; sell 24/7"
+      ],
+      [
+       "Legal: laws on advertising, consumers, employment",
+       "Minimum wage, GDPR, consumer protection",
+       "Wage rises increase costs; data must be protected with policies; faulty products must be refunded"
+      ],
+      [
+       "Environmental: climate change, sustainability",
+       "Packaging, waste, carbon footprint, pollution",
+       "Use recyclable packaging, cut waste and emissions; green credentials can improve brand image"
+      ]
+     ]
+    },
+    "points": [
+     "Apply each factor to the case study and use precise examples, not vague statements",
+     "Explain how it could influence pricing, promotion, product development or distribution, using cause and effect: 'This could lead to…', 'As a result, the business may need to…'",
+     "Consider opportunities and threats, e.g. growing demand for sustainable products = opportunity; rising production costs = threat",
+     "Link back to the campaign: 'Based on this analysis, the business should focus on…' or 'The most influential factor is…'",
+     "Sentence frame: 'A [political] factor that could affect this business is… This could impact the business because… which would have the following impact… which could lead to…'"
+    ]
+   },
+   {
+    "aim": "C",
+    "heading": "The 7 Ps marketing mix",
+    "text": "The marketing mix is made up of the 7 Ps: Product, Price, Place, Promotion, People, Process and Physical evidence (physical environment).",
+    "points": [
+     "Strong exam answers link each P to the others and explain how it influences customer behaviour, fits the target market and supports the campaign"
+    ]
+   },
+   {
+    "aim": "C",
+    "heading": "Product",
+    "text": "A product is anything that can be offered to a market to satisfy a want or need: physical goods, services, experiences, events, places, properties, organisations, information and ideas. It includes design, features, quality, branding and packaging.",
+    "points": [
+     "Product differentiation is making a product different from others, to position it for different segments and gain an advantage over rivals, so customers can see their needs are met better",
+     "Ways to differentiate: unique and catchy names, quality, design/formulation/function, packaging, customer service",
+     "Form: the physical appearance, design and style (shape, colour, packaging, branding), e.g. an elegant perfume bottle appeals to high-end customers",
+     "Function: what the product does and how it meets needs, e.g. a smartwatch that tracks fitness and heart rate appeals to health-conscious and tech-savvy buyers",
+     "In the exam: find the product clues in the case study (features, design, branding, packaging, USPs), explain how it meets customer needs and stands out from competitors, and link it to price, promotion and place"
+    ]
+   },
+   {
+    "aim": "C",
+    "heading": "The product life cycle",
+    "text": "The product life cycle (PLC) is the cycle every product goes through from introduction to withdrawal.",
+    "table": {
+     "head": [
+      "Stage",
+      "What happens"
+     ],
+     "rows": [
+      [
+       "Introduction",
+       "Market research, prototypes, adverts released, product launched"
+      ],
+      [
+       "Growth",
+       "If the launch works, sales increase sharply and the product may make a profit for the first time"
+      ],
+      [
+       "Maturity",
+       "Sales growth slows; repeat customers become loyal; the market becomes saturated as competitors bring out similar products"
+      ],
+      [
+       "Decline",
+       "The product is outdated, sales fall, and eventually it is removed from sale"
+      ]
+     ]
+    },
+    "points": [
+     "Extension strategies increase the life of a product by giving it fresh appeal or reaching a new segment: a new marketing campaign, a modified product, new packaging, anything that creates new interest",
+     "Example: what could Sony do to slow the decline of PlayStation 4 sales? Think of what they'd do at launch: new adverts, special editions, bundles, price cuts"
+    ],
+    "diagram": {
+     "src": "diagrams/product-life-cycle.svg",
+     "alt": "A product life cycle graph: sales (up the side) against time (along the bottom). Sales start low at introduction, rise steeply in growth, level off at maturity, then fall in decline. A dashed line from maturity shows an extension strategy (new campaign, modified product or new packaging) pushing sales back up.",
+     "caption": "Extension strategies delay decline."
+    }
+   },
+   {
+    "aim": "C",
+    "heading": "Price and pricing strategies",
+    "text": "Price is the amount a customer pays. The pricing strategy directly affects how customers see quality and value, the business's profit, and demand.",
+    "table": {
+     "head": [
+      "Strategy",
+      "How it works"
+     ],
+     "rows": [
+      [
+       "Penetration pricing",
+       "A low launch price (e.g. an introductory offer) to break into the market and win sales and market share; a short-term strategy, not always profitable"
+      ],
+      [
+       "Skimming",
+       "A high launch price when there is little competition, for high early returns; lowered later as rivals or newer models arrive (e.g. £349 down to £199)"
+      ],
+      [
+       "Competitor-based",
+       "Pricing in line with competitors so you don't seem to overcharge and lose market share"
+      ],
+      [
+       "Cost plus",
+       "Add a profit margin to the unit cost, e.g. a TV costs £100 to make and sells for £200"
+      ],
+      [
+       "Premium / psychological",
+       "High price to reflect quality; prices like £9.99 instead of £10"
+      ]
+     ]
+    },
+    "points": [
+     "Price signals quality (99p vs £5.50 burger) and branding (£1.50 vs £30 t-shirt). Branded products usually cost more to make and promote",
+     "In competitive markets, price changes can have a big effect on demand",
+     "Influences on pricing: competition, market segment, PLC stage, costs (profit margin target), branding (strong brands charge more), technology (can lower costs)"
+    ]
+   },
+   {
+    "aim": "C",
+    "heading": "Promotion",
+    "text": "Promotion is any marketing that aims to inform, persuade or motivate customers to buy or support a product. In a campaign it raises awareness, encourages trial or repeat purchases, builds brand loyalty and differentiates from competitors.",
+    "table": {
+     "head": [
+      "Method",
+      "What it is",
+      "Plus / minus"
+     ],
+     "rows": [
+      [
+       "Advertising",
+       "A paid message aimed at influencing customers",
+       "Big impact in the right place / expensive, hard to measure"
+      ],
+      [
+       "Public relations (PR)",
+       "Managing reputation and goodwill by giving information",
+       "Builds trust and loyalty / slow to build, quickly damaged by bad publicity"
+      ],
+      [
+       "Sponsorship",
+       "Financially supporting events, people or organisations to raise awareness",
+       "Lots of exposure, links to a good cause / says little about the product"
+      ],
+      [
+       "Personal selling",
+       "Face-to-face or phone selling by trained staff",
+       "Answers questions and objections directly"
+      ],
+      [
+       "Social media",
+       "Adverts on Instagram, TikTok, YouTube and similar",
+       "Reaches a target audience"
+      ],
+      [
+       "Guerrilla marketing",
+       "Low-cost, unconventional advertising in an unexpected place",
+       "Ideal for small businesses to make an impression"
+      ],
+      [
+       "Product placement",
+       "Paying for products to appear in TV or films",
+       "Raises awareness and shows the brand in use"
+      ],
+      [
+       "Digital marketing",
+       "Online channels using customer databases to target relevant promotions",
+       "Customers more likely to buy"
+      ]
+     ]
+    },
+    "points": [
+     "Choose a strategy that fits the brand's values, target audience and budget; justify it against the business's goals and market; analyse short- and long-term benefits",
+     "Example: an e-commerce site reaches many customers, but if a business only delivers within 40 miles, wide reach could waste money"
+    ]
+   },
+   {
+    "aim": "C",
+    "heading": "Place",
+    "text": "Place means making products available at the right place and the right time: in store or online.",
+    "table": {
+     "head": [
+      "",
+      "Advantages",
+      "Disadvantages"
+     ],
+     "rows": [
+      [
+       "In store (retail)",
+       "Customers browse and try products; point-of-sale displays; staff give help and advice; many enjoy shopping",
+       "Running costs (rent, bills); limited opening hours; limited stock on display; higher prices"
+      ],
+      [
+       "Online",
+       "No expensive retail space; buy any time; reach customers worldwide; small firms can compete with large ones",
+       "Customers need internet access; can't pay cash; must wait for delivery; can't see items in person"
+      ]
+     ]
+    },
+    "points": [
+     "Choosing a store location: cost, proximity to competitors, labour, resources and transport links",
+     "Direct distribution: manufacturer → customer (business to consumer or business to business)",
+     "Indirect distribution: through a third party, e.g. manufacturer → retailer → customer, or manufacturer → e-tailer → customer",
+     "Wholesalers buy in bulk from manufacturers and sell to smaller businesses such as retailers; retailers can be bricks-and-mortar or online",
+     "Most businesses use multiple distribution, e.g. their own website plus wholesalers"
+    ]
+   },
+   {
+    "aim": "C",
+    "heading": "People, process and physical environment",
+    "points": [
+     "People: the quality of employees who make, sell and service products, especially those dealing with customers. Better staff mean a better customer experience",
+     "Physical environment (physical evidence): where customers buy a product or experience it. Customers want to feel comfortable and find the information they need; it strongly affects purchases and repeat purchases",
+     "Process: customer service in buying and after-sales, handling complaints, finding customer needs, and the ordering process. A simpler process with fewer steps reduces abandoned sales"
     ]
    }
   ],
@@ -1233,6 +1610,94 @@
     ],
     "a": 1,
     "e": "It may not reflect a lockdown-free world."
+   },
+   {
+    "q": "Which part of a SWOT analysis is external?",
+    "o": [
+     "Strengths",
+     "Weaknesses",
+     "Opportunities",
+     "All of them"
+    ],
+    "a": 2,
+    "e": "Opportunities and threats are external; strengths and weaknesses are internal."
+   },
+   {
+    "q": "Brexit and tariffs are which PESTLE factor?",
+    "o": [
+     "Political",
+     "Social",
+     "Legal",
+     "Environmental"
+    ],
+    "a": 0,
+    "e": "Political factors come from government decisions."
+   },
+   {
+    "q": "A rise in the minimum wage is a … factor.",
+    "o": [
+     "Technological",
+     "Legal",
+     "Social",
+     "Environmental"
+    ],
+    "a": 1,
+    "e": "It's a law, and it increases business costs."
+   },
+   {
+    "q": "At which stage of the product life cycle does the market become saturated?",
+    "o": [
+     "Introduction",
+     "Growth",
+     "Maturity",
+     "Decline"
+    ],
+    "a": 2,
+    "e": "Competitors bring out similar products and sales growth slows."
+   },
+   {
+    "q": "A low launch price to win market share is:",
+    "o": [
+     "Skimming",
+     "Penetration pricing",
+     "Cost plus",
+     "Premium pricing"
+    ],
+    "a": 1,
+    "e": "Skimming is the opposite: a high launch price."
+   },
+   {
+    "q": "Paying for a product to appear in a film is:",
+    "o": [
+     "Sponsorship",
+     "PR",
+     "Product placement",
+     "Guerrilla marketing"
+    ],
+    "a": 2,
+    "e": "It raises awareness by showing the brand in use."
+   },
+   {
+    "q": "Manufacturer → retailer → customer is:",
+    "o": [
+     "Direct distribution",
+     "Indirect distribution",
+     "Personal selling",
+     "Wholesaling only"
+    ],
+    "a": 1,
+    "e": "It goes through a third party before the customer."
+   },
+   {
+    "q": "Which P is about how easy it is to order and the after-sales service?",
+    "o": [
+     "People",
+     "Place",
+     "Process",
+     "Price"
+    ],
+    "a": 2,
+    "e": "A simpler process reduces abandoned sales."
    }
   ]
  }

@@ -156,8 +156,9 @@
   // ---------- Learn: the teacher's Unit 2 PowerPoint (Learning Aims A and B) as notes + a quick quiz ----------
   function learnHome() {
     const L = data.learn, box = $('bz-learn');
-    box.innerHTML = `<div><h2 style="margin-bottom:4px">${esc(L.title)}</h2><p class="lead">Notes from your teacher's Unit 2 PowerPoint. Read them, then check yourself with the quick quiz at the end.</p></div>
-      ${L.sections.map((s2) => `<div class="card sec ${s2.table ? 'tablebox' : ''}">
+    box.innerHTML = `<div><h2 style="margin-bottom:4px">${esc(L.title)}</h2><p class="lead">Notes from your teacher's Unit 2 PowerPoints. Read them, then check yourself with the quick quiz at the end.</p></div>
+      <div class="bz-aims">${[...new Set(L.sections.map((x) => x.aim).filter(Boolean))].map((a2) => `<a href="#business" data-aim="${esc(a2)}">Learning Aim ${esc(a2)}</a>`).join('')}</div>
+      ${L.sections.map((s2, k) => `${s2.aim && (k === 0 || L.sections[k - 1].aim !== s2.aim) ? `<h2 class="bz-aim-h" id="bz-aim-${esc(s2.aim).replace(/\W/g, '')}">Learning Aim ${esc(s2.aim)}</h2>` : ''}<div class="card sec ${s2.table ? 'tablebox' : ''}">
         <h3>${esc(s2.heading)}</h3>
         ${s2.text ? `<p>${esc(s2.text)}</p>` : ''}
         ${s2.table ? `<table><thead><tr>${s2.table.head.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${s2.table.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}
@@ -166,6 +167,7 @@
       </div>`).join('')}
       ${L.quiz && L.quiz.length ? '<div class="card" id="bz-lq"></div>' : ''}
       <div class="row"><span class="spacer"></span><button class="btn" id="bz-to-write">Next: Exam writing →</button></div>`;
+    box.querySelectorAll('[data-aim]').forEach((x) => x.onclick = (e) => { e.preventDefault(); const t = $('bz-aim-' + x.dataset.aim.replace(/\W/g, '')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
     $('bz-to-write').onclick = () => { const b = document.querySelector('[data-bt=write]'); if (b) b.click(); };
     if (L.quiz && L.quiz.length) learnQuiz();
     stagger(box.children, 8);

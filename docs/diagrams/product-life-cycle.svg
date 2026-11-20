@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 290" width="760" height="290" role="img" aria-labelledby="t d"><title id="t">The product life cycle</title><desc id="d">Sales against time: low at introduction, rising in growth, levelling at maturity, falling in decline. An extension strategy pushes sales back up.</desc><style>
+.bg{fill:#0a2b4b}
+.t{font:600 15px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
+.tb{font:700 17px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#f2f6fa}
+.s{font:500 13px system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;fill:#a3bbd0}
+.m{font:600 13px ui-monospace,Menlo,Consolas,monospace;fill:#f2f6fa}
+.h{font:700 12px ui-monospace,Menlo,Consolas,monospace;fill:#629cc3;letter-spacing:.08em}
+.w{fill:#ffffff}
+.box{fill:#0f3557;stroke:#2c5a80;stroke-width:1.5}
+.acc{fill:#123c60;stroke:#629cc3;stroke-width:1.5}
+.bad{fill:#3d1a2c;stroke:#ff5a5c;stroke-width:1.5}
+.good{fill:#0f3b3a;stroke:#4cc38a;stroke-width:1.5}
+.amb{fill:#33301f;stroke:#f2b544;stroke-width:1.5}
+.dim{fill:#0c3052;stroke:#24496b;stroke-width:1.5}
+.solid-acc{fill:#629cc3}.solid-bad{fill:#3f7aa3}.solid-good{fill:#2f9a5f}.solid-amb{fill:#c98f22}.solid-ink{fill:#f2f6fa}
+.ln{stroke:#a3bbd0;stroke-width:2;fill:none}
+.ln-acc{stroke:#629cc3;stroke-width:2.2;fill:none}
+.ln-bad{stroke:#ff5a5c;stroke-width:2.2;fill:none}
+.ln-good{stroke:#4cc38a;stroke-width:2.2;fill:none}
+.dash{stroke-dasharray:6 5}
+.tx-acc{fill:#629cc3}.tx-bad{fill:#ff5a5c}.tx-good{fill:#4cc38a}.tx-amb{fill:#f2b544}
+.ic{fill:none;stroke:#f2f6fa;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-bad{fill:none;stroke:#ff5a5c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ic-acc{fill:none;stroke:#629cc3;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk-ln{fill:#a3bbd0}.mk-acc{fill:#629cc3}.mk-bad{fill:#ff5a5c}.mk-good{fill:#4cc38a}
+</style><defs><marker id="a-ln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-ln"/></marker><marker id="a-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-acc"/></marker><marker id="a-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-bad"/></marker><marker id="a-good" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" class="mk-good"/></marker></defs><rect class="bg" width="760" height="290" rx="16"/><text x="24" y="32" class="h" text-anchor="start">THE PRODUCT LIFE CYCLE</text><path d="M70 250 L70 50" class="ln" marker-end="url(#a-ln)"/><path d="M70 250 L730 250" class="ln" marker-end="url(#a-ln)"/><text x="40" y="150" class="s" text-anchor="middle">Sales</text><text x="400" y="276" class="s" text-anchor="middle">Time</text><path d="M75 245 C150 240 180 220 230 170 S330 70 420 70 C500 70 560 110 680 220" class="ln-acc"/><path d="M470 78 C520 70 560 62 610 66" class="ln-good dash"/><text x="610" y="56" class="s" text-anchor="middle">extension strategy</text><path d="M80 245 V60" class="ln dash"/><text x="150" y="235" class="t" text-anchor="middle">Introduction</text><path d="M230 245 V60" class="ln dash"/><text x="300" y="235" class="t" text-anchor="middle">Growth</text><path d="M390 245 V60" class="ln dash"/><text x="460" y="235" class="t" text-anchor="middle">Maturity</text><path d="M560 245 V60" class="ln dash"/><text x="630" y="235" class="t" text-anchor="middle">Decline</text></svg>

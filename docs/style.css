@@ -384,6 +384,11 @@ input[type=number] { font: 15px var(--font-body); padding: 9px 12px; border-radi
 .bz-example p { margin: 8px 0 0; }
 .bz-example-note { font-size: 14px; }
 
+.bz-aims { display: flex; flex-wrap: wrap; gap: 8px; }
+.bz-aims a { font: 400 15px var(--font-display); text-transform: uppercase; letter-spacing: .05em; padding: 7px 14px; border-radius: 9px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; }
+.bz-aims a:hover { border-color: var(--highlight); }
+.bz-aim-h { margin: 14px 0 -2px; color: var(--highlight); scroll-margin-top: calc(var(--topbar-h) + 16px); }
+
 /* Business: tabs and key terms matching */
 .bz-tabs { display: flex; gap: 4px; padding: 4px; width: fit-content; max-width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
 .bz-tabs button { font: 400 15px var(--font-display); text-transform: uppercase; letter-spacing: .05em; padding: 8px 16px; border: 0; border-radius: 9px; background: transparent; color: var(--muted); cursor: pointer; transition: background .15s, color .15s, transform .1s; }
