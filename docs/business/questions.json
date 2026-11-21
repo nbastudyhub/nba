@@ -385,7 +385,9 @@
     "text": [
      "The aim of the business is to increase sales."
     ]
-   }
+   },
+   "marks": "Activity 1 · Marketing aims and objectives (8 marks)",
+   "prompt": "In one or two sentences: what is Technective's aim, and where in the booklet did you find it?"
   },
   {
    "id": "smart",
@@ -465,7 +467,9 @@
      "Both objectives are linked to trends within the market."
     ],
     "note": "To push for D*, make every objective fully SMART: the first example has a deadline but no number to measure it by."
-   }
+   },
+   "marks": "Activity 1 · Marketing aims and objectives (8 marks)",
+   "prompt": "Write 3 SMART objectives. For each one, say which trend it links to and how it helps achieve the aim."
   },
   {
    "id": "trends",
@@ -534,7 +538,9 @@
      "Chocolate market is increasing each year – this will help KOC achieve the aim to increase their sales because there is a larger opportunity to influence new customers each year to purchase their product, increasing sales.",
      "More people shopping online for chocolate – this will help them achieve the aim of increasing sales because KOC can use this to their advantage and invest more into their website and advertising their website to let people know that they sell online, which in turn should increase the traffic to their website, resulting in a higher amount of sales."
     ]
-   }
+   },
+   "marks": "Activity 1 · Analysis of market research information (12 marks)",
+   "prompt": "Write about 2 trends. For each: Point, Evidence (quote the booklet), Explain, Link to the aim."
   },
   {
    "id": "competitors",
@@ -604,7 +610,9 @@
      "Thorntons are currently closing all of their retail locations. This could positively impact KOC because it means Thorntons have reduced their presence on the high street. If KOC choose to open further retail stores or promote their current retail stores on social media, this could increase the number of customers within those stores, which could result in an increase in sales."
     ],
     "note": "Notice one competitor is a threat and the other is an opportunity, and both end by linking to the aim."
-   }
+   },
+   "marks": "Activity 1 · Analysis of market research information (12 marks)",
+   "prompt": "Write about 2 competitors. For each: Point, Evidence, Explain (threat or opportunity), Link to the aim."
   },
   {
    "id": "research",
@@ -639,7 +647,9 @@
     "Uses figures from the research report",
     "Says what this means for Technective's decisions"
    ],
-   "tip": "Don't just say 'it's unreliable'. Say why, give the figure, and say what that could lead Technective to get wrong."
+   "tip": "Don't just say 'it's unreliable'. Say why, give the figure, and say what that could lead Technective to get wrong.",
+   "marks": "Activity 1 · Analysis of market research information (12 marks)",
+   "prompt": "Judge the primary research: reliability, validity and bias, using figures from the research report. Finish with what it means for Technective."
   },
   {
    "id": "swot",
@@ -701,7 +711,9 @@
     "Each point uses evidence from the booklet",
     "Each point links to the aim"
    ],
-   "tip": "Check each point is in the right box: if Technective controls it, it's S or W; if it's in the market, it's O or T."
+   "tip": "Check each point is in the right box: if Technective controls it, it's S or W; if it's in the market, it's O or T.",
+   "marks": "Activity 1 · Analysis of market research information (12 marks)",
+   "prompt": "2 strengths, 2 weaknesses, 2 opportunities, 2 threats. Each one: point, evidence, link to the aim."
   },
   {
    "id": "mix",
@@ -751,7 +763,9 @@
     "Promotion choices suit the target market and the budget",
     "Each P links back to the aim"
    ],
-   "tip": "For each P: the decision, the evidence behind it, and how it helps the aim."
+   "tip": "For each P: the decision, the evidence behind it, and how it helps the aim.",
+   "marks": "Activity 2 · Marketing mix (20 marks)",
+   "prompt": "Plan the 7 Ps: product (and its life cycle stage), price, place, promotion, people, process, physical evidence. Justify each with evidence and link it to the aim."
   },
   {
    "id": "pestle",
@@ -834,7 +848,9 @@
      "Technological – Point: One technological factor which could impact KOC is the use of websites. Evidence: This is because 'Thorntons had a rapid increase in online sales'. Explain: If KOC sold on a website, similar to what Thorntons do, this would benefit them because they would be able to sell 24/7, which is likely to increase sales. With the increase in sales, they are likely to be more profitable because they won't have to pay a portion of the revenue to any supermarkets or third-party sellers. Link: However, if KOC only sell via website, this could also negatively affect their sales because a number of their competitors also sell products online, meaning that the online chocolate market is already heavily saturated, so their website could get lost and not receive any traffic.",
      "Political – Point: One political factor that could impact KOC is the increased import and export fees. Evidence: This is because 'UK chocolate businesses now export to over 149 different countries'. Explain: This could impact KOC because it is now becoming more expensive to export products due to leaving the EU. With UK chocolate businesses heavily exporting to a number of different countries, this will cause their expenditure to increase. Link: This could stop KOC from achieving the aim of increasing sales because KOC will need to increase their prices to absorb the additional export costs. This leads to customers finding a cheaper alternative to purchase their chocolate from, which would decrease their sales."
     ]
-   }
+   },
+   "marks": "Activity 1 · Analysis of market research information (12 marks)",
+   "prompt": "Write about 2 PESTLE factors. For each: Point, Evidence (quote the booklet), Explain, Link to the aim."
   }
  ],
  "learn": {

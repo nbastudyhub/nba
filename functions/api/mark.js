@@ -81,9 +81,12 @@ async function markBusinessStep(env, url, body) {
   const step = data && (data.steps || []).find((x) => x.id === body.step);
   if (!step) return json({ error: "unknown_question" }, 404);
   const fields = body.fields && typeof body.fields === "object" ? body.fields : {};
-  const work = step.fields.map((f) => `${f.group ? f.group + " – " : ""}${f.label}: ${String(fields[f.k] || "").trim() || "(blank)"}`).join("\n");
+  // New layout: one writing box per step (fields.text). Older saved work used one box per field.
+  const work = typeof fields.text === "string" && fields.text.trim()
+    ? fields.text.trim()
+    : step.fields.map((f) => `${f.group ? f.group + " – " : ""}${f.label}: ${String(fields[f.k] || "").trim() || "(blank)"}`).join("\n");
   if (work.length > 8000) return json({ error: "bad_request" }, 400);
-  if (!step.fields.some((f) => String(fields[f.k] || "").trim())) return json({ error: "bad_request" }, 400);
+  if (!(typeof fields.text === "string" && fields.text.trim()) && !step.fields.some((f) => String(fields[f.k] || "").trim())) return json({ error: "bad_request" }, 400);
   const aim = typeof body.aim === "string" ? body.aim.slice(0, 600) : "";
   const response = await newClient(env).messages.create({
     model: MODEL,
@@ -182,7 +185,7 @@ export async function onRequestPost(ctx) {
       const body = await copy.json(), r = await resCopy.json();
       const kind = body.kind === "bizstep" ? "bizstep" : body.kind === "long" ? "long" : "mark";
       const place = body.kind === "bizstep" ? `business: ${body.step}` : `${body.deckId} ${kind === "long" ? "long" : "exam"} Q${(body.index ?? 0) + 1}`;
-      const question = body.kind === "bizstep" ? Object.entries(body.fields || {}).map(([k, v]) => `${k}: ${v}`).join("\n") : body.answer;
+      const question = body.kind === "bizstep" ? (body.fields && typeof body.fields.text === "string" ? body.fields.text : Object.entries(body.fields || {}).map(([k, v]) => `${k}: ${v}`).join("\n")) : body.answer;
       const answer = `${r.score}/${r.max}${r.level !== undefined ? ` (Level ${r.level})` : ""}. ${r.feedback || ""} ${r.improve ? "To improve: " + r.improve : ""}`;
       await logAi(ctx.env, ctx.request, { kind, place, question, answer });
     } catch { /* ignore */ }

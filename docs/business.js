@@ -3,7 +3,8 @@
 // 1 aim, 2 three SMART objectives, 3 two trends, 4 two competitors, 5 market research (reliability,
 // validity, bias), 6 SWOT (2 per letter), 7 product life cycle and the 7 Ps, plus an extra PESTLE step.
 // Points use the teacher's Point, Evidence, Explain, Link style, and steps can show the teacher's example.
-// Each step has its own boxes, a checklist to tick, and AI feedback (functions/api/mark.js, kind "bizstep").
+// Each step is one writing box, with optional Help (what to include, a writing frame, the teacher's example,
+// a checklist) and AI feedback (functions/api/mark.js, kind "bizstep").
 // Steps and key terms live in business/questions.json. Work is saved as progress under the id "business".
 // Uses helpers from app.js: esc, stagger, bump, aiErrorText. The AI helper (assistant.js) switches to Business here.
 (function () {
@@ -23,19 +24,35 @@
 
   const extra = (step) => /^Extra/i.test(step.title); // extra steps (e.g. PESTLE) aren't numbered
   const stepState = (id) => { const s = (prog.steps = prog.steps || {}); return (s[id] = s[id] || { f: {}, ticks: [] }); };
-  const aimText = () => ((prog.steps && prog.steps.aim && prog.steps.aim.f.aim) || '').trim();
-  const filled = (step) => { const st = stepState(step.id); return step.fields.filter((f) => (st.f[f.k] || '').trim()).length; };
+  // One writing box per step (st.text). Work saved in the older one-box-per-field layout is joined into it once.
+  function textOf(step) {
+    const st = stepState(step.id);
+    if (st.text === undefined) {
+      let last = null;
+      const old = step.fields.map((f) => { const v = (st.f[f.k] || '').trim(); if (!v) return ''; const head = f.group && f.group !== last ? `${f.group}\n` : ''; last = f.group || last; return `${head}${f.label}: ${v}`; }).filter(Boolean).join('\n\n');
+      st.text = old;
+    }
+    return st.text;
+  }
+  const aimText = () => { const s = data.steps.find((x) => x.id === 'aim'); return s ? textOf(s).trim().split('\n')[0].replace(/^(the )?aim( of the business)?( is)?\s*[:\-–]\s*/i, '').slice(0, 400) : ''; };
+  const words = (t) => (t.trim().match(/\S+/g) || []).length;
+  const filled = (step) => (textOf(step).trim() ? 1 : 0);
+  // A writing frame built from the step's parts, e.g. "Trend 1\nPoint: \nEvidence: …"
+  function frame(step) {
+    let last = null;
+    return step.fields.map((f) => { const head = f.group && f.group !== last ? `${last ? '\n' : ''}${f.group}\n` : ''; last = f.group || last; return `${head}${f.label.replace(/:.*$/, '')}: `; }).join('\n');
+  }
 
   function summary() {
-    const done = data.steps.filter((s) => filled(s) === s.fields.length).length;
+    const done = data.steps.filter((s) => filled(s)).length;
     let got = 0, of = 0;
     data.steps.forEach((s) => { const st = stepState(s.id); got += (st.ticks || []).length; of += s.checks.length; });
-    $('bz-sum').innerHTML = `<span class="big score">${done}</span><span class="score"> / ${data.steps.length}</span><span class="muted"> steps complete · ${got} of ${of} checklist points ticked</span><span class="spacer"></span><button class="btn ghost small" id="bz-copy">Copy all my work</button>`;
+    $('bz-sum').innerHTML = `<span class="big score">${done}</span><span class="score"> / ${data.steps.length}</span><span class="muted"> steps written · ${got} of ${of} checklist points ticked</span><span class="spacer"></span><button class="btn ghost small" id="bz-copy">Copy all my work</button>`;
     $('bz-copy').onclick = copyAll;
     document.querySelectorAll('.bz-step-card').forEach((c) => {
-      const s = data.steps.find((x) => x.id === c.dataset.step), n = filled(s);
-      c.querySelector('[data-role=count]').textContent = n === s.fields.length ? 'Complete' : `${n} of ${s.fields.length} boxes`;
-      c.classList.toggle('complete', n === s.fields.length);
+      const s = data.steps.find((x) => x.id === c.dataset.step), n = words(textOf(s));
+      c.querySelector('[data-role=count]').textContent = n ? `${n} word${n === 1 ? '' : 's'}` : 'Not started';
+      c.classList.toggle('complete', n > 0);
     });
     document.querySelectorAll('[data-role=aim]').forEach((el) => { const a = aimText(); el.innerHTML = a ? `<strong>Your aim:</strong> ${esc(a)}` : '<strong>Your aim:</strong> <span class="muted">write it in step 1 first</span>'; });
   }
@@ -43,11 +60,7 @@
   // Everything in one block of text, e.g. to paste into a document when making your own notes.
   async function copyAll() {
     const text = data.steps.map((s, i) => {
-      const st = stepState(s.id); let last = null;
-      return `${i + 1}. ${s.title.toUpperCase()}\n` + s.fields.map((f) => {
-        const head = f.group && f.group !== last ? `\n${f.group}\n` : ''; last = f.group || last;
-        return `${head}${f.label}: ${(st.f[f.k] || '').trim() || '–'}`;
-      }).join('\n');
+      return `${extra(s) ? 'EXTRA' : i + 1}. ${s.title.toUpperCase()}\n${textOf(s).trim() || '–'}`;
     }).join('\n\n');
     const b = $('bz-copy');
     try { await navigator.clipboard.writeText(text); b.textContent = 'Copied ✓'; }
@@ -59,35 +72,49 @@
     return `<div class="row"><strong>AI check</strong><span class="spacer"></span><span class="big score" style="font-size:28px">${r.score} / ${r.max}</span></div>
       ${r.feedback ? `<p class="ai-h">What went well</p><p>${esc(r.feedback)}</p>` : ''}
       ${r.score < r.max && r.improve ? `<p class="ai-h">To improve</p><p>${esc(r.improve)}</p>` : ''}
-      <p class="muted small-note">The checklist points the AI thinks you've met are ticked below. AI can make mistakes; if your teacher disagrees, go with your teacher.</p>`;
+      <p class="muted small-note">The checklist points the AI thinks you've met are ticked under Help. AI can make mistakes; if your teacher disagrees, go with your teacher.</p>`;
   }
 
   function stepCard(step, i) {
-    const st = stepState(step.id);
+    const st = stepState(step.id), text = textOf(step);
     const el = document.createElement('section'); el.className = 'card bz-step-card'; el.dataset.step = step.id;
     let last = null;
-    const fieldsHtml = step.fields.map((f) => {
-      const head = f.group && f.group !== last ? `<p class="bz-group">${esc(f.group)}</p>` : ''; last = f.group || last;
-      return `${head}<label class="bz-field"><span class="bz-field-l">${esc(f.label)}</span>${f.short
-        ? `<input type="text" data-k="${f.k}" value="${esc(st.f[f.k] || '')}" placeholder="${esc(f.hint)}">`
-        : `<textarea rows="3" data-k="${f.k}" placeholder="${esc(f.hint)}">${esc(st.f[f.k] || '')}</textarea>`}</label>`;
-    }).join('');
+    const parts = step.fields.map((f) => { const head = f.group && f.group !== last ? `<li class="bz-help-g">${esc(f.group)}</li>` : ''; last = f.group || last; return `${head}<li><strong>${esc(f.label)}</strong> – ${esc(f.hint)}</li>`; }).join('');
     el.innerHTML = `
       <div class="row bz-step-head"><span class="bz-step-num">${extra(step) ? '+' : i + 1}</span><h2>${esc(step.title)}</h2><span class="spacer"></span><span class="muted small-note" data-role="count"></span></div>
-      <p>${esc(step.intro)}</p>
+      ${step.marks ? `<p class="bz-marks">${esc(step.marks)}</p>` : ''}
       ${step.id !== 'aim' ? '<p class="bz-aim" data-role="aim"></p>' : ''}
-      <div class="bz-fields">${fieldsHtml}</div>
-      ${step.example ? `<details class="bz-example"><summary><strong>See a good example</strong> <span class="muted">(${esc(step.example.title)})</span></summary>
-        ${step.example.text.map((t) => `<p>${esc(t).replace(/(^| )(Point|Evidence|Explain|Link):/g, (m, sp, w) => `${sp ? '<br>' : ''}<strong>${w}:</strong>`)}</p>`).join('')}
-        ${step.example.note ? `<p class="bz-example-note"><strong>Tip:</strong> ${esc(step.example.note)}</p>` : ''}</details>` : ''}
-      <div class="scheme open">
-        <p style="margin:0 0 4px"><strong>Check your work</strong> (tick each one you've done):</p>
-        ${step.checks.map((c, j) => `<label><input type="checkbox" data-i="${j}" ${(st.ticks || []).includes(j) ? 'checked' : ''}><span>${esc(c)}</span></label>`).join('')}
-        ${step.tip ? `<div class="dstar"><strong>Tip:</strong> ${esc(step.tip)}</div>` : ''}
+      <textarea class="bz-write" rows="7" aria-label="${esc(step.title)}" placeholder="${esc(step.prompt || step.intro)}">${esc(text)}</textarea>
+      <div class="row bz-actions">
+        <button class="btn small" data-act="ai">${st.ai ? 'Check again with AI' : 'Check with AI'}</button>
+        <button class="btn ghost small" data-act="help" aria-expanded="false">Help</button>
+        <span class="status" data-role="note"></span>
       </div>
-      <div class="row" style="margin-top:10px"><button class="btn small" data-act="ai">${st.ai ? 'Check again with AI' : 'Check this step with AI'}</button><span class="status" data-role="note"></span></div>
-      <div class="ai-result ${st.ai ? '' : 'hidden'}" data-role="ai">${st.ai ? aiHtml(step, st.ai) : ''}</div>`;
-    el.querySelectorAll('[data-k]').forEach((inp) => inp.oninput = () => { stepState(step.id).f[inp.dataset.k] = inp.value; save(); summary(); });
+      <div class="ai-result ${st.ai ? '' : 'hidden'}" data-role="ai">${st.ai ? aiHtml(step, st.ai) : ''}</div>
+      <div class="bz-help hidden" data-role="help">
+        <p>${esc(step.intro)}</p>
+        <p class="ai-h">What to include</p>
+        <ul class="tight bz-help-parts">${parts}</ul>
+        <button class="btn ghost small" data-act="frame">Add these headings to my answer</button>
+        ${step.example ? `<details class="bz-example"><summary><strong>See a good example</strong> <span class="muted">(${esc(step.example.title)})</span></summary>
+          ${step.example.text.map((t) => `<p>${esc(t).replace(/(^| )(Point|Evidence|Explain|Link):/g, (m, sp, w) => `${sp ? '<br>' : ''}<strong>${w}:</strong>`)}</p>`).join('')}
+          ${step.example.note ? `<p class="bz-example-note"><strong>Tip:</strong> ${esc(step.example.note)}</p>` : ''}</details>` : ''}
+        <div class="scheme open">
+          <p style="margin:0 0 4px"><strong>Check your work</strong> (tick each one you've done):</p>
+          ${step.checks.map((c, j) => `<label><input type="checkbox" data-i="${j}" ${(st.ticks || []).includes(j) ? 'checked' : ''}><span>${esc(c)}</span></label>`).join('')}
+          ${step.tip ? `<div class="dstar"><strong>Tip:</strong> ${esc(step.tip)}</div>` : ''}
+        </div>
+      </div>`;
+    const ta = el.querySelector('.bz-write');
+    const grow = () => { ta.style.height = 'auto'; ta.style.height = Math.max(160, ta.scrollHeight + 4) + 'px'; };
+    ta.oninput = () => { stepState(step.id).text = ta.value; grow(); save(); summary(); };
+    requestAnimationFrame(grow);
+    const help = el.querySelector('[data-role=help]'), hb = el.querySelector('[data-act=help]');
+    hb.onclick = () => { const open = help.classList.toggle('hidden') === false; hb.setAttribute('aria-expanded', String(open)); hb.textContent = open ? 'Hide help' : 'Help'; };
+    el.querySelector('[data-act=frame]').onclick = () => {
+      ta.value = (ta.value.trim() ? ta.value.trimEnd() + '\n\n' : '') + frame(step);
+      ta.oninput(); ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length);
+    };
     el.querySelectorAll('input[type=checkbox]').forEach((cb) => cb.onchange = () => {
       const s2 = stepState(step.id), j = +cb.dataset.i; s2.ticks = (s2.ticks || []).filter((x) => x !== j); if (cb.checked) s2.ticks.push(j);
       save(); summary();
@@ -95,10 +122,10 @@
     const ab = el.querySelector('[data-act=ai]'), note = el.querySelector('[data-role=note]'), box = el.querySelector('[data-role=ai]');
     ab.onclick = async () => {
       const s2 = stepState(step.id);
-      if (!filled(step)) { note.textContent = 'Fill in some boxes first.'; return; }
+      if (words(ta.value) < 5) { note.textContent = 'Write a bit more first.'; return; }
       ab.disabled = true; note.textContent = 'Checking…';
       try {
-        const res = await fetch('api/mark', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'bizstep', step: step.id, fields: s2.f, aim: aimText() }) });
+        const res = await fetch('api/mark', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ kind: 'bizstep', step: step.id, fields: { text: ta.value }, aim: aimText() }) });
         let r = {}; try { r = await res.json(); } catch (e) {}
         if (res.ok && Number.isInteger(r.score)) {
           s2.ai = { score: r.score, max: r.max, awarded: r.awarded || [], feedback: r.feedback, improve: r.improve };
@@ -106,7 +133,7 @@
           el.querySelectorAll('input[type=checkbox]').forEach((cb) => { cb.checked = s2.ticks.includes(+cb.dataset.i); });
           box.innerHTML = aiHtml(step, s2.ai); box.classList.remove('hidden'); bump(box.querySelector('.score'));
           note.textContent = ''; save(); summary();
-        } else note.textContent = r.error === 'bad_request' ? 'That\'s too long to check in one go. Shorten some boxes.' : aiErrorText(res.status, r.error);
+        } else note.textContent = r.error === 'bad_request' ? 'That\'s too long to check in one go. Try a shorter answer.' : aiErrorText(res.status, r.error);
       } catch (e) { note.textContent = 'Couldn\'t connect. Check your internet and try again.'; }
       ab.disabled = false; ab.textContent = 'Check again with AI';
     };
